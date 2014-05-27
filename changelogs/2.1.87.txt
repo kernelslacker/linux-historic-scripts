@@ -1,0 +1,10 @@
+Linux 2.1.87
+
+Ok, 2.1.87 is out there on ftp.kernel.org now, and it has the clever
+PROT_NONE thing done. It seems to work for the little test-case I wrote,
+and I also verified that swapping still works, so it seems to be all ok.
+I'd still like people who have test programs or similar to actually check
+it out,
+
+                Linus
+

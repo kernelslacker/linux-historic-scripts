@@ -1,0 +1,10 @@
+Linux 2.2.19pre6
+
+o	Yamaha PCI sound updates			(Pete Zaitcev)
+o	Alpha SMP ASN reuse races			(Andrea Arcangeli)
+o	Alpha bottom half SMP race fixes		(Andrea Arcangeli)
+o	Alpha SMP read_unloc race fix			(Andrea Arcangeli)
+o	Show registers across CPUs on SMP alpha death	(Andrea Arcangeli)
+o	Print the 8K of stack not the top 4K on x86	(Andrea Arcangeli)
+o	Dcache aging					(Andrea Arcangeli)
+o	Kill unused parameter in free_inode_memory	(Andrea Arcangeli)

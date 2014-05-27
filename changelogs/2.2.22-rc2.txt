@@ -1,0 +1,18 @@
+Linux 2.2.22-rc2
+
+This is going straight to rc1 because it contains a lot of security fixes
+for local security problems found by Silvio's audit Solar Designer and
+a couple of other folks. The other stuff is minor and is the entire 2.2
+pending queue anyway.
+
+Special thanks go to Openwall who did pretty much all of the security
+backporting work. This is mostly their kernel update not mine.
+
+o       Fix isofs over loopback problems                (Balazs Takacs)
+o       Backport 2.4 shutdown/reset SIGIO from 2.4      (Julian Anastasov)
+o       Fix error reporting in OOM cases                (Julian Anastasov)
+o       List a 2.2 maintainer in MAINTAINERS            (Keith Owens)
+o       Set atime on AF_UNIX sockets                    (Solar Designer)
+o       Restore SPARC MD boot configuration             (Tomas Szepe)
+o       Multiple further sign/overflow fixes            (Solar Designer)
+o       Fix ov511 'vfree in interrupt'                  (Mark McClelland)

@@ -1,0 +1,21 @@
+Linux 2.2.15pre5
+
+o	Support newer SCSI devices that lack READ6	(Jens Axboe)
+	and WRITE6 commands.
+o	Fix for the lanmedia bug I added when merging	(Andrew Stanley-Jones)
+o	Qnxfs now builds with gcc 2.7.2			(Arjan van de Ven,
+							 Anders Larsen)
+o	Gemtek radio documentation update		(Jonas Munsin)
+o	Sparc 32bit hook fixes				(Jakub Jelinek)
+o	Make 1284 probing more reliable			(Tim Waugh)
+o	ISDN4linux update				(Karsten Keil)
+o	Small irda fixes				(Dag Brattli)
+o	Channel bonding					(Thomas Davis)
+o	Fix an IDE probing problem with CRW9624's	(Mark Lord)
+o	Fix cases where things write to user space
+	in TASK_INTERRUPTIBLE as well as some other
+	odd quirks					(Ben LaHaise et al)
+o	Fix problem with Acer 50x drive and Linux ATAPI
+	violation					(Mark Lord)
+o	Page alloc change + debug traps			(Rik Van Riel)
+o	Add 5LUN blacklist for the LASOUND CDX7405	(Brendan Miller)

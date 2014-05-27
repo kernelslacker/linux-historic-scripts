@@ -1,0 +1,17 @@
+Linux 2.2.14pre4
+
+o	Signal race fix					(Dave Miller)
+o	NFS root fix					(Peter Braam)
+o	NFS root fix fix				(Trond)
+o	COMX drivers					(Gergely Madarasz)
+o	Wireless updates				(Jean Tourrilhes)
+o	Netdev list has moved				(Ralf Baechle)
+o	SMP and other fixes for scsi generic		(Douglas Gilbert)
+o	Fix IP masquerade				(Joseph Gooch)
+o	Bridge printk levels				(Stuart Lynne)
+o	IPFW fix rule number logging, improve locking	(Rusty)
+o	Fix bug in fd array expansion			(Savochkin Andrey Vladimirovich)
+o	Make FPU emulator safe with newer compilers	(Bill Metzenthen)
+o	SiS900 driver update				(Ollie Lho)
+o	Documentation fix				(Michael Babcock)
+o	EATA scsi update				(Dario Ballabio)

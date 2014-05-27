@@ -1,0 +1,145 @@
+Linux 2.2.12
+
+Platforms:Alpha (see notes), PowerPC, Sparc, X86
+
+Introduction
+Linux 2.2.12 is the latest update to the Linux kernel tree. It fixes the memory
+leak bug in the 2.2.11 kernel. In addition it updates various drivers and the
+platform specific support. The out of the box tree supports the Alpha, PPC,
+Sparc and X86 platforms. MIPS is mostly merged but you should obtain the
+platform specific tree. It is hoped MIPS and PowerPC will soon be fully merged.
+ARM and M680x0 users should get their platform specific tree.
+
+Known Bugs
+On the Alpha platform we know the new maths code currently fails some glibc
+maths checks. The Alpha port people are looking into this. Expect patches soon.
+
+Compilers
+This code is intended to build with gcc 2.7.2 and egcs 1.1.2. It is known that
+not all of it builds validly on the x86 CPU's with gcc 2.95. As far as we know
+these are Linux not gcc issues. Fixes for gcc 2.95 to gcc 3.0 may go into Linux
+2.2 in time. You should therefore not use gcc 2.95 to build stable kernels for
+the moment.
+
+Binary Compatibility
+Linux 2.2.12 changes a few internal system structures. You may need to rebuild
+a few third party modules such as pcmcia-cs when upgrading from older kernels
+to this one.
+
+Security Notes
+The TCP fixes in the 2.2.12 kernel for the memory leak and Solaris food fight
+are the only security updates. You can obtain them seperately to 2.2.12 from
+the 2.2.11 release notes. Linux 2.2.11 with the errata is believed to be as
+secure as 2.2.12 unless you are trying to use strictly enforced capability
+sets. In which case you may wish to apply the fs/proc/array.c patch from 2.2.12
+to get precisely the same security.
+
+Architecture Updates
+
+Alpha
+    Further changes have been made to the maths emulation support.
+    A bug where the floppy drive may be unusable for alternating periods of
+     49.7 days has been fixed.
+    The Symbios cache test should now pass and the SCSI work properly.
+i386
+    Optimisations for the IDT Winchip.
+    Identify and report the AMD Athlon.
+    Fix a crash on boot with the AMD Athlon.
+MIPS
+    Fix a timeout scheduling error in the dz driver. 
+PowerPC
+    All the PPC changes should now be merged. 
+Sparc
+    A problem with the viking MMU code has been fixed.
+    A small Sparc64 kernel_thread change.
+
+Core Updates
+
+File Handles
+    The kernel now supports large numbers of file handles per process.
+    The default remains unchanged but can be raised by processes. 
+Memory Limits
+    Certain parts of the kernel didn't correctly interpret RLIM_INFINITY
+     and enforced 2Gig limits. 
+Mlock
+    Munlock was checking for CAP_IPC_LOCK when it should only be required
+     to lock memory. 
+Quota
+    Fixed a pair of accounting errors in the quota code. 
+
+Driver Updates
+
+Computone Intelliport 2
+    A driver for this card under Linux has been included. 
+DAC960
+    The DAC960 driver has been updated. 
+ESS Solo
+    An experimental driver for this PCI sound card is now included. 
+Iomega Buz
+    A Zoran ZR36067 driver for video capture including MJPEG capture is
+     now included.
+     This works with the Iomega buz but does not yet support the LML33. 
+ISDN
+    The ISDN fax patches have been merged.
+    The hisax driver now passes certification with some ELSA cards.
+    Fix a buffer headroom issue with compression and ISDN ppp.
+MAD16
+    The MAD16 driver now defaults to not enabling its on board CD port.
+    This avoids problems with users not being aware the default may
+     interfere with other drivers. 
+Multitech ISI driver
+    Support for PCI interrupt sharing is now included. 
+PCWD Watchdog
+    Revision A boards reported their status incorrectly. 
+Soundblaster
+    A case where IRQ 0 may be erroneously freed has been fixed. 
+VisWs Sound
+    The SGI visual workstation onboard audio is now supported. 
+VisWs Video
+    The SGI visual workstation onboard video driver has been improved. 
+
+File System Updates
+
+Welsh Language
+    ISO 8859-14 (The Celtic languages) is now supported for UTF8 translations. 
+
+Miscellaneous Updates
+
+ChangeLog
+    The Changelog has been updated to reflect newer tools. 
+Documentation
+    Various documents have been updated. 
+
+Network Updates
+
+Alteon AceNIC
+    Small changes have been made to reduce its interrupt load and increase
+     performance further. 
+Interphase 5526
+    This fibre channel chipset is now supported under Linux 
+RTL8139
+    A sign handling bug has been fixed that might have caused memory leakage. 
+SB1000
+    The errata patch for the SB1000 has been folded into the 2.2.12 kernel.
+    This driver is now functional. 
+SiS900
+    This driver has been updated further. 
+
+SCSI Updates
+
+PAS-16
+    The module now allows you to set the I/O and IRQ. 
+Symbios controller
+    The symbios 53C876 revision 32 is now supported. 
+
+Security Updates
+
+/proc/kcore
+    The RAWIO capability is now needed to access /proc/kcore. 
+Memory leak from TCP
+    This is the nasty bug fixed in the 2.2.11 errata. The fix is also in 2.2.12. 
+Solaris food fight
+    This TCP fringe case has been fixed. 
+Tightened capabilities
+    We have tightened the capabilities needed for setting frame buffer bases
+     to include RAWIO.

@@ -1,0 +1,15 @@
+Linux 2.2.27-rc2
+
+o       CAN-2005-0001: fixed expand_stack() SMP race            (Redhat)
+o       CAN-2004-0883, CAN-2004-0949: smbfs: fixed client       (Stefan Esser)
+          overflow. There are two bugs in the handling of SMB
+          responses that result in remote kernel overflows. Due
+          to the nature of the bugs both seem to be very hard
+          to exploit (in the sense of remote code execution or
+          local privilege escalation) but are trivial remote
+          kernel crashes.
+o       rose_rt_ioctl: lack of bounds checking                  (Coverity)
+o       sdla_xfer: lack of bounds checking                      (Coverity)
+o       coda: bounds checking for tainted scalars               (Coverity)
+o       sendmsg compat wrapper fixes for 64bit compat mode      (Olaf Kirch)
+

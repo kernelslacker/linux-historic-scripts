@@ -1,0 +1,22 @@
+Linux-2.1.124...
+
+.. is out there now, and includes:
+
+ - subtle fix for lazy FP save and restore on x86. The bug has been there
+   for a long time, but was apparently triggered by the re-write of the
+   low-level scheduling function. It could result in corrupted i387 state
+   under certain (admittedly fairly unlikely) circumstances.
+ - various networking updates. Some of the bugs fixed could result in
+   kernel Oopses. None of them were common, though.
+ - fixes for both filesystem accounting and quota handling.
+ - the much-ado-about-little video driver merge.
+ - PPC and Sparc updates
+ - i386/SMP interrupt handling falls back on the safe mode.. Please tell
+   me whether there are still machines with problems.
+ - some new network drivers and updates
+ - final (we hope) IP masquerade update
+
+I still have a problem with certain machines that apparently don't want to
+boot with the keyboard not plugged in even though they should. Kill me
+now. If you have problems with i386/SMP on a machine without a keyboard,
+plug one in and send me a report.. 

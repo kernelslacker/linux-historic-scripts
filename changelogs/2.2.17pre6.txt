@@ -1,0 +1,11 @@
+Linux 2.2.17pre6
+
+o	Fix some NTFS bugs, stop it touching win2K	(Anton Altaparmakov)
+o	Wait for dirty buffers to sync sometimes	(Marcelo Tosatti)
+o	AIC7xxx update (hopefully its happy now)	(Doug Ledford)
+o	Put #!/bin/sh on the scripts from Menuconfig	(Wolfgang Sourdeau)
+o	2.2 elevator wasnt coalescing enough		(Jens Axboe)
+o	Fix ppc build problem				(Andreas Tobler)
+o	PPC video updates				(Benjamin Herrenschmidt)
+o	List extra Athlon flags as in 2.3.*		(Alan Cox)
+o	Handle AMD Athlon L2 cache reporting errata	(Alan Cox)

@@ -1,0 +1,37 @@
+
+Stephen Tweedie:
+
+* 2.1.88, adds a bunch of new functionality to
+  the swapper.  The main changes are:
+
+* All swapping goes through the swap cache (aka. page cache) now.
+
+* There is no longer a swap lock map.  Because we need to atomically
+  test and create a new swap-cache page in order to do swap IO, it is
+  sufficient just to lock the struct page itself.  Having only one
+  layer of locking to deal with removes a number of races concerning 
+  swapping shared pages.
+
+* We can swap shared pages, and still keep them shared when they are
+  swapped back in!!!  Currently, only private shared pages (as in pages
+  shared after a fork()) benefit from this, but the basic mechanism will
+  be appropriate for MAP_ANONYMOUS | MAP_SHARED pages too
+  (implementation to follow).  Pages will remain shared after a swapoff.
+
+* The page cache is now quite happy dealing with swap-cache pages too.
+  In particular, write-ahead and read-ahead of swap through the page
+  cache will work fine (and in fact, write-ahead does get done already
+  under certain circumstances with this patch --- that's essentially how
+  the swapping of shared pages gets done).  Support code to perform
+  asynchronous readahead of swap is included, but is not actually used
+  anywhere yet.
+
+  I've tested with a number of forked processes running with a shared
+  working set larger than physical memory, and with SysV shared memory.
+  I haven't found any problems with it so far.
+
+
+Linus: I've also changed the way we consider us to need more memory in kswapd,
+       but that was entirely orthogonal and did not impact these patches. ]
+
+[Changelog pieced together by davej]

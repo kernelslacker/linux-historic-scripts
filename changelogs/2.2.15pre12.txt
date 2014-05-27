@@ -1,0 +1,7 @@
+Linux 2.2.15pre12
+
+o	Further small irda fixes			(Dag Brattli)
+o	Missing bh_atomic unlocks in mcast/masq		(Dave Miller)
+o	K7 cache reporting fix				(Catalin Muresan)
+o	Fix phonedev registering specifying unit	(Thomas Sparr)
+o	Fix egcs/pcbit isdn issues			(Fernando Carvalho)

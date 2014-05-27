@@ -1,0 +1,42 @@
+Linux 2.2.15pre14
+
+o	Revert megaraid driver to 1.04 due to apparent	(Alan Cox)
+        corruption problems some firmware shows.
+	| This is a temporary state of affairs I hope,
+	| once Dell/AMI have a handle on which firmware
+	| and how to either fix it or refuse to boot
+	| on those firmwares then we can go back.
+o	Acard scsi shared IRQ fix (hopefully)		(Acard, ported
+	| Folks with Acard stuff please test this	 into newer driver
+	| one hard					 by Alan Cox)
+o	Fix assorted network driver ioctl checks	(Mitchell Blank Jr)
+o	Two small updates to the telephony API needed	(Alan Cox)
+	by other vendors
+o	Fix bit masking error on IO port in I2O		(Deepak Saxena)
+o	Work around spitfire errata 32 and 54 on	(Dave Miller)
+	Ultrasparc
+o	Work around Sparcstation 5 Swift MMU		(Dave Miller)
+o	Fix SunQE problem with 32bit sparc		(Dave Miller)
+o	Fix breakage of ISA support in SX driver
+	and add EISA support				(Rogier Wolff)
+o	Arlan fixes (but not 4500 for 2.2.15)		(Elmer Joandi)
+o	Fix EXPERIMENTAL checking in 2.2.15pre		(Paul Vojta)
+o	Update AIC7xxx driver to rev 5.1.28		(Doug Ledford)
+o	Simple (ie not strictly correct) fix for the
+	cisco 3600 syncppp problem			(Madarasz Gergely)
+	[Proper fix for 2.2.16 I think]
+o	Zero the sin_zero part of sockaddr_in		(Frank van Maarseveen)
+o	Correct erase handling in 16 colour text	(Jon Mitchell)
+o	Fix typo in videodev.h				(fjolliton)
+o	Another small ultrasparc errata fix		(Dave Miller)
+o	Semaphore deadlock fix				(Christoph Rohland)
+o	Further SX fixes				(Rogier Wolff)
+o	SKTR driver fixes				(Christoph Goos)
+o	Further small 3ware fix				(Adam Radford)
+o	Up the default number of module loadable 	(Alan Cox)
+	scsi disks to 16
+o	Wan config typo fix				(Dave Jones)
+o	Sparc blackbird errata fixes			(Dave Miller)
+o	Wanpipe needs inet				(Arjan van de Ven)
+o	Revert cursor/bh lock patch (breaks Alpha)	(Alan Cox)
+o	Fix ext2 dir race				(Al Viro)

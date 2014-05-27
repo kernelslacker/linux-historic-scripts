@@ -1,0 +1,50 @@
+linux-0.96c.patch1 contains more changes than I originally envisioned: I
+changed the IRQ routines and the serial code to be easier and cleaner
+(and hopefully more efficient) and I thought that would be it. I was
+wrong.
+
+I got several patches (and one bug-report) again, and while I haven't
+had time to check them all, some of them are in. Fixes:
+
+ - Remy Cards correction to the out-of-space problem with the extended
+fs is here. Most people using the ext-fs might already have applied
+this patch, in which case you might have problems patching.
+
+ - my ftruncate() fix is here. Again, if you already did the trivial
+patch by hand, you'll get errors when patching.
+
+ - almesber's implementation of read-only filesystems is here (after
+editing by yours truly). The mount() system call now accepts a flags
+integer as well as a pointer to some arbitraty data in user space for
+some special mount() calls. The general flags allow (a) read-only
+mounting, (b) disabling of suid executables (c) disabling of device
+special files and (d) total disabling of executables on a per-filesystem
+basis. The filesystem specific mount() info isn't currently used by any
+fs, but can be used to specify additional information that depends on a
+special fs type (a password or similar would be possible..)
+
+ - the rename() system call had a bug in that it allowed moving over a
+directory: I think the code to handle this was lost in the vfs editing,
+and although the GNU mv utility checked it, a malicious (or just
+unsuspecting) program can destroy the fs using this. Thanks for the
+bug-report: it was very easy to add once I saw the problem.
+
+ - support for vesa-standard svga cards in setup.S. I'm unable to test
+this, but my svga card still works after the patch, so I left it in in
+the hope that it doesn't break for anybody else.
+
+ - various minor editing by me, or minor patches sent in by others.
+
+The full cdiff is almost 50kB compressed, so this is a bigger-than-usual
+patch. Hope there are no problems. People who are using the new SCSI
+drivers might have problems with my changes to the SCSI irq-setup
+changes, so be careful (actually using the original sources might be a
+good idea, and then upgrading again). I hope to get the new SCSI
+drivers into the kernel soon (definitely in time for 0.98).
+
+I'd be interested to hear comments on serial line performance, bugs,
+features, etc. As usual, I'm hoping this release won't contain any new
+bugs while fixing all the old ones, but I guess that's likely to happen
+right after the first winter olympics in Hell.
+
+            Linus

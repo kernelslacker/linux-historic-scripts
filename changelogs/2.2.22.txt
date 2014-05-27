@@ -1,0 +1,27 @@
+Linux 2.2.22
+
+Linux 2.2.22 is primarily an errata release backporting fixes for multiple
+small kernel errors found during auditing of the 2.4 code. 2.2 based users who
+have untrusted local users should update to this kernel.
+
+In addition the kernel fixes some bugs in the HDLC layer and adds support
+for the newest 3ware IDE RAID cards.
+
+Feature Updates
+-	Support for newest 3ware IDE RAID
+-	Set accessed time on AF_UNIX sockets
+
+Kernel Bug Fixes
+-	Fix isofs over loopback in 2.2
+-	Send SIGIO on socket shutdown
+-	Correct out of memory socket error reporting
+-	Fix handling of buffer internal pointers in HDLC
+-	Correct order of neighbour sending 
+-	Identify VIA C3 processors properly
+-	Fix netlink/ipfw error handling path
+-	Fix Alpha ptrace
+
+Security Fixes
+-	Multiple numbers of potential sign handling, maths overflow and
+	casting errors were fixed. Some of them are theoretically locally
+	exploitable. No remote holes were found.

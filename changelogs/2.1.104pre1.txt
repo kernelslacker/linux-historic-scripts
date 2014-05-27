@@ -1,0 +1,14 @@
+pre-104
+
+The bulk of the pre-patch is just some speeling error fixes, but there's a
+one-liner that gets rid of the double interrupts with level-triggered
+irq's on the IO-APIC, and that is known to have fixed one persons SCSI
+tape driver (the fact that there were problems with too many interrupts
+implies that something is slightly buggered in the driver, but..)
+
+This should also have a ne2000 driver that doesn't get a NULL pointer
+fault for some people, and the irq changes should hopefully make it work
+on UP systems again even if the kernel is compiled as SMP.
+And there are some MTRR updates.
+
+                Linus

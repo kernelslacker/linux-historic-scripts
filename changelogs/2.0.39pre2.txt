@@ -1,0 +1,15 @@
+Linux 2.0.39pre2
+
+o	Fix for a bug in paride			(Wolfram Gloger)
+o	Fix an erroneous printk in ip_fw.c	(Todd Sabin)
+o	Fix for IP multicast on WAN-adapters	(Matthew Grant)
+o	Big updates to MAINTAINERS		(David Weinehall)
+o	Big updates to CREDITS			(David Weinehall)
+o	Various updates in Documentation/*	(David Weinehall)
+o	Styled up all Configuration-files	(David Weinehall)
+	in a similar manner to newer
+	v2.3 kernels
+o	Updated CodingStyle to the one used	(David Weinehall)
+	in recent v2.3 kernels
+o	Backported nls_8859-14			(David Weinehall)
+o	Added support for sparse superblocks	(Theodore T'so)

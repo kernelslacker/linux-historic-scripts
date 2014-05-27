@@ -1,0 +1,9 @@
+Linux 2.0.39pre4
+
+o	Large-disk fixes			(Andries Brouwer)
+o	Wavelan-driver cleanup & bugfixes	(Jean Tourrilhes)
+o	Security-fixes				(Solar Designer)
+o	Quota-fixes				(Jan Kara)
+o	Fixed GPF using IPsec Masquerade	(Rudolf Lippan)
+o	(s)size_t-patch for fs/proc/mem.c	(David Weinehall)
+	reverted

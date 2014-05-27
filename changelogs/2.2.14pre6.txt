@@ -1,0 +1,19 @@
+Linux 2.2.14pre6
+
+o	Fix missing auth check in shaper		(Alan Cox)
+o	ISDN update					(Karsten Keil)
+o	Sparc update					(Dave Miller)
+o	NFS/TCP races fixes				(Dave Miller)
+o	Remove unused nfs show_dentry routine		(Dave Miller)
+o	Networking updates				(Dave Miller)
+o	Fix to oom changes in ptrace for kills		(Dave Miller)
+o	Delay on keyboard polls to fix some DECompaq kit(Phillip Ezolt)
+o	Documentation for the SiS900 card. Move to non	(Ollie Lho)
+	experimental
+o	SMBfs improvements on directory scan		(Andrew Tridgell)
+o	Documentation additions for oops-tracing	(Keith Owens)
+o	Add HITACHI GF-1050 to the DVD RAM list		(Rogier Wolff)
+o	Longer timeouts in ide-scsi for CD-RW		(Mark Lord)
+o	Fix IDE/PCI compile
+o	Export inode_generation_count
+o	Maestro driver update				(Fufu Brown)

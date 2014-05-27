@@ -1,0 +1,26 @@
+2.2.18pre20
+
+o	Fix ide-probe SMP build error			(Ian Morgan)
+o	Fix appletalk physical layer ioctl handling	(Andi Kleen)
+o	Sparc update					(Dave Miller)
+o	Update Stephen Tweedie's contact info		(Stephen Tweedie)
+o	Fix typo in esp and scsi_obsolete code		(Dave Miller)
+o	Bonding ioctl check fix				(Willy Tarreau)
+o	Fix ipv6 procfs bug				(Al Viro)
+o	Report PIV in proc as family 15 and uname as	(Alan Cox)
+	model 6 as discussed
+o	Redo Intel cache decodes as code not tables	(Alan Cox)
+	and add new ones  (based on updates by
+	Asit Mallick & Andrew Ip)
+o	Fix CMOS locking in machine_power_off paths	(Alan Cox)
+o	Create build tree symlinks only if insmod is
+	new enough not to be confused by it		(Keith Owens)
+o	Fix cmsg handling				(Philippe Troin)
+o	Tiny xpds driver changes			(Dan Hollis)
+o	Fix vmalloc sign bug				(Ben LaHaise)
+o	SMBFS fixes/changes for find_next problems and	(Urban Widmark)
+	to avoid truncate bug in netapps
+o	Fix ntfs translation bug			(Anton Altaparmakov)
+o	Fix sparc problem with some soundcards and the	(Jeff Garzik)
+	_IOC magic
+o	Update ppa driver to v2.05			(Tim Waugh)

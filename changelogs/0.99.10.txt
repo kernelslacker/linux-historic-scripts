@@ -1,0 +1,119 @@
+[PATCH] Linux-0.99.10 (June 7, 1993)
+
+People finally gave up on net-1, Ross Biro grew tired of the flames, and
+net-2 appears with Fred van Kempen as maintainer.  This is the big
+switch-over version. 
+
+fsync() isn't just a stub any more, and System V IPC is also showing up. 
+
+The "struct file" filetable is made dynamic, instaed of a static
+allocation.  For the first time you can have _lots_ of files open.
+
+Stub for iBCS2 emulation code. 
+
+[original announcement below]
+
+I've finally released an official version of linux-0.99 patchlevel 10:
+there have been various alpha versions floating around which differ in
+details (notably networking code), which shouldn't be used any more.
+The new linux version is available only as full source code: the diffs
+would have been too big to be useful.  You can find linux-0.99.10.tar.z
+(along with keytables.tar.z) on nic.funet.fi: pub/OS/Linux/PEOPLE/Linus
+and probably on tsx-11 and other linux archives within a day or two (so
+check there first if you are in the states).
+
+Linux-0.99 pl10 has a number of new features and changes in interface.
+The most notable of these are:
+
+ - the networking code is reorganized (generally called "net-2",
+   although unrelated to the BSD release).  The new code implements a
+   lot of standard features lacking in net-1, and also changes the user
+   interface to be closer to the BSD standards.  Notably, the old
+   configuration binaries won't work, so to get the new networking to
+   work you'll have to get the net-2 binaries as well.  The networking
+   binaries are available on tsx-11.mit.edu (and mirrors) under the
+   directory pub/linux/packages/net/net-2 (and the setup syntax has
+   changed somewhat..)
+
+   The networking code has been mainly organized and rewritten by Fred
+   van Kempen, with drivers by Donald Becker.
+
+ - serial line setup has been changed: linux 0.99 pl10 does *not* try to
+   autodetect serial ports very agressively.  If you have other serial
+   ports than the standard com1/com2, or nonstandard IRQ etc values,
+   this means that it's less likely to work without any help.  The
+   solution is not to recompile the kernel - you should get the
+   "setserial" program available from tsx-11.mit.edu in the directory
+   pub/linux/sources/sbin/setserial-2.01.tar.z that allows you to
+   dynamically configure your serial ports to suit your setup.
+    
+   The main organizer behind the serial line changes is tytso (Theodore
+   Ts'o).
+
+ - Keyboard setup has changed: it is no longer hardcoded at compile
+   time, but instead you can use the new "loadkeys" program to load in a
+   new keyboard map on the fly.  The default keyboard map is the normal
+   US keyboard (yes, I should have used the Finnish one by default, but
+   after thinking of all the problems that would have resulted in I
+   forgot about that idea).  The loadkeys code can be found in the
+   "keytables.tar.z" archive, which also contains keymaps for most
+   normal keyboard types.  To create a custom keyboard table is very
+   easy - just take a 5 minute look at the existing map files (they
+   resemble the ones used by xmodmap, so if you are familiar with
+   those..)
+    
+   The loadable keymaps were mostly implemented by Risto Kankkunen.
+    
+There are a lot of other internal kernel changes, but they should be
+mostly transparent, and noticeable only indirectly due to new features
+or (hopefully) better/faster/whatever operation.  These include:
+    
+ - the SysV IPC patches are in by default: Krishna Balasubramanian.
+   If you need these, you know what it's about (notably, dosemu 0.49
+   wants them).
+ - inode handling is updated: inodes and files are now dynamically
+   allocated within the kernel, and use a hash table for faster lookup
+   (along with a NFU algorithm for the inode cache).  Steven Tweedie.
+ - Updated FPU emulation: mostly exception handling changes, making the
+   emulator handle most exceptions the same way a 486 does.  The
+   emulator is written by Bill Metzenthen.
+ - a few ext2-fs updates by Remy Card and Steven Tweedie.
+ - support for the 'fsync()' function (Steven Tweedie)
+ - various (minor) SCSI patches to catch some error conditions, add
+   support for VLB adaptec controllers without DMA and so on (different
+   people).
+ - other changes - I forget.
+
+In addition to patches sent in by others, I've naturally made my own
+changes (often *to* the patches sent in by others :-).  Among other
+things, the pl10 buffer cache code now also tries to share pages with
+executables, resulting in better cacheing especially of binaries (giving
+noticeable improvements in kernel recompilation speed on some machines).
+Also, I've changed a lot of low-level things around to help the iBCS2
+project: this includes things like internal segment handling and the
+signal stack (which now looks the same as on SysV i386 unixes).  All in
+all, pl10 has a disturbing amount of new code, but will hopefully work
+well despite (due to?) the number of changes.
+    
+The new networking code in particular will change the network setup a
+lot - it now looks more standard, but if you were used to the old way of
+doing things..  On the other hand, most people actively using the
+networking features have hopefully gotten warnings about this on the NET
+channel for the last few weeks.  Also, the networking code still isn't
+perfect: Fred is still working on it, but it seems to have reached a
+reasonably stable platform on which it will be easier to build.  Look
+out for the new-and-improved networking manual, hopefully out soon(?).
+    
+Standard request: please try it all out, give it a real shakedown, and
+send comments/bug-reports to the appropriate place (I'm always
+appropriate, but you may want to send the report to the mailing lists
+and/or the newsgroup as well).  I apologize for the lateness of the
+release (forcing hlu to make interim gcc releases that relied on
+nonstandard kernels etc), and the changes are somewhat bigger than I'd
+prefer, so the more testerts that try it out, the faster we can try to
+fix any possible problems.  The new kernel has gone through various
+stages of ALPHA-diffs and some late ALPHA-pl10's, so there shouldn't be
+any major surprises, but alpha releases tend not to get even close to
+the coverage a real release gets...
+    
+                    Linus

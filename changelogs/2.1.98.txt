@@ -1,0 +1,44 @@
+Linux 2.1.98
+
+I just released a fairly small patch to 97 to bring it up to 98.
+
+I've gotten a lot of patches in the mail for the last week, and I've been
+ignoring most of them for obvious reasons. They aren't in any in-queue,
+you can more-or-less consider them lost - but don't resend them all
+immediately, because if I get another huge batch of patches then I'll just
+have to ignore them again.
+
+We're going slow and easy, and the plan is to not only keep me sane in the
+midst of all the diapers, but I'll also at the same time take the
+opportunity to actually enforce the feature-freeze. You've known about it
+for a long time, _tough_.
+
+Anyway, 2.1.98 _should_ fix:
+
+ - the IDE/SCSI lockups. The irq enable/disable code was broken, and could
+   do some really bad things. This tended to lock up the machine if you
+   accessed your IDE disks heavily, or in particular if you had a mixture
+   of IDE and SCSI and used them at the same time. Tell me if you still
+   have problems - I'm sure there are still bugs left, and I want to hear
+   about them.
+ - memory management especially on small-memory machines. I think I made a
+   good change to the allocation logic, and I'm hoping it will fix the bad
+   bahevaiour on those wimpy machines that all you losers out there are
+   using that have less than half a Gig of RAM. It certainly still works
+   fine on my machine, and I'm certainly still too lazy to test it out on
+   anything smaller.
+
+There's a few other updates too: the asm constraints are fixed, so it
+should compile again with other compiler versions than the particular one
+I happen to be using. And some of the SCSI drivers have been updated a
+bit.
+
+There's been a lot of discussion and patches on capabilities, and I
+haven't applied them yet, I'll let them simmer a bit. Similarly, I've seen
+so many pathes to kmod that my head is spinning, and as I don't use
+modules myself I'd really like to get feedback from users about the
+different patches, so that maybe I'll get something that everybody can
+agree on as acceptable. Right now I don't know which patch I should even
+begin looking at.
+
+                Linus

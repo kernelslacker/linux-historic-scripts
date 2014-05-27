@@ -1,0 +1,7 @@
+Linux 2.2.21rc2
+
+o       Fix Xeon crash on boot                          (Dave Jones)
+o       Update keyspan maintainer                       (Greg Kroah-Hartmann)
+o       Fix visor oops add palm m125 support            (Greg Kroah-Hartmann)
+o       Update whiteheat driver to fix SMP locking      (Greg Kroah-Hartmann)
+o       Fix head.S asm for cpu type                     (Mikael Pettersson)

@@ -1,0 +1,18 @@
+Linux 2.4.0-test9pre7
+
+    - USB: remember to release the kernel lock and other updates..
+    - recognize the k6 model 13: it's a K6-2+ mobile processor.
+    - file locking deadlock detection bugfix..
+    - NFSv3 is not really really experimental any more.
+    - don't raise privileges when re-trying a failed NFS RPM request
+    - alpha cross-compile fixes..
+    - sound init cleanups
+    - shm statistics bugfix.
+    - nfsd: mark us as a O_LARGEFILE case, so that the VFS allows
+      the full 64-bit access..
+    - fix up ac97 codec initialization
+    - Ingo: clean up VM handling, improve balancing.
+    - add SGI PCI ID's.
+    - export the new lock copy/init functions
+    - cs4281 sound driver
+    - official Compaq CISS driver.

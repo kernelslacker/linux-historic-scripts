@@ -1,0 +1,22 @@
+Linux 2.4.0-test7-pre4
+
+    - "USE_STANDARD_AS_RULE" - generic Rules.make as rule
+    - arm update (arch/arm, asm-arm, drivers/acorn, Documentation/arm etc)
+    - eicon ISDN driver update (big).
+    - serial.c warnings removal.
+    - compilation fixes under different configurations..
+    - bounds checking for hpfs code page index.
+    - sparc64 bugfix for atomic_dec_and_lock. Oops. And use flock64.
+    - FAT missed the d_type thing from readdir.
+    - fix tsk->files race fixes from -pre3 ("struct files_struct", not
+      "struct file" and make sure to register the socket fs before we
+      use a pointer to it)
+    - ns558.c: don't leave the driver registered after a failed module
+      load.  Either return success, or unregister the PCI driver. And
+      don't leak IO port allocations.
+    - USB OHCI controller fixes for oopses due to races..
+    - usb updates
+    - 3c59x driver update
+    - VIA KX-133/KT-133 chipset detection and AGP bridge support
+    - raid/raw-io cleanup: use generic_make_request instead of ll_rw_block.
+    - Emu10k1 sound driver update

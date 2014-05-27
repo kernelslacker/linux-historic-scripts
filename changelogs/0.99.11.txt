@@ -1,0 +1,69 @@
+[PATCH] Linux-0.99.11 (July 17, 1993)
+
+Real file mmap with page sharing in the VM code.  We don't do writable
+shared mappings (and we won't do them for a _long_ time yet), but this
+is a big step forward!
+
+Note in the COPYING file that the GPL only covers the kernel, not user
+programs. People were starting to find Linux more and more interesting..
+
+Improved configure script.
+
+Use nicer "save_flags()/cli()/restore_flags()" macros instead of
+hardcoding the inline assembly.  Clean up other inline assembly usage
+too. 
+
+Trying to compile the kernel with C++ compiler.  It will be a failed
+experiment. 
+
+Original ChangeLog:
+
+ - The keyboard is dynamically changeable (this is true of pl10 as
+   well), and you need to get the "keytables.tar.z" archive to set the
+   keyboard to suit your taske unless you want to live with the default
+   US keymaps.
+    
+   Use the "loadkeys map/xxx.map" command to load the keyboard map: you
+   can edit the maps to suit yourself if you can't find a suitable one.
+   The syntax of the keyboard maps should be obvious after looking at
+   the examples.
+
+ - The memory manager has been cleaned up substantially, and mmap()
+   works for MAP_PRIVATE.  MAP_SHARED is still not supported for
+   anything else than /dev/mem, but even so it actually is usable for a
+   lot of applications.  The shared library routines have been rewritten
+   to use mmap() instead of the old hardcoded behaviour.
+
+ - The kernel is now compiled with C++ instead of plain C.  Very few
+   actual C++ features are used, but even so C++ allows for more
+   type-checking and type-safe linkage.
+
+ - The filesystem routines have been cleaned up for multiple block
+   sizes.  None of the filesystems use it yet, but people are working on
+   it.
+
+ - named pipes and normal pipes should hopefully have the right select()
+   semantics in the presense/absense of writers.
+
+ - QIC-02 tape driver by Hennus Bergman
+
+ - selection patches in the default kernel
+
+ - fixed a bug in the pty code which led to busy waiting in some
+   circumstances instead of sleeping.
+
+ - Compressed SLIP support (Charles Hedrick). See net/inet/CONFIG
+
+ - the 'clear_bit()' function was changed to return the previous setting
+   of the bit instead of the old "error-code".  This makes use of the
+   bit operations more logical.
+
+ - udelay() function for short delays (busy-waiting) added.  Used
+   currently only by the QIC driver.
+
+ - fork() and sheduler changes to make task switches happen only from
+   kernel mode to kernel mode.  Cleaner and more portable than the old
+   code which counted on being able to task-switch directly into user
+   mode.
+
+ - debugging malloc code.

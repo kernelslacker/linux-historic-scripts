@@ -1,0 +1,27 @@
+2.0.36prepatch 6
+
+        ftp://ftp.linux.org.uk/pub/linux/alan/2.0.36pre/
+Changes this release
+o       Cyclades bug fix (Cyclades Corp)
+o       440GX device ids (Leonard Zubkoff)
+o       BusLogic update (Leonard Zubkoff)
+o       New version of the ROSE protocol layers (F6FBB)
+o       TCP works with SO_BINDTODEVICE  (Phil Gladstone)
+o       TCP select error
+o       Hooks for multithreaded ELF core dumps (Alan Cox)
+        (Phil Gladstone maintains the ELF mt core dump stuff and gdb patch)
+
+I was going to integrate this patch but I got some slightly odd results
+that looked like a double kfree and the patch didnt seem quite perfect yet.
+Anyway - you shouldnt need to hack anything to use it now
+Stuff I know I have left to worry about:
+
+o       Andre - can you check there is nothing in your jumbo patches I
+        should have (I dont want to put the UDMA/new timer stuff into a
+        2.0.x kernel). I couldnt see any easy way to seperate the MHz
+        computation from it
+o       Try and get the mt core dumps working
+o       Two crash reports from AF_UNIX sockets that look like a long
+        standing race.
+
+Alan

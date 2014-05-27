@@ -1,0 +1,16 @@
+Linux 2.1.131
+
+2.1.131 is out there now - and will be the last kernel release for a
+while. I'm going to Finland for a week and a half, and will be back mid
+December. During that time I hope people will beat on this. I'll be able
+to read email when I'm gone, but as I haven't been back in over a year,
+I'm not very likely to.
+
+Alan, I have got any replies (positive or negative) about the VFS fixes in
+pre-2.1.131-3 (which are obviously in the real 131 too), so I hope that
+means that I successfully fixed all filesystems. The chance of that being
+true is remote, but hey, I can hope.  If not, I assume you'll be doing
+your ac patches anyway (any bugs wrt rmdir() should be fairly obvious once
+seen), and people might as well consider those official..
+
+                Linus

@@ -1,0 +1,17 @@
+Linux 2.2.14pre7
+
+o	IRDA builtin config fix				(Arjan van de Ven)
+o	YAM without procfs fix				(Arjan van de Ven)
+o	Maths emulator  updates				(Dave Miller)
+o	Sparc updates for symbios controllers		(Dave Miller)
+o	PowerPC update					(Paul Mackerras)
+o	PowerPC update update				(Cort Dougan)
+o	Sparc build fix for ide-tape			(Dave Miller)
+o	Fixes for some compile combinations failing	(Arjan van de Ven)
+o	Fix scsi/iphase config check			(Arjan van de Ven)
+o	Arlan + procfs fix				(Arjan van de Ven)
+o	Fix ver_linux for sh utils 2.0			(Kent Skaar)
+o	VGA16 fix and sdla symbol clash fix		(Arjan van de Ven)
+o	Fix sparc/raid build problem			(Dave Miller)
+o	Jazz16 audio speed rounding improvement		(David Schleef)
+o	PCI documentation update			(Bret Indrelee)

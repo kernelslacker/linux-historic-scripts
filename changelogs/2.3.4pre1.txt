@@ -1,0 +1,8 @@
+pre-2.3.4..
+
+There's a pre-2.3.4-1 out there in "testing" on ftp.kernel.org, which has
+the new scalable network code (well, the first cut of it, anyway). It also
+updates ISDN and PPC to newer versions. Please test it out and give
+feedback..
+
+                Linus

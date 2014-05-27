@@ -1,0 +1,8 @@
+Linux 2.2.13pre4
+
+o	Fix ATP delay loop			(Alan Cox)
+o	Fix tioccons tests			(Miquel van Smoorenburg)
+o	VIA 82Cxxx audio			(Jeff Garzik)
+o	Trust radio driver			(Eric Lammerts)
+o	IBM ServeRAID driver			(Keith Mitchell, IBM)
+o	C-Media CMI 8338 PCI audio driver	(Chen-Li Tien)

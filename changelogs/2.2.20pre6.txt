@@ -1,0 +1,10 @@
+Linux 2.2.20pre6
+
+o	Merge all the pending ISDN updates		(Kai Germaschewski)
+	| These are sizable changes and want a good testing
+o	Fix sg deadlock bug as per 2.4			(Douglas Gilbert)
+o	Count socket/pipe in quota inode use		(Paul Menage)
+o	Fix some missing configuration help texts	(Steven Cole)
+o	Fix Rik van Riel's credits entry		(Rik van Riel)
+o	Mark xtime as volatile in extern definition	(various people)
+o	Fix open error return checks			(Andries Brouwer)

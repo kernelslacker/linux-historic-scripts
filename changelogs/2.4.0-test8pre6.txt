@@ -1,0 +1,7 @@
+ - pre6:
+    - truncate - the never-ending story.  Makes me feel like a long
+      Kurosawa movie.  But in this one the hero _will_ survive, or my
+      name isn't Maxwell.
+    - SCSI tape driver potential memory leak.
+    - XMM FP handler bug fix: we really must not change the FP error
+      mask on exceptions.  People care. 

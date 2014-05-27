@@ -1,0 +1,8 @@
+There's a pre-3 patch on ftp.kernel.org in the kernel/testing directory,
+and I'd really like people to give it a good testing: especially if you've
+seen slow network connections to some clients (ie Windows). David worked
+in the compatibility patches to work around some of the Windows TCP stack
+"features" (and Apple too, for that matter), and we want to get this well
+tested. It's all fairly straightforward, but let's be careful out there..
+
+                Linus

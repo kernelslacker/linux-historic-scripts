@@ -1,0 +1,14 @@
+Linux 2.2.18pre19
+
+o	Fix transproxy socket lookup			(Val Henson)
+o	Add ICS1893 PHY to the SiS900 driver		(Lei-Chun Chang)
+o	Fix documentation error in matroxfb		(Vsevolod Sipakov)
+o	Update IDE floppy maintainer			(Paul Bristow)
+o	Fix remaining cmos locking			(Paul Gortmaker)
+o	Fix sparc bitfield/compiler bits on sound	(Dave Miller)
+o	Update Pegasus USB driver			(Petko Manolov)
+o	Networking updates - move divert header		(Andi Kleen)
+o	Add ETH_P_ATM* defines				(Matti Aarnio)
+o	Fix one more missing GFP_KERNEL/sk->allocation	(Dave Miller)
+o	Fix ISDN multilink handler bug			(Kai Germaschewski)
+o	Fix ymfpci unload cases				(Kai Germaschewski)

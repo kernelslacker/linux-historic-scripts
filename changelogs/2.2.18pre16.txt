@@ -1,0 +1,35 @@
+Linux 2.2.18pre16
+
+o	Finally get the m68k tree merged		(Andrew McPherson
+							 and a cast of many)
+o	Bring the sparc back in line, make it build 	(Anton Blanchard)
+o	USB Bluetooth fixes/docs			(Greg Kroah-Hartman)
+o	Fix auth_null credentials bug			(Hai-Pao Fan)
+o	Update cpu flag names 				(Dave Jones)
+o	Console 'quiet' boot option as in 2.4		(Rusty Russell)
+o	Make the sx serial driver work again	(Patrick van de Lageweg)
+o	Fix negotation on the SYM53C1010		(Gerard Roudier)
+o	Fix alpha loops per jiffy			(Jay Estabrook)
+o	Fix pegasus to work with 2.2 kernels		(Greg Kroah-Hartman)
+o	Update plusb driver for 2.2.x			(Eric Ayers, 
+							 Deti Fliegl)
+o	Fix ohci to use __init				(Greg Kroah-Hartman)
+o	/sbin/hotplug support for USB as in 2.4		(Greg Kroah-Hartman)
+o	Update ksymoops url				(Keith Owens)
+o	Update the changes doc about gcc 		(Petri Kaukasoina)
+o	Fix AMD flag naming				(Ulrich Windl)
+o	Restore old block size on devices after a
+	partition scan (needed for powermac for one)	(Michael Schmitz)
+o	Fix GPL naming in SubmittingDrivers		(Mike Harris)
+o	NFSv3 server patches merge			(Dave Higgen)
+o	CS46xx changes					(Nils Faerber)
+o	Fix sys_nanosleep for >4GHz CPU changes		(Alan Cox)
+	(Spotted by Ben Herrenschmidt)
+o	Fix pas rev D mixer				(??)
+o	Fix multiple spelling errors			(André Dahlqvist)
+o	ISDN updates					(Kai Germaschewski)
+o	XSpeed DSL driver				(Timothy Lee, 
+							 Dan Hollis)
+o	IDE multi-lun/single-lun handling		(Jens Axboe)
+o	Fix alpha generic trident sound support		(Rich Payne)
+o	Fix PPC for loops per jiffy			(Cort Dougan)

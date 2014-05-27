@@ -1,0 +1,4 @@
+Linux 2.2.13pre14
+
+o	ANK's fix for the 1 second delay	(Alexey Kuznetsov)
+o	Fix an IDE CD scribble on other memory	(Stephen, Ingo, Alan Cox)

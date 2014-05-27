@@ -1,0 +1,42 @@
+Linux 2.2.5 - and a vacation
+
+I made Linux-2.2.5 yesterday (as some people already have noticed: due to
+popular demand I try to delay the announcement for some time in order to
+let the thing percolate to mirror sites, in case anybody wondered).
+The 2.2.5 release is meant to be a final cleanup release before I leave
+for a two-week vacation. So please take these release notes to also mean
+that it is probably a good idea to hold off emailing me stuff directly,
+unless it is a major bug that you really think I should look at
+immediately. I would suggest people discuss problems on the mailing list
+and on the newsgroups, where other competent people are, rather than
+expecting me to do much about it.
+
+Also, note that there have been various indications that egcs potentially
+miscompiles the kernel, or at least makes some problems worse. We don't
+know whether that is due to one or more kernel bugs, compiler problems, or
+just combinations of "features" in both. I would suggest that if you have
+problems you at least verify whether the problems still exist with
+gcc-2.7.2.
+
+That said, I bet that both the kernel people and the egcs people would be
+really happy the more people look into this - if somebody feels motivated
+enough and sees problems with egcs, it would be extremely powerful to try
+to pinpoint the particular file that seems to bring on the problems. I'm
+afraid it needs a known failure mode and lots of legwork to find out what
+triggers it, though.
+
+ - compiles with accounting.
+ - add support for Microgate SyncLink and Synchronous HDLC
+ - stallion driver update
+ - alpha EV6 and SMP fix for bootup with newer compilers
+ - ptrace fix for sparc/i386
+ - small sparc updates
+ - floppy driver could oops at bootup under certain setups
+ - random driver updates (bw-qcam, sound driver error codes, etc oneliners)
+ - FIOASYNC ioctl fix
+ - network locking fixes
+ - SMP "struct user" and signal sending fixes
+
+Have fun, because I will,
+
+                        Linus

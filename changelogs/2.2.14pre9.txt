@@ -1,0 +1,15 @@
+Linux 2.2.14pre9
+
+o	Updated Acard scsi driver. Used their 2.0 driver (Acard + Alan Cox)
+	+ my tweaks
+	| Treat this with care. It should be ok but its
+	| a major driver change.
+o	PPC update for bootx				(Cort Dougan)
+o	Compile combination fixes			(Arjan van de Ven)
+o	Fix scsi_malloc locking holes			(Jens Axboe)
+o	Fix sk98 non x86 problems			(Christoph Goos)
+o	Fix lp port tunelp bits				(Tim Waugh)
+o	Alpha updates					(Jay Estabrook,
+							 Richard Henderson)
+o	gcc 2.95 changes
+o	pcnet32 fix					(Thomas Bogendoerfer)

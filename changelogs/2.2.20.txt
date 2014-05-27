@@ -1,0 +1,3 @@
+Linux 2.2.0
+
+o       Final fixes for the computone driver            (Michael Warfield)

@@ -1,0 +1,8 @@
+Linux 2.2.21rc3
+
+o       Plan B driver updates                           (Michel Lanners)
+o       3ware raid update                               (Adam Radford)
+o       Fix PowerMac compile                            (Krzysiek Taraszka)
+o       Fix nvram/rtc ioctl returns                     (Paul Gortmaker)
+o       OV511 compile/build fixes                       (Toru SAGAMI)
+o       Final ppp zlib bits                             (Paul Mackerras)

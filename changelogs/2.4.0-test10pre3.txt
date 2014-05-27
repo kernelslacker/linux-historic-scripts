@@ -1,0 +1,24 @@
+Linux 2.4.0-test10pre3
+
+    - update email address of Joerg Reuter
+    - Andries Brouwer: spelling fixes, missing atari brelse(), breada() fix
+    - Geert Uytterhoeven: used named initializers for "struct console".
+    - Carsten Paeth: ISDN capifs - iput() only once.
+    - Petr Vandrovec: VFAT short name generation fix
+    - Jeff Garzik: i810_rng cleanup, and i815 chipset added.
+    - Bartlomiej Zolnierkiewicz: clean up some remaining old-style Makefiles
+    - Dave Jones: x86 setup fixes (recognize Pentium IV etc).
+    - x86: do the "fast A20" setup too in setup.S
+    - NIIBE Yutaka: update SuperH for the global page table (vmalloc) change.
+    - David Miller: sparc updates (vmalloc stuff still pending)
+    - David Miller: CodaFS warnings and 64-bit warnings in pci_size()
+    - David Miller: pcnet32 - correct NULL test
+    - David Miller: vmlist lock -> page_table_lock clarification
+    - Trond Myklebust: Ouch. rpcauth_lookup_credcache() memory corruption bug
+    - Matthew Wilcox: file locking cleanups
+    - David Woodhouse: USB audio spinlock fixes
+    - Torben Mathiasen: tlan driver cleanups
+    - Randy Dunlap: Yenta: CACHE_LINE_SIZE is in dwords, not bytes.
+    - Randy Dunlap: more USB updates
+    - Kanoj Sarcar: clean up the NUMA interfaces (pg_data instead of nodes)
+    - "save_fpu()" was broken. Need to clear pending errors: save_init_fpu().

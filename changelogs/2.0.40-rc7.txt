@@ -1,0 +1,64 @@
+Linux 2.0.40-rc7
+
+Well, lets pretend, like many times before, that this really is the
+last release candidate for the 2.0.40-kernel.  I won't bother with
+excusing myself for being late (bordering on the extreme) with this
+release.  Better late than never.
+
+o   __Security-fix__: fix local LCALL7     (taken from 2.2.23)
+    crasher
+o   __Security-fix__: made mmap of         (David Weinehall)
+    /proc/*/mem a config-option,
+    disabled by default
+o   __Security-fix__: fix ICMP data leak   (Philippe Biondi, David Weinehall)
+o   __Security-fix__: Fix ethernet         (backported from 2.2.24)
+    padding data leak
+    | fixed drivers:
+    | 3c501
+    | 3c505
+    | 3c507
+    | 8390
+    | atarilance
+    | de600
+    | de620
+    | depca
+    | epic100
+    | hp100
+    | ni52
+    | ni65
+    | rtl8139
+    | seeq8005
+    | sk_g16
+    | smc9194
+    | tulip
+    | via-rhine
+    | znet
+    | todo:
+    | a2065
+    | ariadne
+o   Make tulip handle the case where           (taken from 2.2.24)
+    init_etherdev returns NULL
+o   Rest in Peace, Leonard Zubkoff             (David Weinehall, Paul Gortmaker)
+o   RTC wildcard fix                           (taken from 2.2.24)
+o   Make padding work properly in ip_options   (Jeff DeFouw, David Weinehall)
+    | Did whitespace-changes too
+o   Fix typo and incorrect C-code              (Michael Deutschmann)
+    in arch/i386/kernel/setup.c
+o   Documentation fix for unicode.txt          (Michael Deutschmann)
+o   Updated COPYING to fix y2k-issues...       (David Weinehall)
+o   Update of various documentation            (Thunder from the Hill,
+    to reflect the fact that Linus is NOT       David Weinehall)
+    the right person to contact
+    about 2.0-related bugs...
+o   Remove the MCA-entry from                  (David Weinehall)
+    MAINTAINERS, since the 2.0-tree
+    does not support MCA
+o   Change my e-mail address to                (David Weinehall)
+    tao@kernel.org; since I have such
+    an address, I might as well use it
+    for kernel-related matters.  Also
+    added my GPG-key information
+o   Add default:-clause to a switch in vsprintf (David Weinehall)
+    | Minor whitespace-changes while at it
+o   Add default:-clauses to mm/{shm,sem,msg}.c  (David Weinehall)
+    | No whitespace-changes here

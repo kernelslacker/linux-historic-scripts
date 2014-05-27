@@ -1,0 +1,19 @@
+Linux 2.2.15pre11
+
+o	Fix i2o pci to depend on pci bus		(Arjan van de Ven)
+o	TSC based udelay [Yes bogomip values changed	(Philipp Rumpf, Alan Cox)
+	\ but they are bogus anyway remember]
+o	Update version info on cyclades			(Cyclades)
+o	Removed illegal use of FPU in lmc driver	(Philipp Rumpf)
+o	Fix FPU usage bug in the ixj driver		(Philipp Rumpf)
+o	Fix NFSCTL_LOCKD for Sparc64			(Dave Miller)
+o	Fix small protocol error in the irda code	(Dag Brattli)
+o	Sparc64 mmap corruption fix			(Dave Miller)
+o	Blacklist entry for the Mitsumi cd-r		(Erik Tews)
+o	SMB was making socket calls in wrong context	(Manfred Spraul)
+o	ALS100/200 doc improvement			(Dave Forrest)
+o	Thunderlan driver minor updates			(Torben Mathiasen)
+o	Fix memory leak in lance driver			(Ivan Kokshaysky)
+o	Fix ppc compile error				(Robert Walsh)
+o	PPP/SMP locking fixes				(Paul Mackerras)
+o	Hopefully fix tcp/fasync race			(Alexey Kuznetsov et al)

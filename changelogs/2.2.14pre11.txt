@@ -1,0 +1,13 @@
+Linux 2.2.14pre11
+
+o	Back out Rusty's ipfw patch			(Alan Cox)
+	| Should fix the malloc error reports
+o	Hopefully fix the AX.25 "buggy" messages
+o	SCSI disk spin up broke in pre9 - now fixed I	(Alan Cox)
+	hope
+o	ESS Maestro fixes for NEC Versa			(Zach "Fufu" Brown)
+o	Fix cosmetic buffer counting bug		(Andrea Arcangeli)
+o	Fix compile warnings in dquot.c			(Daniel Roesen)
+o	Fix fs/namei problem that bit autofs		(Linus Torvalds)
+o	Soundscape PnP support				(Sergey Smitienko)
+o	Compaq Deskpro M internal sound support		(Colin Scott)

@@ -1,0 +1,18 @@
+Linux 2.2.18pre13
+
+o	Change udelay to use loops_per tick		(Philipp Rumpf)
+	| Otherwise we bomb out at 2GHz which isnt far enough
+	| away with 1.4/1.6GHz stuff due out RSN
+o	Fix drivers using big delays to use mdelay	(Alan Cox)
+o	Fix drivers that used loops_per_sec		(Philipp Rumpf, Alan Cox)
+o	Fix yamaha PCI sound SMP bug			(Arjan van de Ven)
+o	Change to preferred USB init fix		(David Rees)
+o	Fix rio fix					(Arjan van de Ven)
+o	Catch the VT but no mouse case in init/main.c	(Arjan van de Ven)
+o	Fix the 'which' compiler stuff			(Horst von Brand,
+							 Peter Samuelson)
+	| Can someone verify for me this works on Slackware and
+	| on Caldera ?
+o	Add devfs include. Devfs wont be going into 2.2 (Richard Gooch)
+	but this again makes it easier to do 2.2/2.4
+	drivers.

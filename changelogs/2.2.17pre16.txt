@@ -1,0 +1,24 @@
+Linux 2.2.17pre16
+
+o	Thinkpad hacks and external amp support for	(Bill Nottingham, Alan Cox
+	CS46xx, also fix mono				 David Kaiser)
+o	Actually fix i810 audio hangs and other stuff	(Alan Cox)
+o	Dave Jones addr change				(Dave Jones)
+o	Fix long standing vm hang bug			(Marcelo Tosatti)
+o	Fix irda memory leak 				(Pontus Fuchs)
+o	Minor further PPC fixes				(Paul Mackerras)
+o	Fix PCI id ordering				(Paul Mackerras)
+o	3Ware corrected update				(Adam Radford
+							 Joel Jacobson)
+o	Fix stale documentation in proc.txt		(Paonia Ezrine)
+o	Fix the TCP/vm bug nicely 			(Andi Kleen)
+o	Add 3c556 support to the 3c59x driver		(Andrew Morton)
+o	Switch eepro100 to I/O mode pending investigation
+							(Andrey Savochkin)
+o	Fix 'Donald Duck impressions' in ES1879 audio	(Bruce Forsberg)
+o	CODA fs fixes for 2.2.17pre			(Jan Harkes)
+o	RIO serial driver update			(Patrick van de Lageweg)
+o	Minimal version of the at1700 fix		(Brian S. Julin)
+	[From Hiroaki Nagoya's original stuff]
+o	Typo fix in sysctl vm docs			(Dave Jones)
+o	DAC960 update to rev 2.2.7			(Leonard Zubkoff)

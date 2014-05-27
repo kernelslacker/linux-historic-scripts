@@ -1,0 +1,26 @@
+Linux 2.2.15pre10
+
+o	I2O scsi,block backport from 2.3.x		(Alan Cox)
+o	Colour qcam config options/alternative detects	(David Forrest)
+	\ + docs
+o	More intelligent out of memory killing		(Rik van Riel)
+o	Fix QNXfs endianisms				(Anders Larsen)
+o	Small irda update				(Dag Brattli)
+o	TTY SMP locking fixes				(Paul Mackerras)
+o	3c527 driver work				(Carl Drougge, Alan Cox)
+o	Iomega buz driver should now work again		(Rainer Johanni)
+o	Hopefully fix hang on capture with bttv		(??)
+o	Syskonnect minor bugfixes			(Christoph Goos)
+o	TCP keepalive fix				(Dave Miller)
+	\ reports from folks previous seeing the oops wanted
+o	Minor eexpress irq handling bug			(Gianluca Anzolin)
+o	Fix cmpci typo					(Arjan van de Ven)
+o	Fix Parport dependancies on config.in		(Arjan van de Ven)
+o	Test eepro100 fix for some remaining bug reports(Andrey V. Savochkin)
+o	Further S/390 ksym fixes			(Fritz Elfert)
+o	Fix console drawing race on fb consoles		(Petr Vandrovec)
+o	Fix gid override on isofs 			(Stuart Children)
+o	Fix dgrs irq probe with gcc 2.95		(Rick Richardson)
+o	Add TK9902 to the parallel port PCI table	(Tim Waugh)
+o	Fixed three small (harmless I think) buglets
+	caught by a C check tool			(Ed Rupp, Alan Cox)

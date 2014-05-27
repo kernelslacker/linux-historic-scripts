@@ -1,0 +1,19 @@
+Linux 2.2.16pre6
+
+o	VM fixes				(Rik van Riel)
+o	TCP and other net fixes			(Dave Miller)
+o	Identify Intel cascade cpus		(Dragan Stancevic)
+o	Sparc and sparc driver cleanness fixes	(Dave Miller)
+o	Kill unused slhc_init stuff		(Paul Gortmaker)
+o	Backport modprobe fixes from 2.3.x	(Keith Owens)
+o	cmpci fixes (midi out, spdif)		(Daisuke Nagano)
+o	Legacy mode Yamaha PCI audio driver	(Daisuke Nagano)
+o	French translation has moved		(Pierre Tane)
+o	Fix memory scribble in ip_masq		(Andi Kleen)
+o	Mention iso8859-14 in docs		(Andrzej Krzysztofowicz)
+o	Fix string handling in xconfig		(Andrzej Krzysztofowicz)
+o	Updated 3c59x driver			(Andrew Morton)
+o	Fix make xconfig and old tk		(Andrzej Krzysztofowicz)
+o	Olympic driver fixes for PPC		(Mike Phillips)
+o	Bring capabilities closer to POSIX spec	(Andrew Morgan)
+	| Note. This subtly changes cap_bset behaviour

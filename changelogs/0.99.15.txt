@@ -1,0 +1,130 @@
+[PATCH] Linux-0.99.15 (February 2, 1994)
+
+sbpcd (Sound Blaster Pro CD interface) driver. 
+
+Andries Brouwer cleans up and re-does keyboard driver diacritical handling.
+
+Lots of new sound drivers.
+
+Sysvfs added (Xenix, SystemV/386 and Coherent support).  Linux was
+starting to have a lot of users move over.. 
+
+MAP_ANONYMOUS flag added to mmap().
+
+Loadable modules added. 
+
+Alan Cox is active in networking.
+
+[original changelog below]
+
+Linux 0.99.15 released: Codefreeze for 1.0
+
+People who look into my directory on ftp.funet.fi will already have
+noticed that the latest version of linux (0.99.15) is available, and I
+assume it will be available on most other linux sites soon.  As
+explained in a previous announcement, 0.99.15 is "it", in that this will
+be the base for 1.0 after about a month of testing.  No further patches
+are accepted until the 1.0 release, unless they obviously fix a serious
+bug.
+
+**** NOTE 1 ****
+
+  For this code-freeze to be effective yet still potential bugs be
+  found, testing is needed, along with good reports of errors and
+  problems.  Thus, nobody should think "hey, the *real* release will be
+  out in a month, let's wait for that", but instead think: "hey, I'd
+  better test this one, so that the *real* release won't result in any
+  ugly surprises for me".
+
+  In short: test it out, preferably even more than you usually do.  Run
+  "crashme" for the whole month if you have the CPU-power to spare,
+  and/or just misuse your machine as badly as you can.  And if there are
+  problems, report them to me (and the better the report, the more
+  likely I am to be able to do something about it).
+
+**** NOTE 2 ****
+
+  Bumping the linux version number to 1.0 doesn't mean anything more
+  than that: it's only a version number change.  More explicitly, it
+  does *NOT* mean that linux will become commercial (the copyright will
+  remain as-is), nor does it mean that development stops here, and that
+  1.0 will be anything special in that respect.
+
+  I'm also afraid that just changing the version number will not make
+  potential bugs magically disappear: this has been amply proven by
+  various software houses over the years.  This code-freeze is there in
+  order to avoid most of the problems that people sometimes associate
+  with "X.0 releases", and I hope that it will mean that we have a
+  reasonably stable release that we can call 1.0 and one that I won't
+  have to be ashamed of.
+
+  Ok, enough said, I hope.  The pl15 release is hopefully good, but I'll
+  continue to make ALPHA patches against it along the whole month as
+  problems crop up.  The networking code has been much maligned, and is
+  not perfect by far yet, but it's getting its act together thanks to
+  various developers and testers.  And as wiser men than I have said (or
+  if they haven't, they should have):
+
+      "There is life after 1.0"
+
+  Any rumors that the world is coming to an end just because I'm about to
+  release a 1.0-version are greatly exaggerated.  I think.
+
+                    Linus
+
+----------
+Things that remained the same between 0.99.14 and 0.99.15:
+    
+- I again forgot to update the README before uploading the release.  In
+  pl14, I talked about pl13, while the all new and improved README has
+  now caught up with pl14.  Remind me to buy a new brain one of these
+  days.
+
+Changes between versions 0.99.14 and 0.99.15:
+
+ - improved Pentium detection.  Some of you may have had linux report
+   your 4086DX2 as a pentium machine, but the new kernel will tell you
+   the sad truth.  Whee.
+ - Network driver updates by Donald Becker.  New drivers added, old ones
+   updated.
+ - FPU emulation updates by Bill Metzenthen.  Various minor errors and
+   misfeatures fixed (mostly error handling).
+ - Support for the SoubdBlaster Pro CD-ROM driver added by Eberhard
+   Moenkeberg.
+ - extended support for keyboard re-definition, along with font
+   re-programming (Eugene Crosser, Andries Brouwer et al).
+ - tty handling fixes: true canonical mode with most features supported
+   by Julian Cowley.  This may make your canonical mode behave funnily
+   if you happen to use old and broken programs that happened to work
+   with the old and broken behaviour (this includes at least some
+   'getty' programs).
+ - serial driver changes and tty fixes by Theodore Ts'o.
+ - SCSI fixes by Drew Eckhardt, Eric Youngdale, Rik Faith, Kai Mdkisara
+   et al.
+ - Updated sound card driver to version 2.4 (Hannu Savolainen)
+ - COFF binary loading support (but you will still need the experimental
+   iBCS2 patches to run non-linux i386 COFF binaries) by Al Longyear.
+ - Upgraded ext2fs filesystem routines (0.4a -> 0.4b), with new
+   features.  Read the fs/ext2/CHANGES file for details.  Remy Card and
+   Stephen Tweedie.  Get a new fsck that knows about the new features.
+ - pipe behaviour fixed in the presense of multiple writers (now
+   actually conforms to POSIX specs about atomic writes).  Much of the
+   code by Florian Coosmann.
+ - minix filesystem extended to support the clean flag: get a new fsck
+   that knows about it.
+ - System V filesystem (support for Xenix, Coherent and SysV
+   filesystems) by Doug Evans, Paul Monday, Pascal Haible and Bruno
+   Haible.
+ - loadable modules (various authors, don't remember original author of
+   the "modules" code).
+ - Lots of networking fixes by various people: Alan Cox, Charles
+   Hedrick, me and various other people.  Non-byte-aligned networks
+   work, and the networking code should be much stabler in general.
+
+ + various bugfixes and enhacements here and there (mcd driver update by
+   Jon Tombs, atixlmouse fix by Chris Colohan, /dev/full by XXX etc etc)
+
+All in all, the patches come out to 1.5MB uncompressed (about 400kB
+gzip-9'd), so there is little or no idea to make patches to plain pl14
+available.  Incremental patches and ALPHA-releases can be found on
+ftp.funet.fi: pub/OS/Linux/PEOPLE/Linus/ALPHA-pl14.

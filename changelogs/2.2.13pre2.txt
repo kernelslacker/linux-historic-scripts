@@ -1,0 +1,17 @@
+Linux 2.2.13pre2
+
+o	Fix mm warning				(Pascal Dupuis)
+o	Improved execve fix			(Solar Designer)
+o	Fix SiS900 compile bug			(Bill Nottingham)
+o	Fix bttv tuner breakages		(Pauline Middelink)
+o	Don't print confusing reports on
+	3c529 probes with io/irq forced		(Me)
+o	Support multiple eepro cards		(Pascal Dupuis)
+o	New home for watchdog tools		(Michael Meskes)
+o	IP masquerade mfw fix			(Julian Anastasov)
+o	Name check fix in /proc/pid		(Solar Designer)
+o	Make chown match tighter 2.0 behaviour	(Solar Designer)
+	| Both behaviours are spec compliant btw
+o	Disallow non root use of clone_pid	(Solar/Alan Cox)
+o	PPC sync up				(Paul Gortmaker)
+o	Sparc sync up				(Dave Miller)

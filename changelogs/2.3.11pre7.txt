@@ -1,0 +1,8 @@
+2.3.11pre7
+
+pre-6 has some bugs still in handling the lazy TLB switching, and it can
+result in bad things happening with shared mappings etc. It's fairly
+hard to trigger, so it doesn't happen for some people at all: it's a
+race where certain timings have to go just right.
+pre-7 fixes that particular bug, although it still has a theoretical
+problem with some other (even more unlikely) usage patterns.

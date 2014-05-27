@@ -1,0 +1,16 @@
+Linux 2.0.40-pre2
+
+o   Make pci2000 compile           (Joseph Martin)
+o   Use KERNELRELEASE in module    (David Weinehall)
+    installpath as well
+o   Removed unused variable in     (David Weinehall)
+    ext2/super.c
+o   Fixed warning in ext2/dir.c    (David Weinehall)
+o   Fix a blunder of my own in     (David Weinehall)
+    arch/kernel/i386/traps.c
+o   Fix typo in sched.c            (Tim Sutherland)
+o   Fix bug in mkdep.c             (Tim Sutherland)
+o   Fix bug in autoirq.c           (Michael Deutschmann)
+o   Add allocation debugging code  (Michael Deutschmann)
+o   Fix bugs in the math-emu code  (Bill Metzenthen,
+                                    Michael Deutschmann)

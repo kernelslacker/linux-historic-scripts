@@ -1,0 +1,14 @@
+Linux 2.2.14pre17
+
+o	Fix the IDE problem				(Mark Lord)
+o	Clean the AHA1542 scribble ptr on free		(Steven S Dick)
+o	Fix bridge for non x86 platforms		(Jack Howarth)
+o	SIS900 update					(Ollie Lho)
+o	Fix missing argument				(Willy Tarreau)
+o	Update tulip fixes (add debug only checks)	(Wolfgan Walter)
+o	Fix technical posix violation in sigprocmask	(Cristian Gafton)
+	handling
+o	Fix AF_UNIX sysctl bug				(Rusty Russel[l])
+o	NCPfs time stamp handling fixes			(Wolfram Pienkoss)
+o	VFAT bogus EINVAL cases				(Wolfram Pienkoss)
+o	Moxa serial drivers				(Moxa)

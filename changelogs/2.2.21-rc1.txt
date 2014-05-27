@@ -1,0 +1,9 @@
+Linux 2.2.21rc1
+
+o       Add farsync driver                              (Bob Dunlop)
+o       Fix x86 cpu type reporting in some cases        (Barry Nathan)
+o       Fix module_license tag compatibility macro      (Keith Owens)
+o       Update MAINTAINERS entry                        (Mark McClelland)
+o       Fix fb.h comment error                          (Krzysiek Taraszka)
+o       Zlib fix                                        (Arjan van de Ven)
+o       Back out problem mce change

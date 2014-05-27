@@ -1,0 +1,12 @@
+Linux 2.1.131pre2
+
+There's a pre-131-2 patch there on ftp.kernel.org in the testing
+directory. This should have the NFS locking issues worked out (please
+test), and also has a rather subtle but potentially very nasty deadlock
+due to incorrect semaphore ordering with rmdir() hopefully fixed for good.
+Alan, the regparm patches are also there.
+
+                Linus
+
+nfs: write back everything whenever some lock is changed (not just for
+     unlock), and always invalidates the caches.

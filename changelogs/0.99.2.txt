@@ -1,0 +1,41 @@
+[PATCH] Linux-0.99.2 (January 1, 1993)
+
+Bottom half race condition fix.
+
+Return ENODEV for nonexistent special devices.
+
+Fix Unix domain sockets to properly check for target equality.
+
+Add 'wchan' to /proc/stat
+
+[Original announcement below]
+
+Yes, as you've probably noticed, it's now 1993 and I still haven't
+released 1.0.  Sorry about that, and I have only another patchlevel to
+offer.  The new kernel should mainly fix some of the keyboard problems
+people have experienced, but does contain some other minor fixes.
+
+Linux 0.99.2 is available now at nic.funet.fi: pub/OS/Linux/PEOPLE/Linus
+as both sources and diffs against 0.99.1 the diffs are essentially the
+same as the second alpha-diffs I released for limited testing, with only
+minor fixes to fs/exec.c and fs/open.c.
+
+Please try out 0.99.2: the more feedback (hopefully positive) I get on
+it, the faster 1.0 will be out.
+
+Changes from pl1 are mainly:
+ - pretty much rewritten low-level keyboard handling IO - this time
+   actually trying to do it by the book.  It now handles resend requests
+   from the keyboard etc.
+ - you can run executables from filesystems without bmap support.  This
+   mainly means NFS and msdos.  Note that while it's possible, it's
+   slower and less memory-efficient than using a "normal" linux
+   filesystem, and should generally be avoided.
+ - /proc filesystem changes: /proc/kmsg can be used to log the kernel
+   messages under X11 (instead of using the older system call to do the
+   same), and there are changes to the statistics routines (WCHAN).
+
++ various minor fixes (non-existent devices are handled better, some
+changes to socket bind behaviour etc).
+
+                Linus

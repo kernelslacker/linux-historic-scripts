@@ -1,0 +1,24 @@
+Linux 2.0.36pre14
+
+The big highlights of this update are all SCSI
+
+o	AIC7xxx revision 5.1 - this is the Adaptec driver that should
+	support all the new stuff nicely
+o	Updated ICP vortex driver. This supports all the current models
+	including the LVD and fibrechannel controllers Im told
+o	AMI Megaraid controller support
+
+Additional changes
+
+o	The tcp oopses a very few people saw on extremely loaded boxes,
+	or brutal beat up machine tests should be gone
+
+o	mmap of very high addresses patch from 2.1.x
+
+o	block read ahead bug fix from 2.1.x
+
+o	Cyclades patch
+
+o	de4x5 update
+
+o	configuration files bug fixes.

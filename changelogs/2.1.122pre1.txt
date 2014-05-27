@@ -1,0 +1,13 @@
+2.1.122pre1
+
+This may or may not fix the APM problems, and the INITRD ones.  The
+INITRD one in particular was a case of a fairly inexplicable test that
+shouldn't have been there in the first place breaking when something
+completely unrelated was cleaned up..
+
+The APM breakage was simply due to it being in the wrong place.  The
+patch looks bigger than it really is - it really only moves the file to
+the proper directory, and makes sure that it should compile with the
+standard assembler..
+
+                Linus

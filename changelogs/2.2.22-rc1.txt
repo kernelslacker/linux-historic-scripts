@@ -1,0 +1,15 @@
+Linux 2.2.22-rc1
+
+o       Backport 2.4 neighbour sending fix              (Chris Friesen)
+o       Fix a sign handling slackness in apm            (Silvio Cesare)
+o       Fix a sign handling error in rio500             (Silvio Cesare)
+o       Indent depca ready for cleanups                 (me)
+o       Update VIA C3 recognition                       (Diego Rodriguez)
+o       Fix a sysctl handling bug                       (MIYOSHI Kazuto)
+o       Fix a netlink error handling bug in ipfw        (Alexander Atanasov)
+o       3ware IDE RAID update                           (Adam Radford)
+o       Note ioctl clash on 0x5402                      (Pavel Machek)
+o       Typo fix                                        (Dan Aloni)
+o       Update Riley's contact info                     (Riley Williams)
+o       Alpha ptrace fixes                              (Solar Designer)
+o       Multiple security fix backports                 (Solar Designer)

@@ -1,0 +1,19 @@
+ - pre1
+    - Oops. Moved back stallion.c to drivers/char. It's not a TV driver.
+      Never has been, and I don't see it ever really becoming one ;)
+    - mca.c: outp_b() should be outb_p().  Obviously nobody actually
+      _uses_ the MCA bus any more ;)
+    - umsdos should be ok again after the page_address() type-changes.
+    - re-enable asynchronous read-ahead code.
+    - Sun ESP driver update
+    - netfilter debug fixes
+    - IPv6 needs to register before proto_init()
+    - socket() error code fix (EAFNOSUPPORT instead of EINVAL)
+    - potential TCP socket leak fix
+    - don't self-deadlock on the kbd_controller_lock when probing for the mouse
+    - CONFIG_SMB_NLS_REMOTE didn't work. Silly typo.
+    - scheduler wakeup race condition could cause delayed scheduling on SMP..
+    - net/packet/af_packet.c: use the standard macros for marking page resevredness
+    - ncpfs buffer-overflow fix
+    - thread groups, take 1.
+    - USB storage driver update

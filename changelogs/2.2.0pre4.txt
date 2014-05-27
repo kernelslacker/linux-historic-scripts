@@ -1,0 +1,16 @@
+Linux 2.2.0pre4
+
+Ok, you know the drill by now. This fixes:
+ - yes, people told me about the new and improved ksymoops. Much better,
+   no need for C++, and this one actually seems to compile and work
+   reliably.
+ - ntfs fixes
+ - the vfat thing _really_ works now
+ - NFS fix for deleting files while writebacks active.
+ - ppa/imm driver updated
+ - minor mm balancing patches
+ - Alan took the gauntlet and cleaned up some CONFIG_PROC_FS stuff.
+More on Monday,
+
+                Linus
+

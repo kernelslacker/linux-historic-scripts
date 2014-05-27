@@ -1,0 +1,47 @@
+[PATCH] Linux-0.99.8 (April 8, 1993)
+
+Mount root filesystem read-only (conditional for now).
+
+SCSI updates.
+
+Stephen Tweedie shows up in ext2, with an enhanced block allocator. 
+
+Signal handling update with generated code on the stack and a
+"sigreturn" system call.  This was needed to maintain compatibility in
+the face of a changed stack layout.  sigsuspend() also works correctly now. 
+
+[original announcement below]
+
+Yet another kernel release is now available on nic.funet.fi in the usual
+place (pub/OS/Linux/PEOPLE/Linus for those of you that have already
+forgotten), and will probably show up on the other ftp-sites within a
+day or two.  There are two new files:
+    
+ linux-0.99.8.tar.z - the full gzipped and tarred source-tree of the
+   linux kernel.
+    
+ linux-0.99.patch8.z - unified diffs against the last official release
+   (0.99pl7).
+
+There is no SLIP or new networking routines in this kernel despite the
+rumors that have been flying around - the main changes to 0.99.7 are
+(some of them were in 0.99pl7A as well):
+
+- the signal handling code has been extensively reworked, and should be
+  POSIX as well as clean.
+- dosfs is upgraded to version 12 (Werner Almesberger)
+- xiafs is upgraded to the latest version (Qi Xia)
+- ext2fs is upgraded to the latest version (Remy Card/Stephen Tweedie)
+- FPU-emulation patches for v86 mode and precision rounding (Bill
+  Metzenthen)
+- SCSI patches by various people (Eric Youngdale & co)
+- XT harddisk support (Pat Mackinlay)
+- new trial code to try to handle 387 lockups on some systems more
+  gracefully.
+- keyboard, lp and serial driver fixes
+- various minor changes (mounting root read-only, bootup messages
+  cleaned up etc)
+    
+As always, comments/bugs etc are encouraged,
+    
+            Linus

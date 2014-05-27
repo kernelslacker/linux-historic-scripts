@@ -1,0 +1,15 @@
+Linux 2.2.13pre9
+
+o	Make shmall configurable		(Henrik Nordstrom)
+	| + fixed a couple of bugs
+o	Amateur radio update			(Tomi Manninen)
+o	Tlan unloads if it finds no cards	(Christian Holtje)
+o	ISOfs fix				(Todd Sabin)
+o	Fix Amiga RDSK parsing			(Benny)
+o	Fix signal delivery hole		(Alan Cox)
+o	Davicom D9102 driver			(Sten Wang, Davicom)
+o	Strlen_user fix				(Ivan Kokshaysky)
+	| I still strongly recommend you don't use gcc 2.95 to
+	| build 2.2.13 kernels. There are 3 or 4 reports now of 'random
+ 	| crash' that went away with older compilers.
+o	Hopefully fixed the 3c527 properly 	(Alan Cox)

@@ -1,0 +1,6 @@
+Linux 2.0.39pre6
+
+o	Somewhat more complete fix for		(Wolfram Gloger)
+	the bug in Paride
+o	Fix the annoying build-prohibiting	(Gael Queri)
+	bug in drivers/block/ide.c

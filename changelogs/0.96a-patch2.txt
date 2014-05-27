@@ -1,0 +1,45 @@
+Second patch to 0.96a
+
+I have just sent off the second patch to 0.96a: it should be on the
+normal ftp-sites (nic, tsx-11 and banjo), although the only site which I
+can make it directly readable on is banjo, so on the other sites it will
+take the site-managers to make the patch available.
+
+Patch 2 implements:
+
+- itimers (by Darren Senn), which are now also used to implement the
+  alarm() system call.
+
+- ultrastor scsi driver patches (by gentzel)
+
+- [f]statfs() system call is implemented (so df can be made fs-
+  independent). Also some other minor fs-changes for the upcoming new
+  filesystem. Patches by Remy Card.
+
+- preliminary core-file dumping code (linux creates a core-file, but
+  it's not in the correct format yet [*]).
+
+- minor changes/bugfixes.
+
+While patching in patch1 is a good idea for anybody, patch 2 isn't
+really vital. I've made it available just so kernel hackers can keep up
+with the kernel I have right now if they wish. Patch 2 is relative to
+patch 1: you have to patch that in first.
+
+[*] The current core-file is very simple, and the kernel code is there
+just so that some enterprising character can expand it. A core-file
+looks like this right now:
+
+offset data
+0x0000 "core-dump: regs=\n"
+0x0040 struct pt_regs (see <sys/ptrace.c>)
+0x0400 "floating-point regs:\n"
+0x0440 struct i387 (see <linux/sched.h>)
+0x0800 the first 1kB of user-space
+
+Not very practical, but it /might/ help if the X-server dies of a
+segmentation fault or similar (you can use pt_regs.eip to see where it
+happened). The kernel code is very easy to change to accomodate for the
+real core-file format, I just didn't know what it should be.
+
+                Linus

@@ -1,0 +1,6 @@
+Linux 2.0.39pre7
+
+o	Fix a bug in af_unix that wrote to	(Michael Deutschmann)
+	a socket after freeing it
+	(aka the Win9x-related oops)
+o	Fixed typo in Documentation		(Martin Douda)

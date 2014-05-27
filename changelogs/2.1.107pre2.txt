@@ -1,0 +1,18 @@
+Linux 2.1.107pre2
+
+Are there people out there that use the loopback device with SMP, and have
+been irritated at it not working lately?
+I gave up on waiting for any real loop device maintainer to step up and
+fix this, so I made a very small patch that I suspect may fix the problem.
+I'm not going to test it myself, and I'm fairly disgusted with how badly
+the loop device is being maintained at all. But if people feel they want
+to test it out, go to
+
+        ftp.kernel.org//pub/linux/kernel/testing
+
+and fetch the current pre-107-2 patch.
+It also has some other patches to the loop device that I picked up and
+that looked like the right thing to do (use dentry pointers instead of
+inodes to make mount/umount happy.
+
+                Linus

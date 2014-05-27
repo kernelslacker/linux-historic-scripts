@@ -1,0 +1,4 @@
+Linux 2.2.24-rc3
+
+o   Backport the ethernet padding fixes             (Alan Cox)
+    | All done except 8139too, rtl8139]

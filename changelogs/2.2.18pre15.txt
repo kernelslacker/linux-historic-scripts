@@ -1,0 +1,28 @@
+Linux 2.2.18pre15
+
+o	Default msdos behaviour to old (small) letters	(Alan Cox)
+	| An option 'big' goes with 'small'
+o	Fix define collision in cpqfc			(Arjan van de Ven)
+o	Fix case where scripts/kwhich isnt executable	(Alan Cox)
+o	Alpha FPU divide fix				(Richard Henderson)
+o	Add ADMtek985 to the tulip list			(J Katz)
+o	Lose excess ymfpci debugging			(Rob Landley)
+o	Fix i2c bus id clash				(Russell King)
+o	Update the ARM vidc driver			(Russell King)
+o	Update the ARM am79c961a driver			(Russell King)
+o	Fix parport_pc build with no PCI		(Russell King)
+o	Fix ARM memzero					(Russell King)
+o	Update ARM for __init and __setup		(Russell King)
+o	Update ARM to loops_per_jiffy			(Russell King)
+o	Remove arm ecard debug messages			(Russell King)
+o	Fix ARM makefiles				(Russell King)
+o	Fix iph5526 driver to use mdelay		(Arjan van de Ven)
+o	Fix epca, dtlk, aha152x loops_per_sec bits	(Philipp Rumpf)
+o	Fix smp tlb invalidate and bogomip printing	(Philipp Rumpf)
+o	Fix NLS warnings				(Arjan van de Ven)
+o	Fix wavfront conversion to loops_per_jiffies	(Alan Cox)
+o	Fix an audio problem and a sanyo changer 	(Jens Axboe)
+	problem
+o	Fix include bug with divert			(Alan Cox)
+	| Alternate fix to Willy Tarreau's
+o	Fix Alpha for loops_per_jiffy			(Willy Tarreau)

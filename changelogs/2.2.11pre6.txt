@@ -1,0 +1,8 @@
+Linux 2.2.11pre6
+
+Add specialix SX driver
+Changes now references the newer Samba release
+General Instruments SB1000 cable modem driver
+Sparc and net updates from Dave Miller
+fork SMP crash fix
+Coda update

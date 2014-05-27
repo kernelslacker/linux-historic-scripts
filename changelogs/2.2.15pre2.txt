@@ -1,0 +1,27 @@
+Linux 2.2.15pre2
+
+o	Fix RTC build problem with Nautilus		(Michal Jaegermann)
+o	Quieten NFS debugging messages			(Alan Cox)
+o	Fix bug in connect/listen handling in TCP	(Dave Miller)
+o	Fix missing $(CC) cases				(Pascal DuPuis)
+o	Fix SMP tcp hang				(Andrea Arcangeli)
+o	Hopefully fixed PLIP				(Alan Cox)
+o	Fix sigtimedwait bug				(Christophe Blaess)
+o	Updated epic100 driver				(Donald Becker)
+	| If it works cool, if not we back it off
+o	Sparc updates					(Dave Miller)
+	| Fixes bugs with >258Mb on sun4d/sun4m
+	| si_addr is set in siginfo
+	| Fix signal type for FP/div events
+	| DP division FPU emulation fixes
+	| Fix sparc64 parport locking keyboard
+	| ESP can be built as a module
+o	Network fix kit					(Dave Miller and co)
+	| Nagle improvements, TCP_CORK/FIN fix
+	| /proc/net/tcp reports type 4 for timer
+	| Fix TIME_WAIT logic
+	| Clean up timer performance
+	| Handle shutdown() in CLOSE_WAIT right
+	| Report state change on tcp_fin after setting
+	|	new state
+	| Shutdown on close in write_err case 		(Paul Russell)

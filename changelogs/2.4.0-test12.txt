@@ -1,0 +1,14 @@
+- David Miller: sparc and net updates. Fix merge_segments.
+- Dan Aloni: ISA PnP name parsing cleanup
+- Mohammad Haque and others: hunt down tq initializations.
+- Petr Vandrovec: ncpfs config changes
+- Neil Brown: raid and md cleanups
+- Pete Zaitcev: ymfpci update
+- Alan Cox: sync (network driver MODULE_OWNER and cleanups)
+- Martin Diehl: pirq router for VLSI 82C534 (HP OmniBook and others)
+- Tigran Aivazian: ia32 microcode driver update
+- Tim Waugh: parport fixes (ECP write, documentation)
+- Richard Henderson: alpha update
+- David Woodhouse: MTD update
+- Trond Myklebust: index the NFS inode cache using the file handle.
+  This makes NetApp snapshot directories do the right thing.

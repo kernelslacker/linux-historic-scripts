@@ -1,0 +1,14 @@
+Linux 2.0.37pre2
+
+o	ACard SCSI driver		(ACard)
+o	Initio SCSI update		(Initio)
+o	Tulip driver update 		(Don Becker)
+o	Add new SMC card to PCI 	(Andrew Pam)
+o	DVD may have >800Mb files 	(Ulrich Habel)
+o	Readv/writev mand lock fix 	(Jamie Lokier)
+o	Support for 2Gig/3Gig machines 	(Ingo/Leonard)
+	| Im not sure quite if Ingo's patch is based on Leonards or whatever
+	| Also if you use 2Gig or 3Gig you are shrinking the per process
+	| address space. So dont do it casually.
+o	Fix protocol bug in IGMP2 code	(Julian Highfield)
+o	Floppy diver update		(Alain Knaff)

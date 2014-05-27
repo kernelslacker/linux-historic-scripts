@@ -1,0 +1,43 @@
+[PATCH] Linux-0.97.5 (September 12, 1992)
+
+SCSI CD-ROM support by David Giller (based on sd.c by Drew)
+
+Microsoft Busmouse support by Teemu Rantanen
+
+Do the same buffer cleanups to extfs that we just did to Minixfs.
+
+Efficient VGA emulation in dosemu wanted to know when we write
+to the pseudo-VGA memory area. Add vm86 mode hooks for that.
+
+[Original announcement below]
+
+Patch 5 fixes the extended filesystem problems (thanks to Remy Card), as
+well as including many smaller fixes (some more fs cleanups, the CDROM
+patches and several other minor changes).  Pl5 finally removes even the
+last few header-files that were incompatible with the normal headers, so
+the "-nostdinc -I$(KERNELHDRS)" stuff is gone.
+
+Patch 5 should also fix the problems with iopl() that resulted in the
+X8514-server having problems with 0.97.pl2 and above.
+
+In case people are wondering, my schedule for 1.0 looks something like
+this:
+
+ - 0.98 out in about a week: this is essentially 0.97.5 + the tcp/ip
+   directory, as well as any fixes that may come up.  I'll try to get
+   the loadable driver interface into it too.
+
+ - 0.99 out after 0.98 has been shaken down: a month or so.
+
+ - 1.0 will be the same as 0.99: the only changes will be eventual
+   trivial bug-fixes in case 0.99 has some problems.  This is just to
+   try to get over the "X.0" bug syndrome.
+
+There are a few on-going projects: depending on circumstances these will
+be implemented sooner or later, so I won't give any promises.  These
+include: loadable drivers/fs's (alpha-patches already availabla), full
+support for different block-sizes (some work still required), and a
+extensive rewrite of the mm routines (I'll want to make a vmm interface
+similar to the vfs interface for the filesystem routines).
+
+                Linus

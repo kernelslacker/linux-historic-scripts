@@ -1,0 +1,14 @@
+Linux 2.2.15pre7
+
+o	Fix problems with irq loss on Dell PowerEdge's	(Dell)
+	| This may help other SMP boxes too
+o	Update maintainers				(Jean-Paul Roubelat)
+o	Maestro Powermanagement updates			(Zach 'Fufu' Brown)
+o	AX.25 returned wrong address in recvmsg		(Tomi Manninen)
+o	Kill warning in ipc/shm.c			(Dave Miller)
+o	Poll table alloc fixes				(Manfred Spraul)
+o	Add another drive to the blacklists		(Yoshihiro Kawabe)
+o	Clean up K6/K7 cache reporting			(Catalin Muresan)
+o	SCSI tape updates				(Kai Makisara)
+o	Clean out the remaining gfp debug		(Alan Cox)
+o	Fix lmc Makefile bug				(Andrew Stanley-Jones)

@@ -1,0 +1,31 @@
+Linux 2.4.0-test9pre8
+
+    - initialize to zero -> put it in the .bss instead 
+    - no extended dumb serial driver options, if no dumb serial driver
+    - access() on a special file on a read-only filesystem is special.
+    - DRM update
+    - fix SCHED_YIELD problems.
+    - quintela: fix the synchronous wait on kmem_cache_shrink().
+      This should fix the mmap02 lockup.
+    - syncppp got lost in the Makefile reshuffle. Unlose it.
+    - firewire update
+    - flock blocking list fix
+    - correct watchdog initialization order
+    - USB-storage: reset fixes. Race condition fixes.
+    - USB: fix freeing already free'd device.
+    - minix truncate fixes
+    - USB: pack only the relevant subset, not the whole descriptor (so
+      as to not create extra unaligned fields).
+    - nfsfh: DCACHE_NFSD_DISCONNECTED checking typo
+    - dquota silly bugfix
+    - sound updates (get rid of check_region, check request_region() instead)
+    - scsihosts boottime parameter passing
+    - avoid double init of MD
+    - eicon ISDN driver update
+    - fix Cyrix MTRR thinko
+    - toshiba driver 2.4.x update
+    - Makefile subdirectory traversal cleanup and documentation
+    - cciss typos from bad merge fixed
+    - cdrom driver oops fix for CONFIG_SYSCTL=y CONFIG_PROC_FS=n
+    - coda initialization - we already did the module_init, no need for
+      the extra double init. 

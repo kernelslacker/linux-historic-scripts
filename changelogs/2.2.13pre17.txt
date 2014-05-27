@@ -1,0 +1,7 @@
+Linux 2.2.13pre17
+
+o	Fix real time signal queue corruption	(Dave Miller)
+o	Work around a thinkpad APM bug		(Paul Martin)
+o	Adaptec AIC7xxx update			(Doug Ledford)
+o	Soundpro doc updates			(Ionut Badescu)
+o	Small poll cleanup			(Andrea Arcangeli)

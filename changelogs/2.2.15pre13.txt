@@ -1,0 +1,22 @@
+Linux 2.2.15pre13
+
+o	Revert some of the MM changes and drop in the
+	more proven trashing heuristic code and bits	(Andrea Arcangeli)
+o	Always probe all luns on AMI MegaRAID		(Doug Ledford)
+o	IBM lanstreamer driver merged			(Mike Sullivan)
+	\ cleaned up (tho I hope not broken) by Alan Cox
+	[Please check]
+o	COMX update, remove experimental		(Gergely Madarasz)
+o	Fix a region release bug in the eepro100	(Andrey Savochkin)
+o	Add write ordering to ppc *bit functions	(Paul Mackerras)
+	on SMP boxen
+o	Fix timer irq bug on ultrasparc			(Dave Miller)
+o	Further sparc dcache page flush fixes		(Dave Miller)
+o	Bring 3ware driver up to 1.0			(Adam Radford)
+o	List 2.2.x pre-patch locations in MAINTAINERS	(David Forrest)
+o	UMSDOS update					(Matija Nalis)
+o	Support SRM on nautilus Alpha			(Soohoon Lee)
+o	Fix maintainers - Scott Murray has moved	(Scott Murray)
+o	EV4 emulation trap fix				(Carsten Jacobi)
+o	Alter the TLB IPI spin timeout for faster chips (based on the Reiserfs 
+							 hack)

@@ -1,0 +1,14 @@
+Linux 2.2.21pre4
+
+o	Fix FAT breakage in pre3			(Dmitry Levin)
+o	Add S/390 LCS driver (IBM opensourced it now)	(DJ Barrow,
+							 Frank Pavlic)
+o	Update COPYING file to match FSF update		(Dan Quinlann)
+	| basically swap 19xx example for this century..
+o	Fix a file name comment				(William Stearns)
+o	Add realtek phy support to 2.2 sis900 driver	(Allan Jacobsen)
+o	Fix MCE address reporting order, fix oops with	(Dave Jones)
+	newer gcc due to bad asm constraints
+o	Starfire update					(Ion Badulescu)
+o	Always victimise the dcache a little when	(John Lash, Alan Cox)
+	short of memory

@@ -1,0 +1,20 @@
+Linux 2.4.0-test5
+
+The diff is pretty huge, to a
+large degree due to a bttv driver syntactic split-up and due to the NLS
+forward-port from 2.2.x. 
+
+Other notable bugfixes:
+ - the buggy Toshiba (and possibly others) BIOS memory reporting thing
+   is fixed. Just ignore RAM that the BIOS reports in the 640k-1M range.
+   The BIOS is confused.
+ - Manfred Spraul found and fixed a SMP TLB invalidation problem with threads.
+ - various architecture updates (arm, ia64, sparc, sh..)
+ - MD driver cleanups
+ - Toshiba floppy controller problem workaround
+ - updated DRI code (works with XF86-4.0.1)
+ - various driver updates (ToPIC CardBus should work, ide updates, etc)
+ - "kfree_s()" is gone. It hasn't existed for several years, but people
+   still used it. No more.
+ - USB driver updates and fbcon cleanups
+ - various othe rupdates I've repressed.

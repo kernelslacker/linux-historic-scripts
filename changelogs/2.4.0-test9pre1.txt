@@ -1,0 +1,20 @@
+Linux 2.4.0-test9pre1
+
+    - MM balancing (Rik Riel)
+    - pcmcia debounce logic. Ugh.
+    - 3c59x driver update
+    - SysKonnect gigabit driver update
+    - ACPI interpreter updates (and file renames - making this part big)
+    - don't do notifier locking at low level: higher levels do (or
+      should do) this already. 
+    - truncate unmapped/uptodate case handled correctly
+    - IDE driver picks up master/slave relationships on its own.
+    - misc small fixes to random drivers by Tigran
+    - mktime(). Do it just once - not 16 times.
+    - NFS sillyrename fixups
+    - acenic update
+    - epic100 credits, 8139too driver update, sr.c initcalls
+    - name clash in hamradio/pi2.c and hamradio/pt.c  
+    - sparc64: register window race. Non-deadlock rwlocks.
+    - USB: storage update
+    - USB: OHCI controller unlink and bandwidth reclamation fixes

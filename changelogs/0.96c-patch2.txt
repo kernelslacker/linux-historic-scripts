@@ -1,0 +1,89 @@
+0.96c second patch
+
+The subject pretty much says it all: I've sent out the "weekly patch"
+and I'd be very interested in comments. As with patch1, there are some
+very fundamental changes in the kernel, and they might have some
+problems. I'd want as many as possible to test out linux-0.96c.pl2, as
+that has always been the best way to test out the changes. Everything
+works on my machine, but that doesn't guarantee it will work on other
+setups...
+
+The MAJOR change in 0.96c.pl2 is the totally rewritten sleep/wakeup
+code. That, together with the IRQ code introduced in pl1 and slightly
+edited in pl2, means that two very fundamental things in the linux
+kernel have changed in the last two weeks. The code is cleaner, easier
+to add devices to, and hopefully faster, but it's still a bit risky to
+change this kind of very low-level behaviour.
+
+Select() is now implemented using the vfs jump tables, and thanks to the
+better sleep/wakup interface, select() performance should be noticeably
+better. At least xload seems to give lower load-averages, and I hope
+ka9q will work better with the new kernel. Note that things like the
+tty code doesn't yet take full advantage of the new features the
+rewritten sleep offers, but I wanted to get a good testing-release out
+before actually tweaking all the routines to use the new interface.
+
+The IRQ routines have changed slightly, and all known bugs are fixed.
+
+While I'm most interested to hear comments about the IRQ and
+select/sleep/wakup code, there are a few other changes in pl2:
+
+ - Swiss keyboard support.
+
+ - Screen blanking now only reacts to key-presses and kernel messages:
+normal tty output doesn't make the screen unblank.
+
+ - DOS-fs version 5 is in. It wouldn't hurt to try it out. It's
+somewhat alpha still, but it seems to work. mtools should be a thing of
+the past once the dosfs is a bit more tested.
+
+ - core-file magic number, and a minor bug in ptrace is fixed
+
+ - a bus-mouse is supported. I'd like to hear if it still works after I
+did the select() patches "blind" (I can't test it on my machine).
+
+ - iopl changing is possible (but requires root priviledges): this
+allows access to all IO ports, as well as the interrupt flag. Don't use
+it unless /absolutely/ necessary: a bug in your program will most likely
+crash the machine if you are running with IO priviledges. It's needed
+for some X VGA drivers.
+
+As a result of all the changes, the diff is pretty big. Apply and build
+it with something like:
+
+        cd /usr/src
+        zcat linux-0.96c.patch2.Z | patch -p0
+        cd linux
+        make dep
+        make clean
+        make Image
+
+assuming you have the 0.96c.pl1 kernel in /usr/src/linux. I've had some
+reports that my patches won't always go in cleanly: I know for a fact
+that patch1 patches cleanly (I rebuilt 0.96c.pl1 by downloading it all
+from banjo), so the error is in your end.
+
+Possible problems:
+
+ - The VESA code in setup.S has some problems. I haven't even looked
+into it yet, so if it won't work for you, please either (a) use the
+unpatched setup.S from 0.96c, or (b) try to find the problem and tell
+me. (b) is preferable, of course. I'd like to have VESA support, but
+if the bug isn't found, I'll have to use the non-VESA version for 0.97.
+
+ - The IRQ code in 0.96c.pl1 could overrun the stack if linux got
+un-ending interrupt requests, resulting in a re-boot. With pl2, this
+shouldn't happen: linux should print out something like "Recursive
+interrupt on IRQx. Shutting down" and simply disable the problematic
+IRQ line. If you see this message, I'd be very interested to hear about
+it (which IRQ, what devices you have, etc).
+
+ - And any new or old bugs I haven't found yet.
+
+I have one report that 0.96c.pl1 has problems with the inode table, and
+panics on bootup with a "no more inodes in mem" report. Can anybody
+confirm this sighting? I haven't found the reason for it, and haven't
+seen it myself. I'm hoping it's an installation problem, but if anybody
+else sees the same behaviour, I'm SOL.
+
+            Linus

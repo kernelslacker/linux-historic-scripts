@@ -1,0 +1,10 @@
+Linux 2.0.39pre5
+
+o	IDE-patches				(Andre Hedrick)
+o	Move memory-offset for dynamic		(Michael Deutschsmann)
+	executables
+o	Fixes to the Cyclades-driver		(Ivan Passos)
+o	Fix for a bug in ext2			(Stephen C. Tweedie)
+o	Added marketing-names for 3Com		(Yann Dirson, David Weinehall)
+	NICs in drivers/net/Config.in
+o	Added fix to smbfs			(Rick Bressier)

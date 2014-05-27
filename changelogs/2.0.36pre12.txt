@@ -1,0 +1,13 @@
+Linux 2.0.36pre12 / Modular sound 2.0.36 test patch 1
+
+2.0.36pre12 fixes the Alpha unknown syscall returning -EPERM bug, adds
+Ensoniq to the PCI names and updates the parallel ide devices slightly.
+
+As far as Im concerned that is now it for 2.0.36. Linus please have a look
+through it see what you think. I'm guessing you'll want to drop the
+fs/nfs changes. If so be careful to leave the nfsroot change as its not
+part of the FIFO thing.
+
+Also for modular sound freaks the test modular sound for 2.0.36 patch brings
+2.0.36 roughly in line with the current 2.1.122+bits I sent Linus. Unlike
+2.1.x it doesnt fix O_NDELAY so it wont break realaudio clients.

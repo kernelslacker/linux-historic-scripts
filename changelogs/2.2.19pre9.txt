@@ -1,0 +1,17 @@
+Linux 2.2.19pre9
+
+o	Merge all the pending NFS server fixes		(Neil Brown)
+o	Neil becomes NFS server maintainer 		(Neil Brown)
+o	Update to aic7xxx 5.1.32			(Doug Ledford)
+o	Fix cs89x0 media selection			(Frank Copeland)
+o	Tidy APM stuff, make buggy bios selector tighter(Stephen Rothwell)
+o	Fix i2o config typo				(YOSHIMURA Keitaro)
+o	Network updates, fix possible classifier hang	(Dave Miller)
+o	Sparc updates (nfs compat, syscalls)		(Dave Miller)
+o	Sparc watchdog driver				(Eric Brower)
+o	Remove experimental tag on QoS code		(Dave Miller)
+o	Move dumpable extra logic into binfmt avoiding	(Solar Designer)
+	other changes to arch code. Back out old stuff
+o	Fix sysctl miscastings from signed/unsigned	(Greg Kroah-Hartman)
+o	Alpha OSF syscall remove error printk	
+o	Don't trust IRQ routing on the ruffian ARC	(Ivan Kokshaysky)

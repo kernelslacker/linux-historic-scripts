@@ -1,0 +1,13 @@
+Linux 2.2.18pre6
+
+o	Fix the IDE PCI not compiling bug		(Dag Wieers)
+o	Kill an escaped reference to vger.rutgers	(Dave Miller)
+o	Small rtl8139 fixups				(Jeff Garzik)
+o	Add USB bluetooth driver			(Greg Kroah-Hartman)
+o	Fix oops in visor driver			(Greg Kroah-Hartman)
+o	Remove some unneeded ext2 includes,fix a bug	(Andreas Dilger)
+	in the UFS code
+o	Fix rtc race between timer and rtc irq		(Andrea Arcangeli)
+o	Fix slow gettimeofday SMP race			(Andrea Arcangeli)
+o	Check lost_ticks in settimeofday to be more	(Andrea Arcangeli)
+	precise

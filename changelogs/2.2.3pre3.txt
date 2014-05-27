@@ -1,0 +1,27 @@
+Linux 2.2.3pre3
+
+There's a new pre-patch for 2.2.3, one that I was already going to make
+the final 2.2.3, but I decided that I'm chicken after all, and that I
+might as well let some people check that it's sane.
+This pre-2.2.3 does:
+
+ - Fix some silly NFS problems. Some of them can be quite bad: lost error
+   notification of asynchronous writes, which can result in horrible
+   problems (including lost email etc). Most people wouldn't ever notice,
+   so don't panic, but forgetting about the error notification certainly
+   counts as a brown paper bag. 
+ - Alpha should compile and work again
+ - Various driver updates. This is actually the bulk of the patch, with
+   IRDA updates, some scsi, video and sound driver updates etc.
+ - The "mmap forgets about the file that was mapped" bug that has been
+   discussed here. Only affected certain drivers.
+ - shaper atomicity fixes
+ - various minor TCP fixes
+ - buffer growth fix and recursive IO memory reclaim fix from Andrea
+ - network filter compiles ;)
+ - unix gc fixes
+
+Tell me if you see problems, because I'm going to release it as 2.2.3
+unless people tell me otherwise..
+
+                Linus

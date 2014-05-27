@@ -1,0 +1,25 @@
+Linux 2.2.20pre10
+
+o	Update the gdth driver				(Achim Leubner)
+o	Fix prelink elf loading in 2.2			(Jakub Jelinek)
+o	2.2 lockd fixes when talking to HP/UX		(Trond Myklebust)
+o	3ware driver update				(Adam Radford)
+o	hysdn driver update				(Kai Germaschewski)
+o	Backport via rhine fixes			(Dennis Bjorklund)
+o	NFS client fixes		(Trond Myklebust, Ion Badulescu,
+					 Jim Castleberry, Crag I Hagan.
+					 Adrian Drzewiecki)
+o	Blacklist TEAC PD-1 to single lun		(Wojtek Pilorz)
+o	Fix null request_mode return 			(David Woodhouse)
+o	Update credits entry				(Fernando Fuganti)
+o	Fix sparc build with newer binutils		(Andreas Jaeger)
+o	Starfire update					(Ion Badulescu)
+o	Remove dead USB files				(Greg Kroah-Hartmann)
+o	Fix isdn mppp crash case			(Kai Germaschewski)
+o	Fix eicon driver				(Kai Germaschewski)
+o	More pci idents					(Andreas Tobler)
+o	Typo fix					(Eli Carter)
+o	Remove ^M's from some data files		(Greg Kroah-Hartmann)
+o	64bit cleanups for isdn				(Kai Germaschewski)
+o	Update isdn certificates			(Kai Germaschewski)
+o	Mac update for sysrq				(Ben Herrenschmidt)

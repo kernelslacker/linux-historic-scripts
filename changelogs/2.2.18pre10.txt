@@ -1,0 +1,39 @@
+Linux 2.2.18pre10
+
+o	Add printk level to partition printk messages	(Alan Cox)
+o	Fix bluesmoke address report/serialize		(Andrea Arcangeli)
+o	Add 2.4pre CPUID/MSR docs to 2.2.18pre		(Adrian Bunk)
+o	Update to the 2.4pre via audio driver		(Jeff Garzik)
+o	Fix small SMP race in set_current_state		(Andrea Arcangeli)
+o	Fix __KERNEL__ checks in sparc headers		(Dave Miller)
+o	Fix ADFS root directory bug added in pre9	(Russell King)
+o	Trap incorrect swap partition sizes		(Andries Brouwer)
+o	Fix nfsroot bootp/dhcp on sparc64		(Dave Miller)
+o	Tidy up tcp opt parsing				(Dave Miller)
+o	Check range on port range sysctl		(Dave Miller)
+o	Back out erroneous i2c.h change			(Arjan van de Ven)
+o	Fix trident hangs due to over zealous addition	(Eric Brombaugh)
+	of midi support
+o	Fix big endian/macro bug in ext2fs		(Andi Kleen)
+o	Bring dabusb driver into line with 2.4		(Greg Kroah-Hartman)
+o	Bring event drivers into line with 2.4		(Franz Sirl,
+							 Greg Kroah-Hartman)
+o	Fix usb help texts				(Greg Kroah-Hartman)
+o	Generic frame diverter				(Benoit Locher)
+o	Bring USB serial back into line with 2.4	(Greg Kroah-Hartman)
+o	Fix DVD driver rpc state bug			(Jens Axboe)
+o	Fix extra sunrpc printk				(Tim Mann)
+o	USB init tidy up				(Greg Kroah-Hartman)
+o	Allow PlanB video on generic PPC		(Michel Lanners)
+o	Doc fixes/trim cvs logs on isdn drivers		(Kai Germaschewski)
+o	USB hid, hub, ibmcam, dsbr100 devices updates	(Greg Kroah-Hartman)
+o	Return EAFNOSUPPORT for out of range families
+o	Fix SMP locking on floppy driver		(Jonathan Corbet)
+o	Add module author info to acm.c			(Greg Kroah-Hartman)
+o	Update CREDITS to reflect all the USB guys	(Greg Kroah-Hartman)
+ 
+o	ipfw wrong allocation flag fix			(Rusty Russell)
+o	Implement Sun style lockf/nfs cache barriers	(Trond Myklebust)
+o	Updated ISI serial driver			(Multitech)
+	| You may well need their newer firmware set/loader for the
+	| later cards too

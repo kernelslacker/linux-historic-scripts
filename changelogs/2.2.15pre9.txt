@@ -1,0 +1,7 @@
+Linux 2.2.15pre9
+
+o	Alpha compiles again (sorry)			(Several people)
+o	Sparc config/warnings fix			(Dave Miller)
+o	Small qlogicfc update				(Chris Loveland)
+o	SK98 fixes					(Christoph Goos)
+o	IDE CD noise reduction				(Jens Axboe)

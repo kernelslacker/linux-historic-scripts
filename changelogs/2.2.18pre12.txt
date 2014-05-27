@@ -1,0 +1,19 @@
+Linux 2.2.18pre12
+
+o	Fix cyrix MTRR handling bug 			(IIZUKA Daisuke)
+o	Fix ymfpci poll					(Alan Cox, Arjan)
+o	Update radio-maestro, add Configure.help	(Adam Tla/lka>
+o	Fix rio/generic serial build bug		(Marcelo Tossati)
+o	USB build bug fix				(Arjan van de Ven)
+o	Fix missing ac97_codec.c return value		(Arjan van de Ven)
+o	Fix several warnings				(Arjan van de Ven)
+o	Made the PS/2 reconnect behaviour optional	(Alan Cox)
+	| Its now 'psaux-reconnect' on the boot line
+o	Allow for newer Hauppauge with 4 ports		(Krischan Jodies)
+o	Switch sound drivers from library to object	(Arjan van de Ven)
+o	Kill the not working ac97 lock on the 810	(Alan Cox)
+o	Automatically select older compilers for kernel
+	builds on Debian and RH				(Arjan van de Ven)
+o	Start volumes higher on ac97, teach the driver  (Rui Sousa)
+	about 5bit and 6bit codec precision and use
+	the mute bit.

@@ -1,0 +1,16 @@
+Linux 2.0.37pre1
+
+o	Serial supports a couple of PCI cards (Henning Schmiedehausen) 
+o	Tekram (DC390T) update		(Kurt Garloff)
+o	DAC960 beta driver		(Leonard Zubkoff)
+o	Slow A20 gate fix		(Leonard Zubkoff)
+o	Keyboard race fix
+o	3c59x updated 			(Don Becker)
+o	DEPCA updated			(Don Becker)
+o	EEPro100 updated		(Don Becker)
+o	RTL8139 updated			(Don Becker)
+o	Initio 91XX driver		(Initio, arranged by SuSE)
+o	AIC7xxx update			(Doug Ledford)
+o	ICMP include symbol fix
+o	Bridge port change fix		(Vova Oksman)
+o	PPTP masquerading

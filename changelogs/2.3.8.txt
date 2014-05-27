@@ -1,0 +1,8 @@
+Linux 2.3.8
+
+There's a 2.3.8 kernel out there now - this one acts a lot more stable and
+pretty much finishes up the cleanup issues. Now there's still a lot of
+tweaking to do, and finding the last bugs, but I think the code base has
+stabilized.
+
+                Linus

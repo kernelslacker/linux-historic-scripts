@@ -1,0 +1,21 @@
+Linux 2.0.39pre8
+
+o	Make ide.c compile			(Andries Brouwier)
+o	Added new versions of PCI-2000		(Mark Ebersole)
+o	Added new versions of PCI-2220i		(Mark Ebersole)
+o	Fixed a few typos in PCI-2000,		(David Weinehall)
+	PCI-2220i, PSI-240i and related
+	files
+o	Removed unused variable in xd.c		(David Weinehall)
+o	Small Config.in-file cleanups		(David Weinehall)
+o	Renamed the initfunctions in		(David Weinehall)
+	pi2.c and pt.c, as their names
+	clashed with paride-names
+	(obviously, noone uses paride
+	 together with hamradio)
+o	Remove two unnecessary files		(David Weinehall)
+	I introduced in one of the
+	other pre-patches
+o	Changed all (?) references to		(David Weinehall)
+	vger.rutgers.edu to
+	vger.kernel.org

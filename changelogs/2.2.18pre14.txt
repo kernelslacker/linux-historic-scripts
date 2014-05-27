@@ -1,0 +1,14 @@
+Linux 2.2.18pre14
+
+o	Reorder attributes in drm to work with gcc272	(Alan Cox)
+o	GNU cross compilers are foo-bar-gcc 		(Russell King)
+o	Add extra strange pcnet32 ident			(Willy Tarreau)
+o	Since no vendor can get which right.. use a	(Miquel van Smoorenburg)
+	shell script instead
+	| Please nobody tell me this fails in some bash version!
+o	Should be using bash not bash2 (escaped debug)	(Petri Kaukasoina)
+o	spin_unlock_irq wrong debug mode printk		(Willy Tarreau)
+o	Fix pcxx for the loops changes			(Arjan van de Ven)
+o	Fix ov511/via-rhine name clash			(Arjan van de Ven)
+o	Fix bridge compile with loops_per_sec change	(Mitch Adair)
+o	8139too driver added				(Jeff Garzik)

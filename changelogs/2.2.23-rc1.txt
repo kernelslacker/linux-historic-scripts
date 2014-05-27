@@ -1,0 +1,15 @@
+Linux 2.2.23-rc1
+
+o       Gameport support for ALi 5451                   (Pascal Schmidt)
+        | Just missing PCI idents
+o       IP options IPOPT_END padding fix                (Jeff DeFouw)
+o       Make APM check more paranoid                    (Solar Designer)
+o       Sanity check ixj requests as in 2.4             (Solar Designer)
+o       Fix printk warning in fat                       (Solar Designer)
+o       Fix other print warnings in 2.2.22              (Solar Designer)
+o       Backport NT iret denial of service bugfix    (Marc-Christian Petersen)
+o       ISDN multichannel ppp locking fix               (Herbert Xu)
+o       Fix sx driver compiled into kernel case         (Martin Pool)
+o       Backport ipfw sleep in spinlock in firewall     (James Morris)
+o       Update dmi_scan code to match 2.4/2.5           (Jean Delvare)
+o       Make agp debugging printk clearer               (Neale Banks)

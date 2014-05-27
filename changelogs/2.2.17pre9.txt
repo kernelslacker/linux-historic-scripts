@@ -1,0 +1,11 @@
+Linux 2.2.17pre9
+
+o	Fix toshiba driver to work compiled in		(Alan Cox)
+o	Fix scsi sg driver panics with some cards	(Douglas Gilbert)
+o	Fix select() handling bugs in DoubleTalk driver (Jim Van Zandt)
+o	Alpha fixes for fbcon. matroxfb and pm2fb	(Jay Estabrook)
+o	Further TCP fixes (please give these a good
+		beating)				(Alexey Kuznetsov)
+o	Add some delays to cs46xx to try and fix the	(Alan Cox)
+	'only works on 2nd load' bug some people see
+

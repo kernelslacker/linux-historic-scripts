@@ -1,0 +1,11 @@
+The LDT fixes in particular fix some potentially random strange behaviour.
+And the alpha memmove() thing was a showstopper bug on alphas.
+
+		Linus
+
+- x86 LDT handling fixes: revert some cleanups (the LDT really
+  doesn't act like a TLB context)
+- Richard Henderson: alpha update (working memmove() from Ivan
+  Kokshaysky etc)
+- Manfred: winbond-840.c net driver update (fix oops on module unload etc)
+- Alan Cox: more synchronizations (with some fixes from Andrew Morton)

@@ -1,0 +1,10 @@
+Linux 2.4.0-test7pre3
+
+    - nfs_commit_rpcsetup() signed comparison bugfix and cleanup
+    - sparc updates and TLB invalidation fix
+    - networking updates (less verbose on the new reordering messages)
+    - network driver Makefile cleanup
+    - Fix segment copy on fork.
+    - tsk->files race fixes: close-on-exec etc.
+    - sound #define cleanups
+    - fs/proc/array.c task_lock cleanup

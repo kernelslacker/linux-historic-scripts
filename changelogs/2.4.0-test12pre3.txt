@@ -1,0 +1,11 @@
+- Linus: more PageDirty / swapcache handling
+- Neil Brown: raid and md init fixes
+- David Brownell: pci hotplug sanitization.
+- Kanoj Sarcar: mips64 update
+- Kai Germaschewski: ISDN sync
+- Andreas Bombe: ieee1394 cleanups and fixes
+- Johannes Erdfelt: USB update
+- David Miller: Sparc and net update
+- Trond Myklebust: RPC layer SMP fixes
+- Thomas Sailer: mixed sound driver fixes
+- Tigran Aivazian: use atomic_dec_and_lock() for free_uid()

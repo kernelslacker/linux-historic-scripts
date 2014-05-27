@@ -1,0 +1,5 @@
+Linux 2.2.19pre2
+
+o	Drop the page aging for a moment to merge the
+	Andrea VM
+o	Merge Andrea's VM-global patch			(Andrea Arcangeli)

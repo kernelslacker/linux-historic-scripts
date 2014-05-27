@@ -1,0 +1,6 @@
+Linux 2.4.0-test9
+ 
+    - USB: ohci controller update, round-robin device numbering
+    - ksymoops moved: document
+    - sparc updates
+    - sg.c: get rid of more #ifdef MODULE code

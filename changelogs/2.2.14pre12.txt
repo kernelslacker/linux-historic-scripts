@@ -1,0 +1,16 @@
+Linux 2.2.14pre12
+
+o	Fix an IP checking bug				(Stephan Uphoff)
+o	Ultrasparc corruption bugfix			(Dave Miller)
+o	Tidy up the drive spin up timer			(Jens Axboe)
+o	Fix AX.25 hanging socket bug			(Tomi Manninen)
+o	PPC SMP build bug fix				(Cort Dougan)
+o	Fix SCSI CD memory leak on readraw mode		(Martin Vogt)
+o	Firewall rule counting fix			(Emanuele Caratti)
+o	Fix script symbol collisions on NCR 53c78xx	(Richar Hirst)
+o	Unload lp if it finds no ports			(Tim Waugh)
+o	Improve old/new tulip docs			(Wichert Akkerman)
+o	Syncookie memory leak				(Andi Kleen)
+o	dput could be called on freed dentry		(H J Lu)
+o	SCSI end_request race fix			(Soohoon Lee)
+o	Fix shared irq bug in synclink driver		(Paul Fulghum)

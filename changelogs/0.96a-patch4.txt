@@ -1,0 +1,15 @@
+32-bit inodes: patch4
+    
+Ok, patch4 implements 32-bit inode numbers (and thus the new
+stat/lstat/fstat system calls), as well as correcting the bad
+rs-performance on some machines that showed up in patch3. It's
+currently only on banjo, but I'll copy it around eventually.
+    
+Again, you don't miss much if you don't use this patch: it's mainly for
+(a) the serial problems and (b) for hlu etc that want to test out the
+32-bit interface. It does some other magical tricks as well (uses less
+memory in the low 1M region by moving the screen and tty buffer to high
+memory), if anybody is interested.
+    
+            Linus
+

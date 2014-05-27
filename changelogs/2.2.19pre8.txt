@@ -1,0 +1,26 @@
+Linux 2.2.19pre8
+
+o	Add support for ICS1893 PHY to sis900		(L C Chang)
+o	Fix typo in nautilus code			(Tom Vier)
+o	Clean up usb bandwidth messages			(Randy Dunlap)
+o	USB ACM loosen up end point rules		(Randy Dunlap)
+o	Fix tty module count corruptions		(Maciej Rozycki)
+o	i2o block updates				(Boji Kannanthanam)
+o	menuconfig updates				(Kirk Reiser)
+o	Fix dmi/apm ordering bug			(Keith Owens,
+							 Neale Banks)
+o	Alpha SMP build fix				(Herbert Xu)
+o	Fix igmp bugs					(Stefan Jonsson)
+o	Fix USB config.in problems			(Greg Kroah-Hartman)
+o	Update Cort Dougan's info			(Cort Dougan)
+o	Update to 2.4.0 style A20 gate handler		(Randy Dunlap)
+o	Fix unneeded compat defines on S/390 ctc	(Kurt Roeckx)
+o	Macintosh HID driver fixes			(Cort Dougan)
+o	Fix ppc config/input layer and ksyms		(Cort Dougan)
+o	ISDN updates					(Kai Germaschewski)
+o	TGAfb as a module			(Andrzej Krzysztofowicz)
+o	Syscall table updates for sparc64		(Ben Collins)
+o	8139too driver updates				(Jens David)
+o	Tighten packet length checks in masq/tproxy	(Julian Anastasov)
+o	Fix udp port selection hang			(Dave Miller)
+

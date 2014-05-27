@@ -1,0 +1,8 @@
+Linux 2.4.0-test7pre2
+
+    - fix modversions.h generation ("make -j dep" works now)
+    - finish 64-bit VFS: getdents64 and fcntl64 (getdents64 also adds
+      the "file type" to the readdir data - VFS layer change.  fcntl64
+      allows 64-bit file locking)
+    - Intel i810 watchdog driver and NS DP83810 network driver
+    - dup2() cannot screw up the file table with threads any more.

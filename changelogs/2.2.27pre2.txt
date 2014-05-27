@@ -1,0 +1,6 @@
+Linux 2.2.27-pre2
+
+o       A more correct fix to last mremap (2) bug               (Dan Yefimov/Solar Designer)
+o       renamed imho *bogus* _vsnprintf to vsnprintf            (Marc-Christian Petersen)
+o       fixed 'noexec' behaviour (2.4 backport)                 (Marc-Christian Petersen)
+          from Ulrich Drepper

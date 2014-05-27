@@ -1,0 +1,32 @@
+Linux 2.2.18pre3
+
+o	Clean up most of the compatibility macros	(Alan Cox)
+	that various people use. I've systematically
+	moved the 100% correct ones to the headers
+	used in 2.4
+o	Fix newly introduced bug in kmem_cache_shrink	(Daniel Roesen)
+o	Further updates to symbios drivers		(Gerhard Roudier)
+o	Remove emu10K warning and mtrr warning		(Daniel Roesen)
+o	Fix symbol clash between cs4281 and esssolo1	(Arjan van de Ven)
+o	Fix acenic non modular/module build issues	(Arjan van de Ven)
+o	Fix bug in alpha csum_partial_copy that could	(Herbert Xu)
+	cause spurious EFAULTs
+o	Yet another eepro100 variant sighted		(Torben Mathiasen)
+o	Minor microcode.c final tweak			(Daniel Roesen)
+o	Document that ATIFB is now modular		(Marcelo Tosatti)
+o	Parport update					(Tim Waugh)
+o	First set of ext2 updates/fixes			(Al Viro)
+o	Bring smbfs back into line with 2.2		(Urban Widmark)
+	| This should make OS/2 work again
+o	Fix S/390 _stext (still doesnt build dasd)	(Kurt Roeckx)
+o	Remove unused vars in arch/i386/kernel/bios32.c	(Daniel Roesen)
+o	Update the DHCP initrd support			(Chip Salzenberg)
+o	Allow opening empty scsi removables like IDE
+	with O_NONBLOCK (needed for some ioctls)	(Chip Salzenberg)
+o	Back out vibra mixer change
+o	Fix error returns in sbni driver		(Dawson Engler)
+o	Initial merge of the aacraid driver		(Adaptec)
+	| Much deuglification left to be done here
+o	Report megaraid: on obscure megaraid error	(Daniel Deimert)
+	strings
+o	Add another CS4299 id string			(Mulder Tjeerd)

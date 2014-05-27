@@ -1,0 +1,26 @@
+Linux 2.0.36pre13
+
+This won't be the last. I'm told the final 5.1 revision super save the universe
+adaptec driver will be out in a few days. I'm going to do a pre14 when that
+occurs. No point having 2.0.36 appear the day before the new adaptec driver
+passes its final testing.
+
+Anyway.. the changes
+
+2.0.36pre13 changes
+
+o	lxdialog handles differences between Ncurses versions nicely
+	[Thomas Dickey]
+o	Bridging might actually compile and work right now [me]
+o	A quota hanging bug has been killed [c/o DaveM]
+o	New EEPro10 driver update [Bao]
+o	SMP deadlock possibility fixed [Leonard]
+o	SYSV define and shm swap off now work right [me]
+o	ISDN update [Karsten Keil]
+o	make xconfig bug fixes [Andrew Veliath]
+o	Incorrect definition of one of the IP options fixed [ANK]
+o	paride update [Grant Guenther]
+o	Ensoniq known in PCI vendor data [Bill Nottingham]
+o	Alpha returns -ENOSYS not -EPERM for invalid syscalls
+o	TCP/IP accounting now doesnt account packets with invalid headers
+

@@ -1,0 +1,15 @@
+Linux 2.0.37pre9
+
+o	Appletalk probe bug				(Jens-Uwe Mager)
+o	Further multicast fixes				(Alan Cox)
+	| We should now pass the JDK mcast tests
+o	Export fddi symbols				(Christoph Goos)
+o	Autoset ARCH, Makefile fix			(Paul Slootman)
+o	PCI handling fix				(Thomas Bogendoerfer)
+o	PCI2000, PCI2200, PSI240 drivers		(Perceptive Solutions)
+o	Our netrom code crashed BPQ			(Tomi Manninen)
+	| BPQ doesn't appear to have been fixed in most
+	| places. If you run BPQ, you should worry about this 8)
+o	Updated DAC960 driver				(Leonard Zubkoff)
+o	Updated Adaptec 29xx driver			(Doug Ledford)
+o	Assorted minor tweaks/cleanups			(various)

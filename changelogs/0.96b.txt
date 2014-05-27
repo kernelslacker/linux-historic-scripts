@@ -1,0 +1,76 @@
+[PATCH] Linux-0.96b (June 21, 1992)
+
+First cut at core-dumping.  Also, do more dynamic boottime memory
+allocation, rather than allocating data structures statically.
+
+Allocate task structures at run-time rather than having a big array of
+them.
+
+First "obsolete" system call.  The old "stat()" system call was too
+limited, due to "struct stat" having various 16-bit fields etc (notably
+inode numbers).  We make a new stat() function, and keep the old one
+around as "old_stat()" for binary compatibility. 
+
+We also need a bigger "utsname" to hold real node names.
+
+Whoo! NR_OPEN is now 32 rather than 20. 
+
+itimer() support driven by X11 adoption (Darren Senn).
+
+gcc starts using fsqrt, so that gets added to the FP emulation.  We're
+still basing that on my trivial code.
+
+[Original changelog below]
+
+0.96b is not a new major release: it's pretty close to 0.96a with all my
+patches (1-4).  However, as there has been 4 patches already, I decided
+it would be time for a full kernel release along with a bootimage, so
+that people who don't feel confident with patching can use the new
+features.
+
+If you already have 0.96a patchlevel 4, 0.96b will offer you these new
+features:
+
+ - the math-emulation now handles fsqrt, as gcc-2.2.2 generates that
+   inline.  I haven't tested the kernel code at all: I tested the
+   algorithm in user space, but I'm lazy, so I never turned off my 387
+   to do real testing.  I hope it works.
+ - better vt100 terminal emulation thanks to Mika Liljeberg.
+ - I removed a possible race-condition in the buffer-cache code.
+ - minor fixes
+
+The vt100 emulation should now be complete enough for almost everything
+(including vt100 test suites): as a result the setterm utility had to be
+changed (as the old setterm codes aren't compatible with the full vt100
+codes).  setterm-0.96b.tar.Z contains the new setterm.
+
+The soon-to-be-released gcc-2.2.2 will need the 0.96b kernel: (a) due to
+the fsqrt emulation and (b) it uses the new stat() system call.  So
+upgrading is a good idea.  (If you have a co-processor, (a) isn't used,
+but (b) still stands)
+
+If you have an unpatched 0.96a, the differences to 0.96b are roughly
+(not counting the above-mentioned new things):
+
+ - corrected the disk-buffer-list bug with read/write-errors
+ - fixed read-ahead warning messages at end of disk
+ - better support for text-mode restoration after running MGR and X
+ - full core-dumping, attach/detach etc debugging features
+ - 16550A support
+ - less low 1MB memory used for kernel structures
+ - various minor fixes
+
+Note that the fact that new versions (pl4 and above) use more memory in
+the 1M+ area means that linux will report less free memory (it's used
+for buffer-cache instead).  This could concievably be a problem on 2MB
+machines.  The standard kernel comes with only 4 pty's though, and if
+you use the standard 80x25 text modes instead of svga modes, the VC
+buffers will be smaller.  Please contact me if there are problems even
+with this minimal setup.
+
+0.96b does /not/ contain: the new scsi drivers, new filesystems or some
+other patches I have gotten (ibm character set mode, loop-devices etc).
+If you have sent me any other patch, you might want to remind me about
+it.
+
+                Linus

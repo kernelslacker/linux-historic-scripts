@@ -1,0 +1,13 @@
+Linux 2.2.14pre16
+
+o	Fix ixj build bugs				(Quicknet, Arjan van de Ven, Alan Cox)
+o	Fix timer handling crashes on ixj		(Alan Cox)
+o	Fix scsi generic interruption oops		(Doug Gilbert)
+o	UMSDOS fixes and updates			(Matija)
+o	Revised verson of the fs/super changes		(Dave Miller)
+o	Fritz PCI ISDN fix				(Karsten Keil)
+o	Fix fatfs buffer leak				(Andrea Arcangeli)
+o	Update joystick drivers				(Vojtech Pavlik)
+o	Tulip update					(Wolfgang Walter)
+o	IDE geometry fixes				(Andries Brouwer)
+o	IDE pio multiwrite fix				(Mark Lord)

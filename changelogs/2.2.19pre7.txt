@@ -1,0 +1,31 @@
+Linux 2.2.19pre7
+
+o	Remove dead arm files				(Russell King)
+o	Fix VIA rhine build failure for a few folks	(Peter Monta)
+o	ARM ptrace fixes				(Russell King)
+o	Fix ymfpci setup for legacy devices		(Pete Zaitcev)
+o	xspeed dsl needs pci				(Lars Holmberg)
+o	Typo fix					(Dave Miller)
+o	Update ftdi usb serial driver			(Greg Kroah-Hartman)
+o	Update keyspan usb serial drivers		(Greg Kroah-Hartman)
+o	Sparc updates					(Dave Miller)
+o	Remove incorrect lp printk			(Tim Waugh)
+o	Fix ppa panic on timeout			(Tim Waugh)
+o	Maestro3 needs ac97 codec			(Oleg Krivosheev)
+o	Fix kwhich versus old bash			(Pete Zaitcev)
+o	Fix ip checksum compiler behaviour assumption	(Dave Miller)
+o	Fix real audio masq in presence of options	(John Villalovos)
+o	ne2k-pci version printing tweaks		(J. Magallon)
+o	Fix incorrect minors for some dasd devices as	(Holger Smolinski)
+	root
+o	Fix alpha exception table printk	    (Andrzej Krzysztofowicz)
+o	USB config updates				(Greg Kroah-Hartman)
+o	USB audio driver updates			(Greg Kroah-Hartman)
+o	Fix missing unlock_kernel in usbdev		(Greg Kroah-Hartman)
+o	Update USB hid driver				(Greg Kroah-Hartman)
+o	USB rio driver update				(Greg Kroah-Hartman)
+o	Hopefully fix CyrixIII panic on boot		(Ingo Oeser, 
+							 H Peter Anvin)
+o	Further CMOS lock fixes, move ioctls		(Paul Gortmaker)
+o	Dumpable should now work right again		(Zack Weinberg,
+							 Alan Cox)

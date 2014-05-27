@@ -1,0 +1,14 @@
+Linux 2.1.99pre1
+
+a cleanup of my previous patches wrt irq handling, and also fixes
+a real bug (we used to ACK the io-apic outside the irq-controller lock,
+which meant that the ack's we did and "ipi_pending[]" might have gotten
+out of sync - which could certainly have resulted in bad behaviour).
+This also re-enables the code that replays interrupts in enable_irq(),
+because it should be ok now that the rest of the code is cleaned up.
+People that had the earlier problem with locking up with floppies, please
+test: if this re-introduces the lockup, please just #if 0 out all the code
+inside trigger_pending_irqs(), and send me a note telling me that that
+code still doesn't work.
+
+                Linus

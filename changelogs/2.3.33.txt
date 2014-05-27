@@ -1,0 +1,12 @@
+After doing too many last-minute updates of critical code that we really
+shouldn't have left this late (*), I'm going to calm things down. I've
+released 2.3.33 which fixes a few smaller problems with 2.3.32, and I'll
+let it quiet down a bit for a while.
+
+We're obviously not going to have a 2.4 this millenium, but let's get the
+pre-2.4 series going this year, with the real release Q1 of 2000.
+
+		Linus
+
+(*) Both the mm layer and the SCSI layer was changed quite a lot: we'll be
+better for it, but I'd have been happier if we hadn't needed to.

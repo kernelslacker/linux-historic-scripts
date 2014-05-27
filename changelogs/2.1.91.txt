@@ -1,0 +1,9 @@
+Linux 2.1.91
+
+I just made a real 91 on ftp.kernel.org, let's hope that this has all the
+sillies gone. As usual, it is prefectly smooth on my machine, but this
+time we also have a better chance of it being smooth on machines with less
+memory too, as Rik has done some good work in testing the algorithms out.
+So throw some problems at it to see just how good it is..
+
+                Linus

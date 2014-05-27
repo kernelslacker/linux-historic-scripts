@@ -1,0 +1,8 @@
+Linux 2.1.129-pre3
+
+I don't know how I made an old pre-patch available: I've made a pre-3 that
+has the proper proc thing so that it compiles (it is otherwise identical
+to pre-2, so if you got pre-2 to compile by patching by hand, then there's
+no reason to get pre-3).
+
+                Linus

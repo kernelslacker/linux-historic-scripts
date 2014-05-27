@@ -1,0 +1,13 @@
+Linux 2.2.17pre10
+
+o	Fix up the eepro driver further		(Aristeu Sergio Rozanski Filho)
+o	Update URL for Japanese Configure.help		(Goto Masanori)
+o	Remove tty driver sleep race			(Andrea Arcangeli)
+	| this backs out a fix but a fix we no longer need
+o	Tim Waugh moved					(Tim Waugh)
+o	Urban Widmark becomes new smbfs maintainer	(Urban Widmark)
+	| Also cleanup debug stuff
+o	Fix several cs46xx bugs 			(Tom Woller, Alan Cox)
+o	Fix INET=n compile failure			(Arjan van de Ven)
+o	Handle i2o boot volumes sanely			(Boji Kannanthanam,
+							 Alan Cox)

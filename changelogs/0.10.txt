@@ -1,0 +1,55 @@
+Linux 0.10 (November 11, 1991 ???)
+
+Likely correct 0.10: these were re-created from the RCS tree that Ted
+Ts'o had, no known pristine 0.10 tree (or, sadly, 0.02 and 0.03 trees)
+exist any more. 
+
+Linux-0.10 was actually a major step.  It was _almost_ able to host
+itself, and if I remember correctly, a small patch I posted to the
+newsgroup a few days later got the buffer cache handling stable enough
+that Linux could now compile itself under itself without running out of
+memory due to a memory leak. 
+
+Apart from bugfixes, the major update here is the support for
+mount/umount.  But you can also tell that others are starting to test
+out this thing, since the harddisk geometry is now auto-sensed, and we
+support the US keyboard layout in addition to the Finnish one. 
+
+(This is also the first actual thing from the outside: the US keyboard
+layout tables came from Alfred Leung, although with major editing by me.)
+
+ - add copyright messages ("(C) 1991  Linus Torvalds")
+
+   Nobody else is really doing coding (yet..) but clearly I'm starting
+   to be a lot more aware of other people here.
+
+ - split up boot/boot.s into boot/bootsect.s and boot/setup.s
+ - autodetect floppy type for booting
+ - make root device and boot device configurable
+
+ - support up to 16MB of physical memory (instead of just 8MB ;)
+
+   Whee. We're clearly moving into the "big iron" phase of Linux.
+
+ - move drivers around.  We now have separate subdirectories for
+   character device drivers (tty and memory) and block device drivers. 
+
+ - initial floppy driver support!
+
+   You can see how the "block layer" interfaces evolved directly from
+   moving parts of the original hd.c driver into ll_rw_block.c and
+   making them "generic". 
+
+ - make file reading do simple read-ahead
+ - make file writing avoid reading in blocks that are totally overwritten
+ - add support for /dev/port and /dev/null (!!)
+ - improve pipe throughput
+
+ - add support for sigaction(), not just old-style signal()
+
+   This also rewrites most of the signal code in C rather than assembly.
+
+ - add "mknod()" and "mount()"/"umount()" system calls, and support
+   for traversing over mount-points.
+
+ - add "sessions" and setsid(), so that we get proper SIGHUP's

@@ -1,0 +1,14 @@
+Linux 2.4.0-test9pre5
+
+    - Make SCSI initialization order be same as before.
+    - fix cardbus bridge resources..
+    - don't disallow Onstream ide-scsi devices
+    - byteorder: use statement expressions instead of macros, to avoid argument re-use.
+    - codafs update
+    - more USB updates
+    - _fput/__fput are no longer used. 
+    - ixj telephony driver fixes
+    - pmac SCSI driver init update
+    - Andries: net device name allocation as in 2.2.x
+    - sis900 driver update
+    - more drivers synced to Alan's 2.2.x changes

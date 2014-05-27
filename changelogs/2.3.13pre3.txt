@@ -1,0 +1,20 @@
+Linux 2.3.13pre3
+
+Ok, I finally did what I've wanted to do for a _loong_ time: get rid of
+the horrible #ifdef CONFIG_XXXX mess in init/main.c.
+
+Instead, any driver, filesystem or other entity can just register a kernel
+command line string and/or a initialization function that will be executed
+by using a magic section in the kernel linkage. So there is no need to
+touch a common file to add a new driver or a architecture-specific kernel
+command line entry.
+
+I've fixed up a few of the old command lines and initialization functions,
+but I'm hoping that driver writers can re-instate their own setup
+functions rather than me trying to fix up them all by hand. For that
+reason there is now a pre-patch-2.3.13-3 on ftp.kernel.org under
+"testing".
+
+Go wild.
+
+                Linus

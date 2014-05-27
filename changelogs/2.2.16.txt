@@ -1,0 +1,33 @@
+Linux 2.2.16
+
+The following security problems are fixed by this release
+
+o	Setuid applications. even when correctly checking for failures of
+	setuid() calls could fail to drop priviledges if the invoker had
+	made certain adjustments to the capability sets
+
+o	Opening a socket and issuing multiple connects on it could be used
+	to hang the box
+
+o	Readv/writev might misbehave on some very large inputs
+
+o	Potentially remote exploitable hole in the sunrpc code 
+
+o	User causable oopses in Appletalk and Socket code
+
+o	Obscure exploitable bugs in the Sparc kernel
+
+The full list of enhancements and other bug fixes will follow later.
+
+Recommendations:
+
+You should consider updating your 2.2 kernel to 2.2.16 if
+
+o	You have untrusted users on your system
+o	You have publically accessible kernel sunrpc services
+
+Other major bug fixes include
+
+o	The tcp retransmit crash on very high load
+o	Poor VM performance under some load patterns
+o	Fix for 3com 3c590 8K card stalls

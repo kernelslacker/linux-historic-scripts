@@ -1,0 +1,16 @@
+Linux-2.3.3 and a short hiatus..
+
+There's a Linux-2.3.3 out there on ftp.kernel.org, this one hopefully
+fixes pretty much all the waitqueue changes (and I'll disable waitqueue
+debugging in 2.3.4 unless something comes up).
+
+And yes, before anybody tells me, I know I forgot to increment the version
+number. So "uname" is goign to report 2.3.2 unless you fix that by hand.
+I'm also leaving for a very quick trip to Finland in another two hours, so
+don't bother emailing me - please discuss isues on the kernel list, and
+
+I'll catch up when I get back on Friday (yes, I'll spen as much time in
+airplanes as I do on the ground - fun, fun).
+Have fun,
+
+                Linus

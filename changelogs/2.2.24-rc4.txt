@@ -1,0 +1,4 @@
+Linux 2.2.24-rc4
+
+o   Fix ethernet as modules problems                (Alan Cox)
+o   Fix 8139too and rtl8139 padding                 (Alan Cox)

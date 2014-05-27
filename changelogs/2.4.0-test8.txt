@@ -1,0 +1,59 @@
+Linux 2.4.0-test8
+
+Ok, as the truncate problems really seem to be fixed, it's time to do an
+official test8, the first development kernel in about a year and a half
+that should have a working truncate() again. Thanks to everybody who
+tested, and especially to Al Viro who did a lot of the heavy lifting.
+
+There are a number of other various changes there too - the truncate fix
+itself was fairly small, it was just more complex than most problems that
+can be solved in 50 lines of code.
+
+The only one of any note that I'd like to point out directly is the
+clarification in the COPYING file, making it clear that it's only _that_
+particular version of the GPL that is valid for the kernel. This should
+not come as any surprise, as that's the same license that has been there
+since 0.12 or so, but I thought I'd make that explicit.
+
+Why? There's been some discussions of a GPL v3 which would limit licensing
+to certain "well-behaved" parties, and I'm not sure I'd agree with such
+restrictions - and the GPL itself allows for "any version" so I wanted to
+make this part unambigious as far as my personal code is concerned.
+
+The reason I wanted to mention that particular issue here explicitly
+(rather than as just a one-liner in the changelog) is that code written by
+others is obviously under _their_ discretion, and not limited by my
+personal foibles, fears and misgivings.
+
+If anybody wants to explicitly state that their code will be valid under
+any version of the GPL (current or future - whatever they may look like),
+please send patches to say so for the code in question. If you've used the
+FSF boiler-place copyright notice, you already have this in place (it says
+"v2 or later" - the FSF itself doesn't recommend v1 any more).
+
+(Me, I'm taking the careful "wait and see" approach. I don't know if a GPL
+v3 is imminent, and I don't know if the issues discussed will even
+_become_ real issues, so you might as well consider me a paranoid, if
+careful, bastard).
+
+		Linus
+
+ - final:
+    - sparc updates
+    - routing cleanups
+    - fix up warnings
+    - USB: dsbr driver update and warning cleanup
+    - USB: update the status file timestamps when changes occur
+    - USB: clean up module init/exit. No more explicit inits.
+    - USB: bluetooth and microtek driver updates
+    - serial.c: remove duplicated code. Add SGI serial port signature.
+    - /proc/kcore and ncpfs - more care with kernel virtual addresses
+    - discontiguous memory initialization fixup
+    - sd oom fixes
+    - pcmcia state machine fixes.
+    - microcode driver update - make sure we get a sane revision level
+    - copyright license version clarification (make v2 explicit)
+    - epic100, 8139too and tulip driver updates
+    - clean up truncate_inode_pages (no, this has nothing to do with the
+      rest of the truncate issues)
+    - jffs update

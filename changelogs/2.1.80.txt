@@ -1,0 +1,28 @@
+Linux 2.1.80
+
+This release should fix a few networking problems, and the NFS client is
+hopefully fairly stable even under the kinds of loads we have here at
+Transmeta.
+
+The 2.1.80 release also contains some initial ARM support, and contains
+Ingo Molnar's better SMP interrupt handling.
+
+NOTE NOTE NOTE! The new SMP interrupt handling is currently not very good
+at autodetection. This can be a real problem, and _before_ booting the
+2.1.80 kernel as compiled for SMP you should probably try to figure out a
+possible IRQ override line by doing:
+
+        echo -n pirq=; echo `scanpci -f | grep T_L | cut -c56-` | sed 's/ /,/g'
+which for me gives
+        pirq=0x00,0x09,0x0b
+
+Then, after doing the above, boot into 2.1.80 and see if it finds your PCI
+interrupt lines correctly. If it does, everything is fine. If it doesn't,
+you need to boot with the pirq setting that you determined earlier, by
+giving the kernel the pirq data at the bootup command line or by using the
+LILO "append=" feature (or similar features in other bootloaders).
+We'll certainly have to make the autodetection work reliably, but in the
+meantime the command-line approach at least gives us a way to test the
+more fundamental impacts of better interrupt handling.
+
+                Linus

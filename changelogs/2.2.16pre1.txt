@@ -1,0 +1,22 @@
+Linux 2.2.16pre1
+
+o	Intel 810 audio driver			(lots of people)
+o	EEpro100 updates			(Andrey Savochkin)
+o	S390 ksyms fixes			(Dougie Lawson)
+o	Procfs fixes				(H J Lu)
+o	MDA console driver fixes		(Edward Betts)
+o	Kernel doc pointer updates		(Juan-Mariano de Goyeneche)
+o	16bit code page translation support	('Cosmos')
+o	Remove 4.3GHz CPU speed limit		(Wayne Scott)
+o	Handle mouse reconnect event		(Brent Verner)
+o	make Xconfig update			(Andrzej Krzysztofowicz)
+o	Remove key repeats from random input	(Kevin Buhr)
+o	Fix maestro unload on irq failure	(Willy Tarreau)
+o	Fix a fencepost error in fatfs 		(Dan Yefimov)
+o	Switch 8259 handling to match spec	(Manfred Spraul)
+o	Autodetect unscaled M/O partitions
+	and read them anyway			(Gregory Hosler)
+o	Add XEN-II support to Apricot.c		(Richard Hirst)
+o	SMBfs updates				(Andrew Tridgell)
+o	I2O updates				(Boji Tony Kannanthanam)
+o	W6692 isdn fixes			(ISDN cvs)

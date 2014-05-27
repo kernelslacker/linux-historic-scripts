@@ -1,0 +1,14 @@
+Linux 2.1.127pre1
+
+I have an alternate patch for low memory circumstances that I'd like you
+to test out.
+The problem with the old kswapd setup was at least partly that kswapd was
+woken up too late - by the time kswapd was woken up, it really had to work
+fairly hard. Also, kswapd really shouldn't be real-time at all: normally
+it should just be a fairly low-priority process, and the priority should
+grow as there is more urgent need for memory.
+This alternate approach seems to work for me, and is designed to avoid the
+"spikes" of heavy real-time kswapd activity during which the machine is
+fairly unusable in the old scheme.
+
+                Linus

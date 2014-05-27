@@ -1,0 +1,5 @@
+pl15a fixes the buffer cache growing problem, adds emulation for a
+few unimportant floating point instructions (i287 instructions that
+are No-Ops on the i387, so "emulating" them is easy :^) and fixes a
+silly bug when mmap'ing stuff write-only.  It also fixes a buggy lock
+in the networking.

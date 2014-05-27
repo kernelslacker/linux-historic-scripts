@@ -1,0 +1,20 @@
+Linux 2.2.18pre25
+
+o       Fix tight loop spinning reporting out of free   (Marcelo Tosatti)
+        pages
+o       Back out ppa changes causing problems for a     (Tim Waugh)
+        few users
+o       Set master enable on UHCI USB controllers       (Erik Mouw)
+o       RIO DCD fixes                           (Patrick van de Lageweg)
+o       3c59x.c support for 3c556B                      (Andrew Morton)
+o       S390 cleanups for loopsperjiffy etc             (Kurt Roeckx)
+o       Fix acceleport 4 SMP hangs                      (Al Borchers)
+o       Fix drivers/char/Makefile buglet                (Chip Salzenberg)
+o       PPC syscall table fix                           (Chip Salzenberg)
+o       Move HID sysctl to avoid clash in 2.4 case      (Tom Rini)
+o       Small symbios check condition fix               (Gérard Roudier)
+o       Fix Makefile module version check               (Eric Lammerts)
+o       Fix DRM build on Sparc                          (Dave Miller)
+o       Work around Dallas D4201 PCM8 audio bug         (Thomas Sailer)
+o       Fix USB memory leak                             (Dan Streetman)
+o       Fix ioremap fencepost error                     (Chip Salzenberg)

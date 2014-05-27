@@ -1,0 +1,15 @@
+Linux 2.2.14pre5
+
+o	Ext2fs race fixes				(Andrea Arcangeli)
+o	Quota fixes					(Jan Kara)
+o	IPC msg accounting fixes			(Andi Kleen)
+o	Inode leak fixes				(Andrea Arcangeli)
+o	Transparent proxy bug fix			(Andi Kleen)
+o	PowerPC updates					(Cort Dougan)
+o	NCR885E PPC driver				(dan@synergymicro)
+o	SunRPC initialisation fix			(Trond)
+o	SMBfs long directory fix			(Pete Hilton)
+o	Blacklist update				(Thorsten Kranzkowski)
+o	Bus mouse fixes					(Alexis Wilke)
+o	Lance unload fixes				(Mika Kuoppala)
+o	Dcache hash sizing changes			(Andrea Arcangeli)

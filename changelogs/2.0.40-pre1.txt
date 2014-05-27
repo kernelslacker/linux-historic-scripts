@@ -1,0 +1,20 @@
+Linux 2.0.40-pre1
+
+o   Fixed the ordering of                 (Philipp Rumpf)
+    watchdog initialising, to make sure
+    hardware watchdogs takes precedence
+    over the softdog driver
+o   Fix the CREDITS-entry for Kai Petzke  (Kai Petzke)
+o   Updated the MAINTAINERS-file a little (David Weinehall)
+o   Fix "dumpable"-race                   (Solar Designer)
+o   Fix theoretical exploit in printk     (Solar Designer)
+o   Backported checkconfig.pl,            (David Weinehall)
+    checkhelp.pl and checkincludes.pl
+    from v2.4
+o   Backported support for tags and TAGS  (David Weinehall)
+o   Added an extra-version entry to       (David Weinehall)
+    the version#, to keep track of
+    the prepatches etc.
+o   Fix all occurences of                 (David Weinehall)
+    #endif BLABLA type; don't forget
+    that it should be /* BLABLA */ !!!

@@ -1,0 +1,6 @@
+Linux 2.1.89pre2
+
+[sct] a patch against ipc/shm.c was missing from my swap patches,
+      and another fix for spurious warnings about shared dirty pages.
+
+[changelog pieced together by davej]

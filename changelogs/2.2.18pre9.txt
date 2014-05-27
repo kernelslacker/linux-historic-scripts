@@ -1,0 +1,18 @@
+Linux 2.2.18pre9
+
+o	Fix usb module load oops			(Thomas Sailer)
+o	Bring USB boot drivers in line with 2.4t8	(Greg Kroah-Hartman)
+o	And USB print drivers				(Greg Kroah-Hartman)
+o	And USB Rio driver				(Greg Kroah-Hartman)
+o	And USB dc2xx driver				(Greg Kroah-Hartman)
+o	And USB mdc800 driver				(Greg Kroah-Hartman)
+o	NFSv3 support and NFS updates			(Trond Myklebust and co)
+o	Compaq 64bit/66Mhz PCI Fibrechannel driver	(Amy Vanzant-Hodge)
+o	Disable microtouch driver (doesnt work in 2.2	(Greg Kroah-Hartman)
+	currently)
+o	Update ADFS support				(Russell King)
+o	Update ARM arch specific code and includes	(Russell King)
+o	Update ARM specific drivers 			(Russell King)
+o	Use both fast and slow A20 gating on boot	(Kira Brown)
+	| if your box doesnt boot I want to know about it...
+	| Needed for stuff like the AMD Elan

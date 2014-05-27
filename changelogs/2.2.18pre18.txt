@@ -1,0 +1,32 @@
+Linux 2.2.18pre18
+
+o	Fix off by one in net/ipv4/proc			(Dave Miller)
+o	Move the fpu emu patch that got away		(Dave Miller)
+o	K6 update for MTRR ability			(Dave Jones)
+o	Fix raid1/vm deadlock				(Marcelo Tosatti)
+o	Fix usb mouse userspace memory accesses		(David Woodhouse)
+o	Fix xpdsl if compiled in (typo)			(Arjan van de Ven)
+o	Rio fixes for modem handling. Fix a small (Patrick van de Lageweg)
+	generic serial bug
+o	IBMtr driver fixes for cable pulls, pcmcia	(Burt Silverman,
+	behaviour etc					 Mike Sullivan)
+o	Tidy up /dev/microcode messages			(Daniel Roesen)
+o	Add arpfilter					(Andi Kleen)
+o	IDE floppy updates for clik support, cleanups	(Paul Bristow)
+o	Fix irongate handling on Alpha			(Soohoon Lee)
+o	Fix HZ=100 assumption in aha152x.c		(Alan Cox)
+o	Fix power management handling in i810 audio	(Alan Cox)
+	(From an ALSA fix by Godmar Back)
+o	Put the NFS block default back to 4K		(Trond Myklebust)
+o	Fix misleading comment in printk code		(Riley Williams)
+o	Fix fbcon scroll back/paste bug			(Herbert Xu)
+o	Fix rtc_lock for ide-probe, and hd.c		(Richard Johnson)
+o	Backport of 2.4 PR_GET/SET_KEEPCAPS		(Brian Brunswick)
+	(from Chris Evans 2.4 code)
+o	LRU list corruption fix				(Andrea Arcangeli)
+o	Initial gcc 2.96+ support for kernel building	(H J Lu)
+	| Not a recommended compiler for production kernels...
+o	ALI silence clearing fix			(Ching-Ling Lee)
+o	Fix remaining old-style use of copy_strings	(Solar Designer)
+o	Better pci_resource_start macro for 2.2		(Jeff Garzik)
+o	Fix nbd deadlock				(Marcelo Tosatti)

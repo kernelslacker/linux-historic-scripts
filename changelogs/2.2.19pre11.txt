@@ -1,0 +1,9 @@
+Linux 2.2.19pre11
+
+o	Corrected version of ipc/shm.c fix		(Christoph Rohland)
+o	Update/cleanup starfire				(Ion Badulescu)
+o	Update isdn makefiles				(Kai Germaschewski)
+o	Eicon driver updates/new driver			(Armin Schindler)
+	| code 
+o	Hysdn driver					(Werner Cornelius)
+o	Hisax updates					(Kai Germaschewski)

@@ -1,0 +1,2 @@
+- Fix TCP delayed ACK stall  (Andrea Arcangeli)
+- the first cut of my spinlock changes wrt the task lists (Linus)

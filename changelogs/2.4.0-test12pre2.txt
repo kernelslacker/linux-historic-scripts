@@ -1,0 +1,14 @@
+- Peter Anvin: more P4 configuration parsing
+- Stephen Tweedie: O_SYNC patches. Make O_SYNC/fsync/fdatasync
+  do the right thing.
+- Keith Owens: make mdule loading use the right struct module size
+- Boszormenyi Zoltan: get MTRR's right for the >32-bit case
+- Alan Cox: various random documentation etc
+- Dario Ballabio: EATA and u14-34f update
+- Ivan Kokshaysky: unbreak alpha ruffian
+- Richard Henderson: PCI bridge initialization on alpha
+- Zach Brown: correct locking in Maestro driver
+- Geert Uytterhoeven: more m68k updates
+- Andrey Savochkin: eepro100 update
+- Dag Brattli: irda update
+- Johannes Erdfelt: USB update

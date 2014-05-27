@@ -1,0 +1,11 @@
+Linux 2.1.117
+
+I made a 117 to fix the silly things left in 116 in my excitement over it
+passing all my crashtests. This should fix the things with the kernel
+thinking it was out of memory much sooner than it actually was etc.
+
+Alan still reports some funnies with unix domain sockets, but he's
+reportedly fixed the behaviour of NFS over TCP. He didn't make it sound as
+if you really want to use it yet, though ;)
+
+                Linus

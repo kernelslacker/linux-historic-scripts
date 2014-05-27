@@ -1,0 +1,5 @@
+Linux 2.2.17pre8
+
+o	Fix sparc64 sym53c8xx breakage			(Dave Miller)
+o	Further PPC merge updates			(Paul Mackerras)
+o	Fix the I/O slowdown in 2.2.17pre7		(Marcelo Tosatti)

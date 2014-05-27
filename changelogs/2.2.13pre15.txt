@@ -1,0 +1,17 @@
+Linux 2.2.13pre15
+
+o	Symbios 1510D SCSI added to sym driver 	(Charles White)
+o	Cyclades update				(Ivan Passos)
+o	Fix SMC ultra oops on unload		(Paul Gortmaker)
+o	Small SX serial driver fix		(Rogier Wolff)
+o	Quota fix 				(Jan Kara)
+o	ISDN update				(Karsten Keil)
+o	Driver for NCR 53c710 PC controllers	(Richard Hirst)
+o	Fix int v long warnings			(Mikael Pettersson)
+o	ESS solo1 claimed excess resources	(Thomas Sailer)
+o	Fix missing \n in CPU info		(Petri Kaukasoina)
+o	Sparc updates				(Dave Miller)
+o	Network small fixes			(Dave Miller)
+o	Clean up DVD/Ghost handling		(Rogier Wolff)
+o	PCSP has moved site			(David Woodhouse)
+o	Hopefully fix SMP/IDE hang		(Alan Cox)

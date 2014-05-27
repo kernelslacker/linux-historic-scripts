@@ -1,0 +1,17 @@
+Linux 2.2.17pre3
+
+o	Fix possible hang in TCP code under high net/	(Mark Hemment)
+	disk load
+	| Im very interested to know if this fixes some of the
+	| reported high load box totally hangs cases
+o	Fix a sparc64 problem with SABRE
+o	Bring the PPC port back into line (Cort Dougan, Paul Mackerras,
+				Benjamin Herrenschmidt, Henry Worth
+	| Lots of PPC fixes, DMA sound suspend fix, GMAC ethernet, 
+	| PPC changes to de4x5 for new apple stuff, core99 fixes
+	| adb, rth, macserial and media bay work
+o	Require root for keymap reloading		(Stephen Thorne)
+o	Fix a reported CD-ROM oops			(Jens Axboe)
+o	Give BSD behaviour for iovec overruns		(Ivan Kokshaysky)
+	| Also should fix OSF emulation
+o	Set file type on sockets in ext2		(Andreas Dilger)

@@ -1,0 +1,28 @@
+Linux 2.2.27-pre1
+
+o       fixed TCP keepalive bug                                 (Neal Cardwell)
+o       fixed tcp seq nr wrapping bug                           (Ulrik De Bie)
+o       added cciss root translation table                      (Eduard Bloch)
+o       VIA KL133/KM133 northbridge: vga console going crazy    (Roberto Biancardi)
+o       speedup 'make dep'                                      (Benoit Poulot-Cazajous)
+o       disabled MCE only on Pentiums by default (2.4 backport) (Herbert Xu)
+          (boot with 'mce' if your MCE works as expected)
+o       skb_realloc_headroom() panics when new headroom is      (James Morris)
+          smaller than existing headroom
+o       invalid nh.raw use after free                           (Julian Anastasov)
+o       fix a local APIC initaliziation ordering bug that       (Andrea Arcangeli)
+          triggers on the P4
+o       TSC calibration must be dynamic and not a compile       (Andrea Arcangeli)
+          time thing because gettimeofday is dynamic and it
+          depends on the TSCs to be in sync
+o       fix deadlock on shutdown in 8139too                     (Herbert Xu)
+o       support for ELF executables which use an a.out format   (Solar Designer)
+          interpreter (dynamic linker) moved into a separate
+          configuration option and disabled by default
+o       fixed sys_utimes perm check according to sys_utim       (Al Viro)
+o       show us the saved kernel command line (2.4 backport)    (Marc-Christian Petersen)
+o       some whitespace cleanups, some coding style cleanups    (Marc-Christian Petersen)
+o       fixed some gcc warnings                                 (Marc-Christian Petersen)
+o       add PCI ID for 82820 NIC to eepro100 network driver     (Marc-Christian Petersen)
+o       move 'Network device support' near 'Networking options' (Marc-Christian Petersen)
+

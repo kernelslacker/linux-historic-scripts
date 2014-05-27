@@ -1,0 +1,8 @@
+Linux 2.2.0 (pre1) (28 Dec 1998) 
+
+ we're in the pre-2.2.0 series now, I'm all synched up with Alan, and I
+don't have anything pending any more. Over the internet nobody can hear
+you all scream in pain over all your favourite features that didn't make
+it. 
+
+	Linus "another year older and wise as hell by now" Torvalds

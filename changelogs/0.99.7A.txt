@@ -1,0 +1,41 @@
+[PATCH] Linux-0.99.7A (March 21, 1993)
+
+More net-1 work. It's endless.
+
+XT harddisk support by Pat Mackinlay.
+
+sys_fsync() and SysV IPC code sys_ipc() stubs appear.
+
+[original announcement below]
+
+I don't generally announce ALPHA-diffs to quite this large an audience,
+but I'll be partying^H^H^H^H^H^H^H^Hunavailable for the rest of the
+week, and it's unlikely that I will be able to check mails or the
+newsgroups until the start of April.  As a result, I'm putting up my
+latest kernel version for ftp as it fixes some things in 0.99.7.
+    
+The ALPHA-diffs can be found on nic.funet.fi: in the directory
+pub/OS/Linux/PEOPLE/Linus.  If you dislike patching, you can get the
+full sources in "linux-0.99.7A.tar.z", or just get the diff file
+"ALPHA-diff.z".
+    
+Changes in this release:
+- the new kernel now detects the lock-up condition at startup if you
+  have a faulty 386/387 coupling, and will use software floating point
+  in that case.
+- the Xia filesystem is updated to the latest version
+- the DOS filesystem is updated to the latest version
+- the XT disk driver is included: I haven't been able to test it, but
+  at least it won't bother anybody if you don't configure it in..
+- the latest serial diffs are in
+- minor ultrastor fixes
+- some changes to the keyboard and line printer drivers: I hope the
+  keyboard lockups that some people have reported would be gone with
+  this release.
+- some fixes to arp.c
+    
+I'll be interested in success/failure reports, although I won't be able
+to answer them for some time (and I might miss some of the posts on
+c.o.l).
+    
+            Linus

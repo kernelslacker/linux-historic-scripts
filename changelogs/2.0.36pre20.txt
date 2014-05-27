@@ -1,0 +1,5 @@
+Linux 2.0.36pre-patch 20
+
+o	PCI ID for a newer lance chip
+o	TCP should now handle syn+ack+data frames right again (KA9Q sends them)
+o	ISDN4linux update - this should fix some stack overruns with Hisax

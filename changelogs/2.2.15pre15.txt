@@ -1,0 +1,20 @@
+Linux 2.2.15pre15
+
+o	Semaphore undo leak fix				(Christian Ehrhardt)
+o	MSP3400 docs + config hint			(Matthias Andree)
+o	Avoid localising version data			(Matthias Andree)
+o	Fix an obscure nfsd hang			(epx@conectiva.com.br)
+o	Ron Holt moved					(Ron Holt)
+o	Fix X.25 restart collisions			(Henner Eisen)
+o	Fix X.25 EOR flags				(Henner Eisen)
+o	IRDA security fixes and packet accounting	(Dag Brattli)
+o	Fix sktr compile bug				(Arjan van de Ven)
+o	Sparc sync up					(Dave Miller)
+o	Fix quota warnings				(Adrian Sun)
+o	Fix quote permission check			(Adrian Sun)
+o	Megaraid back to 1.07 + firmware check		(AMI, Dell, 
+							Doug Ledford)
+o	Resynchronize 2.2/2.3 drive blacklists		(Tim Waugh)
+o	ISDN updates (mppp foxes. tty call fixes,
+		reog AVM driver, Eicon fixes..)		(Karsten Keil and co)
+o	Fix full duplex on olympic TR			(Mike Phillips)

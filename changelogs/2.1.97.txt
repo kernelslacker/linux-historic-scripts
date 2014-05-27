@@ -1,0 +1,8 @@
+2.1.97 - for brave people only.
+
+I made a 2.1.97 release, in order to synch up with some large patch-sets
+I've gotten (non-x86 architecture updates). But due to the new baby this
+really hasn't been through my usual exhaustive stress-test ("make bzImage"
++ "boot") so buyer beware.
+
+                Linus

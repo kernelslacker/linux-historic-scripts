@@ -1,0 +1,32 @@
+pre-2.1.109-2..
+
+To get people away from their normally scheduled copyright discussions, I
+made a pre-2.1.109 to try out. I woul dhave made a real 2.1.109, but my
+computer room has been taken over by visiting relatives, and they want to
+go to sleep. Ye Gods!
+
+Get it from ftp.kernel.org, /pub/linux/kernel/testing as usual. It has
+ - CPU detection in C code (and thus much easier to expand upon,
+   especially as it's all thrown away after booting now that it is
+   "initfunc()").  This should finally get the Cyrix case right, for
+   example. Please test.
+ - too meny people convinced me that sendfile() really wants to act like
+   writep().
+ - sound driver updates from Alan.
+ - console updates, so now we have the full old functionality again as far
+   as I'm concerned (but I'm sure people will tell me something is still
+   missing)
+ - task switch and user space return cleanly handles bad segment
+   descriptors etc, so people shoul dno longer be able to cause kernel
+   messages by misusing the LDT.
+ - wine should work again thanks to Bill Hawes (other LDT fixes)
+ - de4x5 driver update
+ - token ring driver update
+ - ppp driver update
+ - coda-fs update
+ - "shared writable" bug fixed (thanks to a lot of people for testing and
+   working on this - the actual fix was trivial once the problem was
+   understood)
+Check it out,
+
+                Linus

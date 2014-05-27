@@ -1,0 +1,21 @@
+ - pre5:
+    - truncate. Guess what? We threw away the key to the clue-box.
+    - simplify signal notification. And remember the spinlock.
+    - VIA ide driver update (well, rewrite - the old one was buggy and broken)
+    - network driver fixes (not checking for oom etc)
+    - USB serial driver SMP locking fixes
+    - fix memory leak on failed USB configuration queries
+    - USB initialization using proper "init()" calls.
+    - dvd capacity bug fix and other cdrom driver cleanups
+    - sis5513 IDE chipset update
+    - do_fork() - add "stack-top" for ia64 (and potentially other
+      architectures that may care)
+    - devfs support for LVM
+    - quota transfer miscount fix
+    - x86 checksum/copy prefetch
+    - NFS sillydelete fix
+    - mark_buffer_dirty() doesn't actually use the second argument. Delete it.
+    - SCSI communications device - no need to complain about it
+    - SCSI WP test fix (all pages, not just the first one)
+    - epic driver update
+    - fix pcmcia "driver asserts interrupts when booting up" issues

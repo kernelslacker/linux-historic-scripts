@@ -1,0 +1,10 @@
+Linux 2.4.0-test7-pre5
+
+    - i2c-old compile fix. 
+    - sparc updates (pte_pagenr cleanups)
+    - make ipv6 loadable as a module together with CONFIG_INET_ECN
+    - get rid of bdf_prm.b_un.age_super - it just confused the buffer aging
+    - smbfs knows about nls and ascii mount options
+    - small joystick driver updates
+    - make sure to mark inode dirty after having changed the size!
+    - hgafb documentation update

@@ -1,0 +1,20 @@
+Linux 2.2.19pre10
+
+o	Update aic7xxx driver to 5.1.33			(Doug Ledford)
+o	Revert shm change - its unsafe			(Richard Nelson)
+o	Update sunrpc code, add rpc ping congestion	(Trond Myklebust)
+	checks
+o	Fix wrong kfree in cosa driver			(Jan Kasprzak)
+o	NFS client fixes				(Trond Myklebust)
+o	Better dcache/inode hashes			(Dave Miller)
+o	Fix missing skb->protocol init in AX.25		(Thomas Osterried)
+o	EEpro100 reporting fix as per 2.4		(Ion Badulescu)
+o	Starfire ethernet driver			(Don Becker,
+							 Ion Badulescu,
+							 Jeff Garzik, ...)
+o	Memory handling fixes for ISDN core code	(Kai Germaschewski)
+o	ISDN module locking fixes			(Kai Germaschewski)
+o	Fix ISDN modem profile reading 			(Kai Germaschewski)
+o	Fix missing mark_bh calls in isdn		(Kai Germaschewski)
+o	Fix problems make xconfig has with config  (Andrzej Krzysztofowicz)
+o	Clean up isdn to user new __init etc		(Kai Germaschewski)

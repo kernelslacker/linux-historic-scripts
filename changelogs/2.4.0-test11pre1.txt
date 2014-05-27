@@ -1,0 +1,22 @@
+- pre1:
+    - Linus: make PCMCIA work even in the absense of PCI irq's
+    - Linus: add irq mapping capabilities for Cyrix southbridges
+    - Linus: make IBMMCA compile right as a module
+    - Linus: uhhuh. Major atomic-PTE SMP race boo-boo. Fixed.
+    - Andrea Arkangeli: don't allow people to set security-conscious
+      bits in mxcsr through ptrace SETFPXREGS.
+    - Jürgen Fischer: aha152x update
+    - Andrew Morton, Trond Myklebust: file locking fixes
+    - Linus: TLB invalidate race with highmem
+    - Paul Fulghum: synclink/n_hdlc driver updates
+    - David Miller: export sysctl_jiffies, and have the proper no-sysctl
+      version handy
+    - Neil Brown: RAID driver deadlock and nsfd read access to
+      execute-only files fix
+    - Keith Owens: clean up module information passing, remove
+      "get_module_symbol()".
+    - Jeff Garzik: network (and other) driver fixes and cleanups
+    - Andrea Arkangeli: scheduler cleanup.
+    - Ching-Ling Li: fix ALi sound driver memory leak
+    - Anton Altaparmakov: upcase fix for NTFS
+    - Thomas Woller: CS4281 audio update

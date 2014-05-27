@@ -1,0 +1,8 @@
+ - pre3:
+    - ext2: final truncate piece - fix the innd problem.
+    - use "sfence" for x86 memory barrier when available.
+    - remove the thread-group signal code for now: no feedback.
+      Leave the cleanups in place so that we can add it back in
+      cleanly later, but remove the new features.
+    - ARM update.
+    - released for Al Viro to check the truncate thing

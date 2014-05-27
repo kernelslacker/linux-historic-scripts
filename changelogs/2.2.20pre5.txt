@@ -1,0 +1,4 @@
+Linux 2.2.20pre5
+
+o	Fix a patch generation error, replaces 2.2.20pre4 which is
+	wrong on ad1848

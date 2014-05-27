@@ -1,0 +1,11 @@
+The most noticeable part of this is that the run_task_queue fix should
+cure the lockup that some people have seen.
+
+The shmfs cleanup should be unnoticeable except to users who use SAP with
+huge shared memory segments, where Christoph Rohlands work not only
+makes the code much more readable, it should also make it dependable..
+
+- Christian Jullien: smc9194: proper dev_kfree_skb_irq
+- Cort Dougan: new-style PowerPC Makefiles
+- Andrew Morton, Petr Vandrovec: fix run_task_queue
+- Christoph Rohland: shmfs for shared memory handling

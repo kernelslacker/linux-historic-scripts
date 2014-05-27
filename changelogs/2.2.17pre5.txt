@@ -1,0 +1,16 @@
+Linux 2.2.17pre5
+
+o	Fix alpha compile problems on lmc and dmfe	(Alan Cox)
+o	Fix sparc32 lockd translation			(Dave Miller)
+o	Fix HDLC problems with packet lengths		(Ivan Passos)
+o	PMAC updates - should now build			(Benjamin Herrenschmidt)
+	video update rejected as too risky
+o	Removed unused trashing var			(Andrea Arcangeli)
+o	Proper fix for the TCP crash case		(Andi Kleen)
+o	Further small vm fixups				(Rik van Riel)
+o	Fix SCSI tape bugs				(Kai Makisara)
+o	Lanmedia driver fixes				(Andrew Stanley-Jones)
+o	ES1370/1371 GETOSPACE fixes			(Thomas Sailer)
+o	FAT CD fix					(Jens Axboe)
+o	Further small shared irq 3c59x fix		(Andrew Morton)
+o	Fix scripts/Configure comment handler		(Jun Hamano)

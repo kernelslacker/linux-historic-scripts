@@ -1,0 +1,8 @@
+Linux 2.2.15pre17
+
+o	Revert the alpha FPU misfix			(Richard Henderson)
+o	Really apply the typo fix this time		(Barry K. Nathan)
+o	Fix ISDN symbol collision			(Arjan Van de Ven)
+o	Loose UDP masquerade is now configurable so 
+	security concious users can disable it and game
+	freaks turn it on				(Nigel Metheringham)

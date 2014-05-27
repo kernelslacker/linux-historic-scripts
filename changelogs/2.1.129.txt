@@ -1,0 +1,21 @@
+Linux 2.1.129
+
+To a large degree is more merges for PPC and Sparc (and
+somehow I must have missed ARM _again_, so I'll have to find that).
+
+But there's a few other things in there:
+ - ncr53c8xx tag fix
+ - more sound fixes.
+ - NFS fixed
+ - some subtle TCP issues fixed
+ - and lots of mm smoothness tweaks (most of those have been floating
+   around for some time - like getting rid of the last vestiges of page
+   ages which just complicated and hurt the code)
+
+Have fun with it, and tell me if it breaks. But it won't. I'm finally
+getting the old "greased weasel" feeling back. In short, this is the much
+awaited perfect and bug-free release, and the only reason I don't call it
+2.2 is that I'm chicken.
+
+	Kvaa, kvaa,
+			Linus

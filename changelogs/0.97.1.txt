@@ -1,0 +1,31 @@
+[PATCH] Linux-0.97.1 (August 6, 1992)
+
+Make the page allocator use a free page list instead of a silly
+linear search.
+
+Add sys_vhangup() and stubs for send/rcv/sendto/recvfrom/shutdown. 
+We're making ready for real networking.. 
+
+Remove nonworking extfs bitmap allocators. We'll have them in ext2.
+
+[Original announcement below]
+
+Patch 1 is essentially a performance-release, but it also contains some
+other patches: Ross Biro's tcp-ip stubs are there (but not the tcpip
+subdirectory: alpha-testers should know where to find that), as are the
+ext-fs superblock cleanups. The first header-file patch by hlu is also
+in there.
+
+The resulting patch is pretty big - it's also not as cleaned up as I'd
+like it to be.  The swapping/buffer-block handling heuristics are
+better, but could still do with some tuning.  Also, the idle task in
+this version doesn't do very much: it will be expanded to do some more
+page-table calculations.
+
+I will be unable to hack on linux for a couple of weeks (I'll still
+answer mails, read the newsgroup and fix bugs, but no heavy-duty
+hacking) due to some "circumstances beyond my control".  That probably
+means that this patch is the last one for a while (three weeks) unless
+some bad bugs show up.
+
+                Linus

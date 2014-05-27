@@ -1,0 +1,24 @@
+Linux-2.1.125 ... pre-2.2 imminent
+
+It seems that I've finally found the mysterious bug that caused some SMP
+machines to lock up at bootup if they had no keyboard enabled. It turns
+out that the keyboard was a complete red herring, and that it just changed
+timings of bottom half handling in particular. The real culprit was some
+misguided locking attempts by the console driver at a really bad time. 
+
+Anyway, that means that the last of my personal show-stopper bugs in 2.1.x
+seems to be finally history. I still expect to sync up with Alan Cox's
+patches in particular, but I'm mentally getting ready for a real 2.2.
+
+I still haven't decided on whether I'll make the same kind of "pre-2.2" 
+that I did before the 2.0 release, but there are strong psychological
+reasons to do so to get people to more actively test it out with a "this
+really should be stable" mindset. 
+
+In the meantime, there's now 2.1.125. Most of 2.1.125 is driver updates
+for various things, most notably perhaps joystick and the new 5.10 version
+of the Adaptec aic7xxx driver by Doug Ledford (but there are various other
+driver updates). The fix for the mysterious lock-up is a few embarrassing
+lines removed, but makes me feel a lot better ;)
+
+Go forth, multiply, and fill the earth

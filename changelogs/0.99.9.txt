@@ -1,0 +1,32 @@
+[PATCH] Linux-0.99.9 (April 23, 1993)
+
+Bill's math emulator now passes paranoia.
+
+Last argument to ioctl is "long".
+
+sys_clone() appears.
+
+[original announcement below]
+
+The latest kernel release is 0.99.9, and can be found on nic.funet.fi:
+pub/OS/Linux/PEOPLE/Linus, both as patches relative to pl8 and as full
+sources.  The only major new feature is that the ST-0x driver has
+finally been updated to the scatter-gather code: ST-0x users should with
+luck get about 5 times the performance on disk-operations..  Seagate
+code written by Drew Eckhardt.
+    
+0.99.9 also fixes:
+- the FPU-emulator should now handle all rounding-modes correctly, and
+  pass all the paranoia package tests.  Patches by Bill Metzenthen.
+- bootup enhancements by Chrisoph Niemann (but the SVGA mode numbers
+  have changed, so you may have to edit your lilo configuration file
+  and/or the main Makefile to get the mode you normally want)
+- ext2fs updated to the very latest release.  Code by Remy Card and
+  Stephen Tweedie.
+- various minor patches, some of them cosmetic, some of them fixes to
+  smaller bugs..  Thanks to everybody who sent them in (even though not
+  all made it)
+    
+It might be a good idea to test it all out,
+    
+            Linus

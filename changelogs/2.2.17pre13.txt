@@ -1,0 +1,8 @@
+Linux 2.2.17pre13
+
+o	Fix compile errors on userhelper		(Several people)
+o	Small Alpha update/fixes			(Jay Estabrook)
+o	Add bootup documentation			(H Peter Anvin)
+o	S/390 partial merge of updates			(Martin Schwidefsky)
+o	Bonding driver fixes				(Andreas Steinmetz)
+o	Geert changed address				(Geert Uytterhoeven)

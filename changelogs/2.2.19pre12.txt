@@ -1,0 +1,10 @@
+Linux 2.2.19pre12
+
+o	Update the DAC960 driver			(Leonard Zubkoff)
+o	Small PPC fixes					(Benjamin Herrenschmidt)
+o	Document irda options config			(Steven Cole)
+o	Small isdn fixes/obsolete code removal		(Kai Germaschewski)
+o	Fix alpha kernel builds				(Michal Jaegermann)
+o	Update ver_linux to match the 2.4 one		(Steven Cole)
+o	AVM isdn driver updates				(Carsten Paeth)
+o	ISDN capi/ppp fixes				(Kai Germaschewski)

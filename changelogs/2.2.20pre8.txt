@@ -1,0 +1,41 @@
+Linux 2.2.20pre8
+
+o	Merge DRM fixes from 2.4.7 tree			(Alan Cox)
+o	Merge sbpcd fixes from 2.4.7 tree
+o	Merge moxa buffer length check
+o	Merge bttv clip length check
+o	Merge aha2920 shared irq from 2.4.7 tree
+o	Merge MTWEOF fix from 2.4.6 tree
+o	Merge serverworks AGP from 2.4.6 tree
+o	Merge sbc60xxx watchdog fixes from 2.4.6
+o	Merge lapbether fixes from 2.4.6
+o	Merge bpqether fixes from 2.4.6
+o	Merge scc fixes from 2.4.6
+o	Merge lmc memory leak fixes from 2.4.6
+o	Merge sm_wss fixes from 2.4.6
+o	Resync AGP support with 2.4.6
+o	Merge epca fixes from 2.4.5
+o	Merge riscom8 fixes from 2.4.5
+o	Merge softdog fixes from 2.4.5
+o	Merge specialix fixes from 2.4.5
+o	Merge wdt/wdt_pci fixes from 2.4.5
+o	ISDN cisco hdlc fixes				(Kai Germaschewski)
+o	ISDN timer fixes				(Kai Germaschewski)
+o	isdn minor control change backport		(Kai Germaschewski)
+o	Backport ELCR MP 1.1 config/PCI routing stuff	(John William)
+o	Backport isdn ppp fixes from 2.4		(Kai Germaschewski)
+o	Backport isdn_tty fixes from 2.4		(Kai Germaschewski)
+o	eicon cleanups					(Armin Schindler)
+	| Armin can you double check the clashes were ok
+o	Fix an ntfs oops				(Anton Altaparmakov)
+o	Fix arp null neighbour buglet			(Dave Miller)
+o	Update sparc version strings, pci fixups	(Dave Miller)
+o	Define CONFIG_X86 in 2.2 as well as 2.4		(Herbert Xu)
+o	Configure.help cleanups				(Steven Cole)
+o	Add MODE_SELECT_10 to qlogic fc table		(Jeff Andre)
+o	Remove dead oldproc variable			(Dave Miller)
+o	Update starfire driver for 2.2			(Ion Badulescu)
+o	8139too driver update				(Jens David)
+o	Assorted race fixes for binfmt loaders		(Al Viro)
+o	Update Alpha support for older boxes		(Jay Estabrook)
+o	ISDN bsdcomp/ppp compression fixes		(Kai Germaschewski)

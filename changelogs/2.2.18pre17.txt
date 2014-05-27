@@ -1,0 +1,19 @@
+Linux 2.2.18pre17
+
+o	Move a few escaped m68k headers into the right	(Alan Cox)
+	directory
+o	Backport 2.4 AF_UNIX garbage collect speedups	(Dave Miller)
+o	TCP fixes for NFS 				(Saadia Khan)
+o	Fix USB audio hangs				(David Woodhouse)
+o	Sparc64 dcache and exec fixes			(Dave Miller)
+o	Fix typing crap in divert.h			(Jeff Garzik)
+o	Use pkt_type in diverter, add maintainer info	(Dave Miller)
+o	Fix obscure NAT problem in FIB code		(Dave Miller)
+o	Fix sk->allocation in TCP sendmsg		(Marcelo Tossati)
+o	Elevator fixes					(Andrea Arcangeli)
+o	Allow broken_suid on NFS root			(Trond Myklebust)
+o	Fix net/ipv6/proc off by one bug		(Dave Miller)
+o	Fix AGP oops on Alpha				(Michal Jaegermann)
+o	MSR/CPUID init call fixes			(Arjan van de Ven)
+o	CS4281 sound hang fixes				(Thomas Woller)
+o	AX.25 comment updates, Joerg has moved email	(Joerg Reuter)

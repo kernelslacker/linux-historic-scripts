@@ -1,0 +1,13 @@
+Linux 2.2.18pre8
+
+o	Fix mtrr compile bug				(Peter Blomgren)
+o	Alpha PCI boot up fix				(Michal Jaegermann)
+o	Fix vt/keyboard dependancy in USB config	(Arjan van de Ven)
+o	Fix sound hangs on cs4281			(Tom Woller)
+o	Fix Alpha vmlinuz.lds				(Andrea Arcangeli)
+o	Fix CDROMPLAYTRKIND bug, allow root to open	(Jens Axboe)
+	the cd door whenver.
+o	Update ov511 to match 2.4			(Greg Kroah-Hartman)
+o	Further devio.c fix				(Greg Kroah-Hartman)
+o	Update NR_TASKS comment				(Jarkko Kovala)
+o	Further sparc64 ioctl translator fixes		(Andi Kleen)

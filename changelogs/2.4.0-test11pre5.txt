@@ -1,0 +1,18 @@
+- pre5:
+   - Rasmus Andersen: add proper "<linux/init.h>" for sound drivers
+   - David Miller: sparc64 and networking updates
+   - David Trcka: MOXA numbering starts from 0, not 1.
+   - Jeff Garzik: sysctl.h standalone
+   - Dag Brattli: IrDA finishing touches
+   - Randy Dunlap: USB fixes
+   - Gerd Knorr: big bttv update
+   - Peter Anvin: x86 capabilities cleanup
+   - Stephen Rothwell: apm initcall fix - smp poweroff should work
+   - Andrew Morton: setscheduler() spinlock ordering fix
+   - Stephen Rothwell: directory notification documentation
+   - Petr Vandrovec: ncpfs capabilities check cleanup
+   - David Woodhouse: fix jffs to use generic isxxxx() library
+   - Chris Swiedler: oom_kill selection fix
+   - Jens Axboe: re-merge after sleeping in ll_rw_block.
+   - Randy Dunlap: USB updates (pegasus and ftdi_sio)
+   - Kai Germaschewski: ISDN ppp header compression fixed

@@ -1,0 +1,4 @@
+Linux 2.2.24-rc2
+
+o   Apply AMD fix correctly                         (Bruce Robson)
+o   Fix possible memory scribble in starfire        (Ion Badulescu)

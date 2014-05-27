@@ -1,0 +1,32 @@
+Linux 2.2.14pre1
+
+o	Update Alpha architecture slightly		(Jay Estabrook)
+o	Multi-apic support				(Ingo Molnar)
+o	Fix FC4 compile glitch				(Alan Cox)
+o	PCNet 32 speed ups				(HP, Alan Cox)
+o	Update oldpci tables
+o	Qlogic Alpha fixes				(Jay Estabrook)
+o	Audio compile fixes
+o	knfsd 0.4.7					(HJ Lu et al)
+o	Hashing scale by memory				(Dave Miller)
+o	Revert a.out change, switch from timers to	(Several people)
+	counts
+o	Support very big disks				(Andries Brouwer)
+o	Compile cleanups				(Arjan van de Ven)
+o	Fix enabled flag on transparent proxy on	(Alan Cox)
+o	SIS900 driver update				(SIS)
+o	Small PPC update				(Cort Dougan)
+o	Increase loader heap for uncompressing		(HJ Lu)
+o	Future domain build fix				(Anthony Barbachan)
+o	Bring PCI sound drivers in 2.2.x in line with
+	2.3.x enhancements				(Thomas Sailer)
+o	Documentation fixes				(Thierry Vignaud)
+o	Bridge update (more of a rewrite)		(Matthew Grant)
+o	Masquerade fix					(Juanjo Ciarlante)
+o	Changes file update				(Chris Ricker)
+o	NFS zero padding cleanup			(Trond Myklebust)
+o	Clean up OPL3 configuration and surplus options	(Thomas Molina)
+o	GCC 2.95 patches				(Bero Rosenkraenzer)
+	| If you hit problems please verify them with an 
+	| older gcc, but you should now be able to build
+	| with 2.95.* to go looking for them...

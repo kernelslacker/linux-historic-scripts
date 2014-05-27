@@ -1,0 +1,7 @@
+Linux 2.0.40-pre3
+
+o   Fix typo in sched.c                     (Tim Sutherland)
+    | this time for real; I applied this
+    | patch to the wrong kernel-tree last
+    | time, hence the reject
+o   IDE probe patch for some ATAPI drives   (Geert Van der Plas)

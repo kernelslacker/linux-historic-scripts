@@ -1,0 +1,5 @@
+Linux 2.0.37pre8
+
+o	Fixed a small multicast problem			(Alan Cox)
+o	PIII disable serial ID				(Alan Cox, from Phil Karns
+							code)

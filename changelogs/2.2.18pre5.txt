@@ -1,0 +1,26 @@
+Linux 2.2.18pre5
+
+o	Added older VIA ide chipsets to the not to be	(Alan Cox)
+	autotuned list
+o	Fix crash on boot problem with __setup stuff	(Alan Cox)
+o	Small acenic fix				(Matt Domsch)
+o	Fix hfc_pci isdn driver				(Jens David)
+o	Fix smbfs configuration problem			(Urban Widmark)
+o	Emu10K wrapper/build fixes			(Rui Sousa)
+o	Small cleanups					(Arjan van de Ven)
+o	Fix sparc32 build bug				(Horst von Brand)
+o	Fix quota oops					(Martin Diehl)
+o	Add i810 random number driver			(Jeff Garzik)
+o	Clear suid bits on ext2 truncate as per SuS	(Andi Kleen)
+o	Fix illegal use of section attributes		(Arjan van de Ven)
+o	Documentation for nmi watchdog			(Marcelo Tosatti)
+o	Fix uninitialised variable warnings		(Arjan van de Ven)
+o	Save DR6 condition into the TSS			(Ryan Wallach)
+o	Add additional __init's to the kernel	(Andrzej M. Krzysztofowicz)
+o	Backport 2.4 wdt_pci driver			(JP Nollman, Alan Cox)
+o	AGP i810 fixes					(Chip Salzenberg)
+o	UDMA support for ALI1543 & 1543C IDE devices	(ALI)
+o	2.4 MSR/CPUID driver backport			(Dave Jones, 
+								H Peter Anvin)
+o	Fix incorrect use of kernel v user ptr in NCPfs	(Petr Vandrovec)
+o	Updated scsi tape driver			(Kai Makisara)

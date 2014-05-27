@@ -1,0 +1,18 @@
+Linux 2.4.0-test9pre3
+
+    - USB updates
+    - NFS over TCP - handle TCP socket writability right..
+    - NFS cache coherency across file locking fix
+    - floppy: we'd better hold the io_request_lock when playing with "CURRENT".
+    - acenic driver update
+    - ARM update (including ARM drivers)
+    - adfs correct dentry operations
+    - netfilter update
+    - networking updates (iipv6 works non-modular etc)
+    - Sync up with Alans 2.2.x driver changes
+    - SCSI initialization - move over to the modular case. No more
+      double initialization.
+    - block_prepare_write and block_truncate_page: if the page is
+      up-to-date, then so are the buffer heads inside it once they
+      are mapped..
+    - uninitialized == zero. Remove extra initializers.

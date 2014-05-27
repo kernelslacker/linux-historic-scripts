@@ -1,0 +1,8 @@
+Linux 2.1.84
+
+- Update makefile version (forgot to in .83)
+- fixes a (very obscure, possibly never happens) autofs bug.
+- fix missing ; compile error in mm/filemap.c
+- MS_NODIRATIME support.
+
+[changelog summary by davej]

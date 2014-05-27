@@ -1,0 +1,9 @@
+- pre7:
+   - Kai Germaschewski: more ISDN cleanups and small fixes.
+   - Al Viro: fix ntfs_new_inode() that he broke. Cleanups.
+   - various: handle !CONFIG_HOTPLUG properly
+   - David Miller: sparc and networking
+   - Linus: more iso9660 fixes.
+   - Neil Brown: fix rd and RAID on highmem machines
+   - Vojtech Pavlik: input driver fixes
+   - David Woodhouse: module unload races - up_and_exit()

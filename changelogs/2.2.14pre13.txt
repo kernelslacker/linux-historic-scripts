@@ -1,0 +1,19 @@
+Linux 2.2.14pre13
+
+o	Cure SMP deadlock on non DMA ide disk		(Alan Cox)
+o	Change argument copying for mount (needed for
+	Davem's sparc64)				(Alan Cox)
+o	Fix missing tlb flushes on vmscan		(Dave Miller)
+o	Account always defragment off as well as on	(Julian Anastasov)
+o	Fix APIC handling with short form table		(Eirik Fuller)
+o	GDTH driver update  				(ICP Vortex)
+o	Finish fixing the AX.25 socket bug		(Tomi Manninen)
+o	QlogicFC driver update				(Chris Loveland)
+o	New Tlan maintainer				(Torben Mathiasen)
+o	Hopefully fix the NFS submount bug		(Trond Myklebust)
+o	Fix mem= on Alpha				(Jay Estabrook)
+o	Allow hiding interfaces from global arp		(Alexey Kuznetsov &
+o	IPV6 autoconfig for non ethernet		 Julian Anastasov)
+o	event is now global_event, the export defined
+	made a horrible mess of local variable/structs
+	when debugging with source			(Alan Cox)

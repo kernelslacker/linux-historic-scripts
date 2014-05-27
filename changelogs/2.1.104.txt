@@ -1,0 +1,10 @@
+
+[tytso] include/asm-i386/posix_types.h
+This quick fix eliminates a lot of warning messages when
+compiling e2fsprogs under glibc.  This is because the glibc header files
+defines its own version of FD_SET, FD_ZERO, etc., and so if you need to
+#include the kernel include files, you get a lot of duplicate defined
+macro warning messages.  This patch simply #ifdef's out the kernel
+versions of these function if the kernel is not being compiled and the
+glibc header files are in use.
+

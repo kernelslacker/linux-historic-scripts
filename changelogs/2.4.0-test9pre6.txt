@@ -1,0 +1,22 @@
+Linux 2.4.0-test9pre6
+
+    - TUN/TAP driver: use proper device number (misc device, minor=200).
+    - teach st.c about some SCSI tapes that really aren't SCSI tapes (OnStream)
+    - samba 2.2 needs leases for efficient file sharing.  They are kind
+      of like file locks with async IO notification.
+    - broadcast I/O APIC interrupt MP-tables are legal..
+    - alpha RTC year magic again..
+    - careful memory ordering by Andrea..
+    - make the scsi-generic module work properly again.
+    - file locking fixes
+    - update atp ISA net driver
+    - VIA IDE driver bugfixes
+    - more linux-2.2 driver sync-ups
+    - new PCI ids
+    - emu10k stereo sound fix.
+    - makefile documentation update
+    - USB uhci updates
+    - networking updates
+    - codafs fixups
+    - VM UP deadlock fix
+    - Add Camino chipset ID to eepro100 driver. 

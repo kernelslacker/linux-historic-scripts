@@ -1,0 +1,21 @@
+Linux 2.2.4
+
+As of 2.2.4, I should be synchronized with the Sparc[64] and PPC ports,
+which is the major reason why the patch is pretty huge. Apart from the
+architecture synchronizations, 2.2.4 does:
+
+ - dumping core over NFS could do bad things. Core-dumping cleaned up and
+   fixed.
+
+ - various small TCP/IP buglets fixed. Linux got confused by hosts that
+   didn't report any mss, and had problems with zero-sized fragments, etc.
+
+ - various small, often silly bugs fixed (PC BIOS PCI buglet, alpha
+   semaphores, bottom half interrupts, fork() returns wrong error code).
+
+ - tons of driver updates
+
+ - updated net scheduling code (CONFIG_NET_SCHED)
+
+Most of the fixes aren't all that noticeable, but some of them can be
+showstoppers depending on whether you've ever seen them.

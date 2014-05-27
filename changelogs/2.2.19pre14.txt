@@ -1,0 +1,23 @@
+Linux 2.2.19pre14
+
+o	Update slhc code for endianness			(Dave Miller)
+o	Update s390 dasd driver				(Ulrich Weigand)
+o	Allow more than 4K of partitions		(Ulrich Weigand)
+o	Fix check in sockfilter				(Dave Miller)
+o	Sparc updates (quad sbus sunhme detect, BUG())	(Dave Miller)
+o	Fix hid locking and ston32 bugs			(Paul Mackerras)
+o	Update 3c59x drivers		(Andrew Morton, Maciej Rozycki, 
+					 Fred Maciel, Georg Engstrand,
+					 Brett Frankenberger, Don Becker,
+o	Fix a usb message				(Randy Dunlap)
+o	Eicon driver updates				(Armin Schindler)
+o	Update 8139too driver				(Jens David)
+o	Fix USB hub locks				(Paul Mackerras)
+o	Fix missing keyspan config line			(Paul Mackerras)
+o	Merge S/390 bug fixes				(Ulrich Weigand)
+o	Some S/390 cleanups				(Ulrich Weigand)
+o	Update S/390 ELF magic 				(Ulrich Weigand)
+o	Update hwc driver				(Ulrich Weigand)
+o	Update ctc driver				(Ulrich Weigand)
+o	Update iucv driver				(Ulrich Weigand)
+o	S/390 warning fixes				(Ulrich Weigand)

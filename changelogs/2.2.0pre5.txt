@@ -1,0 +1,9 @@
+Linux 2.2.0pre5
+
+Oh, well.. Based on what the arca-[678] patches did, there's now a pre-5
+out there. Not very similar, but it should incorporate the basic idea:
+namely much more aggressively asynchronous swap-outs from a process
+context.
+Comment away,
+                Linus
+

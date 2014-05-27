@@ -1,0 +1,12 @@
+Linux 2.0.37pre3
+
+o	Nasty cache bug fixed		(Mikael Pettersson)
+	| Quake should work again now.
+o	NCR53c8xx update		(Gerard Roudier)
+o	AIC7xxx update			(Doug Ledford)
+o	Initio driver update		(Bas)
+o	Dumb sound bug cured		(Oleg Drokin)
+o	Lance multidetect fix		(Orc)
+o	Miscellaneous cleanup/small fixes 
+					(Hans-Joachim Baader, Scott, Riley
+					 and others)

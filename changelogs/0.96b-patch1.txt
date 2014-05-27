@@ -1,0 +1,29 @@
+Re: Too much uneaten serial causes system hang?
+    
+In article <arumble.709312764@extro.ucc.su.OZ.AU> arumble@extro.ucc.su.OZ.AU
+(Anthony Rumble) writes:
+>
+>YES! I have noticed this VERY exact thing also!
+    
+Oh, well: it's a bug in the serial drivers that I have already fixed,
+but I haven't done the c-diffs yet. I have rewritten big parts of the
+serial line code to be more easily configured for different IRQ numbers,
+and I noticed the bug while doing that. I'll make patch1 for 0.96b
+available later today or tomorrow.
+    
+patch1 will be mostly just the serial driver code: it allows changing
+the irq's (and port addresses) of serial devices on the fly (with an
+ioctl call), so people that have ser4 on irq5 etc shouldn't have to
+recompile the kernel. It also returns EBUSY if you try to open a serial
+line that shares the irq-line with another line etc.
+    
+Another change in patch1 will the the handling of ctrl-alt-del: it will
+send a SIGINT to the init process if the reset-function is disabled.
+This makes it ideal for a controlled shutdown, but it does need a
+/bin/init that knows about this.
+    
+            Linus
+    
+PS. It seems both the DOS-fs and the extended fs will be out for
+alpha-testing next week, so I assume 0.97 will have them both if things
+work out ok.

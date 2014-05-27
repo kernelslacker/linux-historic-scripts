@@ -1,0 +1,11 @@
+Linux 2.2.20pre2
+
+o	Fix ip_decrease_ttl as per 2.4			(Dave Miller)
+o	Fix tcp retransmit state bug			(Alexey Kuznetsov)
+o	Fix a few obscure sparc tree bugs		(Dave Miller)
+o	Fix fb /proc bug and OF fb name size bug	(Segher Boessenkool)
+o	Fix complie with CONFIG_INTEL_RNG=y		(Andrzej Krzysztofowicz)
+o	Fix rio driver when HZ!=100			(Andrzej Krzysztofowicz)
+o	Stop 3c509 grabbing other EISA boards		(Andrzej Krzysztofowicz)
+o	Remove surplus defines for root= names		(Andrzej Krzysztofowicz)
+o	Revert pre1 APIC change

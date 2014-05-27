@@ -1,0 +1,10 @@
+Linux 2.2.19pre5
+
+o	Fix dumpable stuff				(Wolfgang Walter)
+o	PPA driver update				(Tim Waugh)
+o	ARM updates (Russell - ptrace.c errored please	(Russell King)
+		resolve)
+o	Fix NFS data alignment on ARM			(Russell King)
+o	Fix hang on boot with ALi5451 shared irq midi	(Stephen Usher)
+o	ESS Maestro 3 driver				(Zach 'Fufu' Brown)
+o	Belorussia/Ukraine NLS table (koi8-ru)		(Andy Rysin)

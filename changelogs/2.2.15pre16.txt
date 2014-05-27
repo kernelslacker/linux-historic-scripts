@@ -1,0 +1,22 @@
+Linux 2.2.15pre16
+
+o	Fixes for i960 i2o problems			(Boji Kannanthanam)
+o	Sparc/Glibc 2.1 fixes				(Dave Miller)
+o	Get original 21041 tulips working with current
+	driver (old_tulip remains for now in case)	(Jeff Garzik) 
+o	Updated devices.txt				(H Peter Anvin)
+o	EEPro100 ultra sparc support fixed		(Dave Miller)
+o	Scott Murray moved				(Scott Murray)
+o	Alpha FPU fixes					(Richard Henderson)
+o	PCI configuration ioctls for Alpha		(Richard Henderson)
+o	TCP socket hang on close fix			(Dave Miller)
+o	Fix old_tulip doc error				(Barry Nathan)
+o	Fix AMD cache setup				(Dave Jones)
+o	Fix Cyrix cache reporting			(Alan Cox)
+o	Fix eepro probe failure lockup			(Francois Romieu)
+o	AF_UNIX socket crash fix			(Alexey Kuznetsov)
+o	Fix ftp back masquerade vulnerability		(Bjarni Einarsson)
+o	Fix security issues with exec and ELF loader	(Nergal, Solar Designer,
+							 Alan Cox)
+o	ext2 and ufs directory handling fix		(Al Viro)
+o	Allow syscall interception in ptrace		(Jeff Dike)

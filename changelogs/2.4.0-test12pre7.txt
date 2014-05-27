@@ -1,0 +1,5 @@
+- Kai Germaschewski: ymfpci cleanups and resource leak fixes
+- Linus: UHCI drivers really need to enable bus mastering.
+- Trond Myklebust: fix up nfs_writepage_sync() to not require "filp".
+- Andrew Morton: "tq_scheduler" is no more. We have keventd.
+- Nils Faerber: cs46xx sounddriver update

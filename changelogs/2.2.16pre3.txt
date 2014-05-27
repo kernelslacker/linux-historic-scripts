@@ -1,0 +1,39 @@
+Linux 2.2.16pre3
+
+o	Fix stupid SMP bug in the i810 audio	(Alan Cox)
+	|And yes I can call it stupid, its my
+	|bug !!
+o	Cyclades Update				(Ivan Passos)
+o	Autoload paride	protocol		(Tim Waugh)
+o	Upgrade IBM ServeRAID to 4.0		(IBM)
+o	Back out ARM fix			(Russell King)
+o	AF_UNIX peer credentials on socketpair	(Malcolm Beattie)
+o	Use all onboard memory patch for IBM tr (Mike Phillips)
+o	Handle WPI CDS-32X			(Jens Axboe)
+o	Fix CD-ROM ioctls			(Jens Axboe)
+o	Add AFVALAB and TIMEDIA parallel ports	(Tim Waugh)
+o	Switch to 2.3.x format for invalid
+	EIP/ESP reports				(Keith Owens)
+o	Add v1.20 to seagate bios matches	(Matthias Heidbrink)
+o	Fix initio scsi shared irq free		(Thomas Graichen)
+o	Possible sign mishandling issues fixed	(Solar Designer)
+o	EEPro 10 ISA support			(Aristeu Filho)
+o	Update megaraid firmware URL		(Dell)
+o	Export inet as well as net notifier	(Pekka Riikonen)
+o	Fix smc 9194 memory handling bug	(Heiko Pruessing)
+o	Export init_mm for Alpha		(Andrea Arcangeli)
+o	Avoid scheduling while waiting for someone
+	else to send an IPI (alpha)		(Andrea Arcangeli)
+o	move ll_rw_blk data into BSS		(Andrea Arcangeli)
+o	Elevator starvation fix			(Andrea Arcangeli)
+o	Safer IRQ probe				(Andrea Arcangeli)
+o	refill deadlock fix			(Andrea Arcangeli)
+o	Fix set_blocksize			(Andrea Arcangeli)
+o	Stop deadlock if timer reinserts itself
+	too fast				(Andrea Arcangeli)
+o	Fix swap_blockmap deadlock		(Andrea Arcangeli)
+o	Change syncppp API to match 2.3.x and	(Ivan Passos)
+	remove some limits
+o	Bring S/390 port into line with latest
+	IBM patch set				(IBM) 
+o	Fix HDLC driver bits			(Paul Fulghum)

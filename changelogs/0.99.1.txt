@@ -1,0 +1,31 @@
+[PATCH] Linux-0.99.1 (December 21, 1992)
+
+Patch 1 addresses the following problems:
+ - configuration. Hope there are no silly problems left..
+ - inode.c: initialization changes (the missing NULL and some other
+   minor fixes).
+ - some SCSI tape driver patches (Kai M{kisara)
+ - tcp/ip patches (Ross Biro, some code by me)
+ - keyboard patches (mainly changed initialization - hope the keyboard
+   lockups are gone).
+ - completed /proc-fs: it should now contain all info needed by 'ps'
+   (Micheal K Johnson).
+ - various minor fixes (the minix-fs link overflow checking etc)
+
+Patch1 also contains support for extended VC switching - this is for the
+upcoming X11 that understands VC's.  One result of this is that console
+redirection now redirects *only* messages actually sent to /dev/console
+(aka /dev/tty0), not just to any foreground VC.  Wait for Xfree-1.2 to
+be able to switch VC's while under X (yes, including several X-sessions
+active at the same time..).
+
+I hope there are still people out there that aren't too busy stuffing
+themself with turkey to try out a new kernel release.  There is just
+over a week left of this year, and I need feedback in order to be able
+to release 1.0.
+
+                Linus
+
+PS.  Thanks to everybody who has sent me Christmas/New Year/Birthday
+cards.  Some contained money, some didn't, and I enjoyed them all.
+Thanks.

@@ -1,0 +1,3 @@
+Here is the patch to 0.96a that corrects the harddisk error bug, dup2()
+and X11 text-mode restoration.  Thanks to Rick Sladkey for finding the
+dup2() bug.

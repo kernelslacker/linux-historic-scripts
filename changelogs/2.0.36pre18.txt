@@ -1,0 +1,13 @@
+2.0.36pre18
+
+Fixes from pre17
+o       5.1.4 aic7xxx driver (EISA 274x cards now work)
+o       SMP debug message removed
+o       TCP performance optimisation from Dave Miller (and I thought he
+                was on honeymoon 8))
+o       Makefile fix for modules/versioning bug
+o       A couple of very minor cleanups
+
+If this proves ok it goes to Linus
+
+Alan

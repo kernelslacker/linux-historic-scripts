@@ -1,0 +1,16 @@
+Linux 2.2.19pre15
+
+o	Hugh Blemings has moved				(Hugh Blemings)
+o	Add support for usb hubs with many ports	(Randy Dunlap)
+o	Reapply make xconfig isdn fix		(Andrzej Krzysztofowicz)
+o	Fix the tcp problems				(Alexey Kuznetsov)
+o	Kai Petzke has moved				(Kai Petzke)
+o	Add BUG() to S/390				(Ulrich Weigand)
+o	Further S/390 fixes				(Ulrich Weigand)
+o	Add keventd from 2.4 to 2.2			(Ulrich Weigand)
+	| Needed for S/390 drivers
+o	Remove dead isdn_init call		(Andrzej Krzysztofowicz)
+o	Remove bogus aha1542/aha1740 sense check	(Nick Holloway)
+o	FPU emu fix					(Ulrich Weigand)
+o	EEpro100 posted writes fix			(Andrey Savochkin,
+							 Don Becker)

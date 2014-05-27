@@ -1,0 +1,46 @@
+[PATCH] Linux-0.97.4 (September 7, 1992)
+
+Linus "dances with patches" Torvalds strikes again: I've already made
+patchlevel 4 of 0.97.  It may not be a new record, but it's close :-)
+
+Patch 4 is a very minor patch, but it's pretty important if you want a
+stable filesystem (and let's face it: most people seem to prefer a
+filesystem that stays up a bit longer).  While patch3 corrected most of
+the race-conditions in the minix fs, I overlooked the [f]truncate system
+calls, and this new patch corrects that.
+
+[f]truncate is a very race-prone function, and as if that wasn't enough,
+there was also a pretty bad error in truncate.c that resulted in the
+indirect blocks not being correctly marked dirty when doing partial
+truncates.  The latter problem is probably the reason for most of the
+filesystem corruptions that have been reported - the race-conditions
+were a lot harder to fix, but they also happen a lot less often.
+
+Note that the [f]truncate bug isn't new: it has been in the kernel since
+[f]truncate was first implemented (0.95?).  But until now, [f]truncate()
+hasn't actually been used very much - only the latest versions of the
+binutils have used ftruncate to strip binaries etc.  So the problem
+hasn't shown up that much.
+
+So while I consider patch4 to be crucial, you /can/ actually live
+without it: I haven't seen the buffer corruption problem at all (until I
+actually tested for it after getting good bug-reports), so you can
+provably miss it for a long time.  But if you have ever had corruption
+problems, I'd suggest upgrading to pl4 as soon as possible.
+
+The corruption problems show up most clearly when using a new "strip"
+binary, although they are theoretically possible with other programs
+too.  Thanks to "obz@raster.kodak.com" and "jon@robots.ox.ac.uk" for
+good bug-reports: thanks to them I was able to pin down the error to
+truncate.c, and after that it was pretty easy to get rid of it.
+
+Also note that this patch still hasn't fixed the extended filesystem: I
+suspect the same bugs lurk around there.  I'll get it corrected by 0.98
+at the latest.
+
+The patch is included at the end of this post (it's very minor - it
+contains patches mainly against linux/fs/minix/truncate.c) , and I'll
+also update nic.funet.fi (pub/OS/Linux/testing/Linus) to have the new
+sources.  Sorry for the inconvenience,
+
+                Linus

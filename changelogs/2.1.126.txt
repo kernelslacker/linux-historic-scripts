@@ -1,0 +1,25 @@
+Linux-2.1.126
+
+ - architecture updates for alpha and MIPS (and some minor PPC updates
+   too)
+ - joystick updates
+ - MCA stuff from Alan. The guy has too much free time on his hands.
+ - stallion driver cosmetic update
+ - nasty SMP race with "task queues" (not the scheduling kind), where we
+   were mixing atomic metaphores, resulting in a mess. Usually a benign
+   one, but occasionally you could force oopses.
+ - some floppy and ide updates
+ - PS/2 mouse driver integrated into the PC keyboard controller. That got
+   rid of a lot of really nasty problems (it's the same controller,
+   accessing it from two different drivers was always messy)
+ - various driver updates: floppy, ide, network drivers, sound, video..
+ - various small FS fixes - finally _really_ getting the ENOENT vs ENOTDIR
+   stuff right, nfsd updates, remounting fixes, filesize limits on NFS 
+   and smbfs, ntfs and ufs updates...
+ - shm updates from Alan
+ - cleanup of some MM stuff, I hope Andrea will re-do the patches and I'll
+   look at the other parts.
+ - unix fd garbage collection fix, getting rid of circular dependencies..
+
+And probably various other small fixes that I have thankfully forgotten
+about. 

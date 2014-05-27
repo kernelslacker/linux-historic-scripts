@@ -1,0 +1,13 @@
+Linux 2.1.89-4
+
+It should fix the problem another way that I'm happier with (fixing that
+problem also revealed a few other misuses of close_fp() due to historical
+reasons - the uses really needed to be "fput()"s instead).
+2.1.89-4 also uses "struct file" for mmap's, which means that the problem
+that somebody was complaining about with mmap (that the mapping would
+exist even after the last "release()" on that file, and thus the file
+would still be active) are gone. As of -4 the kernel will guarantee that
+it will call the file->f_op->release() onle after there really aren't any
+uses of that file pointer any more..
+
+                Linus

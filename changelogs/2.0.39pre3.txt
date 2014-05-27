@@ -1,0 +1,6 @@
+Linux 2.0.39pre3
+
+o	Fixed Config.in bugs in			(Marc Martinez)
+	drivers/net and drivers/isdn
+o	int to (s)size_t in fs/proc/mem.c	(Michal Jaegermann)
+o	Added IPX-routing of NetBIOS packages	(Jan Rafaj)

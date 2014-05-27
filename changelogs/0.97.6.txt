@@ -1,0 +1,30 @@
+[PATCH] Linux-0.97.6 (September 20, 1992)
+
+Ted Ts'o did extensive serial driver changes, and fixed up some of the
+tty layer to match.  Tty's now allocated dynamically.
+
+[Original announcement below]
+
+This patch does not contain any major bug-fixes: it corrects named pipes
+that broke with pl5, and has some minor changes in the IO-instructions
+and the hd-driver, but those shouldn't matter for most of you.
+
+It does contain all the scsi-patches that I've gotten so far, so if the
+bootup sequence died on you in the scsi code, pl6 should correct this.
+
+The major part of the patch is tytso's serial line changes, making the
+tty structures dynamic.  No more NR_PTY's - the number of pty's is now
+bounded only by the minor number setup (max 64 pty's) or the amount of
+memory available (opening a pty requires a page of memory for tty
+queues).  Similarly for serial lines.
+
+The above just means that while pl6 can be useful, the changes to pl5
+aren't big enough to worry about.  Most people don't use named pipes, it
+seems, and the other changes are either cosmetic or hardware-dependent.
+I still hope people upgrade, if only so that I can get new bug-reports.
+
+I had hoped to release 0.98 this weekend, but studies and the scsi/hd
+problems put an end to that.  0.98 should be out next weekend or so.
+Expect the tcp/ip subdirectory and possibly some mm changes.
+
+                Linus

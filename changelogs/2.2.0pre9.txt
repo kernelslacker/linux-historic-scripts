@@ -1,0 +1,58 @@
+2.2.0-final
+
+Hoya,
+ there's now a 2.2.0-pre9 on ftp.kernel.org, and when you compile it it
+will call itself 2.2.0-final. The reason is fairly obvious: enough is
+enough, and I can't make pre-kernels forever, it just dilutes the whole
+idea. The only reason the tar-file is not called 2.2.0 is that I want to
+avoid having any embarrassing typos that cause it to not compile under
+reasonable configurations or something like that. Unreasonable
+configurations I no longer care about.
+
+Every program has bugs, and I'm sure there are still bugs in this. Get
+over it - we've done our best, and nobody ever believed that there
+wouldn't be 2.2.x kernels to fix problems as they come up, and delaying
+2.2.0 forever is not an option.
+
+I have a wedding anniversary and a company party coming up, so I'm taking
+a few days off - when I get back I expect to take this current 2.2.0-final
+and just remove the "-final" from the Makefile, and that will be it. I
+suspect somebody _will_ find something embarrassing enough that I would
+fix it too, but let's basically avoid planning on that.
+In short, before you post a bug-report about 2.2.0-final, I'd like you to
+have the following simple guidelines:
+ "Is this something Linus would be embarrassed enough about that he would
+  wear a brown paper bag over his head for a month?"
+and
+ "Is this something that normal people would ever really care deeply
+  about?"
+
+If the answer to either question is "probably not", then please consider
+just politely discussing it as a curiosity on the kernel mailing lists
+rather than even sending email about it to me: I've been too busy the last
+few weeks, and I'd really appreciate it if I could just forget the worries
+of a release for a few days..
+
+But if you find something hilariously stupid I did, feel free to share it
+with me, and we'll laugh about it together (and I'll avoid wearing the
+brown paper bag on my head during the month of February). Do we have a
+deal?
+
+I've seen people working on a 2.2.0 announcement, and I'm happy - I've
+been too busy to think straight, much less worry about details like that.
+If everything turns out ok, I'll have a few memorable bloopers in my
+mailbox but nothing worse than that, and I can sit down and actually read
+the announcement texts that people have been discussing.
+
+ObFeatures:
+ - m68k sync
+ - various minor driver fixes (irda, net drivers, scsi, video, isdn)
+ - SGI Visual Workstation support
+ - adjtimex update to the latest standards
+ - vfat silly buglet fix
+ - semaphores work on alpha again
+ - drop the inline strstr() that gcc got wrong whatever we did
+ - kswapd needed to be a bit more aggressive
+ - minor TCP retransmission and delack fixes
+Until Monday,
+                        Linus

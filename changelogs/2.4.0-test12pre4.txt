@@ -1,0 +1,11 @@
+- Andries Brouwer: final isofs pieces.
+- Kai Germaschewski: ISDN
+- play CD audio correctly, don't stop after 12 minutes.
+- Anton Altaparmakov: disable NTFS mmap for now, as it doesn't work. 
+- Stephen Tweedie: fix inode dirty block handling
+- Bill Hartner: reschedule_idle - prefer right cpu
+- Johannes Erdfelt: USB updates
+- Alan Cox: synchronize
+- Richard Henderson: alpha updates and optimizations
+- Geert Uytterhoeven: fbdev could be fooled into crashing fix
+- Trond Myklebust: NFS filehandles in inode rather than dentry

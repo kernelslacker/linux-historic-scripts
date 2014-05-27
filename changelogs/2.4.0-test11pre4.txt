@@ -1,0 +1,4 @@
+- pre4:
+   - Andrea Arcangeli: SMP scheduler memory barrier fixup
+   - Richard Henderson: fix alpha semaphores and spinlock bugs.
+   - Richard Henderson: clean up the file from hell: "xor.c"

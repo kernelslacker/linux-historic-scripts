@@ -1,0 +1,13 @@
+Linux 2.0.37pre12
+
+I finally (I hope) nailed the threading crash some people saw - it was
+flock(). Also backed out the problematic mmap entry.
+
+You need binutils 2.8 or 2.9 to build this kernel tree. 2.7 is not good
+enough
+
+o       mmap race fix wasnt - removed                   (Alan Cox)
+o       Further 20 day alpha floppy fix                 (Paul Slootman)
+o       PPTP/IPSEC masq update                          (John Hardin)
+o       Fix 240 day select bug()                        (Ville Herva)
+o       Fix threaded flock/close bug                    (Alan Cox)

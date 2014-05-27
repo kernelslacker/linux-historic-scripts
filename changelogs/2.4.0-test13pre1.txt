@@ -1,0 +1,4 @@
+- Linus: drop support for old-style Makefiles entirely. Big.
+- Linus: check b_end_io at the IO submission path
+- Linus: fix "ptep_mkdirty()" (so that swapoff() works correctly)
+- fix fault case in copy_from_user() with a constant size, where ((size & 3) == 3)

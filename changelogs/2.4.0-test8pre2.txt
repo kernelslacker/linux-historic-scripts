@@ -1,0 +1,23 @@
+ - pre2
+    - The TCP socket leak patch _really_ went in this time.
+    - get rid of more suser() checks in networking.. It's "capable(CAP_NET_ADMIN)".
+    - sparc updates
+    - alpha updates. Fast alpha xor for raid. AP1000 updates.
+    - Wonders never cease. digiboard driver updates. Christoph Lameter is BAAACK!
+    - SiS frame buffer driver updates. Can be used without a BIOS.
+    - nfsd interface cleanup.
+    - fix potential buffer overruns in get_partition_list.  Remove
+      limitation of one page. 
+    - floppy driver capability cleanups. Use "request_region()".
+    - handle dcache flushing when there are shared user mappings that
+      may be dirty. 
+    - get rid of the "xxxx_ret()" user access macros. They are more complex than
+      just doing the return directly and they hide what's going on.
+    - fix up broken BIOSes that don't give unique ID's to different APICs
+    - make more of the drm drivers compile on other platforms and know
+      about the signal blocking issues.
+    - net/atm/mpoa_proc.c: user-space access thinko
+    - pcmcia: David Hinds: merge updates from 3.1.20
+    - pcmcia: non-ISA machines really shouldn't use ISA interrupts ;)
+    - ext2: truncate races and error code return fixes
+    - true shared signals for pthreads..

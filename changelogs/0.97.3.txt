@@ -1,0 +1,119 @@
+[PATCH] Linux-0.97.3 (September 5, 1992)
+
+Hey, we switched to the GPL several months ago, but only now do we
+include the license text itself.  Apparently everybody expected
+everybody else to just know what the GPL was.. 
+
+Add a README on compiling the kernel (by Lasu)
+
+Add PS/2 mouse driver, make generic "mouse" infrastructure.
+
+Add /proc filesystem, clean up minixfs block mapping.
+
+sys_wait4() and swapoff().
+
+VM gets a "secondary page free" list for things like interrupts
+that want a page _now_ and can't wait for the regular free list
+to fill up. 
+
+[Original announcement below]
+
+Patch3 is almost 100kB even compressed, as there were quite big changes
+in the mm and minix fs.  No major new features: there are two new system
+calls: swapoff(const char * swapfile) and wait4(), and linux accepts
+several swap-files, but the rest of the thing is mostly bug-fixes or
+simply rewrites.
+
+Major changes:
+ - new swap-page handling: linux no longer uses just one bit to keep
+   track of used swap-space, but a counter for each swap-page.  This
+   allows processes to share swap-pages after a fork(), and should
+   result in /major/ performance increases on machines with less memory.
+   I've seen better performance even with 8MB - I wouldn't be surprised
+   if 4MB machines would re-compile the kernel noticeably faster under
+   pl3.  I'd be interested to hear numbers.
+ - The low 1MB memory that isn't used directly by the kernel is now
+   swappable memory, instead of being hardcoded for buffer cache.  The
+   patches for this were originally by tytso, and I expanded on it a bit
+   more.  This might also help better performance on 2-4MB machines.
+   Note that this does /not/ mean that you can use 1M machines for
+   linux: linux still needs some extended memory.
+ - the dosfs has been upgraded to dosfs.8 - patches by almesber.
+ - I edited the minix fs pretty heavily to remove a couple of race-
+   conditions.  The same races still exist in the extended fs, as I
+   didn't have time to edit that yet.  The minix-fs took precedence as I
+   know that better, and extfs isn't "official" yet anyway.
+
+other changes:
+
+ - the mouse-driver now handles both Logitech (minor = 0) and PS/2
+   (minor = 1) busmice.
+ - there is a proc-fs for access to user memory/files etc.
+ - better support for the tcp/ip patches (but see below...)
+ - corrected symlink and /dev/[k]mem behaviour
+ - Lars Wirzenius' README (with minimal comments by me) and the GNU
+   COPYING notice are now part of the normal kernel setup, and can be
+   found in the tar-archive.
+ - the floppy ioctl() to get the FD parameters no longer requires root
+   priviledges.  Thus, the msdos emulator runs even for a normal user.
+
+Some comments on patchlevel 3:
+
+        mm:
+
+The swap-page handling resulted in a reduction of swap-file (or
+partition) size to a maximum of 16MB per file.  It's nothing inherent to
+the code, but it eased some algorithms, so I didn't bother coding around
+it.  After all, 16MB is enough for most people, and if you want more,
+you can have up to 128 swapfiles of 16MB each.  If I get enough
+hate-mail about it, I might just try to find the energy to correct it.
+Maybe.
+
+Bigger swapfiles will still work, but linux will take advantage of only
+the low 16MB.  Also, there is no nifty logic to try to optimize the
+usage of the swap-files: pages are simply allocated from one swap-file
+until it fills up, and then the next swap-file is used.
+
+The memory management changes break ps/free once more, but not very
+much.  Also, I changed the load-average counting, so 'w' also needs
+slight editing.  On the other hand, I made '/dev/kmem' mmap()able, and
+'ps' and 'free' should be edited to take advantage of that: it should
+result in much faster operation, as well as possibly using less real
+memory.
+
+        fs:
+
+The fs changes should remove at least two races - the races don't happen
+very often, but they were theoretically possible, and might be the
+reason for some fs corruption problems that have been reported.  The
+changes are related to the use of bmap() - the bmap interface doesn't
+really lend itself to some things that it was used for.  Re-writing
+internal fs-functions not to use bmap not only should have removed any
+races, but also actually resulted in cleaner code.
+
+The proc-fs code isn't too beautiful, and I'll probably leave it out
+from 0.98 unless I can make it loadable.  We'll see.  If anybody wants
+to use it, you can do something like
+
+  # mount -t proc /dev/ram /proc
+
+Instead of /dev/ram you can use any block device - it's not used, and is
+only a dummy as the proc-fs doesn't actually use any external device.
+(but note that the device is still marked as mounted, so you cannot
+mount it for anything else).
+
+        kernel/mm/lib:
+
+The TCP/IP patches are also essentially in 0.97.pl3 - not the full
+TCP/IP directory, only the patches to the main kernel.  NOTE!! I don't
+like the 'grab_malloc_pages()' function, so I left that out, and added a
+GFP_ATOMIC priority to get_free_page() that should be used instead.  I
+hope this will be used (Ross?), as it's a lot cleaner.
+
+Also, I hope the tcp/ip people will clean up malloc() so that it doesn't
+panic instead of returning NULL etc.  Ugly, ugly.  This is related to
+the get_free_page(GFP_ATOMIC) changes, and I'd like to have patches as
+soon as possible - tcp/ip won't be part of the standard kernel until
+that can be cleaned up.
+
+                Linus

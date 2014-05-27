@@ -1,0 +1,22 @@
+Linux-2.4.0-test2
+
+
+There's a "test2" kernel out there now, integrating most of the -ac
+patches, and some code that wasn't in -ac. 
+
+Normally, when you integrate almost 5MB of patches, bad things happen.
+This time, a miracle occurred. As I uploaded the resultant kernel, a
+specter of the holy penguin appeared before me, and said "It is Good. It
+is Bugfree".
+
+As if wanting to re-assure me that yes, it really =was= the holy penguin,
+it finally added "Do you have any Herring?" before fading out in a puff of
+holy penguin-smoke. Only a faint whiff of rancid fish remains as I type in
+these words..
+
+In short, not only are most of Alan's patches integrated, I have it on
+higher authority that the result is perfect.
+
+So if it doesn't compile for you, you must be doing something wrong.
+
+		Linus

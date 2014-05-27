@@ -1,0 +1,14 @@
+Linux 2.4.0-test9pre2
+
+    - scsi fixes
+    - network updates
+    - PCI bridge scanning fix: assign numbers properly
+    - sparc updates
+    - Riel VM update
+    - disallow re-mounting same filesystem in same place multiple times.
+      Too confusing. And /etc/mtab gets strange.
+    - PPC updates (including PPC-related drivers etc)
+    - more initcall updates
+    - various net drvr updates and fixes
+    - "extern inline" -> "static inline".  It doesn't matter right now,
+      but it's proactive for future gcc versions.

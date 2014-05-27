@@ -1,0 +1,7 @@
+Linux 2.2.17pre4
+
+o	Winchip C6 has buggy TSC			(Dave Jones)
+o	TCP crash workaround for the problem seen by 
+	auctionwatch					(Alexey Kuznetsov)
+o	VM improvements (mm-fix-3)			(Andrea Arcangeli)
+o	Revert parport change in pre2 for now		(Alan Cox)

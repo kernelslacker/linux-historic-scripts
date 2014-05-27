@@ -1,0 +1,45 @@
+Linux 2.1.108
+
+I just made a pre-2.1.108 and put it on ftp.kernel.org - it fixes a
+problem where my sendfile() forgot to get the kernel lock (blush), so it
+randomly didn't work correctly on SMP.
+
+I've also done some more testing of sendfile(), and the nice thing is that
+when I compared doing a file copy with sendfile compared to a plain "cp",
+the sendfile implementation was about twice as fast (at least my version
+of "cp" will just do read+write pairs over and over again). When I copied
+a 38MB file the "cp" took 1:58 seconds while sendfile took 1:08 seconds
+according to "time" (I have 512MB of RAM, so this was all cached,
+obviously)..
+
+I haven't done any network tests, because I don't think I'd be able to see
+any difference, and it does need the "SO_CONSTIPATED" thing and a way to
+push the end of data for best performance.
+
+Some final words on sendfile():
+ - it does report errors correctly. That doesn't mean that you necessarily
+   can know _which_ fd produced the error, that you have to find out on
+   your own. A file real access can generally result in EIO and EACCES
+   (the latter with NFS and other "protection-at-read-time" non-UNIX
+   filesystems), while the output write() can result in a number of errors
+   as the output fd can be any kind of socket/tty/file. Depending on the
+   mode of the output file, the output errors can include EINTR, EAGAIN
+   etc, and you can mix sendfile() with select() on the output socket, for
+   example.
+ - you can give it a length of MAX_ULONG, and it will write as much as it
+   can. This is entirely consistent with the notion that it is equivalent
+   with write(out, tmpbuf, read(in, tmpbuf, size)) where "tmpbuf" is
+   essentially infinite - the read() will read al of the file and return
+   the file length in the process. Thus you don't even need to know the
+   size of the file beforehand.
+   The file copy test was essentially done with a single
+        error = sendfile(out, in, ~0);
+   and I'm appending my current test-program.
+
+This is going to be in 2.2, btw. The changes are so small and so obviously
+have to work that it would be ridiculous not to have this - the only
+question is whether I'll try to make it a "copyfd()" system call instead,
+falling back on read+write when I can't use the page cache directly. I
+suspect I won't.
+
+                        Linus

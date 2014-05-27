@@ -1,0 +1,30 @@
+Linux 2.0.36pre3
+
+[ftp.uk.linux.org:/pub/linux/alan/...]
+Ok this took a bit longer than I intended. Im releasing 2.0.36pre3 now for
+two reasons
+
+        1.      Its got the 5.0.20 AIC7xxx driver in it - this should help
+                the adaptec afflicted
+        2.      It has modular sound in it
+
+Now for the modular sound Im unsure if its a good idea or bad to switch
+to it for a 2.0.x kernel. Its always going to be available as an add on
+and I suspect be something most vendors will ship (bearing in mind the target
+markets are often not keen to recompile kernels). So I'd appreciate feedback
+on both if modular sound behaves for you (it should 8)) and also opinions
+on whether it should become a standard item.
+
+Apart from that all I have queued to do now are a few small bug fixes and
+to wait for the final version of the isdn updates. Those are pretty important
+as they should include code thats been certified with telco approval in some
+of the weird parts of the world (most of the EEC to start with) where code
+certification for the ISDN 'D' channel protocol is required for each card.
+
+If you have a new feature you desperately want for 2.0.36, then probably
+too late. If there are bug fixes floating around notin 2.0.36pre3 you think
+matter please send me them - I'd rather get duplicates than miss stuff.
+Finally - treat pre3 with a bit of care - its not as tested as the pre patches
+tend to be.
+
+Alan

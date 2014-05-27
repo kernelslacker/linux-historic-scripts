@@ -1,0 +1,19 @@
+Linux 2.2.20pre9
+
+o	Document ip_always_defrag in proc.txt		(Brett Eldrige)
+o	Update S/390 asm for newer gcc			(Ulrich Weigand
+o	Update S/390 documentation			 Carsten Otte
+o	Update s390 dump too				  and co)
+o	Update s/390 dasd to match 2.4
+o	Backport s/390 tape driver from 2.4
+o	FDDI bits for s/390
+o	Updates for newer pmac laptops			(Tom Rini)
+o	AMD760MP support				(Johannes Erdfelt)
+o	Fix PPC oops on media change			(Tom Rini)
+o	Fix some weird but valid input combinations	(Tom Rini)
+	on PPC
+o	Add additional checks to irc dcc masquerade	(Juanjo Ciarlante,
+							 Michal Zalewski)
+o	Update 2.2 ISDN maintainer			(Kai Germaschewski)
+o	Fix 3c505 with > 16Mb of RAM			(Paul)
+o	Bring USB into sync with 2.4.7			(Greg Kroah-Hartmann)

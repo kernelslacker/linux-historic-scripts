@@ -1,0 +1,60 @@
+[PATCH] Linux-0.99.6 (February 21, 1993)
+
+Merge a lot of duplicated special file handling into fs/devices.c, and
+make drivers register their major numbers properly. 
+
+VFS layer gets fsync virtual function.
+
+Compressed image boot, with the kernel loaded into high memory..
+
+[original announcement below]
+
+I'm starting soon to run out of patchlevel numbers for 0.99, but I made
+a new release anyway (and long-time linux hackers remember my less than
+completely logical numbering: when I run out of numbers I'll start using
+alphabetical characters and other fun characters to indicate new
+versions :-)
+    
+0.99pl6 is mainly a syncronization release: it fixes a few bugs and
+changes the behaviour of 'vhangup()' to be more standard.  The vhangup()
+changes will break some init/login stuff that depended on the earlier
+incorrect behaviour - not everybody may want to use pl6 until you are
+sure your init/login will work happily with it.  Better do these things
+before 1.0 than to break it later.
+    
+Patchlevel 6 also changes the vfs functions for special devices as well
+as adding a 'fsync' field to the inode-operations structure.  Thus
+ext2fs and xfs need updating.  Remy and Xia? The special file and fifo
+handling code is no longer supposed to be in the fs-dependent layer, but
+is handled by the vfs routines, as it's the same for all "normal"
+filesystems.
+
+Ok, here are the actual changes/features of pl6:
+- the kernel can be loaded in gzipped format and de-compressed at
+  startup beyond the 1MB mark.  Good for bootable rootdisks.  Patches
+  mainly by Hannu Savolainen.
+- I finally enabled NMI's everywhere (except at the bootup sequence),
+  so if you have memory errors, they will hopefully now result in
+  kernel messages ("NMI received..")
+- the device registration code for special devices.  Special files are
+  now registered with a special "register_[chr|blk]dev()" function.
+- consolidated fifo/special dev handling
+- vhangup patches.  Note that these may break init/login badly, at
+  least if you are using poeigl-1.7.  Be careful that you don't get
+  totally locked out of your machine.
+- the procfs NULL-dereferencing bugfix (michaelkjohnson)
+- literal next character handling (very losely based on a patch I
+  received: I essentially rewrote it with final fixes by jrs).
+- fpu-emu bugfixes by Bill Metzenthen - fixes the "internal error 112"
+  bug as well as a sign bug with zero.
+- fdomain driver fixes
+- various other minor fixes (wrongly replying to bad ip messages etc)
+
+I'm still not sure about the 387 error detection code: I have had a
+couple of messages that would suggest that some early clone 387's have
+problems with math exceptions in protected mode.  With the new (as of
+99pl5) test at startup this can lead to problems at boot-time.  Please
+mail me directly if you seem to have problems with this (it should be
+obvious in pl6 due to debugging messages at startup).
+    
+            Linus

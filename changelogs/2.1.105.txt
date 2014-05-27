@@ -1,0 +1,8 @@
+Linux 2.1.105
+
+Linux-2.1.105 is out there, and is mainly a "synch to other people and fix
+silly problems" release. It has the 104 kmod and compilation problems
+fixed, and updates some pending patches (notably sound and ham radio
+drivers).
+
+                Linus

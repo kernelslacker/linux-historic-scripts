@@ -1,0 +1,140 @@
+[PATCH] Linux-0.95 (March 8, 1992)
+
+This was the first kernel that got released under the GPL (0.12 had a
+time-lapse to make sure the people involved accepted the license change:
+nobody ever complained). 
+
+Because 0.12 had been so successful, this was supposed to be closer to
+1.0.  Yeah, right.  1.0 was eventually released almost exactly two years
+later.. 
+
+The big change here is the first signs of a real VFS layer: while the
+only available filesystem is still the Minix-compatible one, the code is
+factored out, and the Minix-specific stuff is put in its own directory. 
+You can clearly see how the thing is moving towards having multiple
+different filesystems. 
+
+The VFS changes also cause cleanups in various drivers, since we end
+up having more clear inode operation structure pointer handling.
+
+Superblock handling is still minix-specific..
+
+NOTE! We also have /bin/init finally.  It still falls through to the old
+"run shells forever" case if no init can be found, but it's starting to
+look a whole more like real UNIX user-land now.. 
+
+New developers: Ross Biro shows up, and does ptrace.  He will later end
+up doing the first-generation networking code.
+
+Other changes:
+
+ - UK and Danish keyboard maps (and the keyboard driver supported
+   "Application mode" keys from vt100+)
+ - Make sure interrupts clear the 'D'irection flag
+ - Floppy driver gets track buffer, which speeds it up immensely.  This
+   was done based on patches by Lawrence Foard (entropy@wintermute.wpi.edu)
+ - Lots of buffer cache cleanups. 
+ - support nonblocking pipe file descriptors
+ - recursive symlink support
+ - sys_swapon() means that we don't have to select the swap device
+   at build (or boot) time ("Written 01/25/92 by Simmule Turner, heavily
+   changed by Linus")
+ - start some generic timer work (ugh, but these first timers were
+   _horrible_ hardcoded things)
+ - ptrace for debugging
+ - console size query support with TIOC[G|S]WINSZ
+ - /dev/kmem ("by Damiano")
+ - rebooting (with ctrl-alt-del or sys_reboot()).
+
+From the release notes:
+
+              New features of 0.95, in order of appearance
+                      (ie in the order you see them)
+
+      Init/login
+
+Yeah, thanks to poe (Peter Orbaeck (sp?)), linux now boots up like a
+real unix with a login-prompt.  Login as root (no passwd), and change
+your /etc/passwd to your hearts delight (and add other logins in
+/etc/inittab etc).
+
+      Bash is even bigger
+
+It's really a bummer to boot up from floppies: bash takes a long time to
+load.  Bash is also now so big that I couldn't fit compress and tar onto
+the root-floppy: You'll probably want the old rootimage-0.12 just in
+order to get tar+compress onto your harddisk.  If anybody has pointers
+to a simple shell that is freely distributable, it might be a good idea
+to use that for the root-diskette.
+
+Especially with a small buffer-cache, things aren't fun. Don't worry:
+linux runs much better on a harddisk.
+
+      Virtual consoles on any (?) hardware.
+
+You can select one of several consoles by pressing the left alt-key and
+a function key at the same time. Linux should report the number of
+virtual consoles available upon bootup. /dev/tty0 is now "the current"
+screen, /dev/tty1 is the main console, and /dev/tty2-8 can exist
+depending on your text-mode or card.
+
+The virtual consoles also have some new screen-handling commands: they
+confirm even better to vt200 control codes than 0.11. Special graphic
+characters etc: you can well use them as terminals to VMS (although
+that's a shameful waste of resources), and the PF1-4 keys work somewhat
+in the application-key mode.
+
+      Symbolic links.
+
+0.95 now allows symlinks to point to other symlinks etc (the maximum
+depth is a rather arbitrary 5 links). 0.12 didn't like more than one
+level of indirection.
+
+      Virtual memory.
+
+VM under 0.95 should be better than under 0.12: no more lockups (as far
+as I have seen), and you can now swap to the filesystem as well as to a
+special partition. There are two programs to handle this: mkswap to set
+up a swap-file/partition and swapon to start up swapping.
+
+mkswap needs either a partition or a file that already exists to make a
+swap-area. To make a swap-file, do this:
+
+      # dd bs=1024 count=NN if=/dev/hda of=swapfile
+      # mkswap swapfile NN
+
+The first command just makes a file that is NN blocks long (initializing
+it from /dev/hda, but that could be anything). The second command then
+writes the necessary setup-info into the file. To start swapping, write
+
+      # swapon swapfile
+
+NOTE! 'dd' isn't on the rootdisk: you have to install some things onto
+the harddisk before you can get up and running. 
+
+NOTE2! When linux runs totally out of virtual memory, things slow down
+dramatically. It tries to keep on running as long as it can, but at
+least it shouldn't lock up any more. ^C should work, although you might
+have to wait a while for it..
+
+      Faster floppies
+
+Ok, you don't notice this much when booting up from a floppy: bash has
+grown, so it takes longer to load, and the optimizations work mostly
+with sequential accesses.  When you start un-taring floppies to get the
+programs onto your harddisk, you'll notice that it's much faster now. 
+That should be about the only use for floppies under a unix: nobody in
+their right mind uses floppies as filesystems.
+
+      Better FS-independence
+
+Hopefully you'll never even notice this, but the filesystem has been
+partly rewritten to make it less minix-fs-specific. I haven't
+implemented all the VFS-patches I got, so it's still not ready, but it's
+getting there, slowly.
+
+      And that's it, I think.
+
+Happy hacking.
+
+                      Linus (torvalds@kruuna.helsinki.fi)

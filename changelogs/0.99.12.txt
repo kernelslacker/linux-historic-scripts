@@ -1,0 +1,65 @@
+[PATCH] Linux-0.99.12 (August 14, 1993)
+
+CDU31A and MCD CD-ROM drivers.  Ahh, the bad old days of every sound
+card manufacturer having their own CD interface. 
+
+Much nicer keymaps for keyboards.
+
+Many more network drivers by Donald Becker for the improving NET-2 code.
+
+Eric Youngdale makes executables and libraries use the new mmap()
+functionality.  The old special-cased sharing goes away.  Hurray! This
+also means that mmap gets a lot more testing.  It also means that NFS
+has to be fixed to allow mmaps. Done.
+
+"sys_modify_ldt()" appears, the extended DOS emulators want it.
+
+Still using C++ to compile the kernel.
+
+Original changelog:
+
+ - The memory manager cleanup has continued, and seems to be mostly
+   ready, as proven by the ease of adding mmap() over NFS with the new
+   routines.  So yes, the pl12 kernel will demand-load your binaries
+   over NFS, sharing code and clean data, as well as running shared
+   libraries over NFS.  Memory management by Eric and me, while the NFS
+   mmap code was written by Jon Tombs,
+
+ - ** IMPORTANT **: The keyboard driver has been enhanced even further,
+   and almost everything is completely re-mappable.  This means that
+   there is a new version of 'loadkeys' and 'dumpkeys' that you must use
+   with this kernel or you'll have problems.  The default keyboard is
+   still the US mapping, but if you want to create your own mappings
+   you'll have to load them with the new binaries.  Get the 'kbd.tar.gz'
+   archive from the same place you get the kernel.
+
+   The new keymappings allow things like function key string changes,
+   remapping of the control keys, and freedom to remap any of the normal
+   keyboard functions: including special features like rebooting,
+   console switching etc.  The keyboard remapping code has been done
+   mostly by Risto Kankkunen (Risto.Kankkunen@Helsinki.FI).
+
+ - updated network drivers by Donald Becker
+
+ - updated serial drivers - tytso@Athena.mit.edu
+
+ - updated 387 emulation (Bill Metzenthen).  The updated emulator code
+   has more exact trigonometric functions and improved exception
+   handling.  It now behaves very much like a real 486, with only small
+   changes (greater accuracy, slightly different denormal NaN handling
+   etc - hard to detect the differences even if you are looking for
+   them).
+
+ - network timer fixes by Florian La Roche (much cleaned up net/inet/timer.c
+   and some bad race-conditions fixed).
+
+ - Scsi code updates by Eric Youngdale and others
+
+ - Sony CDU-31A CDROM driver by Corey Minyard added to the standard
+   kernel distribution.
+
+ - The Mitsumi CDROM driver is now part of the standard kernel.  Driver
+   by Martin Harriss with patches by stud11@cc4.kuleuven.ac.be (yes, he
+   probably has a real name, but no, I haven't found it) and Jon Tombs.
+
+ - various other minor patches (preliminary ldt support etc)

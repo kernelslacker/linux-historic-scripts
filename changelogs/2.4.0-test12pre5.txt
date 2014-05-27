@@ -1,0 +1,5 @@
+- Jaroslav Kysela: ymfpci driver
+- Linus: get rid of bogus MS_INVALIDATE semantics
+- Linus: final part of the PageDirty() saga
+- Rusty Russell: 4-way SMP iptables fix
+- Al Viro: oops - bad ext2 inode dirty block bug

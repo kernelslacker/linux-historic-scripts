@@ -1,0 +1,17 @@
+Linux 2.2.17pre1
+
+o	Fix the md failure to work			(Alan Cox)
+o	Fix the Irix 6.x FIN foodfight bug		(Andi Kleen)
+	| Someone needs to fix IRIX too 
+o	Fix the Alpha debugging printk			(Alan Cox)
+o	Fix the 2.2.16 problem with some cdroms		(Jens Axboe)
+o	Fix the i2o scsi crash on boot			(Alan Cox)
+o	Fix yamaha audio when compiled in		(Alan Cox)
+o	Fix es1371 rev 8 cards				(Thomas Sailer)
+o	Don't listen for TCP on lockd port		(Trond Myklebust)
+o	Fix sparc32 signal handling			(Eddie d'Ost)
+o	Fix sym53xxx sparc stuff			(Dave Miller)
+o	Fix crashes on unload/remove of initio scsi	(Thomas Graichen)
+o	FIX eepro100 on sparc				(Dave Miller)
+o	Remove Alessandro from the maintainers		(Alessandro Rubini)
+o	Fix erroneous cp932 code page data		(C Huang)

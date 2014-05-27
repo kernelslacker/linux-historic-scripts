@@ -1,0 +1,59 @@
+[PATCH] Linux-0.99 (December 13, 1992)
+
+net-1: paranoid queue checking to find more bugs.
+
+configuration script version #1. 
+
+NFS filesystem client support by Rick Sladkey!
+
+[Original announcement below]
+
+0.99 has no major new features: the NFS client code is now in the
+standard distribution, and the kernel configuration has changed, but
+most of the rest of the changes are fixes - especially the tcp code
+should now be pretty stable (knock wood).
+
+Changes:
+
+ - NFS is in. As are some stubs for the soud drivers, although it's only
+   stubs right now.
+ - various fixes around the place: the serial problems are hopefully
+   gone, and there are patches to both TCP/IP and SCSI to make them more
+   stable.
+ - Minor fixes: the keyboard buglet introduced in 0.98pl6 should be
+   gone, and some other bugs are also corrected.  The optimized
+   read-ahead code in the filesystems (and the raw device read code) was
+   too complicated and seemed to have problems with bad blocks, so I
+   rewrote it, and it should hopefully work correctly now (this may have
+   been the reason "mkfs -c" didn't work in all cases).  Thanks for some
+   good bug-reports I've gotten: I've tried to correct all the problems
+   I got reports on.
+ - The kernel configuration has been re-thought: I decided to take
+   advantage of the possibilities offered by GNU make etc.  This means
+   that you no longer can compile the kernel using any other make, but
+   there probably aren't many (if any) people doing that anyway.  This
+   way I got rid of the extremely ugly SCSI setup, so it was probably
+   worth it.
+
+To configure the kernel for your setup, do a
+
+        make config
+
+and answer the yes/no questions. After that, do a
+
+        make dep
+
+to make the dependencies match your setup.  After that you should still
+go edit the top-level Makefile for some of the configuration information
+as before, but the remaining config things are pretty simple.  Then you
+can make the kernel with a simple "make Image".
+
+The new configuration utility (essentially a stupid shell script coupled
+with some smarts in the Makefiles) tries to minimize compilations: if
+you disable the SCSI code the scsi drivers won't even be compiled, much
+less linked in.  This should be a win on slower machines.
+
+NOTE!!! Use LILO-0.7 to load the 0.98pl5 and newer kernels: any older
+version of lilo is liable to result in weird problems.
+
+                Linus

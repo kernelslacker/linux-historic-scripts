@@ -1,0 +1,87 @@
+[PATCH] Linux-0.99.7 (March 13, 1993)
+
+Nigel Gamble makes lp driver able to use interrupts.
+
+The mmap() code is finally starting to really happen.  In particular,
+this means that "verify_area()" is doing more - it can check the actual
+areas that have been mapped, rather than just blindly assume that the
+user can access anything in the first 3GB. 
+
+For now, the mmap code only does anonymous mappings and /dev/mem. 
+Executables are still read into memory.  But the infrastructure is
+there. 
+
+The VFS layer stops using names directly in user space - the race
+conditions were just too hard to handle.  So pathnames are copied into
+kernel space before they are looked up. 
+
+Ext2fs (Remy Card) and xiafs (Frank Xia) are merged.  Both are much
+faster filesystems using bitmaps rather than freelists, and can handle
+big disks and big files. 
+
+Ext2fs is based on extfs, while xiafs is a simpler straightforward
+extension of the old minixfs. 
+
+Xiafs obviously was eventually dropped.
+
+[Original announcement below]
+
+It has been two weeks since the last release, so it's high time you
+should once more enjoy the pleasures of patching up your kernel to a
+higher version number if you are into those kinds of perversions.  Linux
+0.99pl7 is available as both full source and diffs against pl6 on
+nic.funet.fi: pub/OS/Linux/PEOPLE/Linus, and it will probably show up on
+the other major sites within days.
+
+As of pl7, I'm trying out a new format: both the full distribution and
+the diffs are now compressed with gzip as it is now available at most
+machines.  Also, the diffs are no longer context diffs: they use the
+smaller unified diff format.  At least the stock SunOS 'patch' binary
+seems not to understand them at all, but GNU patch has no problems, and
+unified diffs are a bit smaller (not that it matters much after gzip has
+done its deed on them).
+
+As to the changes in pl7: they are many and varied, and hopefully all to
+the better (-"Dream on Linus" -"Shut up").  Short list follows, hope I
+haven't forgotten anything major.
+
+ - ext2fs is in: note that this is version 0.2c and that if you are
+   currently using an older version there are some changes.  Small
+   filesystems (< 256MB) should reportedly be automatically converted,
+   bigger filesystems need some assistance. Ext2fs written by Remy Card.
+ - xiafs is also in: again, the final version uses a slightly different
+   layout to support exact file block counts, so if you use the xiafs,
+   you should make sure you have the latest fs-tools.  Xiafs written by
+   Frank Xia.
+ - updated Ultrastor SCSI driver with scatter/gather by Scott Taylor.
+   It should be much faster, as well as support the Ultrastor-34F.
+ - major changes in the memory manager.  Yours truly got carried away,
+   and finally cleaned up the mm layer due to pmacdona wanting mmap() on
+   /dev/zero.  This means that the IPC patches won't go in, and need
+   updating.  Krishna?
+ - more big changes: I rewrote most of the VFS filename-handling.
+   Filenames are copied into kernel space before being used, which
+   cleaned things up somewhat, as well as simplifying some race-
+   condition handling.  As a result, I was also able to easily expand
+   the minix fs to cover the "linux" fs that some people have been using
+   (same layout, but with 30-character names).
+ - updated the printer driver: Nigel Gamble.  It is now able to use
+   interrupts, although the default behaviour is still to poll.
+ - serial driver updates by tytso (but no SLIP yet)
+ - various minor patches for POSIX compliace: Bruce Evans, Rick Sladkey
+   and me.
+ - other minor patches all over the place: scsi, tcpip etc.
+
+All in all, the patches are almost half a megabyte even as unified
+diffs: getting the full sources might be easier than patching it all up.
+
+As always, some of the patches are actually tested by me, some aren't
+(and just because I wrote some of them doesn't mean I actually *tested*
+them: I have no idea if mmap() works on /dev/zero, although it should).
+I have neither a printer nor an Ultrastor controller, and I haven't got
+the diskspace to test out the new filesystems, so I can only hope they
+work "as advertized".  If you have problems, I want to hear about them,
+so keep the reports coming, and try to pinpoint the problem as well as
+you can ("when I do *this* it happens every time..").
+
+                Linus

@@ -1,0 +1,32 @@
+Linux 2.4.0-test10pre4
+
+    - disable writing to /proc/xxx/mem. Sure, it works now, but it's still
+      a security risk.
+    - IDE driver update (Victroy66 SouthBridge support)
+    - i810 rng driver cleanup
+    - fix sbus Makefile
+    - named initializers in module..
+    - ppoe: remove explicit initializer - it's done with initcalls.
+    - x86 WP bit detection: do it cleanly with exception handling
+    - Arnaldo Carvalho de Melo: memory leaks in drivers/media/video
+    - Bartlomiej Zolnierkiewicz: video init functions get __init
+    - David Miller: get rid of net/protocols.c - they get to initialize themselves
+    - David Miller: get rid of dev_mc_lock - we hold dev->xmit_lock anyway.
+    - Geert Uytterhoeven: Zorro (Amiga) bus support update
+    - David Miller: work around gcc-2.7.2 bug
+    - Geert Uytterhoeven: mark struct consw's "const".
+    - Jeff Garzik: network driver cleanups, ns558 joystick driver oops fix
+    - Tigran Aivazian: clean up __alloc_pages(), kill_super() and
+      notify_change()
+    - Tigran Aivazian: move stuff from .data to .bss
+    - Jeff Garzik: divert.h typename cleanups
+    - James Simmons: mdacon using spinlocks
+    - Tigran Aivazian: fix BFS free block calculation
+    - David Miller: sparc32 works again
+    - Bernd Schmidt: fix undefined C code (set/use without a sequence point)
+    - Mikael Pettersson: nicer Pentium IV setup handling.
+    - Georg Acher: usb-uhci cpia oops fix
+    - Kanoj Sarcar: more node_data cleanups for [non]NUMA.
+    - Richard Henderson: alpha update to new vmalloc setup
+    - Ben LaHaise: atomic pte updates (don't lose dirty bit)
+    - David Brownell: ohci memory debugging (== use separate slabs for allocation)

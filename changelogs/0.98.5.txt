@@ -1,0 +1,41 @@
+[PATCH] Linux-0.98.5 (November 15, 1992)
+
+net-1: free_skb -> kfree_skb. More changelogs.
+
+[Original announcement below]
+
+0.98.5 mainly fixes the swap-partition bug that was present in pl4 (and
+for which I did an earlier unofficial emergency patch).  The bug
+resulted in incorrect swapping with a partition under some circumstances
+(notably tty events: keypresses could make xterm dump code when swapping
+was enabled etc).
+
+pl5 also has some other changes - nothing major.  Setting and querying
+termios information from a pty master will now set/query the slave info:
+this seems to be what some programs (telnet) expect.  I haven't seen any
+changes to any of the programs I use, but I'd like to hear if this
+results in problems or if it actually does help.
+
+NOTE! READ THIS AND PONDER:
+
+pl5 now checks against writing to the text segment.  Older binaries
+which used the original estdio library (used with the earliest gcc
+versions) are liable to break: not that there should be many of these
+binaries around.  So if you get "Segmentation fault (core dumped)" on
+binaries you know used to work, this is the likely cause.
+
+One problem spot that I've seen even with new binaries is due to a
+library bug in 'sigaction()'.  If the second argument is NULL (ie the
+pointer to the new sigaction structure), sigaction() will incorrectly
+dereference it resulting in a core-dump.  The only program so far that
+I've seen doing this is 'dd', but there may be others.
+
+On my system I have found a whopping total of two binaries which didn't
+like the text segment protection, so it shouldn't really be a major
+problem for anybody.  Famous last words.
+
+                Linus
+
+PS. The strace code in pl4 was incorrectly credited in the announcement.
+The code was written by Branko Lankester, not Ross Biro (who did the
+tcp/ip changes).

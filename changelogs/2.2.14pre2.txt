@@ -1,0 +1,16 @@
+Linux 2.2.14pre2
+
+o	Back out buggy masquerade tweak
+o	Add Matrox G400 fb support			(Petr Vandrovec)
+o	a.out improvements				(Andrea Arcangeli)
+o	More build fixes				(Arjan van de Ven)
+o	Report new intel CPU caches correctly		(Dragan Stancevic)
+o	Fix doubled io_apic_setup extern		(lots of folks)
+o	Updated list of documentation about the kernel	(Juan-Mariano de Goyeneche)
+o	IDE/SMP fixes					(Mark Lord)
+	| This isnt Andre's big stuff - yet...
+o	Quota fix					(Jan Kara)
+o	Handle NEC 260 IDE CD right			(David Woodhouse)
+o	Masquerade fix					(Joseph Gooch)
+o	PCI parallel port handling			(Tim Waugh)
+o	Tulip 0.91g					(Donald Becker)

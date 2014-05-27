@@ -1,0 +1,25 @@
+Linux 2.2.19pre4
+
+o	Fixed duplicate info on the microcode driver	(Daniel Rogers)
+o	Update watchdog structs for nice user export	(Eric Brower)
+o	Update Documentation/devices.txt		(H Peter Anvin)
+o	Tweak sched.h to handle limit in Sparc		(Andrea Arcangeli)
+	'make check_asm'
+o	Move isdn pci definitions into pci.h		(Kai Germaschewski)
+o	Tidy init data/static vars in the isdn code	(Kai Germaschewski)
+o	Fix abuse of int for bitops in isdn		(Kai Germaschewski)
+o	Use named initializers on the AVM B1		(Kai Germaschewski)
+o	Switch capi message length to unsigned		(Kai Germaschewski)
+o	ISDN updates					(Kai Germaschewski)
+o	Update microcode code to check features right	(Tigran Aivazian)
+	in 2.2
+o	E820 handling fixup 				(Andrea Arcangeli)
+o	Fix ne2k-pci driver build bug 			(J.A. Magallon)
+o	DC390 driver updates				(Kurt Garloff)
+o	Handle thinkpad E820 edx overwriting		(Marc Joosen)
+o	Update the osst driver to 0.8.6.1		(Kurt Garloff, 
+							 Willem Riede)
+o	Init the cmpci if compiled in		(Raúl Núñez de Arenas Coronado)
+o	ATP870U SCSI updates to fix disconnect bug	(Wittman Li)
+o	Clean up the usbdevfs backport			(Dan Streetman)
+o	Fix ATI rage makefiles				(Brad Douglas)

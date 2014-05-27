@@ -1,0 +1,9 @@
+Linux 2.2.13pre11
+
+o	Fix /dev/random scribble		(Ted Tso)
+o	Multicast on token ring			(Mike Phillips)
+o	Fix tty locking bug			(Ted Tso)
+o	Alpha updates (fix udelay etc)		(Jay Estabrook)
+o	Make NULL C++ friendly in kernel	(Ben La Haise)
+o	pcwd watchdog bug fix			(Marc Boucher)
+o	Fix dummycom bug on Alpha		(Jay Estabrook)

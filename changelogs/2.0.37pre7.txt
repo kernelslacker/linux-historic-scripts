@@ -1,0 +1,15 @@
+Linux 2.0.37pre7
+
+o	Fix the floppy driver works for alternate blocks
+	of 20 odd days on the Alpha bug			(Paul Slootman)
+o	Accept IEE802.3 arps on ethernet		(Volker Dormeyer)
+o	Autofs overflow fix 				(H Peter Anvin)
+	| backported to 2.0.x
+o	Off by one error in block driver		(Rune M. Brinckmeyer)
+o	Bridge should be silent if disabled		(Tomasz Motylewski)
+o	Another bad ne2k clone added			(Jari Malinen)
+o	Wavelan updated					(Jean Tourrilhes)
+o	InitIO updates					(Bas)
+o	InitIO A100 support				(Initio/Bas)
+o	Added Tripace TC-2550 driver 			(Tripace)
+	(anyone with a card care to port it to 2.2)

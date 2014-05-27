@@ -1,0 +1,39 @@
+[PATCH] Linux-0.99.13 (September 19, 1993)
+
+We get enable_irq()/disable_irq()
+
+The C++ experiment is not going well.  Get rid of the 'extern "C"', but
+replace it with an "asmlinkage" #define that allows us to experiment.
+
+ELF binary support it a notable change.
+
+Original ChangeLog:
+
+ - the bad memory management one-liner bug in pl12 is naturally fixed.
+ - compiled with plain C by default instead of C++
+ - ELF binary support (Eric Youngdale)
+ - Quickport mouse support (and some changes to the PS/2 mouse driver)
+   by Johan Myreen and co)
+ - core file name change ("core" -> "core.xxxx" where xxxx is the name
+   of the program that dumped code).  Idea from ???.  Also, core-files
+   now correctly truncate any existing core file before being written.
+ - some mmap() fixes: better error returns, and handling of non-fixed
+   maps for /dev/mem etc.
+ - one kludgy way to fix the wrong arp packets that have plagued net-2d
+   (resulting in arp packets that had the first four bytes of the
+   ethernet address as the IP address).
+ - I fixed the mount-point handling of 'rename()' and 'unlink()/rmdir()'
+   so that they should now work and/or give appropriate error messages.
+   An early version of this patch was already sent to the KERNEL
+   channel, which fixed the rename problem but not a similar bug with
+   unlink.
+ - packet mode fixes by Charles Hedrick.  Sadly, these are likely to
+   break old telnet/rlogin binaries, but it had to be done in order to
+   communicate correctly with the rest of the world.
+ - FPU emulator patches from Bill Metzenthen.  The fprem1 insn should be
+   correct now (not that anybody seems to have seen the incorrect
+   behaviour..)
+ - a few fixes for SCSI (Drew and Eric)
+ - signal.c changes to handle multiple segments (for Wine) correctly.
+ - updated drivers from Donald Becker: 3c509 and AT1500 drivers, but
+   also some other drivers have been edited, and some networking fixes.

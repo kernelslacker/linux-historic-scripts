@@ -1,0 +1,85 @@
+Linux 2.1.93
+
+2.1.93 is out there. It is broken on other platforms than x86, because I
+had to move some initialization code around, but this shoul dbe very easy
+to fix (moving the device init code later makes a _lot_ of things easier:
+the system is essentially up and running, and "kmalloc()" etc actually
+works).
+
+Now the PCI init code actually has the full SMP knowledge, which it needs
+in order to get the interrupt mapping stuff right (for example - it might
+eventually need it for other reasons too).
+
+The PCI code has generally been cleaned up - thanks to Martin Mares (the
+PCI cleanup is what forced me to do the other changes - anything else
+would simply have been too ugly).
+
+2.1.93 should also fix the stupid things in 92 (modules don't load due to
+missing symbols, and NULL pointer dereferences in /proc under certain
+circumstances etc).
+
+The kernel should also be better at detecting the really low memory
+circumstances, and eventually return NULL instead of just looping forever
+trying to find a page that it won't ever find.
+
+                        Linus
+
+[tytso on ext2fs changes:]
+These patches provide the following enhancements to ext2.
+        * Fixed a bug where we weren't byte-swapping the feature set
+                flags before checking EXT2_FEATURE_RO_COMPAT_SPARSE_SUPER
+        * Added Stephen Tweedie's patches to allow the number of file
+                blocks which will be preallocated to be tuned (instead
+                of being fixed at 8 blocks).
+        * Added Stephen Tweedie's patches to allow directory blocks to
+                be preallocated.  This change is only activated if the
+                EXT2_FEATURE_COMPAT_DIR_PREALLOC is enabled.  (There
+                will soon be a new release of e2fsprogs that will
+                allow you to turn this on.)  The change is compatible
+                with older kernels (that's why it's a COMPAT feature),
+                but we need to flag it in the feature set because the
+                e2fsck needs a few changes to support this.
+        * Added future support for B-trees in directories.  I have a
+                design in mind which is fully read/only compatible
+                with the existing ext2 directories, which will make
+                its debut in the 2.3 kernel series.  This patch will
+                allow 2.2 kernels to mount filesystems with B-tree
+                directories read-write; if a 2.2 kernel tries to
+                modify a B-tree directory, the B-tree valid bit will
+                be turned off, since the B-tree structures won't be
+                updated by 2.2 kernels.  2.0 kernels will be able to
+                mount filesystems with B-tree directories read-only.
+                This defines a new feature, EXT2_FEATURE_RO_COMPAT_BTREE_DIR.
+        * Added Jakub Jelinek's support for large files on 64-bit
+                platforms.  On a 64-bit platform, the first time you
+                expand a file past the 32-bit boundary, the
+                EXT2_FEATURE_RO_COMPAT_LARGE_FILE is turned on.
+                2.0 machines will be able to mount such filesystems
+                read-only.  2.2 kernels on 32-bit platforms will be
+                able such filesystems read-write, but they will only
+                be able to see the first 2**32 bytes of the file, and
+                any attempt to open a large file for read/write access
+                will cause an EBIGF error.
+        * Added support for storing the file type in the directory
+                entry.  This optimization was added to BSD 4.4 and
+                makes a very big difference for a number of
+                operations, since application programs can avoid doing
+                a stat in a number of situations.  Support for this is
+                in the GNU user-land utilities, and is in glibc
+                already.  Beyond this patch, we also need to implement
+                a new getdents system call that will return the
+                information all the way to libc.
+                The reason why it's important to get this change into
+                2.2 is that it requires "stealing" 8-bits from the
+                name_len field of the directory entry.  Ext2fs limits
+                you to 255 characters in a file name, so the high-byte
+                of name_len is always zero.  However, older kernels
+                look at both bytes of name_len, and will get confused
+                if we try to store something there.  So we can only
+                update the file type field if the feature
+                EXT2_FEATURE_INCOMPAT_FILETYPE is enabled.
+                I want to get this support into the 2.2 kernel, since
+                even if it isn't used much (because people will want
+                their filesystems to be compatible with 2.0 kernels),
+                we will be able to migrate smoothly to using this
+                feature by default in the future.

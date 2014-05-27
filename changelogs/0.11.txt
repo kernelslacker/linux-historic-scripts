@@ -1,0 +1,50 @@
+Linux-0.11 (December 8, 1991)
+
+This was created from a re-packaged 0.11 tree.
+
+Linux-0.11 has a few rather major improvements, but perhaps most
+notably, is the first kernel where some other people start making
+real contributions.
+
+ - I fixed the buffer cache code, making it a lot more stable
+
+ - demand-loading from disk. My comment proudly states:
+
+        Once more I can proudly say that linux stood up to being changed: it
+        was less than 2 hours work to get demand-loading completely implemented.
+
+   This is a major milestone, since it makes the kernel much more
+   powerful than Minix was at the time.  I also share clean pages.
+
+ - we still don't have an /sbin/init, but we now load /etc/rc at bootup,
+   and the kernel will loop, spawning shells forever. That makes it easier
+   to test things.
+
+ - scaffolding for math emulation introduced.
+
+ - Ted Ts'o shows up as a coder. Ted implements:
+        o "#!" escape handling for executables
+        o fixes for some file permission handling
+        o "sticky" directory bit
+        o first "malloc()/free()" implementation.
+          (this one is horrible: the free needs the size for good
+           performance, which will result in years of "free_s()" pains)
+        o adds BSD-style setreuid/gid() handling
+        o allows us to specify root device at image build time
+        o cleanups of some of the uglier direct %fs-register accesses
+
+ - Galen Hunt shows up as a coder: he's added code to handle different
+   video card detection (whereas my original one just handled VGA, we
+   now handle CGA, MGA, EGA and VGA)
+
+ - The console can beep now: John T Kohl (who also does the tty KILL
+   char handling)
+
+ - we also now have German (Wolfgang Thiel) and French (Marc Corsini)
+   keyboard maps.  World Domination!
+
+Btw, if you wonder what the "Urgel" comments are - I was still fairly
+Swedish-speaking, and "Urgel" is what I would these days write as "Ugh".
+
+It's a sign of trouble or ugly code.  The floppy driver in particular is
+clearly not something I'm very proud of ;). 

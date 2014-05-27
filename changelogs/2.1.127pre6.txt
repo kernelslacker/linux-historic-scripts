@@ -1,0 +1,31 @@
+
+>> Btw, I've been looking at why Andrea thinks he's patches are needed,
+>> because I looked very deep and the patches really shouldn't have made any
+>> real difference..
+>> The reason - tadaam - is so silly that it's embarrassing. The thing is,
+>> that the things that should use GFP_USER don't. They use GFP_KERNEL
+>> instead, and that is sufficient to explain all the problems that Andrea
+>> saw. Becuase GFP_KERNEL will continue to allow allocations even after the
+>> freeing up of another page has failed.
+>> After fixing that in mm/memory.c and mm/filemap.c, the problem seems to be
+>> properly fixed.
+
+> I thought to change that but I was not sure (and infact some email ago I
+> asked that to you too). I have not changed that myself because I was
+> worryed that userspace allocation could be too much light. It would be
+> nice to know if using GFP_USER and disabling kswapd (at the end of
+> vmscan.c) causes process to segfaults (so that we can know if a real time
+> process can alloc/swapout memory safely).
+
+I wonder why it wasn't GFP_USER - that's exactly what the thing is there
+for, and I don't know when it was changed. Probably with the new page
+cache or something. I just looked at the memory allocator, and it looked
+like it was doing the right thing, and it _was_ - but because it was
+called with GFP_KERNEL it tried harder than it should have to return a
+good page even when it ran out of memory.
+Anyway, I made a pre-patch-2.1.127-6 and put it on ftp.kernel.org (pre-4
+and pre-5 have been my internal pre-patches and don't show up there). This
+has the timeout code basic fixes and the mm fixes, and doesn't fall over
+for me with Andreas memory load case.
+
+	Linus

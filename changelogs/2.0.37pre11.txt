@@ -1,0 +1,19 @@
+Linux 2.0.37pre11
+
+Well the ftruncate bug means one more release. I've also merged a few minor
+other fixes and the 1.0 version of the Compaq SMART2 driver.
+
+You need binutils 2.8 or 2.9 to build this kernel tree. 2.7 is not good
+enough
+
+ftp://ftp.*.kernel.org/pub/linux/kernel/alan/.
+
+Linux 2.0.37pre11
+
+o Ftruncate fix (Linus)
+o Bring APM more in line with 2.2 (Steven Rothwell)
+o Small fixes/Symbols (FreeSWAN)
+o EQL bug fix (Rumen Svobodnikov)
+o Fix serial memleak (Armin Groesslinger)
+o Mmap race fix (Stephen Tweedie)
+o 1.0 SMART2 driver (Compaq)

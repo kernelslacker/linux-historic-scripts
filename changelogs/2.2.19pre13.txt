@@ -1,0 +1,19 @@
+Linux 2.2.19pre13
+
+o	Fix up missing bits of Soohoon Lee's exec patch	(Michael Jaegerman)
+	| not sure where some bits of it escaped too...
+o	Revert serial driver locking patch		(Alan Cox)
+	| Seems to be causing crashes
+o	PPC BUG(), and other compile fixes needed   (Benjamin Herrenschmidt)
+o	ide_pmac_init to fix IDE probe power off    (Benjamin Herrenschmidt)
+o	atyfb128 and serial for pmac		    (Benjamin Herrenschmidt)
+o	Workaround early imac firmware bug	    (Benjamin Herrenschmidt)
+o	Ensure task is running in mm faults		(Roger Larsson)
+	| from 2.4
+o	Fix nfs cache bug				(Neil Brown)
+o	Further config.in cleanups/fixing	    (Andrzej Krzysztofowicz)
+o	Clean up tulip changes remove accidental fix	(Jeff Garzik)
+	reversions
+o	Update defconfig				(Jeff Garzik)
+o	Update usb printer driver in 2.2 to match 2.4 	(Randy Dunlap)
+o	Fix posix compliance on sockopts

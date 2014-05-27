@@ -1,0 +1,15 @@
+Linux 2.2.17pre11
+
+o	Tlan driver update				(Torben Mathiasen)
+o	Ext2 error message typo				(Andreas Dilger)
+o	Updated Yamaha PCI audio driver			(Daisuke Nagano)
+o	Small PPP oops fixes				(Paul Fulghum)
+o	SMBFS compile fix				(Urban Widmark)
+o	Small cisco hdlc/lmi fixes			(Krzysztof Halasa)
+o	Fix hdlc mode switch				(Ivan Passos)
+o	Fix fbmem driver bug with size checks		(Petr Vandrovec)
+o	Merge the Emu10K driver				(Rui Sousa and co)
+o	Synclink driver updates				(Paul Fulghum)
+o	Appletalk SMP locking fixes			(Jens-Uwe Mager)
+o	Don't offer Toshiba Laptop for non x86		(Francis Galiegue)
+o	Further PPC minor merges			(Paul Mackerras)

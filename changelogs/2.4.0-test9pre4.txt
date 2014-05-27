@@ -1,0 +1,4 @@
+Linux 2.4.0-test9pre4
+
+    - continued SCSI cleanup
+    - more USB updates

@@ -1,0 +1,15 @@
+Linux 2.2.1 - the Brown Paper Bag release
+
+The subject says it all. We did have a few paper-bag-inducing bugs in
+2.2.0, so there's a 2.2.1 out there now, just a few days after 2.2.0.
+Oh, well. These things happen,
+
+                Linus
+
+- the stupid off-by-one bug 'execute a coredump' crash found by Ingo
+- __down_interruptible on alpha
+- move "esstype" to outside a #ifdef MODULE
+- NFSD rename/rmdir fixes
+- revert to old array.c
+- change comment about __PAGE_OFFSET
+- missing "vma = NULL" case for avl find_vma()

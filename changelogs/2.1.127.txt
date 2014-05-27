@@ -1,0 +1,25 @@
+Linux 2.1.127
+
+Ok,
+ after two fairly hectic weeks for me, 2.1.127 is finally out there.
+
+This kernel does:
+ - various small but important networking fixes from Davem (thanks). One
+   of them is the "anti-nagle" bit to allow programs that know what they
+   are doing to avoid nagling by telling the kernel so. This is mainly
+   things like Web servers and ftp-servers that can use this option
+   together with "sendfile()".
+ - scheduling timeout interface change: the new interface is much more
+   logical than the old one, and allows us to get the jiffies wrap-around
+   case right. Thanks to Andrea Arcangeli.
+ - Various driver updates: specialix, sonycd,
+ - Memory management fixups. Handle out-of-memory conditions correctly,
+   and handle high memory load much more gracefully.
+ - sparc and PowerPC architecture updates
+ - 3c509 SMP fix, tlan PCI probe update.
+ - scsi driver updates: ncr53c8xx, aic7xxx, dc390
+ - filesystem updates: autofs, hfs, umsdos
+
+Go, test, be happy,
+
+                Linus

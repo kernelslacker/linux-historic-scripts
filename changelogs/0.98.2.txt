@@ -1,0 +1,87 @@
+[PATCH] Linux-0.98.2 (October 18, 1992)
+
+Start virtualizing real mmap() functionlity in the kernel.  The first
+signs of me thinking about this already showed up as some unused header
+files earlier, this fleshes things out some more.  No actual filesystem
+code yet.. 
+
+This also removes my old simple math emulator, and introduces the new
+and much improved one from Bill Metzenthen. 
+
+Bill originally wrote it for the djgpp suite (DJ Delories gcc port to
+DOS extenders).  It was much more accurate and well designed than my
+hackish one, and I was happy to throw my old code away.  The new math
+emulator also did things that I had never bothered with, notably the
+more complex i387 functions (exponentials and trig). 
+
+I also fixed the static maximum memory limit: we now generate the kernel
+page tables dynamically rather than having a 16M or 32M static limit.
+
+SCSI updates: removable media support (which also implies re-reading the
+partition table etc)
+
+[Original announcement below]
+
+patch-2 is >150kB compressed, as it contains several big changes. Most
+notable are:
+
+ - the new FPU-emulator by Bill Metzenthen.  It's bigger than the old
+   one, but thanks to it, linux fpu emulation is no longer a quick hack,
+   but a real emulator: it does all the 387(486) math instructions, and
+   does them much faster than the old emulator + the soft library.
+
+   The new math-emulator means that a separate soft-float library is no
+   longer needed.  It also makes even a non-coprocessor system pretty
+   useful for limited math-calcs - the complex functions are much faster
+   when they no longer have to be calculated using simple functions, and
+   even the simpler instructions that my old emulator handled are faster
+   using the new one.
+
+   The size of the new emulator may mean that people who have little
+   RAM, but do have a coprocessor should probably recompile the kernel
+   with the emulator disabled.
+
+ - various minor mm fixes by me: trapping kernel NULL dereferences,
+   cleaning up the page table initializations and the 16MB patches, and
+   various other bugfixes.  get_free_page(GFP_ATOMIC) should preserve
+   the interrupt flag, so malloc() should be safe now - hopefully no
+   more of the tcp/ip memory management problems.
+
+   The NULL pointer trapping may result in errors like:
+        Unable to handle kernel paging request at address C0000???
+        Oops: 0000
+        ..... debugging info .....
+
+   There were several NULL pointer dereferences in the serial and tty
+   drivers, which should now be fixed.  I've also fixed any other errors
+   I've seen, but if there are problems in the scsi drivers or similar
+   things I cannot test, I'd like to hear about them.
+
+ - scsi driver changes by Eric Youngdale.  Preliminary support for
+   removable media, and some bug-fixes.  Due to white-space problems
+   with eric's patches, the scsi patches are a bit bigger than
+   necessary, but they should be ok even though I had to put them in
+   partly by hand (and being unable to test them...)
+
+ - The new tcp/ip patches that were sent to the NET channel not long
+   ago.  Yes, they are alpha, but so is the whole tcp/ip directory, so I
+   put them in even thought they haven't been extensively tested (and
+   they did have a serious problem in the ioctl code, which I fixed).
+
+ - psaux mouse patches by Dean Troyer, as well as the mouse.wait = NULL
+   patch.
+
+Before (or after) patching, you should remove the old math-emulator (ie
+"rm -rf /usr/src/linux/kernel/math") as it is no longer needed.  You
+should also do a "make dep" to update dependencies: as usual, I edited
+out the dependancy-changes.  Do a "make clean", edit the main (and net)
+Makefiles to suit your system, and compile.
+
+And finally: I will no longer be making the bootdisks available -
+they'll be made by hlu/jwinstead and will probably be boot+root-disks
+using lilo, as done on the hlu disks.  That may mean that a bootimage
+won't be available at once, but most people who want to use the
+absolutely newest images probably compile them themselves anyway, so
+that shouldn't be a problem.
+
+                Linus

@@ -1,0 +1,151 @@
+Linux 2.2.11pre2
+
+Core Changes
+o	Crashes and other problems caused by atomicity errors in signal
+	delivery are cured.
+o	Fixed bug in mremap
+o	Try to preserve DMA pages
+o	Swapfile miscalculation deadlock fix
+o	Fix the free_irq race on x86 SMP
+o	Zero page colouring is supported. Only Mips uses it. The changes for
+	other architectures are macro no-ops
+o	ll_rw_blk supports segment limiting on mergeing for scatter gather
+o	Move to 128 requests outstanding (needed for big end raid kit)
+o	Fixed out of memory checks in pci scan
+o	Try to handle out of memory right for scsi 
+o	Fix initrd busy/disk busy problem with scsi_eh thread
+o	Fix scsi cmd_len bug
+o	Switch to a kernel side updated 
+o	Add a panic time notifier chain
+o	A global capability limit is now available akin to securelevel but
+	fine grained
+
+Network Changes
+o	Socket hash crashes are fixed
+o	Appletalk large net ranges allowed as per 2.0.x
+o	Fix oops in appletalk
+o	Fix exploitable buffer overrun in AX.25
+o	Disallow inet devices with < 68 mtu
+o	Fix masquerade hash keys
+o	IRC masquerade allows extended commands
+o	Kernel nfs root bootp fix
+o	PIMv2 fixes for multicasting
+o	Fix TCP/UDP address returns on 0 length read
+o	IPv6 address config fixes
+o	IPv6 out of memory firewall crash
+o	IPX oops on out of memory fix
+o	Netrom/ROSE out of memory fixes
+o	Remove escaped printk in traffic scheduler
+o	Various small af_unix changes
+
+
+FS Changes
+o	Changes to partition code for names for new raid drivers
+o	Changes to partition code - added EFS/Ultrix
+o	Changes to partition code - buffer leak fixes
+o	Changes to partition code - endian bug fixes
+o	EFS file system
+o	Small coda update
+o	Fix races in quota handling
+o	Fix ext2fs errors when writing past 2Gig boundary
+o	FAT now uses cluster numbering for inode info
+o	Fix the fact FAT32 is really FAT28
+o	Optimise fat directory scanning
+o	Stop FIBMAP being used without rawio capability
+o	Stop crash on out of memory  in isofs
+o	Support 2.0.x compatible local locking over NFS
+o	Fix NULL pointer crash in NCPfs
+o	Fix SUS compliance bug in pipes
+o	Fix out of memory crash in procfs
+o	Fix disk read error crashes in Qnx and UFS
+o	Support Nextstep UFS cdroms
+
+Driver Changes
+o	Sysrq key is runtime enable/disable
+o	PC keyboard changed to use macros (needed for MIPS and will be
+	needed for PA-RISC shortly)
+o	Updated ISDN layer (The patch from SuSE)
+o	BT848 supports ultrasparc
+o	Added DAC960 raid driver
+o	Added Compaq SMART2 raid driver
+o	IDE CDROM toc/readraw fix
+o	IDE ZIP fix
+o	IDE tape updates
+o	Loopback driver fix some minor flaws
+o	nbd - fixed a problem where very large nbds reported wrong disk size
+o	ramdisk - fixed compile warning
+o	Fixed /proc overrun in cdrom
+o	bttv - fixed zoltrix tv max, sparc support, added lifeview fly
+o	bw-qcam/cqcam - fixed kmalloc check missing
+o	Cyclades. Updated driver from vendor.
+o	ISI driver update. Now supports PCI cards too. 
+o	Cadet radio driver update
+o	Tweak gemtek radio to support radio/sound combo card
+o	Fix IRQ sharing on serial ports
+o	Radiotrack2 only worked as a module. Fixed
+o	Added ARLAN radio-lan driver
+o	Added Olympic chipset driver (IBM PCI token ring)
+o	Added YAM FPGA amateur radio modem driver
+o	Fixed memory allocation bugs in arcnet
+o	Fixed SMP irq detect bug in arcnet
+o	Clean up copy_*_user stuff in various net drivers
+o	Correct packet length bug in depca
+o	Cache align rings for eepro100
+o	Fix erroneous DMA free in Comtrol driver if run in single DMA mode
+o	Fix egcs warnings in irda
+o	Add out of memory check to lance
+o	Update Ne2K-pci driver. Adds Holtek support
+o	Fix memory allocation checks in net_init
+o	Support network stats on shapers
+o	Updated RTL8139 driver
+o	Add Sealevel systems sync driver
+o	Support module built version of Seeq8005 driver
+o	Fix link drop under load bug in syncppp
+o	Fix DescOwned race in tulip driver
+o	Updated VIA Rhine driver
+o	Alignment fixes for yellowfin driver
+o	Fix bugs in Z85230
+o	SMP safety fix for NCR539x
+o	Clean up and fix several aha152x bugs. 
+o	Fix module options and geometry on aha154x
+o	AIC7xxx update
+o	ATP870u SMP safety fixes
+o	Add SCSI-2 names to scsi debug/verbose info
+o	SMP safety fixes for eata-dma
+o	IDE-scsi sg-transform fix
+o	in2000 asm fixed to work with recent tools
+o	Megaraid update
+o	Qlogic FC driver update
+o	Qlogic ISP geometry fixes
+o	Clean up OPL3SA sound
+o	Fix overrun in dmasound
+o	ES1370/ES1371/Sonicvibes allocation bug fixes
+o	Opti 924 PnP mode fix
+o	ESS ISA fixes
+o	Support AWE32 AWSE device
+o	Allow joystick selection in trix module
+o	16 colour EGA/VGA frame buffer console support
+o	Enhanced TGA frame buffer
+
+
+
+Architecture Changes
+o	Synchronized with Alpha updates from Richard Henderson
+o	2Gig support for i386
+o	i386 boot up crash on keyboard timeout fix
+o	Cache align i386 irq structures for performance on SMP
+o	Fix the ix86 unbalanced call stack performance problem
+o	Fix the ix86 ioremap to top of memory bug
+o	Big mips merge with the main mips tree
+o	Fix missing sparc core dump locks
+o	Fix semaphore race on x86
+o	Remove cyrix COMA thing. Use set6x86
+
+Minor Stuff
+o	Updates CREDITS, MAINTAINERS
+o	A lot of documentation updates
+o	Makefile changes for MIPS cross compiling
+o	Makefile checks genksyms version
+o	Makefile clean ups
+o	Fix offset on /proc/kcore
+o	Added generic memchr

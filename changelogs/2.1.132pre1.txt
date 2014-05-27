@@ -1,0 +1,27 @@
+Linux 2.1.132pre1
+
+There's a new pre-patch out there. I'm back from Finland, and have caught
+up with just about half the email that I got during the stay. However,
+even the part I caught up with I may have partly missed something in,
+because (for obvious reasons) I didn't read them as carefully (*) as I
+usually do.
+
+This should fix at least part of the NFS problems people have reported: 
+there was code to completely incorrectly invalidate quite valid write
+requests under some circumstances. The pre-patch also contains the first
+batch of patches merged in from Alan, and the "rmdir" problems should be
+fixed (mostly thanks to Al Viro).
+
+This pre-patch also gets rid of some imho completely unnecessary
+complexity in some of the VM memory freeing routines. There have been
+patches floating around that added more heuristics on when to do
+something, and this tries to get the same result by just removing old
+heuristics that didn't make much sense.
+
+	Linus
+
+(*) Even my usual "careful" is not very careful by other peoples
+standards. So when _I_ say that I wasn't very careful, you should just
+assume that I was reading my email about as carefully as a hyper-active
+hedgehog on some serious uppers. Can you say "ignored email" three times
+quickly while chewing on an apple?

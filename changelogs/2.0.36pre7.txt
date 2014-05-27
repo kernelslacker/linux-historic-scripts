@@ -1,0 +1,8 @@
+Linux 2.0.36pre7
+
+This doesn't fix the icmp or threaded socket handling stuff that does eventually
+need curing. It does however fix all sorts of other fun things. With this
+release the Cyclades should be happy and the Cyrix detect/AMD detect shoul
+work properly, including the old AMD bug detect.
+
+Consider this your last chance to scream about 2.0.36 bugs

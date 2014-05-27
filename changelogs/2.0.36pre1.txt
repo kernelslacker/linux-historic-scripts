@@ -1,0 +1,18 @@
+Linux 2.0.36pre1
+
+I've put Linux 2.0.36 pre-patch-1 on ftp.uk.linux.org:/pub/linux/alan
+This contains the following changes
+
+o       The minicom beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep bug fix
+o       non atomic kmalloc from IRQ in the lance error handler
+o       3c59x update
+o       Thunderlan update
+o       The lp slowdown should be gone I hope
+o       Amateur radio non module inits fix
+o       vfat ... bug fix
+o       obscure memory leak fix
+
+and if you thought the last one was too big then you'll like this one. Its
+4939 bytes compressed
+
+Alan

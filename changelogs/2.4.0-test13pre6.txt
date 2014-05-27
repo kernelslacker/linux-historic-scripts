@@ -1,0 +1,33 @@
+Ok, there's a test13-pre6 out there now, which does a partial sync with
+Alan, in addition to hopefully fixing the innd shared mapping writeback
+problem for good.  Thanks to Marcelo Tosatti and others..
+
+I've pounded on the shared dirty page writeback logic quite a bit, and
+verified (by doing timings with "strace -ttT") that it should do the right
+thing with sync/fsync/fdatasync/msync(MS_ASYNC)/msync(MS_SYNC).
+
+The reason I'm fairly confident that the problem is gone for good is that
+the dirty page handling is now quite integral to the whole address space
+code, and it fell out rather nicely from some mapping host cleanups.
+
+Al: this changes "mapping->host" to be truly defined as a pointer to the
+inode that owns the mapping. That's how every user actually _used_ the
+host pointer, so this cleans those up to not need any casts. The main
+reason, however, is that we needed to have some FS-level anchor for dirty
+pages in order to get the correct sync() semantics. If you think it's
+worth it to have a notion of an anonymous host we need to add something
+else.
+
+Stephen: mind trying your fsync/etc tests on this one, to verify that the
+inode dirty stuff is all done right?
+
+Marco d'Itri and everybody else who has seen innd problems (or other
+shared map problems): can you verify that test13-pre6 works for you?
+
+			Linus
+
+- Marc Joosen: BIOS int15/e820 memory query: don't assume %edx
+  unchanged by the BIOS. Fixes at least some IBM ThinkPads.
+- Alan Cox: synchronize
+- Marcelo Tosatti & me: properly sync dirty pages
+- Andreas Dilger: proper ext2 compat flag checking

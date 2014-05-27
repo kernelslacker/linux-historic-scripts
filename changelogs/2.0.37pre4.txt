@@ -1,0 +1,15 @@
+Linux 2.0.37pre4
+
+o	IDE updates			(Andrew Balsa, Andre Hedrick and co)
+	| This should now get big disks the right size for one
+	| Also blacklists apparent problem WDC drives
+	| Test heavily
+o	Compaq SmartRAID support	(Compaq)
+o	DC390 updated			(Kurt Garloff)
+o	TIOCSBRK			(Uwe Bonnes)
+o	EPIC update			(Don Becker)
+o	Build with PROCFS=n		(Hans-Joachim Baader)
+o	ISOfs handle more icky cds 	(Ulrik Dickow)
+o	AIC7xxx update			(Doug Ledford)
+o	PARIDE update			(grant)
+o	Config for memory cleaned	(Alan Cox, Riley, others)

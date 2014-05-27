@@ -1,0 +1,20 @@
+Linux 2.2.17pre18
+
+o	Fix a race in the NFS code			(Andi Kleen)
+o	Fix a pair of arcnet resource leaks on error (Arnaldo Carvalho de Melo)
+o	Fix PPC601 booting, bitops bug and oddments	(Paul Mackerras)
+o	Fix resource leaks on error in several drivers
+						     (Arnaldo Carvalho de Melo)
+o	Add SCR-2430 to cdroms we limit xfer sizes on	(Ron)
+o	Fix a small error in the vfb driver		(Geert Uytterhoeven)
+o	Fix further bonding driver bug			(John Newbigin)
+o	Irda should compile again
+o	Fix irda parameter parser			(Russell King)
+o	Hold the external amp on the Voyetra card active
+		while CD is an input			(Alan Cox)
+o	HDLC driver fixes				(Krzysztof Halasa)
+o	Ksyms for external stuck task tracker module	(Andi Kleen)
+o	Fix spurious setting of err in sockets		(Dave Miller)
+o	Fix net_bh race from skb_dequeue		(??)
+o	Fix cs46xx record bug				(Alan Cox)
+o	Fix ac97 init wait error (doh..)		(Alan Cox)

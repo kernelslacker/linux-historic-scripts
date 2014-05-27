@@ -1,0 +1,31 @@
+[PATCH] Linux-0.96a (May 22, 1992 ??)
+  
+More VFS cleanups.  Minixfs code reorganized to be more logical, and
+split up into a few new files. 
+
+SCSI support!!
+
+ - Drew Eckhardt does the SCSI stuff, and does the ST01/ST02 lowlevel
+   driver. 
+
+ - Ultrastor driver by David Gentzel. 
+
+ - Tommy Thorn shows up again.  He did the Danish keyboard tables, now
+   he does the AHA 1542 driver.  Ten years later we ended up being
+   co-workers at Transmeta ;)
+
+First networking code appears: X11 port needs UNIX domain sockets, and
+thus the "socketcall()" system call.  It's not really meant for real
+networking, although the code will eventually evolve to support that. 
+Which explains some of the bad early decisions..  ;)
+
+Werner Almerberger starts taking over floppy driver maintenance.  Thank
+Gods!
+
+Johan Myreen translates my assembly-level keyboard driver into C code,
+and adds support for diacriticals. 
+
+OMAGIC a.out format support
+
+Syslog support for the kernel appears.  If I remember correctly, this
+was Peter MacDonald, but no mention of that in the sources. 

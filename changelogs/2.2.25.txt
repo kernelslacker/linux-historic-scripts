@@ -1,0 +1,20 @@
+Linux 2.2.25
+
+Vulnerability: CAN-2003-0127
+
+The Linux 2.2 and Linux 2.4 kernels have a flaw in ptrace. This hole allows
+local users to obtain full privileges. Remote exploitation of this hole is
+not possible. Linux 2.5 is not believed to be vulnerable.
+
+Linux 2.2.25 has been released to correct Linux 2.2. It contains no other
+changes. The bug fixes that would have been in 2.2.5pre1 will now appear in
+2.2.26pre1. The patch will apply directly to most older 2.2 releases.
+
+A patch for Linux 2.4.20/Linux 2.4.21pre is attached. The patch also
+subtly changes the PR_SET_DUMPABLE prctl. We believe this is neccessary and
+that it will not affect any software. The functionality change is specific
+to unusual debugging situations.
+
+We would like to thank Andrzej Szombierski who found the problem, and
+wrote an initial patch. Seth Arnold cleaned up the 2.2 change. Arjan van
+de Ven and Ben LaHaise identified additional problems with the original fix.

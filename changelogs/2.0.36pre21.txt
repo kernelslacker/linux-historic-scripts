@@ -1,0 +1,12 @@
+Linux 2.0.36pre21
+
+o       Alain Knaff fix for a new exciting and broken floppy controller
+        some people are shipping
+o       ISDN compiles + a couple of last minute glitch fixes from
+        Karsten & Fritz
+o       RCPCI45 fix (MODVERSIONS=n breakage) - David Murn
+o       Shaper divide by zero crash fix - Ditto
+
+Perhaps we've finally finished ;)
+
+Alan

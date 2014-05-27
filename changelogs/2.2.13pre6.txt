@@ -1,0 +1,12 @@
+Linux 2.2.13pre6
+
+o	Alpha SMP thread fixes			(Elliot Lee)
+o	Sparc updates				(Dave Miller)
+o	Recognize new 3c59x/3c90x cards		(Dave Miller)
+o	Make some PCI  drivers 64bit safe	(Dave Miller)
+	[8390, ne2k-pci, rtl8139]
+o	Sparc related updates			(Dave Miller)
+	[ati frame buffer, isp2100]
+o	PPC updates				(Paul Mackerras)
+o	EATA scsi update (Alpha supported now)	(H J Lu, Dario Ballabio)
+o	QlogicFC udpate				(Chris Loveland)

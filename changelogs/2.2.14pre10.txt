@@ -1,0 +1,16 @@
+Linux 2.2.14pre10
+
+o	Further PPC updates				(Cort Dougan)
+o	TCPv6 crash fix	
+o	Update Tlan driver maintainer			(James Banks)
+o	Fix syncookie URL				(Daniel Roesen)
+o	Move the scsi_malloc lock			(Peter Blomgren)
+o	Advansys update					(Bob Frey)
+o	Fix Acard compile as built in driver		(Arjan van de Ven)
+o	NFS directory link count fixes			(Jim Winstead)
+o	sk98 compile fixes				(Christoph Goos)
+o	Fix HFS back compatibility problem		(Adrian Sun)
+o	More PPC updates				(Cort Dougan)
+o	Sk98 update					(Christoph Goos)
+o	Update kernel-docs				(Juan-Mariano de Goyeneche)
+o	Buffer race on flush fixes			(Andrea Arcangeli)

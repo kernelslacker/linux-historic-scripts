@@ -1,0 +1,24 @@
+Linux 2.2.17pre2 
+
+o	Fix memory leak in appletalk drivers		(Hu Chengjun)
+o	Fix bridge + rtl8139 bug			(Jeff Garzik)
+o	ICH audio hack for slow to reset codecs		(Vladimir V. Klenov)
+o	One liner fix to the kswapd logic		(Rik van Riel)
+o	Fix dtr on close bug in the SX serial driver  (Patrick van de Lageweg)
+o	Fix saving of db6 on debug traps		(James Cownie)
+o	Teach setup code about transmeta processors	(H Peter Anvin)
+o	Fix some SMP races in parport			(Tim Waugh)
+o	Fix CDROMPLAYTRKIND, rpc2 region info query	(Jens Axboe)
+o	Small AFFS fixes				(Dave Jones)
+o	Test fsuid before DAC_OVERRIDE in procfs	(Solar Designer)
+o	Add Cyclades PC300 driver			(Ivan Passos)
+o	List Andries as partitioning maintainer		(Andries Brouwer)
+o	Remove __LIBRARY__ from unistd.h syscall tests	(Erik Troan)
+o	Resync 2.2 and 2.4 i810 drivers			(Alan Cox)
+o	Upgrade aic7xxx driver to 5.1.30. This should	(Doug Ledford)
+	fix the problems with EISA/VLB cards
+o	Resync the ixj telephony driver with Quicknet	(Alan Cox)
+	| Word of warning: Stuff built against the 2.2 ixj
+	| driver is back compatible. Stuff built against their
+	| release we merged with is not as they clashed with
+	| ioctls already allocated for other uses.

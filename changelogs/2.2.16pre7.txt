@@ -1,0 +1,16 @@
+Linux 2.2.16pre7
+
+o	Fix masq_mod compile breakage		(me)
+o	readv/writev didnt error oversized	(Chris Evans, Dave Miller)
+	requests properly.
+o	Report SMBUS nicely in pci		(Chip Salzenberg)
+o	Acenic 0.44				(Jes Sorensen)
+o	Fixes for Acenic 0.44 + dhcp		(Chip Salzenberg)
+o	Add DHCP to the ip autoconfig stuff	(Chip Salzenberg)
+	| Yes this all belongs in user space. No not for 2.2/4
+	| Someones 2.5 mission is to get rarp/bootp/dhcp all working via 
+	| initrd!
+o	EEpro100 driver v1.20.2.4		(Andrey Savochkin)
+o	Fix cmpci compile problem		(Arjan van de Ven)
+o	Fix i810 audio compile problem		(Arjan van de Ven)
+o	Fix build problem with no TCP/IP	(Arjan van de Ven)

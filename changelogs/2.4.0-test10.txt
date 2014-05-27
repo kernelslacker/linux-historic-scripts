@@ -1,0 +1,13 @@
+Ok, test10-final is out there now. This has no _known_ bugs that I
+consider show-stoppers, for what it's worth.
+
+And when I don't know of a bug, it doesn't exist. Let us rejoice. In
+traditional kernel naming tradition, this kernel hereby gets anointed as
+one of the "greased weasel" kernel series, one of the final steps in a
+stable release.
+
+We're still waiting for the Vatican to officially canonize this kernel,
+but trust me, that's only a matter of time. It's a little known fact, but
+the Pope likes penguins too.
+
+			Linus

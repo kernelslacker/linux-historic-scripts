@@ -1,0 +1,19 @@
+I just put a pre-90 on ftp.kernel.org, and I'm happy to report that Davem
+seems to have found and fixed the TCP performance problem, which means
+that the code-freeze for 2.2 is going to go into effect shortly..
+
+pre-90 does a few other minor things, like for example getting rid of
+kerneld because the new kmod thing is a lot simpler in many ways. Let's
+see what the reaction to that is, but I'm fairly certain that this was a
+major good thing: I've personally never liked kerneld, but kmod seems to
+be a much nicer and more controlled way of handling the same issues that
+kerneld tried to do. I'd actually almost be willing to use the thing
+myself, something that was never true of kerneld.
+
+This also moves the WD7000 SCSI driver to a working status again, thanks
+to Miroslav Zagorac.
+
+But the interesting and important part of the patches are the networking
+fixes from David and Bill Hawes..
+
+                Linus

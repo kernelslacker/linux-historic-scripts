@@ -1,0 +1,23 @@
+Linux 2.4.0-test7-pre7
+
+Ok, getting close to the real test7.
+
+The patch looks bigger than it is due to the drivers re-organization
+(discussed to death on this very list ;).
+
+		Linus
+
+test7:
+ - pre7
+    - block_all_signals()/unblock_all_signals() interface to allow drivers to
+      react nicely to signals that happen to a process that owns driver data.
+      Read: direct rendering lock handling.
+    - ThunderLAN update (timer fixes, full-duplex, activity-led)
+    - Fix NFS oops on removing negative dentry. Honour rsize for directory read.
+    - usb updates
+    - scheduler wakeup race fix.
+    - move radio/tv cards to drivers/media, cleaning up drivers/char
+    - move "input" layer to drivers/input, cleaning up drivers/usb
+    - Cirrus SoundFusion CS4280/461x sound driver.
+    - proper camera locking in usb/dc2xx.c
+    - USB printer driver update (Printer Protocol 3 and timeout handling)

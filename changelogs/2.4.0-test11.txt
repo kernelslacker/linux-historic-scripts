@@ -1,0 +1,14 @@
+The most noticeable fixes since pre7 are the Athlon lockup fix,
+the PCI routing handling, and getting the Joliet stuff right for iso9660.
+
+- final:
+    - Patrick Mochel: export the ACPI facs table in /proc too
+    - Brian Gerst: Video4Linux cleanup (named initializers)
+    - Linus: only use irq13 for FP errors for external FPU's. This
+      fixes the Atlon FP exception lockups.
+    - Linus: add a new intel signature to the PIRQ table matching logic.
+      Make the matching match both reported and actual device ID (with a
+      preference for the reported). Fixes PCMCIA on NEC Versa laptops.
+    - iso9660: fix Joliet filename argument order bug introduced in pre7
+    - Highmem: p_page -> b_page typo.
+    - Linus: don't allow pending FPU exceptions without an FPU context..

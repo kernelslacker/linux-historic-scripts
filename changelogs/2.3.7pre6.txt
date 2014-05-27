@@ -1,0 +1,50 @@
+Linux 2.3.7pre6
+
+Anybody who is interested in FS performance should take a look at the
+latest pre-patch of 2.3.7 (only pre-6 and possibly later: do NOT get any
+earlier versions. pre-5 still causes file corruption, pre-6 looks good so
+far).
+
+Careful, though: I fixed the problem that caused some corruption less than
+an hour ago, and while my tests indicate it all works fine, this is a very
+fundamental change. The difference to earlier kernels is:
+
+ - ext2 (and some other block device filesystems that have been taught
+   about it) uses write-through from the page cache instead of having a
+   separate buffer cache and the page cache to maintain dirty state. This
+   means much less memory pressure in certain situations, and it also
+   means that we can avoid unnecessary copies.
+ - the page cache has been threaded, so on SMP you can actually get
+   noticeable speedups from processes that do concurrent file accesses.
+ - lower-latency read paths, especially the cached case.
+
+Both of these are big, and fundamental changes. So don't mistake me when I
+say it is experimental: Ingo, David and I have been spending the last
+weeks (especialy Ingo, who deserves a _lot_ of credit for this all: I
+designed much of it, but Ingo made it a reality. Thanks Ingo) on making it
+do the right thing and be stable, but if you worry about not having
+backups you might not want to play with it even so. It took us this long
+just to make it work reliably enough that we can't find any obvious
+problems..
+
+The interesting areas are things like
+ - writes to shared mappings now go blindingly fast. We're talking mondo
+   cleanups here. We used to do really badly on this, now we do really
+   well.
+ - does bdflush still do the right thing? There may be a _lot_ of tweaking
+   to do to get everything working at full capacity.
+ - can people confirm that it is stable for everybody?
+ - if anybody has 8-way machines etc, scalability is interesting. It
+   should scale to 8-way no problem. We used to scale to 1-way, barely.
+   Numbers?
+ - fsync(). It doesn't work right now, but it should be easy to make it
+   work well on big files etc - something we've never been able to do
+   before (we used to lack the indexing from file to dirty blocks: now we
+   have access to that quite automatically thanks to having the
+   inode->page index in place, and the dirty blocks are right there)
+
+and I'd really appreciate comments from people, as long as people are
+aware that it _looks_ stable but we don't guarantee anything at this
+point.
+
+                Linus

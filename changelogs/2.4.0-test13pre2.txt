@@ -1,0 +1,8 @@
+- Kai Germaschewski: ISDN update (including Makefiles)
+- Jens Axboe: cdrom updates
+- Petr Vandrovec; Matrox G450 support
+- Bill Nottingham: fix FAT32 filesystems on 64-bit platforms
+- David Miller: sparc (and other) Makefile fixup
+- Andrea Arkangeli: alpha SMP TLB context fix (and cleanups)
+- Niels Kristian Bech Jensen: checkconfig, USB warnings
+- Andrew Grover: large ACPI update

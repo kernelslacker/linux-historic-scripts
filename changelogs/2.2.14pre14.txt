@@ -1,0 +1,16 @@
+Linux 2.2.14pre14
+
+o	PMAC audio fix					(Paul Mackerras)
+o	Nautilus/Irongate updates for Alpha		(Richard Henderson)
+o	Fix masquerade compile bug			(Frank McIngvale)
+o	Fix mmap on NTFS
+o	Hopefully fix ncpmount				(Alan Cox)
+o	Fix NM256 compile				(Arjan van de Ven)
+o	Updated Sangoma drivers				(Nenad Corbic)
+o	Fix acquire watchdog bug			(Andrew Draper)
+o	Fix the compile/init for old_tulip		(Andrzej Krzysztofowicz)
+o	PLIP crash on last init failure			(Egbert Eich)
+o	Add a sanity check to raid0			(Andi Kleen)
+o	Most of the IBM S/390 port merge		(Assorted IBM folks)
+	| This is in to sort out the final oddments not
+	| the complete beastie.

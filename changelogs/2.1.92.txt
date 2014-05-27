@@ -1,0 +1,33 @@
+Linux 2.1.92 - Feature Freeze
+
+Ok, there's a fairly large patch out there, but as of 2.1.92 I think we
+have a real feature-freeze, and we'll try to get a real code-freeze going
+soon. There are known problems with the sound drivers etc, which is why a
+code-freeze isn't the best suggestion right now, and there are probably
+still bugs with some of the new code, but I'll freeze new features for the
+upcoming 2.2 kernel.
+
+Yes, some people will scream bloody murder, but others will be relieved
+that it finally happened. Thanks especially to David Miller who has been
+doing a great job of getting the TCP stack from its problems just a few
+weeks ago to really shining new heights. That was my main worry about 2.2
+not all that long ago, and was the main reason for having such a slushy
+period for a while.
+
+2.1.92 does:
+ - ISDN updates
+ - alpha update (yes, SMP finally works, although not really stable yet)
+ - networking fixes
+ - "getcwd()" system call (not very long, the dcache makes this so
+   trivial it is scary)
+ - the mm responsiveness updates (they were in 2.1.92-pre2, people seemed
+   to have found them very effective)
+ - some other (mainly driver updates)
+
+Please do test it all out. Feature-freeze doesn't mean that it is supposed
+to be bug-free yet, but it does mean that we should be moving into
+bugfixing mode in quick order.
+And no, this is not an April 1 thing. But this way I can use April 1 as an
+excuse if something doesn't actually compile.
+
+                Linus

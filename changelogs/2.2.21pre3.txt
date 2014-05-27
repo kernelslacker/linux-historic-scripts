@@ -1,0 +1,38 @@
+Linux 2.2.21pre3
+
+o	Fix a case where a non blocking tty write could	(Peter Benie)
+	get stuck
+o	Fix non blocking midi close on es1370, es1371	(Alan Cox)
+	sonicvibes right this time 
+o	Fix menu/xconfig warnings			(René Scharfe)
+o	Fix non blocking midi close on cmpci, cs4281,	(Alan Cox)
+	esssolo, trident.
+o	Add eepro100VE ident				(Hanno Boeck)
+o	Fix DRM oops case				(Herbert Xu)
+o	Fix an oops causing datagram AF_UNIX race	(Paul Menage)
+o	Support newer geodes using new CPUID properly	(Hiroshi Miura)
+o	Fix up RTC build for non pmac ppc boxes		(Tom Rini)
+o	Fix MCE address reporting			(Pete Wyckoff)
+o	Vibra16 docs update				(Neale Banks)
+o	Eicon include file fix				(Herbert Xu)
+o	ISDN loop and header fixes			(Kai Germaschewski)
+o	Fix eepro100 out of memory during init path	(Neale Banks)
+o	Fix BSD partition table handling breakage	(Andries Brouwer)
+o	Add WD XD signature to xd driver		(Paul)
+o	3Ware driver update				(Adam Radford)
+o	S/390 debugging updates				(Carsten Otte)
+o	S/390 DASD updates				(Carsten Otte)
+o	S/390 CIO updates				(Carsten Otte)
+o	Update USB serial, belkin, digi_acceleport,	(Greg Kroah-Hartmann)
+	empeg, ftdsio, edgeport, keyspan, mctu232,
+	omninet, prolific, visor
+o	Cyberjack USB driver				(Matthias Bruestle)
+o	USB ir dongle driver				(Greg Kroah-Hartmann)
+o	Support very large FAT file systems		(Vijay Kumar)
+o	Backport 2.4 modversions build fix		(Mikael Pettersson)
+o	Backport 2.4 es1371 init for new revs		(Julian Anastasov)
+o	3c507 driver fixes				(Mark Mackenzie)
+o	ext2 obscure group descriptor corruption fix	(Daniel Phillips,
+							 Al Viro)
+o	Correct a problem where rpciod didnt give up	(Andreas Haumer)
+	its current dir

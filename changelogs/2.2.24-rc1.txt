@@ -1,0 +1,11 @@
+Linux 2.2.24-rc1
+
+o   Fix a typo in the maintainers                   (James Morris)
+o   Dave Niemi has moved                            (Dave Niemi)
+o   Fix incorrect blocking on nonblock pipe         (Pete Benie)
+o   Fix misidentification of some AMD processors    (Bruce Robson)
+o   Fix a very obscure skb_realloc_headroom bug     (James Morris)
+o   Fix warning in lance driver                     (Thomas Cort)
+o   Fix sign handling bug in pms driver             (Silvio Cesare)
+o   Drop mmap on /proc/<pid>/mem as 2.4/2.5 did     (Michal Zalewski)
+    (also fixes some bugs) 

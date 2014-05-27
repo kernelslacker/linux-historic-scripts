@@ -1,0 +1,19 @@
+Very small patch to 0.99pl12
+
+I hate to put out patches this soon after a release, but there is one
+potentially major problem in pl12 which is very simple to fix..  I'm
+including patches: both in plain ascii and as a uuencoded gzip file
+(it's the same patch - the uuencoded one is in case there is any
+newsserver that messes up whitespace).
+
+The main patch is just the change from __get_free_page(GFP_BUFFER) into
+get_free_page(GFP_KERNEL), and the two minor patches just add checks
+that actually enforce the read-only nature of current file mmap'ings so
+that any program that tries to do a write mapping at least will be told
+that it won't work.
+
+I'd suggest anybody compiling pl12 should add at least the file_table.c
+patch: thanks to Alexandre Julliard for noticing this one.
+
+            Linus
+

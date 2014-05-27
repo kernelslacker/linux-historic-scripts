@@ -1,0 +1,7 @@
+Linux 2.0.40-rc6
+
+o   Make sys_utime and sys_utimes          (Stephen Rothwell, David Weinehall)
+    perform the same permission checking
+    | Again, I did some whitespace changes
+    | while at it; Stephen's innocent
+o   Remy Card no longer maintains ext2     (David Weinehall)

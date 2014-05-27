@@ -1,0 +1,25 @@
+Linux 2.2.15pre6
+
+o	SMC-mca updates					(David Monro)
+o	Stallion driver update				(Wayne Meissner)
+o	DAC960 updates					(Leonard Zubkoff)
+o	CPQ Array updates (adds SA431)			(Charles White)
+o	Fix creative joystick crash			
+o	Fix bogus RST when fins crossed			(Dave Miller)
+o	Gemini serial driver update			(Cort Dougan)
+o	Work around some MediaGX DMA bugs		(Alan Cox)
+	- Info thanks to Nat Semi
+o	Fix type clashes between irda and Ingo HSM	(Dag Brattli)
+o	IDE DMA abort handling fixes			(Andre Hedrick)
+o	Cyrix 5530 IDE support				(Mark Lord)
+o	3Ware raid controller driver			(Adam Radford)
+o	Fix sunrpc queue corruption bug			(Trond Myklebust)
+o	Sparc config updates				(Dave Miller)
+o	Fix SMP powermac booting			(Paul Mackerras)
+o	Fix bonding documentation			(Lennie Besselink)
+o	CPIA parallel camera driver			(Peter Pregler)
+o	Alternative page allocation hang fixes		(Andrea Arcangeli)
+	| Reverted some of the other fixes. This wants
+	| sorting nicely for 2.3.x, for 2.2.x Andrea's
+	| approach is easier to verify
+o	Fix shm/remap bug				(Eric Biederman)

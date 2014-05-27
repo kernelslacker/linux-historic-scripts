@@ -1,0 +1,98 @@
+pre-patch-2.1.131-3
+
+Ok,
+ I've made a new pre-patch-2.1.131-3.
+
+The basic problem (that Alexander Viro correctly diagnosed) is that the
+inode locking was horribly and subtly wrong for the case of a "rmdir()"
+call. What rmdir() did was essentially something like
+
+ - VFS: lock the directory that contains the directory to remove
+   (this is normal and required to make sure that the name updates are
+   completely atomic - so removing or adding anything requires you to hold
+   the lock on the directory that contains the removee/addee)
+ - low-level filesystem: lock the directory you're going to remove, in
+   order to atomically check that it's empty.
+
+So far so good, the above makes tons of sense. HOWEVER, the problem is
+fairly obvious if anybody before Alexander had actually bothered to think
+about it: when we hold two locks, we had better make sure that we get the
+locks in the right order, or we may end up deadlocked with two (or more)
+processes getting the locks in the wrong order and waiting on each other.
+
+Now, if it was only rmdir(), things would be fine, because the directory
+hierarchy itself imposes a lock order for rmdir(). But we have another
+case that needs to lock two directories: "rename()". And that one doesn't
+have the same kind of obvious order, and uses a different way to order the
+two locks it gets. BOOM.
+
+As far as I can tell, this is a problem in 2.0.x too, but while it's a
+potential really nasty DoS-opening, it does have the saving grace that the
+window to trigger it is really really small. I don't know if you can
+actually make an exploit for it that has any real chance of hitting it,
+but it's at least conceptually possible.
+
+Now, the only sane fix was to actually make the VFS layer do all the
+locking for rmdir(), and thus let the VFS layer make sure the order is
+correct, so that low-level filesystems don't need to worry their pretty
+heads. I tried to do that in the previous pre-patch, and it worked well
+for ext2, but not all that much else. The problem was that too many
+filesystems "knew" what the rmdir() downcall used to do. Oh, well.
+
+Anyway, I've fixed the low-level filesystems as far as I can tell, and the
+end result is a much cleaner interface (and one less bug). But it's an
+interface change at a fairly late date, and while the fixes to smbfs etc
+looked for the most part obvious, I haven't been able to test them, so
+I've done most of them "blind".
+
+Sadly, this bug couldn't just be glossed over, because a normal user could
+(by knowing the exact right incantation) force tons of unkillable
+processes that held critical filesystem resources (any lookup on a
+directory that was locked would in turn also lock up). So I'd ask people
+who have done filesystems for Linux to look over my changes, and if the
+filesystems are not part of the standard distribution please look over
+your own locally maintained fs code. I think we can ignore 2.0.x by virtue
+of it probably being virtually impossible to trigger. I'll leave the
+decision up to Alan.
+
+Most specially, I'd like to have people who use/maintain vfat and umsdos
+filesystems to test out that I actually made those filesystems happy with
+my changes. The other filesystems were more straightforward.
+
+Oh, and thanks to Alexander. Not that I really needed another bug to fix,
+but it feels good to plug holes.
+
+                        Linus
+
+The change is basically:
+ - the VFS layer locks the directory to be removed for you (as opposed to
+   just the directory that contains the directory to be removed as it used
+   to). A lot of filesystems didn't actually do this, and it is required,
+   because otherwise the test for an empty directory may be subverted by a
+   clever hacker.
+ - the VFS layer will have done a dcache "prune" operation on the
+   directory, and if there were no other uses for that dcache entry, it
+   will have done a "d_drop()" on it too.
+ - the above essentially means that any filesystem can do a
+        if (!list_empty(&dentry->d_hash))
+                return -EBUSY;
+   to test whether there are other users of this directory. No need to do
+   any extra pruning etc - if it's been dropped there won't be any new
+   users of the dentry afterwards, so there are no races. So after doing
+   the above test you know that you'll have exclusive access to the dentry
+   forever.
+   Most notably, the low-level filesystem should _not_ look at the
+   dentry->d_count member to see how many users there are. The VFS layer
+   currently artificially raises the dentry count to make sure
+   "d_delete()" doesn't get rid of the inode early.
+ - however: traditional local UNIX-type filesystems tend to want to allow
+   removing of the directory even if it is in use by something else. This
+   requires that the inode be accessible even after the rmdir() - even
+   though it doesn't necessarily need to actually _do_ anything.
+   For a normal UNIX-like filesystem this tends to be trivial and quite
+   automatic behaviour, but you need to think about whether your
+   filesystem is of the kind where the inode stays around even after the
+   delete until we locally do the final "iput()". For example, on
+   networked filesystems this is generally not true, simply because the
+   server will have de-allocated the inode even if we still have a
+   reference to it locally.

@@ -1,0 +1,7 @@
+Linux 2.0.39pre1
+
+o	Fix for the ping -s 65468 exploit	(Andrea Arcangeli + others)
+o	Small updates to MAINTAINERS		(David Weinehall)
+o	Small updates to CREDITS		(David Weinehall)
+o	Update Documentation/Changes		(David Weinehall)
+	to mirror the needed binutils version

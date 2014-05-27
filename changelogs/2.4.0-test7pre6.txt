@@ -1,0 +1,17 @@
+Linux 2.4.0-test7-pre6
+ 
+    - Pentium/MMX has a good IO-APIC
+    - APIC detection (aka "try to boot the SMP kernel even on buggy UP
+      boards that claim SMP.")
+    - alpha time.c epoch calculations. Again.
+    - report where the memory region information came from.
+    - sparc updates
+    - file locking: fix deadlock detection and EOVERFLOW
+    - network bugfixes
+    - md readahead was getting confused about bytes vs pages
+    - DRM and AGP fixes
+    - xircom_tulip.c: don't corrupt the timer list on suspend
+    - PCI /proc interface buffer overrun fix
+    - ISDN updates
+    - DAC960 update
+    - fork: get CLONE_PTRACE right (SIGSTOP the child)

@@ -1,0 +1,49 @@
+[PATCH] Linux-0.98.6 (December 2, 1992)
+
+Kai Makisara does the SCSI tape driver.  He's one of the few original
+maintainers still around as such.. 
+
+isofs introduced by Eric Youngdale, based on the minixfs code.  Eric was
+a physicist, and you can tell he was new to C - he has been
+Pascal-damaged, and has extra semi-colons at the end of block
+statements.  But soon he ended up being one of the core maintainers
+anyway, and took over SCSI maintenance.
+
+More aggressive filesystem read-ahead introduced.
+
+[Original announcement below]
+
+Anyway, 0.98pl6 is hopefully the last release before 0.99: there are a
+few known problems left in this release.  Most notable is the serial
+code: it works for most people, but others still have problems with it.
+I hope this will get fixed within a week (tytso is working on it).  It
+also seems as if the PS/2 mouse code has some problems.
+
+pl6 contains these fixes:
+
+ - all the tcp/ip patches I've received (and I fixed one bug that
+   gcc-2.3 seems to have found).
+ - math-emu patch for the problem that resulted in FPU errors with some
+   operations.
+ - I fixed gcc-2.3 warnings as well as most of the old warnings.  You
+   shouldn't get more than one or two warnings when recompiling the
+   whole kernel.
+ - /proc filesystem extensions.  Based on ideas (and some code) by
+   Darren Senn, but mostly written by yours truly.  More about that
+   later.
+ - some tty_io fixes (there was a bug in the /dev/console handling when
+   you changed VC's while using the general console device).
+ - re-organization of the keyboard-driver internal data-structures.  The
+   changes are mostly preliminary: they change the keyboard flags to be
+   more easily adaptive to a reprogrammable keyboard driver.  No actual
+   new features yet.
+ - new SCSI drivers: reportedly much faster than the old ones (but not
+   all drivers take advantage of it yet..)
+ - various other fixes: pty's etc have minor changes.
+
+I hope to make 0.99 in a week or so, and 1.0 after that has been tested
+some.  I hope people will test out pl6 - 0.99 won't be much different,
+and if you don't test pl6, any bugs relating to your particular hardware
+may not be found in time for 0.99...
+
+                Linus

@@ -1,0 +1,20 @@
+Linux 2.4.0-test10pre5
+
+    - Mikael Pettersson: more Pentium IV cleanup.
+    - David Miller: non-x86 platforms missed "pte_same()".
+    - Russell King: NFS invalidate_inode_pages() can do bad things!
+    - Randy Dunlap: usb-core.c is gone - module fix
+    - Ben LaHaise: swapcache fixups for the new atomic pte update code
+    - Oleg Drokin: fix nm256_audio memory region confusion
+    - Randy Dunlap: USB printer fixes
+    - David Miller: sparc updates
+    - David Miller: off-by-one error in /proc socket dumper
+    - David Miller: restore non-local bind() behaviour.
+    - David Miller: wakeups on socket shutdown()
+    - Jeff Garzik: DEPCA net drvr fixes and CodingStyle
+    - Jeff Garzik: netsemi net drvr fix
+    - Jeff Garzik & Andrea Arkangeli: keyboard cleanup
+    - Jeff Garzik: VIA audio update
+    - Andrea Arkangeli: mxcsr initialization cleanup and fix
+    - Gabriel Paubert: better twd_i387_to_fxsr() emulation
+    - Andries Brouwer: proper error return in ext2 mkdir()

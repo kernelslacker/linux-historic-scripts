@@ -1,0 +1,16 @@
+Linux 2.2.18pre23
+
+o	Fix alpha compile problem			(Herbert Xu)
+o	Scan DMI bios data to find broken laptops	(Alan Cox)
+o	Fix megaraid module symbols			(Michael Marxmeier)
+o	Fix visor/OHCI problem				(Gerg Kroah-Hartman)
+o	Fix sysctl_jiffies compile bug			(Tomasz K³oczko)
+o	Init mic input low to avoid feedback		(Pete Zaitcev)
+o	Fix typo in acenic headers			(Val Henson)
+o	David Woodhouse has moved			(David Woodhouse)
+o	Compaq raid driver update			(Charles White)
+o	Fix aha1542 scribbles on errors			(Phil Stracchino)
+o	Update Advansys driver to v3.3D			(Bob Frey)
+o	Fix maestro ioctl locking			(Zach Brown)
+o	Formatting cleanup for setup.c			(Dave Jones)
+o	Fix FAT32 bugs on Alpha				(Bill Nottingham)

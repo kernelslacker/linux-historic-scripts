@@ -1,0 +1,28 @@
+Linux 2.0.36pre2
+
+ftp://ftp.linux.org.uk/pub/linux/alan/..
+This is a bit bigger than pre patch 1 but most of the bulk is the isdn driver
+updates to reflect what everyone is actually using.
+I don't have ISDN here - thats a hint to the ISDN using people to test this ok ;)
+
+Lesser items:
+o       Tlan 1.0 driver
+o       >64Mb memory recognition
+o       Full cyrix and other CPU recognition (should fix the TI problems)
+o       Syscall return trap fix
+o       Delay slightly more stable
+o       IDE floppy knows about Iomega zip firmware 23.D
+o       Cyclades update
+o       Traffic Shaper
+o       Etherexpress should now handle Compaq LTE base stations
+o       EATA update
+o       SCSI blacklist update
+o       SCSI medium changers recognized
+o       Ultrastor 14f/34f update
+o       MPU401 DMA reporting
+o       Sequencer busy fix
+o       ISOfs boundary case fix
+o       NFS unload fix
+o       SMBfs time saving fix
+o       mmap append only file fix
+o       Socket leak fix

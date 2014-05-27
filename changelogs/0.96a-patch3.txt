@@ -1,0 +1,45 @@
+patch3....
+    
+Ok, I already announced it on the kernel mailing-list, but I might as
+well go all the way. I put out patch3 to 0.96a yesterday, and it's
+available on banjo in pub/Linux/Linus, and I'll upload it to the other
+normal ftp-sites tonight.
+    
+NOTE! Patch3 is (like patch2) more of a kernel-hacker patch: it's just
+in case you want to keep up with my kernel. It has some problems with
+some serial lines, and if you experience them, I'd like to know what
+type of chip you are running (and what linux reports on bootup). If you
+don't think patching the kernel is fun, you might as well forget this
+and wait for a real release (next month?).
+    
+Patch 3 contains:
+    
+- support for attaching and detaching processes under gdb (but you need
+  a gdb that knows about this).
+- 16550A support
+- full core-dumping (again, you need a gdb that supports it)
+- sockets have no problems with non-root binding etc
+- /dev/zero implemented (mknod /dev/zero c 1 5)
+    
+None of the patches are very big (the whole patch is 17kB compressed,
+most of it attach/detach code), but they are all pretty useful.
+    
+The 16550A support means that with the appropriate chip you now should
+be able to use the serial ports at much higher speeds, but as mentioned,
+it seems to break on some machines.
+    
+The detaching isn't perfect yet (I noticed only after making the diffs
+that I had forgotten to do some cleanups), but it's not generally a
+problem (the code just forgets to give the process back to it's rightful
+father).
+    
+The patch is relative to the pl2 kernel, so you have to use the earlier
+patches first. This time, I've added the lib/itimer.c code.
+    
+16550A support was written by tdavis, the correct format of the
+core-dumps was written by eric (who also wrote the attach/detach code I
+used as an example when implementing it), /dev/zero was written by
+almesber. Nice to see good patches: I just did the socket-thing and
+rewrote the attaching to suit me.
+    
+            Linus

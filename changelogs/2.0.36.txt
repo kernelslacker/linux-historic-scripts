@@ -1,0 +1,187 @@
+Linux 2.0.36
+
+I won't claim any false credit for this: all the 2.0.x work was done by
+Alan Cox as the maintainer, and the 2.0.36 that is out there is exactly
+the same as Alan's "pre-22" version that he asked people to check out. He
+just asked me to "sprinkle some holy penguin-pee on it" to bless it and
+make it official. This I have done (*).
+2.0.36 is a lot of updates, mostly to various drivers. ISDN, various SCSI
+drivers and network cards have been updated quite heavily. ISDN to the
+degree that you need to make sure you have the most recent tools in order
+to play well with it.
+Have fun,
+                Linus
+
+(*) This, btw, is not something I would suggest you do in your living
+room. Getting a penguin to pee on demand is _messy_. We're talking yellow
+spots on the walls, on the ceiling, yea verily even behind the fridge.
+However. I would also advice against doing this outside - it may be a lot
+easier to clean up, but you're likely to get reported and arrested for
+public lewdness. Never mind that you had a perfectly good explanation for
+it all.
+
+
+
+
+Bug Fixes:
+
+Large Memory
+ Linux 2.0.36 uses the newer bios calls to automatically size memory
+ above 64Mbytes, where supported by the BIOS. A maximum of just under
+ 1Gig is available for Linux 2.0.36. 
+Readv/Writev
+ Processes issuing a readv or writev to a device that did not have the
+ relevant read/write operation could cause an Oops and potentially a crash.
+UDMA Drives
+ Report Bad CRC (cable errors) as a cable error.
+ Handling of such errors was correct. 
+TCP spoofing
+ A very obscure TCP spoofing attack is now blocked.
+ As far as we know only the lab who discovered it are aware of the problem,
+ and no active use of such attack has ever been seen on the internet. 
+SMP
+ A pair of SMP bugs have been fixed.
+ The first resolves the instabilities with 3+ CPU machines,
+ the second resolves an IRQ forwarding problem that caused
+ "Re-entering IRQ" hangs.
+ SMP should be significantly more stable on 2.0.36 than previous 2.0.x releases.
+pipe syscall error
+ The pipe call could return ENFILE not -1 and errno= -ENFILE. Fixed. 
+AIC7xxx
+ The 2.0.36 kernel contains the 5.0.20 release of the AIC7xxx driver.
+ This should cure most of the remaining problems with the older chipsets.
+ Users with the latest AIC7xxx devices will have to wait for the next driver
+ version to become available or try the beta test driver. 
+Procfs permissions fix
+ A process with root file rights can now read all /proc files. 
+Daylight Savings in SMB
+ The SMB file system honours daylight savings time. 
+EATA SCSI/Ultrastor 14f/34f
+ Reverse scan order support and configurable extended geometry.
+ Increased the busy timeout. 
+IN2000 SCSI
+ This driver now works in SMP mode. 
+Build fixes
+ Use relative paths for sound, remove trampoline.hex on a make clean,
+ support the newer versioned symbols as part of a multi object file module. 
+Oops handling
+ A small fencepost error in Oops handling on syscall return has been cured. 
+TLan 1.0
+ The Thunderlan driver has been updated to the 1.0 release. 
+Delay loops
+ The delay loop code has been modified to eliminate most of the remaining
+ cache/branch prediction and other variants to its performance. 
+5.25" floppy
+ An incorrect floppy table entry has been altered, and a potential crash
+ on unload fixed. 
+Iomega ZIP driver
+ Handle 23.D firmware funnies. 
+Cyclades Serial
+ Upgraded driver from vendor, with assorted bugs fixed. 
+Printer Driver
+ The correction in the printer handling upset the Epson Stylus 800.
+ The driver know has a LPSTRICT option that can be set for printers that need
+ absolute strict NBUSY handling. 
+Beeper gets stuck
+ The case where the beeper decides to beep forever has been cured.
+3c509 ethernet
+ Upgraded to v1.16. Fixes ID port clash with sound cards, waiting for discard
+ messages and recovers faster from transmit errors. 
+3c59x driver
+ Updated 3c59x ethernet driver.
+ This should cure the skb_push panics some people saw with 3c59x/3c90x drivers
+ under load. 
+Lance driver
+ Module unload bugs in the lance driver have been fixed. 
+Plip driver
+ Messages without severity levels now have appropriate levels. 
+AHA1542
+ Allow the use of DMA 0 on newer motherboards. 
+SHM swap off
+ A case where the machine might crash when turning swapping off has been fixed. 
+MMAP security
+ Linux did not allow a writable mmap of an append only file. It did however
+ allow a readonly mmap of such a file then an mprotect. Fixed. 
+NAKAMICH MJ-5.16S
+ This SCSI device has been added to the blacklist. 
+Single lun blacklisting
+ A bug in the single lun blacklisting has been fixed. 
+SCSI CAM division by zero
+ A corrupt geometry could cause the kernel to divide by zero and crash. 
+Sound blaster
+ Don't report a DMA channel 0 for the MPU 
+Sequencer
+ If there are no synths or midi devices do not lock the sequencer busy forever. 
+Autofs
+ Fix a small glitch in the directory hash. 
+ISOfs
+ Fix a fencepost error in the iso fs size checks. 
+Vfat fs
+ Disallow periods at the end of names. 
+NFS file system
+ Support FIFO's over NFS. Handle kill of nfsiod for module unload. 
+NFS root
+ IFF_MULTICAST could be incorrectly not set. 
+Non modular soundmodem/baycom
+ These devices only worked as modules. They now work compiled in. 
+Memory leak in networking
+ A very obscure leak in the networking code has been fixed. 
+TCP select
+ TCP select for urgent data now has correct semantics.
+ Previously it could do the wrong thing. 
+TCP SIGIO
+ SIGIO on an incoming connection is now correctly issued on the completion
+ of the three way handshake. 
+Crash on powerdown
+ When APM was enabled but not present, and APM power off was enabled the
+ kernel could crash at the end of the shutdown sequence. 
+Alpha NTP
+ The Alpha uses a 1024Hz clock and this threw off some values used for NTP calibration. 
+
+Enhancements:
+
+ISDN
+ The Isdn4linux layer is signifcantly upgraded.
+ The new driver set adds support for the Teles 16.3c, Teles PCI, Teles S0Box,
+ Creatix S0Box, Compaq ISDN S0 ISA, ELSA Quickstep 1000PCI, Elsa Quickstep 3000,
+ Elsa Quickstep 3000PCI, Eicon.Diehl Diva 2.0 ISA/PCI (not Pro),
+ Eicon.Diehl Diva Piccola, AsusCom ISDNLink 128K, Dynalink IS64PH,
+ HFC-2BS0 based cards, Sedlbauer Speed Card(Speed win, teledat 100),
+ Sedlbauer Speed Star PCMCIA, USR Sportster Internal TA, ITH MIC 16 ISA,
+ Traverse NETjet PCI, Niccy PnP/PCI 
+ICP Vortex
+ The ICP vortex driver supports the latest ICP raid cards up to and
+ including fibre channel. 
+AMI MegaRAID
+ Driver support for the AMI MegaRAID SCSI controller. 
+Shaper
+ The shaper device provides a simple traffic limiting driver for Linux 2.0.x.
+ For full traffic shaping watch for Linux 2.2 coming soon.. 
+Tulip
+ The tulip driver has been upgraded to 0.89H which should also support the
+ clone PNIC and MXIC tulip devices. 
+Extended CPUID/Chip identification
+ The Cyrix/AMD extended CPUID mode is supported.
+ Cyrix processors are identified even when CPUID is not available.
+ The Intel Celeron Mendocino is recognized.
+ K6's with the random oops bug are normally now detected.
+ The K6 cpu deadlock problem isn't detected as we know no way to check for
+  it except to try it. 
+Multi-Tech driver
+ Driver for multi-tech 4/8 port modem and serial cards.(Experimental). 
+EtherExpress
+ The Compaq LTE should now be recognized (experimental) 
+Intel 440GX
+ The 440GX chipset is known to the PCI data tables. 
+Nvidia
+ NVidia/SGS Thomson is known to the PCI data tables. 
+SCSI medium changers
+ These are no long reported as unknown device types. 
+ROSE networking
+ The ROSE network layer has been updated. 
+
+Other:
+Bigger system call table
+ To support add ons that use syscalls in the new range. 
+Hooks for dumping
+ Kernel hooks for optional threaded core dump module.

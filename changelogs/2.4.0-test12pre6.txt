@@ -1,0 +1,8 @@
+- Alan Cox: synch. PA-RISC arch and bitops cleanups
+- Maciej Rozycki: even more proper apic setup order.
+- Andrew Morton: exec_usermodehelper fixes
+- Adam Richter, Kai Germaschewski, Linus: PCI irq routing.
+- revert A20 code changes. We really need to use the keyboard
+  controller if one exists.
+- Johannes Erdfelt: USB updates
+- Ralf Baechle: MIPS memmove() fix.

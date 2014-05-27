@@ -1,0 +1,15 @@
+Linux 2.2.17pre12
+
+o	Fix PC300 X.21 support				(Ivan Passos)
+o	Smart2 driver minor fixes, one new card id	(Charles White)
+o	Fix PS/2 reconnect lockup on SMP		(David Nelson)
+o	Fix duplicate PCI ids				(Tim Waugh)
+o	Fix 100Mbit fdx on DEC45x driver		(Phil Ezolt, Bill Carr)
+o	Cyclades serial fixes				(Ivan Passos)
+o	Additional scsi blacklist entries		(Matt Domsch)
+o	Allow ppp deflate to be compiled in 		(Paul Gortmaker)
+o	Fix i2o block multidrive bug I added in pre10	(Boji Kannanthanam)
+o	Hopefully fix the scsi error handler/initrd bug	(Alan Cox)
+o	Small sparc power handling bugfix		(Dave Miller)
+o	Directory testing fix if CAP_DAC_READ_SEARCH	(Wojciech Purczynski)
+o	Export exec_usermodehelper, clean up baycom	(Thomas Sailer)

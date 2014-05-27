@@ -1,0 +1,23 @@
+As promised, here is the second patch for 0.96b which hopefully clears
+up the problems with some mice by implementing most of the serial line
+flags like 5-8 bit characters and parity. It mainly corrects only
+serial problems, but there are a couple of other patches in it too: the
+fsqrt emulation patch is here, so if you already did it, you'll get a
+bad patch for that file (which you can ignore). This patch also changes
+all instances of signal-setting to use the "send_sig()" subroutine which
+should allow gdb to debug all signals.
+
+Apart from the serial lines, I also cleaned up the general tty-handling
+routines slightly and removed at least one race-condition in the tty
+code. I don't know if it's noticeable, though.
+
+You'll need patch1 (available from all the normal sites) in order to
+apply this one. As usual, I'd like to hear if this patch does help
+people, or if there are new problems. This patch will also be available
+on the normal ftp sites, but as it was pretty minor, I decided I might
+as well include it in the post (uuencoded and compressed).
+
+(I also corrected the all-time favourite bug: linux now reports the
+right version number once more..)
+
+            Linus

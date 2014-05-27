@@ -1,0 +1,14 @@
+Linux 2.2.17pre20
+
+o	Fix EIP/ESP printk thinko			(Willy Tarreau)
+o	Final small DAC960 adjustments for 2.2.17	(Leonard Zubkoff)
+o	Improve AARP handling				(Alistair Riddell)
+o	Fix bug in the appletalk code			(Marcelo Tosatti)
+o	Last minute fix to the CS4281			(Tom Woller)
+o	Mention CS4280 and use __initdata for data	(Alan Cox)
+o	Turn on the EAPD bit on the AD1885		(Alan Cox)
+o	Don't honour the status bit for audio on a	(Marcus Sundberg)
+	440MX - it appears it doesnt work
+o	Fix high cpu usage on i810 audio		(Marcus Sundberg)
+o	Apply the same fix to the cs46xx		(Bill Nottingham)
+o	Change the power/CD algorithm on the 46xx	(Alan Cox)

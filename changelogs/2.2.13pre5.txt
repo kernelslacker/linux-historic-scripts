@@ -1,0 +1,18 @@
+Linux 2.2.13pre5
+
+o	Fix 3c527 multicast crash		(Alan Cox)
+o	VIA Apollo Pro needs DMA workaround	(Takehiro TOMINAGA)
+o	bttv ADS data update			(Karl Heinz Kremer)
+o	Clean potential kernel->user data leak	(Rpbert de Vries)
+o	Advansys driver update			(Bob Frey, Advansys)
+o	Optimise the memory zoning changes	(Ben LaHaise)
+o	Fix memory tracking bug in sk_buffs	(Henner Eisen)
+o	strnlen_user/exec fixes			(Solar Designer)
+	| sparc,ppc fixes to follow
+o	Always defragment is now a sysctl	
+o	Documentation update for SG		(Doug Gilbert)
+o	Module parameters for tlan		(spotted by Keith Owens)
+o	Fix qnx memory corruption		(Andries Brouwer)
+o	Masquerade list fixes			(Julian Anastasov)
+o	CD-ROM update				(Jens Axboe)
+o	Fix task counting race			(Curtis Regentin)

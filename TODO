@@ -1,0 +1,9 @@
+munge the commit dates based on the dates in the tarballs/patches
+
+Changelog notes:
+- Document introduction of
+  - new syscalls.
+  - new architectures.
+
+Possibly split up some of the prepatches.
+

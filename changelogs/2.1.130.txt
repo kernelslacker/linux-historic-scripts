@@ -1,0 +1,31 @@
+The Basted Turkey Release (aka 2.1.130)
+
+Following hot on the heels of the greased weasel, the basted turkey rears
+its handsome head. 
+
+The basted turkey release fixes some problems that our dear weasel had,
+namely:
+ - NFS reference counting was wrong. It had been wrong for a long time,
+   but apparently the more aggressively asynchronous code was more easily
+   able to show the resultant random memory corruption. That should be
+   gone.
+ - The UP flu fixed officially (this has been in most of the 2.1.129
+   patches)
+ - kernel_thread() used to be able to cause bad things in init-routines at
+   bootup. Fixed.
+ - itimers could lead to bad things in SMP under heavy itimer load.
+ - various mm tweaks to make it behave better under load. Things for dirty
+   buffers still under consideration.
+ - IP masqerading check fixes.
+ - acenic gigabit ethernet driver
+ - some drunken revelers fixed some MCA issues.
+ - alpha PCI setup updates and video drivers
+ - hfs and minix filesystem fixes.
+
+On the whole, an excellent thing to do this evening, and goes together
+remarkably well with some good red wine. Amaze your friends and relatives
+by completely ignoring them, sitting in a corner with your own basted
+turkey, and getting wasted on red wine. Much more fun than your average
+thanksgiving dinner,
+
+		Linus

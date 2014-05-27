@@ -1,0 +1,20 @@
+Linux 2.2.18pre7
+
+o	Fix the AGP compile in bug			(Arjan van de Ven)
+o	Revert old incorrect syncppp state change	(Ivan Passos)
+o	Fix i810 rng to actually get built in		(Arjan van de Ven)
+o	Megaraid compile fix, joystick, mkiss fixes	(Arjan van de Ven)
+o	Kawasaki USB ethernet depends on net		(Arjan van de Ven)
+o	Compaq cpqarray update				(Charles White)
+o	Fix usb problem with no USB unit found		(Oleg Drokin)
+o	Driver for the radio on some maestro cards	(Adam Tlalka)
+o	Additional shared map support needed for sparc64(Dave Miller)
+o	Fix wdt_pci when compiled in			(Alan Cox, Arjan van de Ven)
+o	Fix usb missing symbol when non modular		(Arjan van de Ven)
+o	Identify chip and also handle MTRR for the 	(Alan Cox)
+	Cyrix III
+o	Allow binding to all ports multicast		(Andi Kleen)
+o	Bring USB docs up to date			(Greg Kroah-Hartman)
+o	Bring USB devio up to date			(Greg Kroah-Hartman)
+o	pci_resource_len null function for non PCI case	(Arjan van de Ven)
+o	Fix synchronous write off end of disk bug	(Jari Ruusu)

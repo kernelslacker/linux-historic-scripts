@@ -1,0 +1,44 @@
+[PATCH] Linux-0.99.3 (January 13, 1993)
+
+VFS gets "permission()" virtual function.
+
+[Original announcement below]
+
+Still no 1.0 - I have had a couple of reports of problems, so I'll make
+yet another 0.99 release.  The diffs (against 0.99.2) and complete
+source can be found at nic.funet.fi: pub/OS/Linux/PEOPLE/Linus as usual,
+and will probably show up at the other sites pretty soon.
+
+0.99.3 contains no real new features, but the diffs are pretty big
+anyway (100kB+ compressed): various things have moved around a bit and
+there are a lot of minor changes.  The changes include (but are not
+limited to):
+
+ - the math emulator code now also understands the unofficial codes (in
+   case somebody followed the ML math emulator thread).  I'd be
+   interested to hear whether ML now works with the emulator.
+ - various SCSI driver changes
+ - some re-organization of the tty open/close code to remove a few race
+   conditions.
+ - interrupt handling rewrites (two-level interrupt code cleanups)
+ - the serial drivers are tytso's alpha-drivers: they aren't quite
+   completed, but as they need the interrupt handling patches to get
+   ready, this is probably the least traumatic way of doing it.
+ - some more minor keyboard driver changes (mostly taking advantage of
+   the two-level interrupts)
+
++ a lot of other minor changes.  I once more hope people will try it
+out, and report any problems or successes to me.
+
+Known problems:
+ - there seems to be something weird going on in the ST-0x driver with
+   some scsi disks.
+ - tcp/ip is reportedly still not quite stable, and I can't even test it
+   out.
+
+NOTE! The DMA functions have changed for the high DMA channels - all DMA
+functions now take their arguments as the number of bytes instead of the
+old way of using bytes for ch 0-3 and words for ch 5-7.  This might lead
+to problems with the SoundBlaster driver, which may need editing.
+
+                Linus

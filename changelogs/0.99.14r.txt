@@ -1,0 +1,37 @@
+This is a general announcement of the imminent code-freeze that will
+hopefully make linux 1.0 a reality.  The plan has been discussed a bit
+with various developers already, and is already late, but is still in
+effect otherwise.
+
+In short, the next version of linux (0.99.15) will be a "full-featured"
+release, and only obvious bug-fixes to existing features will be applied
+before calling it 1.0.  If this means that your favourite feature or
+networking version won't make it, don't despair: there is life even
+after beta (and it's probably not worth mailing me about it any more:
+I've seen quite a few favourite features already ;-).
+
+In fact, 1.0 has little "real meaning", as far as development goes, but
+should be taken as an indication that it can be used for real work
+(which has been true for some time, depending on your definition of
+"real work").  Development won't stop or even slow down: some of it has
+even been shelved pending a 1.0 already.
+
+Calling it 1.0 will not necessarily make all bugs go away (quite the
+opposite, judging by some other programs), but I hope it will be a
+reasonably stable release.  In order to accomplish this, the code-freeze
+after 0.99.15 will be about a month, and I hope people will test out
+that kernel heavily, instead of waiting for "the real release" so that
+any potential bugs can be found and fixed.
+
+As to where we are now: as of this moment, the latest release is the 'r'
+version of pl14 (aka "ALPHA-pl14r").  I've made ALPHA releases available
+on ftp.funet.fi almost daily, and expect a final pl15 within a few more
+days.  Testing out the ALPHA releases is not discouraged either if you
+like recompiling kernels every day or two..
+
+And finally: we also try to create a "credits" file that mentions the
+developers of the kernel and essential linux utilities.  The credit file
+compilator is jmartin@opus.starlab.csc.com (John A. Martin), and if you
+feel you have cause to be mentioned in it, please contact him.
+
+            Linus

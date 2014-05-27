@@ -1,0 +1,16 @@
+Linux 2.2.8
+
+Most of 2.2.8 by far is just architecture updates: arm, ppc and m68k stand
+out as having been pretty much synchronized to their respective devel
+trees, but there are some fixes to alpha and x86 too. 
+
+The one major fix in 2.2.8 is the SMP fix for disable_irq(), courtesy of
+Andrea Arcangeli (I disagreed in details and did it differently in the
+end, but all the heavy lifting was done by Andrea). This is the thing that
+caused silenth deaths for some people with certain network adapters (3c509
+and 8390-based cards in particular: the latter covers ne2000 clones which
+are fairly common). 
+
+There are lots of smaller things (driver updates, filesystem cleanups and
+some networking fixes), but the SMP irq thing is the one to kill for if
+you happened to have any of the affected cards.

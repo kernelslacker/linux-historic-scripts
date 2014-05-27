@@ -1,0 +1,355 @@
+Linux 2.2.11
+
+Platforms:Alpha, Sparc, X86
+
+Introduction
+Linux 2.2.11 is the latest major update to the Linux kernel tree. It fixes
+security holes in the kernel so should seriously be considered as an important
+update for all Linux 2.2 systems. The out of the box tree supports the Alpha
+the Sparc and X86 platforms. PowerPC and MIPS are mostly merged but you should
+obtain the platform specific tree. It is hoped MIPS and PowerPC will soon be
+fully merged. ARM and M680x0 users should get their platform specific tree.
+
+Binary Compatibility
+Linux 2.2.11 changes internal system structures. You should therefore rebuild
+third party kernel modules such as pcmcia-cs when upgrading from older kernels
+to this one.
+
+Security Notes
+If you have local users on the machine there are no workarounds for some of
+the fixed bugs. If you are concerned only with remotely exploitable bugs then
+the only concern is the firewall bug. This can be worked around by
+
+   1. Applying just the patch to net/ipv4/ip_fw.c or
+   2. Building a kernel with CONFIG_ALWAYS_DEFRAGMENT.
+      This is the recommended configuration for a firewall except where there
+      are multiple ingres paths. Using this option also screens clients behind
+      the firewall from fragment attacks. 
+
+It is possible the socket binding bug can be exploited remotely by requesting
+the right things from a server. We are not aware of any ways to do this.
+
+Architecture Updates
+
+Alpha
+    Extensive updates to the Alpha platform support have been merged from the
+    Alpha maintainers. Significant changes have been made to the maths
+    emulation support. 
+i386
+    Support is now available for machines with 2Gig of RAM.
+    The interrupt handling has been modified for better SMP performance.
+    An SMP race when freeing an interrupt has been cured.
+    The interrupt return path has been optimised for modern CPU's with a
+     hardware call stack.
+    ioremap now allows mapping to the top of memory.
+Mips
+    Most of the mips port has been merged with the main tree.
+    The work is not totally complete. 
+PowerPC
+    Some changes have been merged. 
+Sparc
+    The master kernel should now be up to date with the Sparc tree.
+    A problem with the Sun4m SMP has been fixed.
+    Sparc64 support for TV capture cards has been added.
+    A race condition on core dumping has been fixed.
+
+Core Updates
+
+Coloured Zero Page
+    The kernel core supports a colouring of zero pages.
+    Currently only the MIPS port uses this facility. 
+Fork
+    Fork set the processor id to NO_PROC_ID. This could cause crashes. 
+Kupdated
+    The update task now runs in kernel space instead of user space. 
+Memory allocation
+    The memory allocator has been updated so that it tries a lot harder to
+     keep ISA DMA memory pools available. 
+PCI bus
+    If the machine ran out of memory during boot up scanning of the PCI bus
+     it would crash. 
+Request Length Limit
+    The block device layer can now do merging of non memory-contiguous
+     requests for some drivers and can also limit the number of segments
+     per merge. 
+Signal Handling
+    Queued RT signals had atomicity problems that could eventually cause them
+     to stop working. 
+Swapping
+    An off by one error that could cause system deadlocks when you ran out of
+     memory has been fixed. 
+
+Driver Updates
+
+BTTV TV capture
+    The capture driver now supports the ultrasparc platform.
+    The LifeView FlyKit card is now supported. 
+Cadet Radio Driver
+    A bug has been fixed which could cause RDS data corruption. 
+CDROM driver
+    A procfs handling bug where the cdrom layer could hand back more data
+     than was requested has been fixed. 
+Compaq SMART2
+    The Compaq SMART2 now has a Linux driver. 
+Cyclades multiport serial
+    Interrupt mode is supported on the Cyclom-Z>br>Several minor bugs were fixed. 
+Gemtek Radio
+    The I/O address for the onboard GemTek card is now recognized. 
+IDE CDROM
+    Several small bugs have been fixed. 
+IDE Floppy
+    The ZIP disk corruption problem should be dead. 
+IDE Tape
+    An SMP race condition has been fixed. A case where it used memory after
+     freeing it has been fixed. 
+ISDN4Linux
+    Significant updates have been made to the ISDN layer in the kernel.
+    Several more cards are now supported. 
+Multitech ISI series multiport adapters
+    Support has been added for the PCI bus ISI cards. 
+Mylex DAC-960
+    The DAC-960 raid controller card is now supported by Linux. 
+Network Block Device
+    The network block device mis-set the size of larger network block devices
+     (those over about 2Gig). 
+Parallel Port
+    ECP Parallel ports are now dropped into a PS/2 like mode. 
+Radiotrack 2
+    This driver previously only worked as a module.
+    It now works compiled into the kernel. 
+Sound Layer
+    The DMAsound driver has several small bug fixes.
+    Allocation bugs were fixed on the ES1370/ES1371 and SonicVibes drivers.
+    The S/PDIF output is now supported on newer ES1371 chips.
+    A configuration bug on the Opti C924 has been fixed.
+    The OPL3/SA2 driver has been improved.
+    ES1869+ ESS chips should now play at the right speed.
+    3DSE enable/disable is supported by OSS.
+    The joystick on the trix card is now runtime configurable.
+Specialix SX/SI multiport
+    These cards are now supported by a new specialix serial driver. 
+Quick Cam
+    A memory allocation bug that could cause crashes in both the quickcam
+     drivers has been fixed. 
+Serial
+    A bug that prevent shared interrupt mode working on the PC serial driver
+     has been fixed. 
+TGAfb
+    A frame buffer for the DECChip 21030 frame buffers.
+    These are found in many of the Alpha based machines. 
+VGA Frame Buffer Console
+    Linux 2.2.11 adds a native EGA/VGA 16 colour console to the frame buffer
+    console support.  This is primarily aimed at GUI installers but can be
+    used for other things too. 
+
+File System Updates
+
+CODA
+    Coda now supports pipe devices. Several other cleanups/changes. 
+EFS
+    SGI EFS is now supported read only. 
+Ext2fs
+    "Too large" error andling errors on very large files have been fixed.
+    The immutability rules have been updated. 
+FAT
+    FAT now caches by starting cluster.
+    FAT knows FAT32 is really only 28bit.
+    Now generates inode numbers differently. 
+FIBMAP
+    The FIBMAP ioctl now requires RAWIO capability. 
+ISOfs
+    A case where the ISO fs could crash the machine when it ran out of memory
+     has been resolved. 
+Lockd
+    A list mishandling bug in the lock daemon has been fixed.
+    2.0.x compatible 'local only' locking is supported. 
+Loop Device
+    The loopback driver for mounting file systems onto files now checks the
+     underlying layer supportd bmap(). 
+Nextstep CD-ROM supported
+    The UFS file system can now handle NextStep CD-ROM format. 
+NCP fs
+    A null pointer crash case has been fixed. 
+NFS client
+    A stale handle case has been fixed. 
+Pipes
+    A technical violation of the SuSv2 specification when preading 0 bytes
+     from a pipe has been fixed. 
+Procfs
+    The kernel memory image now reports the correct offset for its base.
+    A memory handling bug has been fixed. 
+QNX fs
+    A crash when bad blocks are read has been fixed. 
+Quota
+    A whole pile of races, especially SMP races, in the Quota subsystem
+     have been fixed. 
+UFS
+    Crashes when a block cannot be read have been cured. 
+Ultrix Partition Tables
+    Ultrix partition tables are now supported.
+    This is needed for the MIPS port in particular. 
+
+Miscellaneous Updates
+
+ChangeLog
+    The Changelog has been updated to reflect newer tools. 
+
+Network Updates
+
+Alteon AceNIC
+    The driver now recognizes the Farallon PN9000SX and the SGI variants
+     of the board. 
+Appletalk
+    Now allows larger net ranges as 2.0 did. Fixed a crash on route changes. 
+ARCnet
+    Several cases where an out of memory could crash the machine have been
+     fixed. The irq probe delay has been increased to resolve a problem on
+     some SMP boxes using ARCnet cards. 
+Arlan
+    The ISA bus Arlan radio interfaces are now supported. 
+Bridge
+    The bridge layer handled BPDU time values wrongly. 
+Comtrol Hostess SV-11
+    A case where a DMA channel could be freed twice has been cured. 
+COSA
+    The COSA driver has several bugs fixed including a firmware bug workaround
+     and a deadlock bugfix. 
+CS89x0
+    Underrun handling on the DMA was faulty. This update should fix it. 
+DEPCA
+    Bridging did not work with the DEPCA driver due to an error in the
+     packet length computation. 
+General Instruments Surfboard 1000
+    A driver supporting the internal SB1000 ISA card has been added to the
+    kernel. For more information see http://home.adelphia.net/~siglercm/sb1000.html. 
+IBM 'Olympic' PCI token ring adapters
+    Support has been added for most of the IBM PCI token ring adapters.
+    The Lanstreamer is not yet supported however. 
+IP layer
+    Fixed routing bug, socket hashing bug, crash with MTU below 68 bytes.
+    An IGMP protocol handling error has been fixed. 
+IP version 6
+    The firewall code could oops if it ran out of memory. 
+IPX
+    IPX packet routing could oops if the machine ran out of memory. 
+Lance
+    The Lance driver could oops if there was no memory free. 
+Masquerade
+    Masquerading made a poor choice of hashes for some operations.
+    The IRC masquerade did not understand the extended DCC commands. 
+Multicast Routing
+    PIM2 checksumming was incorrect and broke with old peers. 
+NE2000/PCI Driver
+    This now supports the PowerPC and also the differently broken Holtek chips. 
+NetROM
+    The NetROM layer could oops during loading if it ran out of memory. 
+Packet Schedulers
+    Several bugs were fixed in the packet scheduling. 
+PCNet 32
+    Now supports the 79cc973/5 chips.
+    Some PCI scanning changes have been made.
+    A bug with manual MII selection has been fixed. 
+Realtek 8129/8139
+    This driver has been updated. 
+ROSE
+    The ROSE layer could oops during loading if it ran out of memory. 
+Sealevel Systems 4021
+    A driver for this Z85230 based card has been added. 
+Seeq 8005
+    This driver may now be built as a module. 
+SiS900
+    An experimental driver for this new chipset is now included. 
+sk_mca
+    Minor MCA bus fixes 
+Synchronous PPP
+    A bug where the synchronous PPP driver would drop connections under high
+     load due to keepalive lossage has been fixed. 
+TCP Protocol
+    Fixed a race condition with two writers and partial writes.
+    Update workarounds for bugs in the PAWS protocol (RFC1323)
+    Fix crash in socket binding. 
+Tulip Driver
+    A fix for a race where the Tulip driver would hang has been added. 
+VIA Rhine
+    This driver has been updated. 
+Wavelan
+    The frequency handling for the wavelan has been updated for the newer
+     modem revision. 
+YAM FPGA Radio Modem
+    This is now supported under Linux in 1200 and 9600 baud mode. 
+Yellowfin
+    The yellowfin driver has been updated to correctly handle non x86 platforms. 
+Z85230
+    Several non fatal bugs in the Z85230 synchronous driver have been fixed. 
+
+SCSI Updates
+The general SCSI layer has been updated to fix a couple of read only reuses of
+freed memory and to fix oopses when loading modules and running out of memory.
+A problem where the scsi error thread stopped initrd unloading has also been
+fixed.
+
+AHA152x
+    Driver is now SMP safe. Abominable responsiveness under heavy load should
+     also be cured. 
+AHA154x
+    Supports loadtime options as a module for configuration.
+    Supports AHA1542CFP geometry translation modes. 
+AIC7xxx
+    Updated to fix various reported bugs. 
+AMI Megaraid
+    Fixed a bug with manager control commands causing false SCSI layer errors.
+    Increased SCSI command timeouts. 
+ATP870U
+    This driver is now SMP safe. 
+Constants
+    The SCSI layer will now name SCSI 2 commands in verbose error reports. 
+EATA
+    The driver will set a device to master mode if need be. 
+EATA-DMA
+    This driver is now SMP safe. 
+IDE SCSI
+    When scsi generic was used the IDE SCSI layer could get confused.
+    IDE SCSI generic transform couldn't be disabled once enabled. 
+IN2000
+    The assembly part of this did not compile with the latest compilers. 
+Initio SCSI
+    On non X86 platforms some delays were incorrect by a factor of ten. 
+NCR 53c8xx
+    Fix misdetection of 53C875E and other minor fixes. 
+NCR 53C9x
+    Driver is now SMP safe. 
+QlogicFC
+    Now supports the isp2200 card. 
+Qlogic ISP
+    Geometry handling corrected for larger than 8Gig disks. 
+Symbios 53c416
+    This driver is now SMP safe. 
+Symbios 53c8xx
+    Fix misdetection of the 53C875E. Added support for the 53C895A.
+    Updated scripts. 
+
+Security Updates
+
+AX.25
+    The AX.25 layer had a bug allowing arbitrary scribbling into kernel space
+    by an application. The area hit is hard to control so the exploit is
+    probably limited, but still dangerous. 
+Capabilities
+    There is now a bounding capability set that can only be increased by
+    process 1. This provides securelevel equivalence. 
+Firewall
+    A carefully constructed packet sequence could rewrite the port numbers on
+    a packet potentially allowing frames that should be screened through the
+    firewall. 
+Mremap
+    Mremap called zap_page_range with incorrect arguments.
+    A large realloc() under glibc could do all sorts of nasty things. 
+Sysrq
+    It is now possible to build a kernel with debugging sysrq support and
+    enable/disable the option at runtime. 
+TCP
+    Some unusual patterns of socket binding could cause a crash.
+    A user could deliberately trigger this. Now fixed. 
+/dev/port
+    The RawIO capability is now required to open /dev/port, /dev/mem
+     and /dev/kmem. 

@@ -1,0 +1,9 @@
+Linux 2.0.36pre16
+
+This has taken some time in order to get internal testing of the tcp state
+machine fix done. Will people stress the following bits particularly in this
+pre-patch
+
+	Booting on a 1Gig+ machine (I dont have one alas)
+	TCP 
+	Weird CPUs (Cyrix/TI 486DLC etc)

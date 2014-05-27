@@ -1,0 +1,18 @@
+Linux 2.0.40-rc8
+
+Ahem, 2.0.40-rc7 never happened, and thus never contained a non-working
+sk_buff.c...  *Lalalalala*
+
+o   Fix sk_buff.c                                      (David Weinehall)
+    | Thanks to the following who informed me of my
+    | blunder:   Jari Ruusu, Seiichi Nakashima,
+    | Steven ?, Michael Deutschmann
+o   Correct AF_UNIX fd-passing                         (Michael Deutschmann)
+    semantics to match what OpenSSH expects
+o   Fix typo in rtl8139.c introduced in 2.0.40-rc7     (David Weinehall)
+o   Fix typo in ni65.c introduced in 2.0.40-rc7        (David Weinehall)
+o   Fix compile-time error in pci2000.h                (David Weinehall)
+o   Fix ICMP-fix for ip_forward.c                      (David Weinehall)
+o   Fix two compile-time warnings in menuconfig        (David Weinehall)
+o   Minor changes to CREDITS                           (David Weinehall)
+o   Cosmetic changes to MAINTAINERS                    (David Weinehall)

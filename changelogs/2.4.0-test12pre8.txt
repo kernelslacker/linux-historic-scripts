@@ -1,0 +1,8 @@
+- Stephen Rothwell: APM updates
+- Johannes Erdfelt: USB updates
+- Linus: call_usermodehelper(/sbin/hotplug) cleanup and deadlock fix
+- Leonard Zubkoff: DAC960 Driver Update
+- Martin Diehl: fix PCI PM callback ordering
+- Andrew Morton: call_usermodehelper() fixes
+- Urban Widmark: clean up and enable shared mmap on smbfs.
+- Trond Myklebust: fix NFS path revalidation.

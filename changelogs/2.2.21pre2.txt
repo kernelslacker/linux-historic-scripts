@@ -1,0 +1,18 @@
+Linux 2.2.21pre2
+
+o	Fix non blocking midi close on es1370, es1371	(Alan Cox)
+	sonicvibes
+o	Update osst driver				(Willem Riede)
+o	Update machine check support in 2.2 to match 2.4(Dave Jones)
+o	Additional P4, Rise, Winchip handling for setup	(Dave Jones)
+o	Fix extended MMX initialisation on Cyrix MII	(Alan Cox)
+o	Backport a lot of x86 setup (cache size etc)	(Dave Jones)
+o	ISDN cleanups					(Kai Germaschewski)
+o	Backport eicon driver fixes			(Kai Germaschewski)
+o	ISDN ppp fixes					(Andre Beck)
+o	Fix timeout handling in eicon driver		(Kai Germaschewski)
+o	Fix null pointer bug in isdnloop		(Kai Germaschewski)
+o	Menuconfig refresh fixup			(Willy Tarreau)
+o	Modular ati frame buffer build fix		(Krzysztof Taraszka)
+o	Backport VIA chipset fixes to 2.2		(Alan Cox)
+o	Make DCD high->low work on SX16 with CLOCAL set	(Ado Arnolds)

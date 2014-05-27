@@ -1,0 +1,13 @@
+Linux 2.0.40-rc2
+
+o   Fix ICMP bug                        (David S. Miller)
+o   Add autodetection for wd1002s-wx2   (Paul, who appears to
+    in the xd-driver                     have no last name =])
+o   Fix path MTU discovery for          (Kirk Petersen)
+    transparent TCP sockets
+o   Revert array-size change in         (David Weinehall, on advise from
+    include/linux/module.h               Jari Ruusu)
+o   Remove workaround for gcc-2.4.5     (Adrian Bunk)
+    | This is basically a whitespace-
+    | change, since it removes code
+    | inside an #ifdef #endif clause

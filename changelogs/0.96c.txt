@@ -1,0 +1,49 @@
+[PATCH] Linux-0.96c (July 4, 1992)
+
+Ext filesystem support! The VFS layer switchover was successful.
+Ext support is a more FFS-like filesystem, although still quite heavily
+influenced by my original Minix filesystem.  But it allows much bigger
+filesystems (minixfs was limited to 64MB) and many more files (minixfs
+had a 16-bit inode number).
+
+Named pipes by Paul Hargrove (using the regular pipe code for actual IO).
+
+[original announcement below]
+
+0.96c is actually what I called patch3 earlier this week, but as the new
+features were pretty big and the cdiff's are probably going to be bigger
+than the normal patches, I decided I might as well make it a totally new
+minor release and make a bootimage and complete source available.
+
+0.96c contains:
+ - bugfixes (tty, console driver, pty's, sockets)
+ - fifo's (names pipes - Paul Hargrove & editing by me)
+ - the alpha extended filesystem (Remy Card)
+ - st_blocks implemented (ie du, ls give reasonable if not exact values
+   for disk-space used)
+ - Makefile cleanups and warnings at compile-time removed
+
+Note that while the extended filesystem code is there, and this kernel
+successfully mounts and uses the new filesystem (with long filenames and
+>64MB partitions), it's still under testing: I haven't made the mkefs
+program available, and the extended filesystem features shouldn't be
+used for other than testing right now.
+
+Some of the changes are just cleanups: most of the warnings when
+compiling the new kernel should be gone (not counting the scsi code
+which is still the old non-cleaned-up version), and the make'ing of the
+kernel is more logical now.
+
+The bugfixes include the corrected console.c driver, the socket
+corrections (without which X sometimes locks up), some pty semantics
+corrections (although I'm still not certain it's correct) and some
+editing in the general tty driver (including fixing the bug introduced
+in 0.96b.pl2 that caused a reboot with uninitialized tty devices).
+
+While the extended filesystem support isn't "official" yet, I can
+happily report that my limited testing hasn't found any problems with
+long filenames etc.  It still needs a fsck program, but 1.0 looks like a
+real possibility soon.
+
+                Linus
+

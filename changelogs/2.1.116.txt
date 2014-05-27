@@ -1,0 +1,31 @@
+Linux 2.1.116
+
+I just released Linux-2.1.116. I've tested it fairly extensively on my SMP
+box, both with little memory and much, and I cannot make it lock up any
+more.
+
+Special thanks to Dean Gaudet who helped me set up a apache configuration
+that finally made me able to repeat the lockup, and made me able to debug
+the thing.
+
+Most of the 2.1.116 patches are "just" alpha and m68k updates, and can be
+ignored by most people. The bugfixes are, roughly:
+
+ - fixed serious low-memory situation problem, where a critical resource
+   allocation problem could result in nasy behaviour. Notably, doing TCP
+   under low memory could result in TCP trying to allocate memory in a
+   tight loop and locking out kswapd completely so that the situation
+   would never be rectified. In short, the machine hung.
+   This problem has been there forever, the only reason it doesn't show up
+   under 2.0.x seems to be because under 2.0.x the TCP allocation was
+   always for a single page, for which this situation never arises. Under
+   2.1.x the slab code forced multi-page allocations.
+   If you've seen lockups with 2.1.x, this may be the cause. This was what
+   held up 2.1.116 for so long.
+ - various minor driver updates. Networking, radio, bttv.
+ - NFS over TCP still doesn't work, but at least it fails due to new
+   reasons.
+
+Alan, try your squid thing under 2.1.116. I suspect it will hold up now,
+
+                Linus

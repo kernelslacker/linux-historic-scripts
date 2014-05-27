@@ -1,0 +1,17 @@
+[PATCH] Linux-0.96c-p2
+
+This one cleans up "select()" handling a lot, using the VFS virtual
+functions rather than hardcoding certain types of special files. 
+  
+More importantly, the select cleanups are the impetus for the "wait
+queue" handling with "add_wait_queue()" and "remove_wait_queue()" and
+raceless sleeping.  That's still how it's done today, although the
+low-level implementation details have been changed several times.
+
+Other:
+
+ - Add msdos filesystem by Werner Almesberger (small 12-bit only for now).
+ - Implement ETXTBUSY
+ - Add "volatile" to a lot of the inline asm
+ - Logitec Busmouse driver by James Banks, David Giller and Nathan Laredo
+ - SG keyboard map (Swiss German?)

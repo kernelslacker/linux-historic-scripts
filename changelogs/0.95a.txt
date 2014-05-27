@@ -1,0 +1,15 @@
+[PATCH] Linux-0.95a (March 17, 1992)
+
+Oops.  I had forgotten to change the kernel version number in 0.95 (so
+it showed as 0.12). 
+
+ - 80x50 console on standard VGA
+ - do "memcpy_fromfs()" and "memcpy_tofs()" rather than byte-at-a-time
+   to improve performance (inspired by some earlier patches by Keith White)
+ - allow select() on many more file descriptors
+ - support up to 4 serial ports (and increase buffering size)
+ - Branko Lankester helped make extended partitions work and implemented
+   DM partition table support
+
+The big deal in the release notes is actually that the root diskette
+maintainership had been moved over to Jim Winstead Jr. 

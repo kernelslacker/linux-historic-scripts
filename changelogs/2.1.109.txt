@@ -1,0 +1,46 @@
+Linux-2.1.109.. preliminary code freeze.
+
+Ok, it's out there now in all its glory...
+2.1.109 does the following thing:
+
+ - CPU detection in C code (and thus much easier to expand upon,
+   especially as it's all thrown away after booting now that it is
+   "initfunc()").  This should finally get the Cyrix case right, for
+   example. Please test.
+ - too meny people convinced me that sendfile() really wants to act like
+   writep().
+ - sound driver updates from Alan.
+ - console updates, so now we have the full old functionality again as far
+   as I'm concerned (but I'm sure people will tell me something is still
+   missing)
+ - task switch and user space return cleanly handles bad segment
+   descriptors etc, so people shoul dno longer be able to cause kernel
+   messages by misusing the LDT (and I was just informed that you could
+   actually completely hang a 2.1.x SMP kernel by doing nasty things -
+   this fixes it)
+ - wine should work again thanks to Bill Hawes (other LDT fixes)
+ - de4x5 driver update
+ - token ring driver update
+ - ppp driver update
+ - coda-fs update
+ - "shared writable" bug fixed (thanks to a lot of people for testing and
+   working on this - the actual fix was trivial once the problem was
+   understood)
+
+In addition, I've spent a large part of my day running with a 12MB
+machine, and low-memory behaviour seems to be reasonable. People who have
+been unhappy with low-memory behaviour should check out 109 and comment on
+it - the heuristics are fairly different, and seem to be better.
+
+As of this release, I won't be looking at the "incoming" directory at the
+linux-patches site any more. I'll only be looking at "urgent" things, on
+the theory that I'm (a) lazy and (b) getting into code freeze.
+
+If you have important patches in "incoming", feel free to move them to
+"urgent". However, I will warn that if I don't consider them to be 2.2
+material, I'll just move them to "discarded".
+
+The same goes for patches in email. I will accept patches, but I've just
+raised the bar for acception.
+
+                Linus

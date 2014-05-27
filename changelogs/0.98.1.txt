@@ -1,0 +1,22 @@
+[PATCH] Linux-0.98.1 (October 5, 1992)
+
+Add ATI XL busmouse driver by Bob Harris, split off MS busmouse driver into
+a driver of its own (rather than a subdriver of the Logitech mouse driver)
+
+FAT uid/gid/umask mount options.
+
+SCSI driver updates.
+
+[Original announcement below]
+
+Patch1 to 0.98 mainly corrects some driver problems: it contains the
+added "inb_p(HD_STATUS)" for hd.c, as well as a changed mouse driver
+setup (hope it works - I couldn't test it..).  There are also some SCSI
+driver patches: the seagate driver uses irqaction() to get irq's, and
+the aha1542 driver has the speedup patches.
+
+The bootimage should be compiled without the auto-SVGA mode, so people
+who had problems with linux automatically using a SVGA mode should be ok
+in this release.
+
+                Linus

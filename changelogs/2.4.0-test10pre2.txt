@@ -1,0 +1,22 @@
+Linux 2.4.0-test10pre2
+
+    - remember to change the kernel version ;)
+    - isapnp.txt bugfix
+    - ia64 update
+    - sparc update
+    - networking update (pppoe init, frame diverter, fix tcp_sendmsg,
+      fix udp_recvmsg).
+    - Compile for WinChip must _not_ use "-march=i686". It's a i586.
+    - Randy Dunlap: more USB updates
+    - clarify the Firewire AIC-5800 situation. It's not supported yet.
+    - PCI-space decode size fix. This is needed for some (broken?) hardware
+    - /proc/self/maps off-by-one error
+    - 3c501, 3c507, cs89x0 network drivers drop unnecessary check_region
+    - Asahi Kasei AK4540: new codec ID. Yamaha: new PCI ID's.
+    - ne2k-pci net driver documentation update
+    - Paul Gortmaker: delete paranoia check in rtc_exit
+    - scsi_merge: memset the right amount of memory.
+    - sun3fb: old __initfunc() not supported any more.
+    - synclink: remove unnecessary task state games
+    - xd.c: proper casting for 64-bit architectures
+    - vmalloc: page table update race condition.

@@ -1,0 +1,3 @@
+Linux 2.2.13pre12
+
+o	Sktr driver should now work		(Adam Fritzler)

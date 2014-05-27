@@ -1,0 +1,16 @@
+Linux 2.0.36pre4
+
+ftp://ftp.linux.org.uk/pub/linux/alan/...
+
+This one updates the tulip and 3c509 drivers, so give those a beating. The
+mdelay/udelay problem with the aic7xxx update is fixed. A small root
+permissions bug in /proc is fixed and a few other minor things.
+
+Modular sound isnt in this one. Its about 60/40 in favour but I decided
+the 40% were right. It changes expected behaviour for people which isnt
+good for 2.0
+
+The main thing left to sort now is the final CPU detection. Im still getting
+some reports of misdetections
+
+Alan

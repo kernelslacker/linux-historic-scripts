@@ -1,0 +1,55 @@
+[PATCH] Linux-0.99.5 (February 9, 1993)
+
+net-1: more fixes, use bottom halves for transmitting, more "volatiles"
+to hide bugs. /proc interfaces for networking.
+
+Side note: it took networking a _long_ time to recover from the
+volatiles.  Getting the locking right rather than trying to make the
+compiler make races smaller was a hard idea to get through.
+
+Bill Metzenthen moves his math emulator to "beta 1.0" status.
+
+Fred van Kempen shows up: starting to do a SLIP line discipline for tty
+devices. 
+
+Verify FP exception handling.
+
+[Original announcement below]
+
+        "He's done it yet again - doesn't he ever rest?"
+                        - anonymous linux kernel hacker
+
+Only complete newbies don't know what this is all about, but I'd better
+tell you anyway: patchlevel 5 of the 0.99 kernel is now available on
+nic.funet.fi (pub/OS/Linux/PEOPLE/Linus) as both context diffs against
+pl4 and complete source code.  I'm not even going to speculate on 1.0
+right now.
+
+The pl5 diffs are about 90kB compressed: the major changes are to the
+tcp/ip code and the serial driver, while there are various minor fixes
+strewn around the system:
+
+ - serial lines/tty changes (tytso & Fred v Kempen)
+ - NFS bugfixes (Rick Sladkey)
+ - tcp/ip (Ross Biro)
+ - coprocessor handling changes (me)
+ - harddisk driver error handling (Mika Liljeberg)
+ - various minor patches (me and others)
+
+Serial lines now implement non-blocking opens correctly and support
+dial-out lines (same minor, major==5).  I changed the default startup
+mode to be CLOCAL so that people won't get confused by the modem line
+code when not using dial-in.
+
+Another interesting change is the 387 error-coupling tests at bootup:
+the code to check if the intel-recommended exception 16 error reporting
+is present is "non-obvious".  If you have had problems with coprocessor
+error handling, or have a non-intel coprocessor, I'd suggest you test
+this out: I'd like to hear about problems/successes.
+
+                Linus
+
+PS.  If you tested out the latest ALPHA-diffs (the ones that already
+changed the kernel version to pl5), the changes to the final pl5 were
+only cosmetic.
+

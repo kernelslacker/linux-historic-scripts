@@ -1,0 +1,34 @@
+Linux 2.2.12pre1
+
+Fix
+o	Fix the TCP memory leak		(Dave Miller)
+o	Fix the 6Mb kernel bug on PPC	(Paul Mackerras)
+o	Fix shared IRQ on ISI serial	(Alan Cox)
+	| Still not SMP safe it seems
+o	Sb1000 compiles built in	(Alan Cox)
+o	Sb1000 works 			(Alan Cox)
+o	Fix warning in eth16i driver	
+o	Sis900 driver update		(Jim Huang SIS)
+o	PAS16 takes module arguments	(Bob Tracey)
+o	53C875 model 37 detection	(Pekka Pietikanen)
+o	Autofs deadlock with nfs
+o	Require RAWIO cap for kcore	(Matthew Kirkwood)
+o	munlock isnt priviledged	(Matthew Kirkwood)
+o	RLIM_INFINITY handling		(Kanoj Sarcar)
+
+
+Add
+o	Enhanced Raid			(Ingo Molnar)
+o	Computone Serial Driver		(Computone)
+o	Minor documentation update
+o	IP virtual server masquerade	(Wensong Zhang and others)
+o	Iomega Buz capture driver	(Rainer Johanni, Dave Perks, et al)
+o	Large file array support	(Stephen Tweedie)
+o	FPU emulation enhancements for
+	Alpha				(Richard Henderson)
+o	Universal Serial Bus		(Assorted, backport by Paul Mackerras)
+o	Detect AMD Athlon and report	(Alan Cox)
+o	Honour Bios EBDA		(??)
+o	PPC updates
+o	Celtic language NLS		(Rhys Jones)
+o	IPH5526 FC Driver		(Vineet M Abraham)

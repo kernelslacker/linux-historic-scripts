@@ -1,0 +1,7 @@
+2.2.22-rc3
+
+o 3ware IDE raid small update (Adam Radford)
+o Fix incorrect comments (Solar Designer)
+o Sanity check in isdn (Solar Designer)
+o Type fixes for usb (Solar Designer)
+o Vmalloc corner case fix (Dave Miller) 

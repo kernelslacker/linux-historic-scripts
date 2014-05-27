@@ -1,0 +1,13 @@
+2.0.37pre5
+
+o	Configuration tool fixes	(Alan Cox)
+o	MegaRAID update			(AMI)
+o	ioctl thread fix		(Alan Cox)
+o	RCPCI update			(Red Creek)
+o	IDE OOps fix			(from 2.2)
+o	Symbios 53c416 driver		(Lieven Willems)
+o	PARIDE enhancements		(Grant)
+o	SMART2 update			(Compaq)
+o	Cyclades PCI update		(Cyclades)
+o	ISO 8859-15 			(From 2.2)
+o	DAC960 update			(Leonard Zubkoff)

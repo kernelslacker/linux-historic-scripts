@@ -1,0 +1,18 @@
+Linux 2.2.20pre11
+
+o	Security fixes
+	| Details censored in accordance with the US DMCA
+o	Sparc updates					(Dave Miller)
+o	Add escaped usb hot plug config item		(Ryan Maple)
+o	Fix eepro10 driver problems			(Aris)
+o	Make request_module return match 2.4		(David Woodhouse)
+o	Update SiS900 driver				(Hui-Fen Hsu)
+o	Update ver_linux to match 2.4			(Steven Cole)
+o	Final isdn fixups for 2.2			(Kai Germaschewski)
+o	scsi tape fixes from 2.4			(Kai Mäkisara)
+o	Update credits entry				(Henrik Storner)
+o	Fix scc driver hang case			(Jeroen)
+o	Update credits entry				(Dave Jones)
+o	Update FAT documentation			(Hirokazu Nomoto)
+o	Small net tweaks				(Dave Miller)
+o	Fix cs89xx abuse of skb->len			(Kapr Johnik)

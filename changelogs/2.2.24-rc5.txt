@@ -1,0 +1,8 @@
+Linux 2.2.24-rc5
+
+o   Fix n_hdlc globals pollution                    (Paul Fulghum)
+o   Fix initialisation of sk->sleep                 (Holger Smolinksi)
+o   Handle init_ethdev returning null in tulip      (Neale Banks)
+o   Backport rtc wildcard fix to 2.2                (Paul Gortmaker)
+o   Correct wireless config help                    (Neale Banks)
+o   Fix smc9194 build                               (Alan Cox)

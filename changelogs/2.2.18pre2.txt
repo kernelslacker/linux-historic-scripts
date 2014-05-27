@@ -1,0 +1,23 @@
+Linux 2.2.18pre2
+
+o	Fix the compile problems with microcode.c	(Dave Jones, 
+							 Daniel Roesen)
+o	GDTH driver update 				(Achim Leubner)
+o	Fix mathsemu miuse of casting with asm		(??)
+o	Make msnd_pinnacle driver build on Alpha
+o	Acenic 0.45 fixes				(Chip Salzenberg)
+o	Compaq CISS driver (SA 5300)			(Charles White, 
+	+ cleanups					 Alan Cox)
+	+ gcc 2.95 fixup
+o	Modularise pm2fb and atyfb
+o	Upgrade AMI Megaraid driver to 1.09		(AMI)
+o	Add DEC HSG80 and COMPAQ 'logical volume' to
+	scsi multilun list
+o	SK PCI FDDI driver support			(Schneider & Koch)
+o	Linux 2.2 USB backport				(Vojtech Pavlik)
+	backport 3 + further fixes from the USB list
+	+ mm/slab.c fix for cache destroy
+o	AGP driver backport				(XFree86, Precision
+	DRM driver backport				 Insight, XiG, HJ Lu, 
+							 VA Linux, 
+							 and others)

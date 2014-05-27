@@ -1,0 +1,19 @@
+Linux 2.2.21pre1
+
+o	Fix potential corruption with vmalloc on	(Ralf Baechle)
+	virtually cached boxes
+o	Small PPC build fixups				(Tom Rini)
+o	zImage booting fix				(Kalev Soikonen)
+o	EIO on NFS read fixup				(Trond Myklebust)
+o	Update 3ware raid driver			(Adam Radford)
+o	page_alloc race fix				(Andrea Arcangeli)
+o	Update USB maintainers				(Greg Kroah-Hartmann)
+o	bttv clipcount=0 fix				(Solar Designer)
+o	Fix multiple eepro driver bugs			(Aris)
+o	Sym53c8xx queue handling fix			(Gerard Roudier)
+o	Update SubmittingDrivers document		(Michal Svec)
+o	8139too performance tune			(Jens David)
+o	procfs follow link return fix			(Solar Designer)
+o	Backport SEM_UNDO overflow fix from 2.4		(Leonid Igolnik)
+o	VM86 fixes					(Manfred Spraul)
+o	Fix alpha build					(Kim Heino)

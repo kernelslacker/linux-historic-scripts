@@ -1,0 +1,18 @@
+The main notables are the network fixes (uninitialized skb->dev could and
+did cause oopses in ip_defrag) and the mm fixes (dirty pages without
+mappings etc, causing problems in page_launder).
+
+The mm cleanups also include removing "swapout()" as a VM operation, as
+nobody can sanely do anything more than just marking the page dirty anyway
+(the real work is done by writepage() these days), and doing that
+explicitly simplifies VM scanning considerably.
+
+This still doesn't tell "sync()" about dirty pages (ie the "innd loses the
+active file after a reboot" bug), but now the places that mark pages dirty
+are under control. Next step..
+
+- NIIBE Yutaka: SuperH update
+- Geert Uytterhoeven: m68k update
+- David Miller: TCP RTO calc fix, UDP multicast fix etc
+- Duncan Laurie: ServerWorks PIRQ routing definition.
+- mm PageDirty cleanups, added sanity checks, and don't lose the bit.

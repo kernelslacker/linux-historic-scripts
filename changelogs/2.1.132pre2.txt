@@ -1,0 +1,15 @@
+pre-2.1.132-2..
+
+..is out there, and has everybodys favourite fix, ie the version number
+has been bumped this time. In addition, compared to pre-1, it has:
+ - autofs fix (uninitialized inode number could lead to "interesting"
+   problems)
+ - some more NFS fixes (file truncation with pending write-backs this time)
+ - disable_irq()/enable_irq() now nests properly, as Alan convinced me
+   (quite rightly) that they have to nest in order to work sanely with
+   shared interrupt and multiple CPU's and various other schenarios.
+ - more merges from Alan, we're getting closer to being synched up.
+Most of the bulk of the thing is the irda stuff, that most people can
+ignore.
+
+                Linus

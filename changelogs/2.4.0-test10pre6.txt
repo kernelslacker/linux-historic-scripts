@@ -1,0 +1,53 @@
+Linux 2.4.0-test10-pre6
+
+pre6 has tons of small fixes, the most noticeable of which are
+
+ (a) the new compiler requirements (sorry, but it turned out that 2.7.2.3
+     really is too subtly broken with named structure initializers that
+     are very heavily used these days inside the kernel)
+
+     Suggested stable compiler: gcc-2.91.66, aka egcs-1.1.2, which is the
+     one most vendors have been shipping for a long time, and while sure
+     to be buggy too has not been found to be seriously so at least yet.
+
+     Other modern gcc versions may well work too.
+
+ (b) various PCI fixes that used to make 2.4.0 completely unboot/usable on
+     certain machines (ALI chipsets with certain PIRQ routing tables and
+     laptops with some docking bridges. Oh, and PIIX4 chipsets with USB
+     enabled and certain other magic things going on).
+
+     Let's hope that there aren't too many more of these. The ALI one in
+     particular was "interesting" to chase down. More interesting than I
+     personally need in my old age.
+
+The rest of the changes should be mostly unnoticeable.
+
+Still known: the same old "page->mapping = NULL" thing that has not seen
+an acceptable fix yet. If it wasn't for that, I'd have called this test10
+already and be done with it. Super-Al to the rescue (and no, that was not
+a reference to the current sad state of US politics).
+
+                Linus
+
+
+ - pre6:
+    - Jeremy Fitzhardinge: autofs4 expiry fix
+    - David Miller: sparc driver updates, networking updates
+    - Mathieu Chouquet-Stringer: buffer overflow in sg_proc_dressz_write
+    - Ingo Molnar: wakeup race fix (admittedly the window was basically
+      non-existent, but still..)
+    - Rasmus Andersen: notice that "this_slice" is no longer used for
+      scheduling - delete the code that calculates it.
+    - ALI pirq routing update. It's even uglier than we initially thought..
+    - Dimitrios Michailidis: fix ipip locking bugs
+    - Various: face it - gcc-2.7.2.3 miscompiles structure initializers.
+    - Paul Cassella: locking comments on dev_base
+    - Trond Myklebust: NFS locking atomicity. refresh inode properly.
+    - Andre Hedrick: Serverworks Chipset driver, IDE-tape fix
+    - Paul Gortmaker: kill unused code from 8390 support.
+    - Andrea Arcangeli: fix nfsv3d wrong truncates over 4G
+    - Maciej W. Rozycki: PIIX4 needs the same USB quirk handling as PIIX3.
+    - Linus: if we cannot figure out the PCI bridge windows, just "inherit"
+      the window from the parent. Better than not booting.
+    - Ching-Ling Lee: ALI 5451 Audio core support update

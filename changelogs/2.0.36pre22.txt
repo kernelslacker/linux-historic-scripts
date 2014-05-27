@@ -1,0 +1,11 @@
+Linux 2.0.36pre22
+
+o       Fix IDE maintainers email
+o       Small security/hangup fix for thge cyclades driver
+
+This one is the final cut. You have 24 hours to scream if you break it. THen
+it goes to Linus for final approval
+
+        ftp://ftp.linux.org.uk/pub/linux/alan/2.0.36pre/...
+
+Alan

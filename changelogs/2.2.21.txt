@@ -1,0 +1,3 @@
+Linux 2.2.21
+
+o       Add 32/64bit ioctl handling for random driver   (Marco Colombo)

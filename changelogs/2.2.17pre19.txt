@@ -1,0 +1,8 @@
+Linux 2.2.17pre19
+
+o	Add Marcelo Tosatti to the credits		(Marcelo Tosatti)
+o	Fix a couple of kfree and follow the pointer
+	bugs in the i810 audio driver			(Bob Frey)
+o	Vger is now vger.kernel.org everywhere		(Daniel Roesen)
+o	Further 3c59x fixups				(Andrew Morton)
+o	Disable record on cs46xx for this release	(Alan Cox)

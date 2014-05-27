@@ -1,0 +1,40 @@
+Linus 2.2.18pre1
+
+o	Update symbios/ncr driver to 1.7.0/3.4.0	(Gerhard Roudier)
+o	Updated ATP870U driver				(ACard)
+o	Avoid running tq_scheduler stuff sometimes with	(Andrea Arcangeli)
+	interrupts off
+o	Futher cpu setup updates			(Alan Cox)
+o	IBM MCA scsi driver updates			(Michael Lang)
+o	Fix incorrect out of memory handling in bttv	(Dawson Engler)
+o	Fix incorrect out of memory handling in buz	(Dawson Engler)
+o	Fix incorrect out of memory handling in qpmouse	(Dawson Engler)
+o	Fix error handling memory leak in ipddp		(Dawson Engler)
+o	Fix error handling memory leak in sdla		(Dawson Engler)
+o	Fix error handling memory leak in softoss	(Dawson Engler)
+o	Fix error handling memory leak in ixj 		(Dawson Engler)
+o	Fix error handling memory leak in ax25		(Dawson Engler)
+o	Merge the microcode driver from 2.4 into 2.2	(Tigran Aivazian)
+o	Fix skbuff handling bug in the smc9194 driver	(Arnaldo Melo)
+o	Make vfat use the same generation rules as	(H. Kawaguchi,
+	in windows 9x					 Chip Salzenberg)
+o	Fix oops in the CPQ array driver		(Arnaldo Melo)
+o	Fix ac97 codec not setting the id field		(Bill Nottingham)
+o	Further work on the cs46xx/CD power bits	(Alan Cox)
+o	Synclink updates 				(Paul Fulgham)
+o	Synclink init bug fix				(Arnaldo Melo)
+o	Handle odd interrupts from toshiba floppies	(Alain Knaff)
+o	Fix trident driver build on nautilus Alpha	(Peter Petrakis)
+o	Add later sb16 imix support tot he sb driver	(Massimo Dal Zotto)
+o	Ignore luns that report can be connected, but	(Matt Domsch)
+	not currently
+o	Fix dereference after kfree in uart401.c	(Dawson Engler)
+o	Return correct SuS error code for an unknown	(Herbert Xu)
+	socket family
+o	Add sub window clipping to the bttv driver	(Thomas Jacob)
+o	Fix nfs cache locked messages			(Trond Myklebust)
+o	Fix the modutils misdocumentation		(Martin Douda)
+o	Remove bogus biosparm code from seagate.c	(Andries Brouwer)
+o	Return correct error code on failed fasync set	(Chip Salzenberg)
+o	Handle dcc resume with newer irc clients when	(Scottie Shore)
+	doing an irq masq

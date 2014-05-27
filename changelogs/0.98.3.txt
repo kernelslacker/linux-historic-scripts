@@ -1,0 +1,73 @@
+[PATCH] Linux-0.98.3 (October 27, 1992)
+
+More networking updates.. Ross Biro is still struggling with net-1.
+
+Michael Johnson (now RH kernel release manager) works on line printer
+driver. 
+
+Locking function cleanups (for inodes, superblocks, buffer heads).  We
+also now pass in the superblock pointer instead of the device number to
+the filesystem routines.  That cleans up use and locking of
+"get_super()" a lot. 
+
+[Original announcement below]
+
+Ok, I already sent out an announcement last night, but due to the time
+(6AM over here) I wasn't really in a mood to write a real annoucement.
+Here it is.
+
+linux-0.98.3 is available by anonymous ftp at least on nic.funet.fi:
+pub/OS/Linux/testing/Linus, both as context diffs against 0.98.2 and the
+pre-version of 0.98.3 and as complete source. The complete source
+package was done by directly applying the diffs - this means that the
+Makefile dependancies are probably not 100% up-to-date as I remove those
+from the diffs. It shouldn't be any problem, and you can always do a
+"make dep ; make clean" before actually compiling the kernel.
+
+0.98 pl3 fixes several bugs, and should remove all known NULL-pointer
+problems that made 0.98.2 unusable for most people. In addition to the
+NULL pointer fixes, the following things have changed:
+
+- removed most of the cli-sti pairs in the filesystem code by rewriting
+  the locking routines to use a different algorithm, possible due to
+  the rewritten wait-queue code that I did back in 0.96c or so.
+  Interrupt latency should be better on slow machines, but I don't know
+  if it's noticeable.
+- Minor 387-emulation fixes by Bill Metzenthen - only noticeable under
+  special conditions.
+- Corrected various error-returns in the fs (thanks to Bruce Evans for
+  running some error diagnostics). Error messages when opening (and
+  renaming etc) files that had a non-directory in the path were wrong,
+  and should be ok now (ie giving ENOTDIR instead of EACCESS or ENOENT).
+  Some other problems reported by Bruce fixed.
+- Changed the interface for some fs-related functions due to cleaning
+  up super-block handling. Most noticeably, iget() and related
+  functions no longer specify the inode with a device and inode number,
+  but instead with a super-block pointer and inode number. This is
+  more logical, and should make unnamed devices (ie internal
+  filesystems like nfs and /proc) cleaner. Also note that the calling
+  sequence for sb->s_op->put_inode() also has changed since 0.98. This
+  is of interest only if you are writing filesystem drivers..
+- ASK_SVGA was broken in 0.98.2 - it should be ok now.
+
+Also, various minor fixes as usual. No new features, but I hope 0.98.3
+will be a lot less bug-prone due to the changes since 0.98.1. Some
+minor tcp/ip corrections (but most of them were in the pre-release), and
+I removed a race-condition in the tty-handling code.
+
+Note that people who use math without a co-processor should certainly
+upgrade to 0.98.3: the new emulator is much better than my original one
+both in speed and accuracy/exception handling. x11perf is very much
+bearable now even without a 387, and things like ray-tracing etc
+shouldn't be a problem any more. It's slower than hardware fp, of
+course, but at least it works.
+
+The new emulator also means there is no reason for a separate soft-float
+library, so I'd assume that will be gone in the next gcc release for
+linux.
+
+As usual, a new kernel version probably means you'll have to recompile
+'ps' and friends. But at least the same 'ps' sources that worked for
+0.97.6 should still work.
+
+                Linus

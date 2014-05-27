@@ -1,0 +1,6 @@
+Linux 2.2.13pre16
+
+o	Partially rethink the SMP/IDE fix	(Alan Cox)
+o	Fix the Yamaha CDRW bug			(Alan Cox)
+o	Fix xtime lock on Alpha			(Andrea Arcangeli)
+o	Sparc video locking patch		(Dave Miller)

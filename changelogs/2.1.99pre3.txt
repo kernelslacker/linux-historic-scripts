@@ -1,0 +1,15 @@
+pre-2.1.99-3
+
+There's a new pre-patch on ftp.kernel.org, that does:
+
+ - the networking fixes that didn't get into 98 due to various mess-ups
+ - mtrr patches are there by default
+ - all the irq fixes we know of to date are there (and hopefully even the
+   ne2000 things should work with the SELF-IPI change)
+ - various documentation updates and bugfixes (the best way to know that a
+   stable kernel is approaching is to notice that somebody starts to
+   spellcheck the kernel - it has so far never failed)
+
+in short, all known bugs should be fixed, but hey, what else is new?
+
+                Linus

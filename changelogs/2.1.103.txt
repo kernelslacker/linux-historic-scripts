@@ -1,0 +1,19 @@
+Linux 2.1.103
+
+>   I finnaly get the IRQ detection working with this patch,
+>  in linux-2.1.102/arch/i386/kernel/irq.c :
+Ok, does it still work with 2.1.103?
+2.1.103 has this patch, and also changes certain other things wrt interrupts in
+a way that both Edgar and Ingo seem to agree on, and it's been stable on
+certain boxes where plain 2.1.102 wasn't.
+
+2.1.103 also disables the early Cyrix cpuid stuff, because we now seem to
+have confirmation that this is what corrupts DMA IDE transfers (the cyrix
+code steps on magic motherboard IO ports - which Intel probably put there
+specially to mess with Cyrix. But maybe I'm just cynical). So people that
+have had problems with disk corruption and are brave enough to try, this
+could be an interesting experiment.
+[ Thanks to Gerard Roudier and Alan Cox for chasing down the IDE
+  corruption issue, btw ]
+
+                Linus

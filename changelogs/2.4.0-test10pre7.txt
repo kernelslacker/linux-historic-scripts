@@ -1,0 +1,28 @@
+2.4.0-test10-pre7
+
+Ok, this one contains at least a preliminary fix for the problem with
+truncate together with a concurrent page access - the bug that causes
+oopses in block_read_full_page() and filemap_nopage().
+
+This is a fairly minimal fix, and I'll still have to verify that I caught
+all the relevant places, but I wanted people who have seen this problem to
+please test this out asap - I'll make a real test10 later once I've
+integrated some further patches from Alan and Jeff, but this should fix
+the major show-stopper bug.
+
+        Thanks,
+
+                        Linus
+
+----
+ - pre7:
+    - Niels Jensen: remove no-longer-needed workarounds for old gcc versions
+    - Ingo Molnar & Rik v Riel: VM inactive list maintenance correction
+    - Randy Dunlap, USB: printer.c, usb-storage, usb identification and
+      memory leak fixes
+    - David Miller: networking updates
+    - David Mosberger: add AT_CLKTCK to elf information. And make AT_PAGESZ work
+      for static binaries too.
+    - oops. pcmcia broke by mistake
+    - Me: truncate vs page access race fix.
+

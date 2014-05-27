@@ -1,0 +1,14 @@
+Linux 2.2.17pre17
+
+o	Added midi/dmfm support for the ALi sound	(Alan Cox)
+	| from code by Ching Ling Lee
+	| blame me if it doesnt work
+o	CS4281 experimental sound driver		(GW Boynton, Tom Woller)
+	| cleaned up and maybe broken by yours truely
+o	Fix bonding crash				(John Newbigin)
+o	Fix find_next_zero bit on Alpha			(Jay Estabrook)
+o	Fix find_next_zero_bit on Sparc			(Dave Miller)
+o	Qlogicfc fixes					(Chris Loveland)
+o	Fix bttv norm setting in old driver		(Daniel Perez)
+o	Start ESS solo with mic turned down to avoid	(Alan Cox)
+		feedback.

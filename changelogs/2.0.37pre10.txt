@@ -1,0 +1,9 @@
+Linux 2.0.37pre10
+
+o	Alpha compile bug cured				(Jeff Garzik)
+o	Cyclades update					(Cyclades)
+o	Remember to call check_privacy on boot		(Mikael Pettersson)
+o	Alpha fixes for ne.c				("Solar Designer")
+o	Make fsync behave for large ext2 files		(Scott Laird)
+o	RCPCI45 update					(Red Creek)
+o	Alpha makefile tweak				(Michael Chastain)

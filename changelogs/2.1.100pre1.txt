@@ -1,0 +1,16 @@
+Linux 2.1.100pre1
+
+pre-100 (on ftp.kernel.org now), moves the dcache shrinking into the regular
+memory de-allocation loop, and while the exact shrinking speed is probably
+completely off, it should be able to react much better to small-memory machines
+than the hardcoded shrink did..
+
+Also, for those that appear to still have SMP interrupt stability
+problems, Ingo pointed out that we may have problems with PCI
+level-triggered interrupts. Could those people please test an additional
+small patch that involves moving the "ack_APIC_irq();" inside
+arch/i386/kernel/irq.c: do_ioapic_IRQ() from the top of the function to
+the very bottom of that function (that will move it to outside the irq
+controller lock, but it should actually be perfectly ok in this case).
+
+                Linus

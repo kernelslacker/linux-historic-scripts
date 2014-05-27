@@ -1,0 +1,66 @@
+[PATCH] Linux-0.97.2 (August 23, 1992)
+
+We're making ready for big processes, and vm86 mode!
+ - Move the kernel to virtual address 0xc0000000 instead of zero. 
+ - Allocate per-process page tables
+
+We can now have 3GB processes, and more than 64 of them! 
+
+[Original announcement below]
+
+As promised, 0.97.pl2 is out today (well, over here it's already
+tomorrow, so I guess I'm 35 minutes late.  Naughty, naughty).  Right
+now, the patch (and full source for those that don't like to patch up
+the system) is available at "nic.funet.fi: pub/OS/Linux/testing/Linus",
+but I'll try to put it on some other sites as well if I'm able and
+energetic enough.  Probably tomorrow - together with a binary for those
+that aren't willing to comple the kernel on their own.
+
+0.97.2 has mostly my mm/fs patches, along with some relatively minor
+diffs by others (including file locking by Doug Evans).  User-level
+changes are minor: but the mm has changed a lot, and the vfs routines
+have been changed to keep track of the error-messages a bit better.
+Also, the vfs-interface to "follow_link()" changed slightly: people who
+are making filesystems should look at the changes (but they are
+relatively minor, and shouldn't result in any problems - both the
+extended fs and minix fs needed just a simple change in their respective
+symlink.c files).
+
+The mm changes /might/ lower performance slightly, as the paging TLB's
+are now flushed at every task-switch due to the new system, but I doubt
+it's noticeable.  The other performance changes (dynamic buffers etc) in
+0.97(.pl1) should overshadow that particular problem.
+
+I hope this release means that these kinds of low-level rewrites aren't
+needed for a while: the last couple of releases have changed some very
+fundamental things.  Nothing seems to have suffered too badly, but I'd
+be happier if it all got tested more thoroughly.  Anyway, discounting
+the ps/free etc suite of programs, everything I have tried has worked
+flawlessly despite the big kernel changes.
+
+I'm still worried about the reports about messed-up buffers, but have
+been unable to reproduce the problem, and nobody has so far
+disillusioned me about my guess that it's a problem with the SCSI code
+(which at least gives me an excuse for not doing anything about it :-).
+Other problems include at least one report of spontaneous re-booting,
+which is totally inexplicable, so I'm blaming hardware once more until I
+can get better data on the thing.
+
+As to patches sent by others: 0.97.2 contains very little of that kind
+of code.  I've been too busy either working, or implementing my own
+changes that I have simply ignored them for the most part.  Remind me
+(or resend them relative to the new kernel) if you have a patch that is
+still needed.
+
+There is one new system call: 'vm86(struct vm86_struct * info)'.  It's
+not ready for general use yet - it works, but will probably need some
+tweaking before being practical.  But supporting a virtual 86 mode was
+so easy after the mm rewrite that I felt it was worth implementing: the
+vm86 code is less than 50 lines of C right now.
+
+                Linus
+
+PS.  The bright spot of the week goes to "The Oxford Beer Trolls" - all
+UK inhabitants should probably be locked into some (big) mental
+institution and TOBT should probably have a wing of their own, but
+thanks to them linux can now call itself "beerware" :-)

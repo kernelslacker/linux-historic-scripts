@@ -1,0 +1,16 @@
+Linux 2.2.15pre3
+
+o	Fix Sangoma stuff if compiled into kernel	(Mario Lorenz)
+o	Fix smbfs for sparc64				(Dave Miller)
+o	Specialix Rio drivers				(Specialix, Rogier Wolff)
+o	Elf extra sanity checks from code audit		(Solar Designer)
+o	Megaraid update to 1.07				(Dell/AMI)
+o	Fix hang on boot with I2O configured megaraid	(Alan Cox)
+o	Fix small bug in the socket filter code		(??)
+o	QNX file system updates				(Anders Larsen)
+o	Intel 82559ER support in eepro100 driver	(Cobalt)
+o	Workaround for 16C750 emulation bug		(Cobalt)
+o	Show "preN" in make menuconfig			(Alan Ford)
+o	Adaptec 29xx driver updates			(Doug Ledford)
+o	Handle cross CPU TSC differences		(Ingo Molnar)
+o	Update IRDA to match the 2.3.x codebase		(Dag Brattli)

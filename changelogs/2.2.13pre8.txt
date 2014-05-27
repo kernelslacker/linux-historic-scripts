@@ -1,0 +1,12 @@
+Linux 2.2.13pre8
+
+o	Fix PCI/PCI_QUIRKS compile error	(Alan Cox)
+o	I/O APIC update				(Ingo Molnar)
+o	ISDN update				(Karsten Keil)
+o	SyncLink update				(Paul Fulghum)
+o	PPC Update				(Paul Mackerras)
+o	QlogicISP fix				(Dave Miller)
+o	Update ctime on rename			(Chris Siebenmann)
+o	NFS generation ids			(G. Allen Morris III)
+o	Fix /proc kstk values			(Solar Designer)
+o	Updated multisound drivers		(Andrew Veliath)

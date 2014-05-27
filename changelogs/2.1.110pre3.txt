@@ -1,0 +1,10 @@
+What 2.1.110-3 does is to much more aggressively throw out dentries (and
+thus inodes) under low-memory circumstances.  It may be _too_ aggressive
+right now, but if so that just gives a good mid point to strive for.
+
+I'd really like to hear comments about how this "feels" (and numbers
+too, if you have them).  It's fairly hard for me to judge, as whenever I
+run Linux on small-memory machines it always feels slower than I'm used
+to, regardless of whether Linux does the right thing or not ;)
+
+                Linus

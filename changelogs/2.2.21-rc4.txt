@@ -1,0 +1,5 @@
+Linux 2.2.21rc4
+
+o       SiS900 updates                                  (Mufasa Yang)
+o       Correct kd.h macros                             (Andrej Lajovic)
+o       sg buffer clean fix                             (Douglas Gilbert)

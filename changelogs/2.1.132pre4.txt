@@ -1,0 +1,10 @@
+pre-2.1.132-4..
+
+There's a new pre-patch on ftp.kernel.org. I've been waiting for a few
+other things, but the pre-patches are getting to be so big that it's
+getting unwieldly, so I'll probably make a real 2.1.132 real soon now. In
+the meantime, there's a pre-patch that people can verify for sanity (this
+one should have coda-fs back to working order, for example - patch
+craziness corrupted a simple update in pre-3).
+
+                Linus

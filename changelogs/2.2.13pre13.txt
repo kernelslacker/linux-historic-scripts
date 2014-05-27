@@ -1,0 +1,5 @@
+Linux 2.2.13pre13
+
+o	NFS rename fix				(Trond)
+o	TCP sequence guessing fix		(Alexey Kuznetsov)
+o	xntp SMP lockup fix			(DaveM)

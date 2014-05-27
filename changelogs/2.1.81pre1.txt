@@ -1,0 +1,13 @@
+Linux 2.1.81pre1
+
+I just made a pre-2.1.81 available on ftp.kernel.org.
+This fixes the known problems of 2.1.80, and also makes the interrupt
+routing by default look like it always used to look - everything goes
+through the traditional external 8259A-compatible logic.
+The code to handle IO-APIC interrupt routing is still there, but as no
+interrupts are actually marked as io-apic interrupts you don't see it in
+action yet. The advantage of this is that people who want to work on this
+have a base that contains all the logic, and that we only need to figure
+out how to reliably make all the IRQ routing decisions.
+
+                Linus

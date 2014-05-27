@@ -1,0 +1,27 @@
+Linux-2.3.7.. Let's be careful out there..
+
+The new and much improved fully page-cache based filesystem code is now
+apparently stable, and works wonderfully well performancewise. We fixed
+all known issues with the IO subsystem: it scales well in SMP, and it
+avoids unnecessary copies and unnecessary temporary buffers for write-out.
+
+The shared mapping code in particular is much cleaner and also a _lot_
+faster.
+
+In short, it's perfect. And we want as many people as possible out there
+testing out the new cool code, and bask in the success stories..
+HOWEVER. _Just_ in case something goes wrong [ extremely unlikely of
+course. Sure. Sue me ], we want to indeminfy ourselves. There just might
+be a bug hiding there somewhere, and it might eat your filesystem while
+laughing in glee over you being naive and testing new code. So you have
+been warned.
+
+In particular, there's some indication that it might have problems on
+sparc still (and/or other architectures), possibly due to the ext2fs byte
+order cleanups that have also been done in order to reach the
+afore-mentioned state of perfection.
+I'd be especially interested in people running databases on top of Linux:
+Solid server in particular is very fsync-happy, and that's one of the
+operations that have been speeded up by orders of magnitude.
+
+                        Linus

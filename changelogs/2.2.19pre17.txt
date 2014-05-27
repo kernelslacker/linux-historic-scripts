@@ -1,0 +1,22 @@
+Linux 2.2.19pre17
+
+o	Fix missing tcp init				(Alexey Kuznetsov)
+	| Should fix the odd resets people still saw
+o	Fix DVD read physical bug			(Jens Axboe)
+o	Fix break handling on sx driver			(Rogier Wolff)
+o	Fix starfire bogus error messages		(Ion Badulescu)
+o	Fix off by one in cpia driver			(Andrew Morton)
+o	Armin Schindler as eicnon maintainer		(Armin Schindler)
+o	Update bluetooth driver to match 2.4.2		(Greg Kroah-Hartman)
+o	Update dc2xx to match 2.4.2			(Greg Kroah-Hartman)
+o	Update empeg to match 2.4.2			(Greg Kroah-Hartman)
+o	Update keyspan driver to match 2.4.2		(Greg Kroah-Hartman)
+o	Update usb serial core/generic to match 2.4,2	(Greg Kroah-Hartman)
+o	Update usb visor to match 2.4.2			(Greg Kroah-Hartman)
+o	binfmt_misc fixups				(Al Viro)
+o	Update 3c527 driver				(Richard Procter)
+o	IRDA crash fix from 2.4				(Michael McConnell)
+o	Fix misc device busy locking			(Philipp Rumpf)
+o	Further dumpable fix				(Solar Designer)
+o	Fix ide pmac oops on resume		(Benjamin Herrenschmidt)
+o	3ware small updates/7000 series support		(Adam Radford)

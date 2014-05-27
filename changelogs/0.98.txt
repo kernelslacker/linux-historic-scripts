@@ -1,0 +1,45 @@
+[PATCH] Linux-0.98 (September 29, 1992)
+
+Real networking (TCP) merged! This is the now-called "net-1" code by
+Ross Biro.  Boy, was it ugly, but it made for a big jump from not having
+any at all. 
+
+(And add support for up the 32MB of memory ;)
+
+[Original announcement below]
+
+Sorry for being late - I can't even show any great new features in 0.98,
+but at least it's out now, and available at the normal place (ie at
+nic.funet.fi, pub/OS/Linux/testing/Linus).  So far there is only a
+full-source version available, although I'll probably make it available
+as a patch too tomorrow or so (but the patch won't contain the tcp/ip
+stuff).
+
+0.98 is essentially the same as 0.97.pl6 - the changes are mostly:
+ - tcp/ip (0.8.1) is in.  It's not compiled into the standard bootimage,
+   and you'd better be on the tcpip mailing-list to use it, but it's
+   there. I've been unable to test it further than just watch it
+   compile...
+ - extfs patch to correct the problem with big directories with holes.
+ - mouse patches (ie improved detection-routines)
+ - minor scsi patches (ultrastor driver change)
+ - swiss keyboard
+ - some serial driver patches
+ - the 32mb patches are in, so if you aren't using a DMA-SCSI driver,
+   and have more than 16MB physical memory, you can get it recognized.
+ - edited hd.c
+ - corrected core-dumping routines
+
+I didn't get my mm patches working yet, so they'll have to wait.  The
+above are almost 100% by others - I have edited some of the patches, but
+there is nothing major new by me.  Most of it is minor bug-fixes, and
+the only thing that might be a bit of a problem are the hd.c changes:
+but I hope they'll solve more problems than they cause.  Knock wood.
+
+At nic.funet.fi you can currently find (a) the full sources (b) a
+bootimage (US keyboard, floppy root, no tcp/ip) and (c) the protocols.h
+file needed for compiling the tcp/ip directory (which should go into
+/usr/include/netinet/).  I hope people try it out, and that there are no
+new problems with this release.
+
+                Linus

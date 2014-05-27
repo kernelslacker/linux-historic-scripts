@@ -1,0 +1,12 @@
+Linux 2.2.20pre7
+
+o	Merge rose buffer management fixes		(Jean-Paul Roubelat)
+o	Configure.help updates				(Steven Cole)
+o	Add Steven Cole to credits			(Steven Cole)
+o	Update kbuild list info				(Michael Chastain)
+o	Fix slab.c doc typo				(Piotr Kasprzyk)
+o	Lengthen parport probe timeout			(Jean-Luc Coulon)
+o	Fix vm86 cleanup				(Stas Sergeev)
+o	Fix 8139too build bug				(Jürgen Zimmermann)
+o	Fix slow 8139too performance			(Oleg Makarenko)
+o	Sparc64 exec fixes				(Solar Designer)

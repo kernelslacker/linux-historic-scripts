@@ -1,0 +1,33 @@
+Linux 2.2.18pre4
+
+o	Remove the aacraid driver again, having looked	(Alan Cox)
+	at what is needed to make it acceptable and 
+	debug it - Im dumping it back on Adaptec
+o	DAC960 update					(Leonard Zubkoff)
+o	Add setup vmlinuz.lds changes for Sparc		(Arjan van den Ven)
+o	Sparc updates for drm, ioctl and other		(Dave Miller)
+o	Megaraid driver update				(Peter Jarrett)
+o	Add cd volume 0 to the amp power off on the
+	crystal cs46xx					(Bill Nottingham)
+o	Fix IPV6 fragment and kfree bugs		(Alexey Kuznetsov)
+o	Fix emu10k build bug				(Alan Cox)
+o	Emu10K driver upgrade. Adds emu-aps support	(Rui Sousa)
+o	Updated IBM serveraid driver to 4.20		(IBM)
+o	Ext2 block handling cleanup from 2.4		(Al Viro)
+o	Make the ATI128 driver modular			(Marcelo Tosatti)
+o	Fix megaraid build bug with gcc 2.7.2		(Arjan van de Ven)
+o	Fix some of the dquot races			(Jan Kara)
+o	x86 setup code cleanup				(Dave Jones)
+o	Implement 2.4 compatible __setup and __initcall	(Arjan van de Ven)
+o	Tidy up smp_call_function stuff			(Keitaro Yosimura)
+o	Remove 2.4 compat glue from cs4281 driver	(Marcelo Tosatti)
+o	Fix minor bugs in bluesmoke now someone actually
+	has a faulty CPU and logs			(Alan Cox)
+o	Fix definition of IPV6_TLV_ROUTERALERT		(Dave Miller)
+o	Fix in6_addr, ip_decrease_ttl, other		(Dave Miller)
+	minor bits
+o	cp932 fixes					(Kazuki Yasumatsu)
+o	Updated gdth driver				(Andreas Koepf)
+o	Acenic update					(Jes Sorensen)
+o	Update USB serial drivers			(Greg Kroah-Hartman)
+o	Move pci_resource_len into pci compat		(Marcelo Tosatti)

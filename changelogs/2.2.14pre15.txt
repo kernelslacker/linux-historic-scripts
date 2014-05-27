@@ -1,0 +1,9 @@
+Linux 2.2.14pre15
+
+o	Revert the fs/super.c changes for mount		(Alan Cox)
+	| Should fix ncp/smbmount
+o	Fix typos in S/390 				(Adrian Bridgett)
+o	Up to date devices.txt				(H Peter Anvin)
+o	IPS driver update				(IBM)
+o	Block device corruption fix			(Andrea Arcangeli)
+o	Telephony core merge (core code + Quicknet IXJ) (Quicknet, Alan Cox)

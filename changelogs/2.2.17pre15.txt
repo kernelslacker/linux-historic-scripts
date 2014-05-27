@@ -1,0 +1,14 @@
+Linux 2.2.17pre15
+
+o	Pull the 3ware update - causes oopses ?		(Alan Cox)
+o	Fix emu10k build error with no PCI		(Arjan van de Ven)
+o	display7 LED driver 				(Eric Brower)
+o	TLB multi-match bugs in sparc64			(Dave Miller)
+o	Fix CPP string concatenation in sparc ksyms	(Dave Miller)
+o	Fix lost copyright credit to ALi in the
+	trident.c driver				(Alan Cox)
+o	Add alternate ALi ID to the trident driver	(Alan Cox)
+o	ATI video fixes for PPC				(Benjamin Herrenschmidt)
+o	Further HDLC fixes				(Krzysztof Halasa)
+o	Fix sign handling bugs				(Andrew Morton, Alan Cox)
+o	Fix wrong comment in fs/exec.c			(Robert Love)

@@ -1,0 +1,81 @@
+[PATCH] Linux-0.96-pre (April 21, 1992)
+
+More VFS layer work: remove more special cases, and take advantage of
+the virtual VFS functions (close and select).  Add fchown/fchgrp and
+[f]truncate. 
+
+Orest Zborowski shows up, and works on porting X11 to X.  This needs a
+lot of infrastructure support: ioperm() for user-mode IO port access,
+and SVR style virtual terminal ioctl's to make porting easier.  Perhaps
+more importantly, the mmap() system call shows up, even if it right now
+is limited only to a direct /dev/mem remapping. 
+
+[Original changelog below]
+
+- truncate/ftruncate/fchmod/fchown system calls
+
+        note that there aren't any library functions for these, so they
+        aren't very useful yet...
+
+        [f]truncate needed a change in the logic of the internal
+        truncate VFS call - anybody that has any nonstandard filesystem
+        probably needs to look it up.
+
+- io-bitmap syscalls giving root-processes access to selected io ports
+  from user space.  There is a "ioperm()" system call that lets the
+  process select which ports it wants to enable/disable (all ports
+  disabled as default) as well as a (standard sysv?) ioctl interface
+  that X uses.
+
+        again, no library stubs, but it allows things like reading and
+        setting the cmos clock without using /dev/port, as well as
+        control over the VGA registers...
+
+- mmap for /dev/mem
+
+        more things needed for X...
+
+- the signal-handling fixes needed for gdb
+
+        These aren't yet complete: serial lines still send signals under
+        interrupts that can result in problems (ie ptrace doesn't
+        correctly get them), but that's pretty unlikely (and will be
+        fixed in the final 0.96).  Breakpoints should work etc..
+
+- multiple shared libraries
+
+        Up to 6 simultaneous shared libraries/process: the patches were
+        originally by pmacdona, but they were heavily changed by me, and
+        I think they work in a more natural manner now.  One user-level
+        change is that the libraries are now checked for read and
+        execute permissions for safety-reasons.
+
+- cleaned up special files.
+
+        read/write/ioctl no longer has special-case code: it is all
+        handled with tables to functions.  This will mean that the SCSI
+        patches won't patch in quite cleanly into 0.96: you'll need to
+        add the code that sets up the functions.
+
+        Again: device drivers and vfs-filesystem hackers need to look
+        into the changes, although they are pretty logical (earlier
+        versions just didn't implement all the vfs-routines)
+
+        Note that the vfs-code for select is still not used: select is
+        hardcoded for the devices it supports right now.
+
+- ptrace() has a new interface
+
+        as gdb for versions < 0.95c don't work on the new version, and
+        gdb won't work very well at all on 0.95c[+], there was no reason
+        not to break ptrace.  Thus 0.96 has a new calling convention for
+        ptrace, and the old ptrace library function no longer works.
+        I'm including the new ptrace library function at the end of this
+        post.
+
+- mount() takes 4 arguments, and checks that only the super-user can
+  mount/umount things.
+
+        Happily this shouldn't break any old binaries.
+
+- some general cleanups

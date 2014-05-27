@@ -1,0 +1,50 @@
+Linux 2.1.95
+
+This is finally the kind of feature-freeze patch I like: it only contains
+fixes for outright bugs. The fixes are:
+ - SMP-safe disk drivers (more on this below)
+ - various PCI fixes: /proc/bus/pci works again, and it should compile and
+   work on Alpha with TGA.
+ - parport interrupt detection uses the standard probe routines, and
+   doesn't leave bogus "probe" entries hanging around to confuse people
+   (and make other device registration fail)
+ - the ever-popular PCI ne netdriver fix
+ - the getcwd() system call works again.
+ - "mb()" does the right thing on x86 too. Few drivers use it, but more of
+   them should. Right now there are drivers that depend on luck making
+   sure that the memory accesses will be in the same order outside the CPU
+   as inside it.
+
+The conceptually big one is the SMP-safe disk driver change: it's not a
+very big patch, but it's fairly subtle. And it still requires help from
+the disk drivers themselves, although all of them should be safe in UP,
+and I made sure the BusLogic and the NCR driver are safe on SMP.
+The change is really a change in locking defaults: we used to default to
+no locking, and depended on the disk driver getting the locking right.
+None of them did so on SMP, for understandable reasons (there really
+wasn't any support for getting it right).
+
+The new default is to do the locking for the driver, and the driver
+actually has to do some work if it wants to do anything outside the lock.
+This has the obvious advantage that it _defaults_ to being safe, and
+people who know what they are doing can choose to thread the driver if
+they want to.
+
+The only change needed to drivers is to make sure they get the lock on an
+interrupt, which usually involves just doing the following around the
+low/level interrupt handler (the same handler that you register using
+"request_irq()"):
+
+        void handle_irq(int irq, void *dev, struct pt_regs *regs)
+        {
++               unsigned long flags;
++               spin_lock_irqsave(&io_request_lock, flags);
+                ... call to the proper action routines ...
++               spin_unlock_irqrestore(&io_request_lock, flags);
+        }
+
+which guarantees that everything inside the driver is correctly locked
+from the outside world (with the exception of ioctl's etc things that the
+driver traps - they need to be protected too).
+
+                Linus

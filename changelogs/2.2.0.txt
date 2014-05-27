@@ -1,0 +1,33 @@
+Linux 2.2.0
+
+
+> Compile this code
+>
+> ---- cut here ----
+> #include <fcntlbits.h>
+> void main( int argc, char *argv[] ) {
+>         open( argv[ 1 ], O_WRONLY|O_CREAT|O_TRUNC, 0666 );
+> }
+> ---- and here  ----
+>
+> and run it like this
+>
+>     strace ./a.out >(cat - )
+>
+> with 2.0.36 & 2.2.0-pre[67] you get:
+>
+>     open("/dev/fd/63", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
+>
+> with 2.2.0-pre[89] you get:
+>
+>     open("/dev/fd/63", O_WRONLY|O_CREAT|O_TRUNC, 0666) = -1 ENOENT (No
+> such file or directory)
+
+Ok, this seems to be due to pre9 removing some rather bogus code that
+happened to hide another problem in open_namei().
+I haven't actually tested this, but it looks really obvious, so does this
+patch fix it for you? (This should also fix a potential performance
+bogosity - there's absolutely no reason why we should get the directory
+lock when we don't need to for a normal open of an existing file).
+
+                Linus

@@ -1,0 +1,13 @@
+- pre1: (for ISDN synchronization _ONLY_! Not complete!)
+ - Byron Stanoszek: correct decimal precision for CPU MHz in
+   /proc/cpuinfo
+ - Ollie Lho: SiS pirq routing.
+ - Andries Brouwer: isofs cleanups
+ - Matt Kraai: /proc read() on directories should return EISDIR, not EINVAL
+ - Linus: be stricter about what we accept as a PCI bridge setup.
+ - Linus: always set PCI interrupts to be level-triggered when we enable them.
+ - Linus: updated PageDirty and swap cache handling
+ - Peter Anvin: update A20 code to work without keyboard controller
+ - Kai Germaschewski: ISDN updates
+ - Russell King: ARM updates
+ - Geert Uytterhoeven: m68k updates

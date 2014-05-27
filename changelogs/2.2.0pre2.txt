@@ -1,0 +1,25 @@
+Linux 2.2.0pre2 (December 31 1998)
+
+Well, some people obviously had problems with the first 2.2.0pre, so
+there's a second one there. Most of it is almost purely syntactic sugar: 
+configuration issues and jiffies wraparound, but there were a few problems
+wrt some IDE disk geometry stuff in particular that made 2.2.0pre1 not
+boot for some people.
+
+Other real changes:
+ - nfsd updated, and we have an official maintainer for knfsd (and I was
+   happy by how many people were ready to stand up for it. Good show,
+   guys!) 
+ - network driver updates (tulip/eepro)
+ - some TCP fixes for occasional but nasty performance problems.
+ - fix for an attack where you could cause a complete and utter lockup of
+   the kernel as a normal user. Thanks to Michael Chastain for keeping the
+   faith on this one and reminding me to fix it.
+
+If you haven't had problems with pre1, there should be no major cause to
+look at pre2. But if you haven't even looked at pre1 yet, please consider
+looking at the pre-2.2.0 kernels before it's too late. I'm going to be
+extremely rude to people who knew better but didn't test out the pre-
+kernels and then send me bug-reports on the released 2.2.0.
+
+		Linus

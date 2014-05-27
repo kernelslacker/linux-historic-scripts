@@ -1,0 +1,17 @@
+- pre3:
+    - James Simmons: vgacon "printk()" deadlock with global irq lock.
+    - don't poke blanked console on console output
+    - Ching-Ling: get channels right on ALI audio driver
+    - Dag Brattli and Jean Tourrilhes: big IrDA update
+    - Paul Mackerras: PPC updates
+    - Randy Dunlap: USB ID table support, LEDs with usbkbd, belkin
+      serial converter.
+    - Jeff Garzik: pcnet32 and lance net driver fix/cleanup
+    - Mikael Pettersson: clean up x86 ELF_PLATFORM
+    - Bartlomiej Zolnierkiewicz: sound and drm driver init fixes and
+      cleanups
+    - Al Viro: Jeff missed some kmap()'s. sysctl cleanup
+    - Kai Germaschewski: ISDN updates
+    - Alan Cox: SCSI driver NULL ptr checks
+    - David Miller: networking updates, exclusive waitqueues nest properly,
+      SMP i_shared_lock/page_table_lock lock order fix.

@@ -1,0 +1,10 @@
+Linux 2.2.19pre18
+
+o	Fix a problem where the scc driver could hang	(Jean F6FBB)
+o	Fix buffer/page cache coherency problem when
+	user/kernel addresses are ambiguous (S/390)	(Ulrich Weigand)
+o	Update credits entry for Harold Hoyer		(Harold Hoyer)
+o	Fix i2o build bug				(Michael Mueller)
+o	Fix hisax build bug				(Friedrich Vedder)
+o	cpqfc update					(Charles White)
+o	Update CREDITS for the Canberra folks		(Stephen Rothwell)

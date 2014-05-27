@@ -1,0 +1,20 @@
+Linux 2.2.16pre5
+
+o	Work around the cmpci DMA buf bug	(Alan Cox)
+o	Fix a couple of headers 		(Andrew Morgan)
+o	2.2 backport of Jeff's via audio code	(Marcelo Tosatti)
+o	Fix the infamous 8K 3c590 stall bug	(Anders Pedersen, Don Becker)
+	| Yay and it only took 3 years to find ;)
+o	ATAPI probe fix				(Geert Van der Plas)
+o	Fix n_tty.c invalid copyuser		(Andrew Morton)
+o	NLS init cleanups/config docs		(Andrzej Krzysztofowicz)
+o	EEpro support for old ISA cards		(Aristeu Filho)
+o	Export disk_name for other users	(Alan Cox)
+o	Add blkdev.h to sparc64 ioctl32 	(Fredrick Koehler)
+o	Handle thinkpad APM bios bugs		(Stephen Rothwell
+						under threat from Rusty ;))
+o	FPU, CTC and other bug fixes for S/390	(IBM)
+o	Fix signal alt stack on exec		(Bruno Haible)
+o	SCSI generic update			(Doug Gilbert)
+	| Roman your sg race patch clashed - can you sort with Doug
+o	Add TIMEDIA cards to parport		(Tim Waugh)

@@ -1,0 +1,13 @@
+More Makefile cleanups, otherwise mainly noticeable are the netfilter fix
+and the LVM update.
+
+		Linus
+
+- Christoph Rohland: shmfs cleanup
+- Nicolas Pitre: don't forget loop.c flags
+- Geert Uytterhoeven: new-style m68k Makefiles
+- Neil Brown: knfsd cleanups, raid5 re-org
+- Andrea Arkangeli: update to LVM-0.9
+- LC Chang: sis900 driver doc update
+- David Miller: netfilter oops fix
+- Andrew Grover: acpi update

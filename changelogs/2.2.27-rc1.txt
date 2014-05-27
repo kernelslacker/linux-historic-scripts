@@ -1,0 +1,18 @@
+Linux 2.2.27-rc1
+
+o       CAN-2004-0497: fixed missing DAC check on sys_chown     (Thomas Biege)
+o       CAN-2004-1016: fixed a buffer overflow vulnerability    (Paul Starzetz)
+          in the "__scm_send" function which handles the sending
+          of UDP network packets. A wrong validity check of the
+          cmsghdr structure allowed a local attacker to modify
+          kernel memory, thus causing an endless loop (DoS) or
+          possibly even root privilege escalation.
+o       CAN-2004-1333: fixed integer overflow in the vc_resize  (Georgi Guninski)
+          function allows local users to cause a denial of
+          service (kernel crash) via a short new screen value,
+          which leads to a buffer overflow. Make sure VC
+          resizing fits in s16.
+o       If the user makes ip_cmsg_send call ip_options_get      (Georgi Guninski)
+          multiple times, we leak kmalloced IP options data.
+o       fixed moxa serial bound checking issue                  (Alan Cox)
+o       menu cleanups                                           (Marc-Christian Petersen)

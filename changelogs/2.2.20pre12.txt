@@ -1,0 +1,9 @@
+Linux 2.2.20pre12
+
+o	Update davicom driver to fix oopses		(Sten Wang)
+o	Updated PC300 driver - fix SCA-II DMA bugs	
+					(Daniela  P. R. Magri Squassoni)
+o	Make syn cookies per socket			(Andi Kleen)
+o	Computone driver fixes for fast PC's		(Michael Warfield)
+	| Follow on devfs patches didnt apply so dropped
+o	DAC960 update					(Leonard Zubkoff)

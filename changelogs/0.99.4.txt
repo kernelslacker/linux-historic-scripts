@@ -1,0 +1,27 @@
+[PATCH] Linux-0.99.4 (January 20, 1993)
+
+net-1: random addition of "volatile" keywords to try to hide race
+conditions in the code.
+
+File locking updated with shared and exclusive locks for BSD flock.
+
+Re-mounting of filesystems and new mount system call.
+
+Re: Freeze up on X
+    
+In article <1993Jan21.181502.23485@miles.com> dennisf@miles.com (Dennis Flaherty) writes:
+>
+>Here's another clue.  Try this: when your system freezes, running X, try
+>MOVING THE MOUSE.  It's weird!!  But moving the mouse actually makes the
+>system run!  Stop moving the mouse, and the system freezes again.  And
+>this only happens with 0.99.3, not 0.99.2.
+
+Get pl4, and it should be gone.  There was a bug in the handling of
+uninitialized interrupts in pl3, where they could result in either the
+wrong interrupt mask being loaded leading to interrupt lock-out or (in
+some cases) bit corruption at the user level.  The symptoms are exactly
+as you describe: a good interrupt that didn't happen to be locked out
+will correct the interrupt mask, and the system goes on (it can be
+moving the mouse, but it might also be a keyboard event etc).
+    
+            Linus

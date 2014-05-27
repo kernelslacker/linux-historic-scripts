@@ -1,0 +1,15 @@
+PATCH: fork.c bug in 0.99.pl11
+
+There is at least one known problem with 0.99pl11 - it's very minor and
+will not lead to any real problems, but it's also very easy to fix,
+so...
+
+The problem is a one-liner oversight in kernel/fork.c (thanks to TjL for
+noticing the symptoms - they aren't easy to see), which is fixed by the
+following patch:
+
+In fact, it's probably easiest to "apply" this patch by hand: just
+change the "p->tss.fs = KERNEL_DS" in fork.c to "p->tss.fs = USER_DS"
+and you should be fine.
+
+            Linus

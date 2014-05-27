@@ -1,0 +1,14 @@
+Linux 2.2.18pre21
+
+o	Environment controller update for sparc		(Eric Brower)
+o	No italian translation for config.help		(Andrea Ferraris)
+o	Fix type error in buz driver			(Pete Zaitcev)
+o	Resnchronize Apple PowerMac codebase		(Paul Mackerras & co)
+o	Merge powermac tree fixes into usb
+o	Powermac input device handling changes
+o	Fix console switch fonts
+o	S/390 merge					(IBM S/390 folks)
+					(Merge grunt work done by Kurt Roeckx)
+o	Make knfsd TCP an option 			(Alan Cox)
+o	Drop cisco info packets (0x2000)		(Ivan Passos)
+o	Add belkin USB serial cable			(William Greathouse)

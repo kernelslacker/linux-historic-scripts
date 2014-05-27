@@ -1,0 +1,8 @@
+Linux 2.2.13pre7
+
+o	EEPro100 for Ultrasparc			(Dave Miller)
+o	MediaGX audio bug workarounds		(Alan Cox)
+o	Wavelan bug fixes			(Jean Tourrilhes)
+o	SBNI driver				(Yaroslav Polyakov)
+o	AHA1542 option fix			(Chris Faulhaber)
+o	Fix possible sync_quota race		(Jan Kara)

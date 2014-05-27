@@ -1,0 +1,10 @@
+2.2.13pre10
+
+o	Fix SA_SHIRQ handling bug		(Andrea Arcangeli)
+o	SMP time locking			(Andrea Arcangeli)
+o	Fix i386 tlb race			(Andrea Arcangeli)
+o	Fix bh race on SMP			(Andrea Arcangeli)
+o	SMP scheduler boot up race fix		(Andrea Arcangeli)
+o	NFS fix					(Trond)
+o	Clean up ntohl/htonl on 64bit boxes	(Jakub Jelinek)
+o	Neomagic NM256 audio

@@ -1,0 +1,26 @@
+Linux 2.2.15pre8
+
+o	Fix put_tty_char race on SMP			(Andrew J Kroll)
+	| This may well fix the serial mouse jumping problem
+	| people have reported for a long time.
+o	Fix compile compbination for IPv6/netlink	(Arjan van de Ven)
+o	Add Yamaha CRW6416S to the lun blacklist	(Tim Waugh)
+o	Fix symbol clash if a given pair of ISDN
+		boards both got compiled in		(Arjan van de Ven)
+o	Hopefully fix the X.25 problem			(Henner Eisen)
+o	NCPfs permission handling updates		(Petr Vandrovec)
+o	Clean up Maestro includes			(Arjan, Alan Cox)
+o	Fix a memory leak in eql drivers		(Alessandro Rubini)
+o	Support byte counters in the tlan driver	(Niels Baggesen)
+o	Tlan fixed backported from 2.3.x		(Torben Mathiasen)
+o	Ultrasparc support for SK98 Gnic card		(Christoph Goos)
+o	Fix up PCI bus scans on some compaq machines
+o	APM power management fixes/extra bios workarounds
+							(Stephen Rothwell)
+o	Merge 2.3.x fixes into 2.2.x Solo and CMPCI	(Marcelo Tosatti)
+o	Stop panic on SRM Alpha clearing the screen	(Jay Estabrook)
+o	EEPro100 turn off copy break mode and fix
+	u32/ulong problem on Alpha			(Jay Estabrook)
+o	IDE geometry fix				(Andries Brouwer)
+o	Update IBM S/390 port				(IBM)
+o	Fix an IPv6 dependancy in the config.in		(Arjan van de Ven)

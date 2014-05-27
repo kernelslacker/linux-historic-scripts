@@ -1,0 +1,17 @@
+Linux 2.0.40-rc5
+
+o   Ignore SIGURG in SIG_DFL, as per SUSv3   (Christopher Yeoh, David Weinehall)
+o   Fix ipc/sem.c SUS/LSB compliance         (Christopher Yeoh)
+    | Both these fixes contains whitespace
+    | changes. Don't blame poor Chris for
+    | this; I made them
+o   Changes to MAINTAINERS                   (Riley Williams, David Weinehall)
+    | Added Riley Williams
+    | Various tidying
+    | Updated the address to the
+    | Appletalk mailing-list
+    | Updated Christoph Lameter's
+    | e-mail address
+    | Updated Andre Hedrick's entry
+    | Updated Thomas Bogendörfer's entry
+    | Updated Martin Mares' e-mail address

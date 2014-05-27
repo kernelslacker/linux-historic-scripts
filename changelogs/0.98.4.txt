@@ -1,0 +1,63 @@
+[PATCH] Linux-0.98.4 (November 9, 1992)
+
+Rename "malloc()/free()" as "kmalloc()/kfree()" to make people more
+aware of some of the limitations. 
+
+Math emulator updates to handle the case that Linux (unlike the original
+djgpp target) can get preempted by user space accesses.
+
+Make "ll_rw_blk()" take an array of blocks to read/write.
+
+VFS "notify_change()" callback, to allow the low-level filesystem to
+decide what it wants to do about metadata changes.
+
+Deprecate old "stat()" call by printing out a warning on use.
+
+NR_OPEN is now 256 files per process, and the old "unsigned long" bitops
+needed to go away. This causes lots of syntactic changes in select().
+
+System call tracing implemented for ptrace().
+
+[Original announcement below]
+
+ - the inode caching bug (resulting in bad filesystem info when
+   mounting/umounting devices) should be gone for good.
+ 
+ - an elusive race-condition in the fs is fixed: this may have been the
+   reason some people got fsck errors once in a while.  The 
+   race-condition was pretty hard to find, and depends on a lot of
+   things (buffer cache size, speed of the disk and computer speed).
+ 
+ - fpu emulator patches (mainly for the re-entrancy problem) by me and
+   W. Metzenthen.
+ 
+ - various wait-queue changes - the kernel uses the waiting mechanism
+   more efficiently now.
+ 
+ - the NFS client support code is there: the actual nfs code is still in
+   alpha (although reported to be pretty stable) and has to be gotten
+   separately.
+ 
+ - NR_OPEN was changed from 32 to 256 (which is what SunOS seems to use,
+   so I hope it won't need any further changes).  This has lead to some
+   incompatibilities (GNU emacs and the term program seem to need
+   recompilation to work correctly), as the 'select()' system call has a
+   slightly changed interface due to the new fd_set definition.
+
+ - the process kernel stack is now on a separate page (needed due to the
+   fact that the task_struct has now grown to almost 3kB due to the
+   NR_OPEN changes).  This also means 'ps' needs patches..  My patches
+   to ps-0.98 are available as 'ps-diff.Z' in the same directory as the
+   kernel sources and diffs.
+ 
+ - various other changes: system call tracing by Ross Biro. Changed
+   ll_rw_block interface (performance reasons: it will eventually be
+   changed to accept several requests at once).  Malloc() was changed
+   and renamed to kmalloc() due to the new interface.  Some tcp/ip
+   patches (inode counting correction and some other changes).
+
+0.98.4 should hopefully be pretty stable: the main problem areas are
+probably still tcp/ip and some of the tty code.  I'd appreciate
+comments, bug-reports etc.
+
+                Linus

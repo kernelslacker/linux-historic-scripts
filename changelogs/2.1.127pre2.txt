@@ -1,0 +1,46 @@
+Linux 2.1.127pre2
+
+I just found a case that could certainly result in endless page faults,
+and an endless stream of __get_free_page() calls. It's been there forever,
+and I bascially thought it could never happen, but thinking about it some
+more it can happen a lot more easily than I thought.
+
+The problem is that the page fault handling code will give up if it cannot
+allocate a page table entry. We have code in place to handle the final
+page allocation failure, but the "mid-way" failures just failed, and
+caused the page fault to be done over and over again.
+
+More importantly, this could happen from kernel mode when a system call
+was trying to fill in a user page, in which case it wouldn't even be
+interruptible.
+
+It's really unlikely to happen (because the page tables tend to be set up
+already), but I suspect it can be triggered by execve'ing a new process
+which is not going to have any existing page tables. Even then we're
+likely to have old pages available (the ones we free'd from the previous
+process), but at least it doesn't sound impossible that this could be a
+problem.
+
+I've not seen this behaviour myself, but it could have caused Andrea's
+problems, especially the harder to find ones. Andrea, can you check this
+patch (against clean 2.1.126) out and see if it makes any difference to
+your testing?
+
+(Right now it does the wrong error code: it will cause a SIGSEGV instead
+of a SIGBUS when we run out of memory, but that's a small detail).
+Essentially, instead of trying to call "oom()" and sending a signal (which
+doesn't work for kernel level accesses anyway), the code returns the
+proper return value from handle_mm_fault(), which allows the caller to do
+the right thing (which can include following the exception tables). That
+way we can handle the case of running out of memory from a kernel mode
+access too..
+
+(This is also why the fault gets the wrong signal - I didn't bother to fix
+up the x86 fault handler all that much ;)
+Btw, the reason I'm sending out these patches in emails instead of just
+putting them on ftp.kernel.org is that the machine has had disk problems
+for the last week, and finally gave up completely last Friday or so. So
+ftp.kernel.org is down until we have a new raid array or the old one
+magically recovers.  Sorry about the spamming.
+
+                Linus

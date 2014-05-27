@@ -1,0 +1,5 @@
+Date: 1 Mar 1998 05:08:07 GMT
+Subject: Re: INN doesn't work on pre-2.1.89-4 (mmap problem ?)
+From: Linus Torvalds <torvalds@transmeta.com>
+
+I fixed _one_ silly bug wrt writeback to shared files in pre-5

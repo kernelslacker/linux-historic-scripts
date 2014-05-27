@@ -1,0 +1,16 @@
+[PATCH] Linux-0.99.14 (November 28, 1993)
+
+Original Changelog:
+
+CHANGES since 0.99 patchlevel 13:
+
+ - new kernel source layout: drivers separated
+ - lots of networking bugs fixed, and new network card drivers (Alan Cox,
+   Donald Becker &co)
+ - sound driver added to the default source distribution (Hannu
+   Savolainen)
+ - updated SCSI driver code (Eric Youngdale, Drew Eckhardt &co)
+ - readonly OS/2 filesystem support (HPFS) added (Chris Smith)
+ - NTP support (Philip Gladstone, Torsten Duwe, ??)
+ - fixed 16MB swap-area limit
+ - lots of minor cleanups, buxfixes etc.

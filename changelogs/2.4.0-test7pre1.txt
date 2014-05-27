@@ -1,0 +1,12 @@
+Linux 2.4.0-test7pre1
+
+    - fix PCI resource bug that crept in in test6 due to the new
+      requirements to handle multiple bus regions transparently
+    - ll_rw_block documentation
+    - sound driver module counting bugfix and cleanup (move to named
+      initializers)
+    - directory rename bug fix for busy directories (oops)
+    - allow "init_new_context()" to fail - it can do so on some
+      architectures when out of memory.
+    - networking updates - TCP retransmission and ordering logic
+    - fix strsep(). Not that anybody cared.

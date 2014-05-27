@@ -1,0 +1,36 @@
+Linux 2.3.15
+
+There's a rather huge patch-set out there now, taking the 2.3.x series to
+2.3.15.
+This has a lot of the merge code I've been sent over the last two weeks,
+but I will invariably have missed some, if for no other reason than simply
+that I got absolutely _flooded_ by people sending me patches.
+
+One of the more interesting things was the SMP pipe cleanup sent by
+Richard, but try as I might it was never really stable under load on x86 -
+not with the plain semaphores in 2.3.14, and not with the patches Andrea
+had either. I assume Richard tested it on an alpha with the much more
+well-thought-out atomic operation that the alpha provides.
+
+I ended up rewriting the x86 semaphore code (and some of Richards pipe
+code too, for that matter, to get rid of some races in waking things up),
+and it doesn't show the problems I saw before, but hey, maybe I just
+exchanged one set of problems for another set that I can't trigger any
+more. Give me feedback, please.
+
+Other features that don't impact everybody, but are rather major:
+ - ATM support merged in
+ - firewalling is gone (again), replaced by an even more generic netfilter
+   facility.
+ - general networking merges and updates
+ - Various driver updates (ISDN, ISA PnP, sound, fbcon, usb, intelliport,
+   you name it)
+ - make system call return type "long" even if the system call only
+   returns valid data in the lower order bits - we use the high bits for
+   error handling, and some 64-bit architectures care (read: the Merced
+   calling conventions want this because they don't automatically extend
+   the return type - I bet it will be a new portability issue for other
+   programs than just the kernel)
+
+Have fun,
+                Linus

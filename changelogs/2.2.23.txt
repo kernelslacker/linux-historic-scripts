@@ -1,0 +1,2 @@
+Linux 2.2.23
+        No change from 2.2.23-rc2

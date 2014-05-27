@@ -1,0 +1,43 @@
+Linux 2.2.19pre3
+
+o	Merge ADMtek-comet tulip support		(Jim McQuillan)
+o	Update microcode driver				(Tigran Aivazian)
+o	Merge Don Becker's NE2K full duplex support	(Juan Lacarta)
+o	Optimise kernel compiler detect, kgcc before	(Peter Samuelson)
+	gcc272 also
+o	Fix compile combination problems		(Arjan van de Ven)
+o	Update via-rhine driver to include Don's changes(Urban Widmark)
+	for VT6102
+o	Documentation updates				(Tim Waugh)
+o	Add ISDN PCI defines to pci.h			(Kai Germaschewski)
+o	Fix smb/fat handling for pre 1980 dates		(Igor Zhbanov)
+o	SyncLink updates				(Paul Fulghum)
+o	ICP vortex driver updates 			(Andreas Köpf)
+o	mdacon clean up					(Pavel Rabel)
+o	Fix bugs in es1370/es1371/sonicvibes/solo1/	(Thomas Sailer)
+	dabusb
+o	Speed up x86 irq/fault paths by avoiding xchg	(Mikael Pettersson)
+	locked cycles (from Brian Gerst's 2.4test change)
+o	Tighten up K6 check in bug tests		(Mikael Pettersson)
+o	Backport configure scripts bug fixes		(Mikael Pettersson)
+o	Fix duplicat help entries			(Riley Williams)
+o	Fix small asm bug in constant size uaccess	(David Kutz)
+o	Update ymfpci driver to handle legacy audio	(Daisuke Nagano)
+o	Remove ymfsb driver now no longer needed	(Daisuke Nagano)
+o	Add Empeg support to usb-serial			(Gary Brubaker)
+o	Fix e820 handling				(Andrea Arcangeli)
+o	Fix lanstreamer SMP locking			(George Staikos)
+o	Fix S/390 non SMP build				(Kurt Roeckx)
+o	Fix the PCI syscall on PowerMac		(Benjamin Herrenschmidt)
+o	Fix IPC_RMID behaviour				(Christoph Rohland)
+o	Fix NETCTL_GETFD on sparc64			(Dave Miller)
+o	Tidy unneeded restore_flags/save sequence  (Arnaldo Carvalho de Melo)
+	on the ultrastor
+o	Fix resource clean up on error in 89xo     (Arnaldo Carvalho de Melo)
+	driver
+o	Update wireless headers				(Jean Tourrilhes)
+o	Fix non modular emu10k init			(Mikael Pettersson)
+o	Fix cpuid/msr driver crashes			(Andrew Morton)
+o	Write core files sparse				(Christoph Rohland)
+o	Merge the i810 tco (watchdog) timer		(Alan Cox)
+	| original by Jeff Garzik

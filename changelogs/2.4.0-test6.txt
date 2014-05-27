@@ -1,0 +1,33 @@
+Linux-2.4.0-test6 
+
+- speling fixces.
+ - fix drm/agp initialization issue
+ - saner modules installation     
+        (*) NOTE! This may/will break some module setups.  Files go in
+        different places. Better places.
+ - per-CPU irq count area. Better for caches, simpler code.              
+ - "mem_map + MAP_NR(x)" => virt_to_page(x)             
+        (*) Purely syntactic change at this point. NUMA memory handling
+        will take advantage of this during 2.5.x
+ - page_address() returns (void *) to make it clearer that it is a 
+   virtual address (it's the reverse of "virt_to_page()", see above).
+ - zimage builds should work again.
+ - Make current gcc's able to compile the kernel.
+ - fix irq probing in IDE driver: this caused strange irq problems for
+   other drivers later on (notably PCMCIA, which is one of the few 
+   drivers to still probe for ISA interrupts on modern machines).
+ - Intel microcode update update.
+ - mips/mips64/sh/sparc/sparc64/acorn updates
+ - DAC960 driver update
+ - floppy shouldn't scream on open/close
+ - console driver does correct palette setting.  No more black screens
+   with XF86-4.x
+ - ISDN updates
+ - PCI layer can assign resources from multiple IO and memory windows
+ - yenta_socket driver no longer oopsable on unload.
+ - flush_dcache_page() for more virtual dcache coherency issues
+ - ext2_get_block() races fixed   
+ - jffs bugfixes galore.  
+ - user resource tracking infrastructure re-organization.
+ - umsdos works again.
+ - loopback shouldn't deadlock

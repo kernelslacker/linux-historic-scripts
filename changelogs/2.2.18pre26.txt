@@ -1,0 +1,9 @@
+Linux 2.2.18pre26
+
+o	Last resync of the S/390 tree with IBM		(Martin schwidefsky
+	| s390_daemonize skipped, thats too ugly	 and co)
+o	Swat irq leak in sbni driver		(Arnaldo Carvalho de Melo)
+o	Update urls for Arnaldo			(Arnaldo Carvalho de Melo)
+o	Small UDP mcast fix				(Dave Miller)
+o	Fix TCP rto estimator for very fast long	(Dave Miller)
+	paths

@@ -1,0 +1,9 @@
+Linux 2.2.19pre16
+
+o	Add Epson 1240 usb scanner id			(Joel Becker)
+o	Starfire driver updates				(Ion Badulescu)
+o	Make xconfig fix 				(Craig Rogers)
+o	Update credits for Richard Guenther		(Richard Guenther)
+o	strnlen_user fixups				(Solar Designer)
+o	Fix starfire netif_stop/start bug		(Ion Badulescu)
+o	SIGIO from irq context fixes			(Andi Kleen)

@@ -1,0 +1,16 @@
+- pre6:
+    - Intel: start to add Pentium IV specific stuff (128-byte cacheline
+      etc)
+    - David Miller: search-and-destroy places that forget to mark us
+      running after removing us from a wait-queue.
+    - Linus: NFS client write-back ref-counting SMP instability.
+    - Linus: fix up non-exclusive waiters
+    - Trond Myklebust: Be more careful about SMP in NFS and RPC code
+    - Trond Myklebust: inode attribute update race fix
+    - Charles White: don't do unaligned accesses in cpqarray driver.
+    - Jeff Garzik: continued driver cleanup and fixes
+    - Peter Anvin: integrate more of the Intel patches.
+    - Robert Love: add i815 signature to the intel AGP support
+    - Rik Faith: DRM update to make it easier to sync up 2.2.x
+    - David Woodhouse: make old 16-bit pcmcia controllers work
+      again (ie i82365 and TCIC)

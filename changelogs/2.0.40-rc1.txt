@@ -1,0 +1,21 @@
+Linux 2.0.40-rc1
+
+o   Fix possible vmalloc bug for             (Ralf Baechle)
+    architectures with virtually
+    indexed caches
+o   Micro-optimization in vmalloc            (Ralf Baechle)
+o   Fix group descriptor corruption          (Daniel Phillips,
+    in ext2fs                                 Ville Herva,
+                                              Samuli Kärkkäinen)
+o   Fix some missing includes                (David Weinehall)
+o   Change array-size from 0 to 1 for        (David Weinehall)
+    two arrays in the symbol-table
+    in include/linux/module.h
+o   Fix type of struct timeval xtime in      (David Weinehall)
+    include/linux/sched.h
+o   Fix warnings in include/linux/skbuff.h   (David Weinehall)
+o   Fix a few typos in Configure.help        (David Weinehall)
+o   Various small whitespace changes         (David Weinehall)
+    and fixes of strange indentation
+    | I know some of you won't like this
+    | and I don't give a damn ;-)

@@ -1,0 +1,25 @@
+[PATCH] Linux-0.95c+ (April 9, 1992 ??)
+
+Bruce Evans shows up here quickly. 
+
+Bruce was the author of the Minix/386 patches, and had been one of my
+sounding boards for my early development, so it was very gratifying to
+see him get interested in Linux.  As it turned out, what he was _really_
+interested in was the serial driver, and the Linux serial driver was
+already in reasonably good shape. 
+
+As a result, Bruce went off to work on 386BSD instead (where the serial
+driver was truly crappy), but here he worked on some boot loader cleanups.
+
+Bruce was my hero.
+
+Anyway...  More VFS work here: readdir, bmap and ioctl's are now virtual
+operations, and the superblock code is properly virtualized. 
+
+Other changes:
+
+ - James Wiegand writes initial parallell port printer driver
+
+ - major/minor fault tracking
+
+ - I rewrote big chunks of ptrace.c

@@ -1,0 +1,18 @@
+Linux-2.1.115 - code freeze.
+
+Ok, we've been in a tentative code freeze for a long time, and now it's
+final. I've made a 2.1.115 that I hope is good enough, and I won't be
+accepting anything but bug-fixes until 2.2..
+There are two long-standing patches that I'm still considering:
+
+ - devfs
+ - dynamic fd's
+
+and I kind of expect that they'll go in (devfs is configurable, so if you
+don't want it you don't need to care, and the dynamic fd's save some
+memory and speed certain things up a bit). The reason they're not in now
+is mainly that I've been trying to get everything else off my plate, and I
+want to ruminate on them in peace for a while.
+Bug-fixes are still (and will always be) accepted,
+
+                Linus

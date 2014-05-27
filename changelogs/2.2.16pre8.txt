@@ -1,0 +1,15 @@
+Linux 2.2.16pre8
+
+o	Update old rustcorp urls		(Paul Russell)
+o	Fix random driver typo			(James Cloos)
+o	Update credits entry			(David Woodhouse)
+o	Fix tcp retransmit crash		(Alexey Kuznetsov)
+o	Fix dhcp boot bug			(Chip Salzenberg)
+o	Fix hamachi and via rhine sym clash	(Arjan van de Ven)
+o	Fix VCD problems and BLIST_GHOST stuff	(Jens Axboe)
+o	Disable autodma on a 450NX		(Chip Salzenberg)
+o	Trident driver backport			(Eric M. Brombaugh)
+o	Fix acenic build problem		(Arjan van de Ven) 
+o	Fix random driver typo			(James Cloos)
+o	Update yamaha PCI driver		(Daisuke Nagano)
+o	Force umask of kmod			(Keith Owens)

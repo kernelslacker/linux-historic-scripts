@@ -1,0 +1,12 @@
+Linux 2.2.18pre24
+
+o	Expose put_unused_fd for modules		(Andi Kleen)
+o	Fix the ps/2 mouse probe I hope			(Alan Cox)
+o	Fix crash in cosa driver			(Jan Kasprzak)
+o	Fix procfs negative seek offset error reporting (HJ Lu)
+o	Fix ext2 file limit constraints			(Andrea Arcangeli)
+o	Fix lockf corner cases				(Andi Kleen, Alan Cox)
+o	Fix NCPfs date limits				(Igor Zhbanov)
+o	Update DRM					(Chip Salzenberg)
+o	Fix missing Alpha includes			(Matt Wilson)
+o	Fix missing symbols on alpha			(Matt Wilson)

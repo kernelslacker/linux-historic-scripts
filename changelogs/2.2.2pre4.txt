@@ -1,0 +1,40 @@
+Linux 2.2.2pre4
+
+In a superhuman effort to not get killed by my wife, I delayed the latest
+release for a day. And in fact, it's still just a pre-release, because I
+wanted to check with Ingo that I have his latest IO-APIC code with the
+proper handling of ExtINT. Ingo?
+
+Anyway, the "not quite valentine days release" (also known as the "horny
+greased weasel", aka "presidents day" release ;), is right now a pre-patch
+on ftp.kernel.org: /pub/linux/kernel/testing/pre-patch-2.2.2-4.gz.
+
+Happily, I haven't heard of any new real show-stoppers, which is good
+(especially considering the fact that I gave it an extra week just to hear
+if somebody could come up with some new problems). The things fixed
+relative to 2.2.1 are:
+
+ - the inode thing. If you don't know, don't worry.
+ - config scripts updated
+ - IO-APIC cleanups and fixes, so that people with strange motherboards
+   should be able to reboot cleanly and not get unexpected interrupts.
+ - 2kB sector media (ie mostly MO) fixes. See all the warnings on the
+   lists about fdisk confusion etc if you have one of these things.
+ - IDE disk cleanups/fixes (geometry and autodetection)
+ - PS/2 mouse hides ACK's again
+ - pty crash fix
+ - some network driver fixes (out-of-memory and shared interrupts)
+ - some sound and video updates.
+ - lockd cookie fixes
+ - nfsd readdir reply cache fix
+ - filesystem/VM deadlock avoidance (new deamon: kpiod)
+ - SMP scheduler race condition (which nobody has probably ever seen)
+ - TCP socket locking fix
+
+Most of the above are really hard to see in the first place, and not
+something most people would ever hit (with the possible exception of the
+inode thang).  But it would be good to have a really rock solid 2.2.2, so
+if people could just bother to check that it works for them, and I'll make
+this official tomorrow.
+
+                Linus

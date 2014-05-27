@@ -1,0 +1,29 @@
+- pre2:
+    - Stephen Rothwell: directory notify could return with the lock held
+    - Richard Henderson: CLOCKS_PER_SEC on alpha.
+    - Jeff Garzik: ramfs and highmem: kmap() the page to clear it
+    - Asit Mallick: enable the APIC in the official order
+    - Neil Brown: avoid rd deadlock on io_request_lock by using a
+      private rd-request function. This also avoids unnecessary
+      request merging at this level.
+    - Ben LaHaise: vmalloc threadign and overflow fix
+    - Randy Dunlap: USB updates (plusb driver). PCI cacheline size.
+    - Neil Brown: fix a raid1 on top of lvm bug that crept in in pre1
+    - Alan Cox: various (Athlon mmx copy, NULL ptr checks for
+      scsi_register etc).
+    - Al Viro: fix /proc permission check security hole.
+    - Can-Ru Yeou: SiS301 fbcon driver
+    - Andrew Morton: NMI oopser and kernel page fault punch through
+      both console_lock and timerlist_lock to make sure it prints out..
+    - Jeff Garzik: clean up "kmap()" return type (it returns a kernel
+      virtual address, ie a "void *").
+    - Jeff Garzik: network driver docs, various one-liners.
+    - David Miller: add generic "special" flag to page flags, to be
+      used by architectures as they see fit. Like keeping track of
+      cache coherency issues.
+    - David Miller: sparc64 updates, make sparc32 boot again
+    - Davdi Millner: spel "synchronous" correctly
+    - David Miller: networking - fix some bridge issues, and correct
+      IPv6 sysctl entries.
+    - Dan Aloni: make fork.c use proper macro rather than doing
+      get_exec_domain() by hand.

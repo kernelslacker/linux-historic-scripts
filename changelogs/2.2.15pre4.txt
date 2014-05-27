@@ -1,0 +1,20 @@
+Linux 2.2.15pre4
+
+o	VM algorithm changes				(Rik van Riel)
+o	Fix compile bug in qnxfs changes		(Leos Bitto)
+o	Sparc32 KRUPS/Javastation fixes			(Peter Zaitcev)
+o	Powermac fixes including OOM behaviour		(Paul Mackerras)
+o	Fix 3c529 setup					(David Weinehall)
+o	Remove the I2O test on Megaraid, doesn't work
+	for all cases. Back to vanilla AMI code		(Alan Cox)
+o	Upgraded Davicom driver to v1.28		(Sten Wang)
+o	SMC ircc update					(Dag Brattli)
+o	Add module initialising debug stuff		(Keith Owens)
+o	Fix defconfig 					(Niels Jensen)
+o	3c509 PPC and SMC mca fixes			(David Monro)
+o	Fixes for RIO driver for older cards		(Rogier Wolff)
+o	Add Specialix SX+ support to SX driver		(Rogier Wolff)
+o	Add custom divisor support to Specialix IO8+	(Nicolas Mailhot)
+o	Clean up gemini PPC, turn on L2 for other cpus	(Cort Dougan)
+o	QlogicFC updates				(Chris Loveland)
+o	Lan Media T1/T3 card driver			(Lan Media Corp)

@@ -1,0 +1,33 @@
+Linux-2.3.18... and a freeze
+
+Ok,
+ Linux-2.3.18 is out there now, and it also marks the beginning of the
+long-promised feature freeze for 2.4.x. To make that freeze more
+effective, I'm taking two weeks off, just so that you simply CANNOT tempt
+me with features.
+
+Thanks to David Hinds and others for the last weeks of merging of PCMCIA
+etc, I'm now officially happy.
+Note that feature freeze is different from code freeze. We'll still do
+updates of drivers etc without being too anal about it, and even
+completely new drivers (or possibly filesystems) etc may possibly be
+accepted as long as they don't impact _anything_ else and don't imply a
+completely new approach to something. Drivers in particular tend to be
+updated even in the stable kernel, after all.
+
+But expect me to be less than enthusiastic about even new drivers. New
+ideas for core functionality are right out.
+
+The feature freeze should be turning into a code freeze in another two
+months or so, and a release by the end of the year. And as everybody
+knows, our targets never slip.
+
+And as I said, don't even bother emailing me for the next two weeks,
+because you won't be reaching me anyway, and the mail accumulated over the
+two weeks will be unceremoniously dumped into a toxic waste container, to
+be buried in concrete somewhere at sea. Never to be opened again, in
+short.
+
+I'll have fun. You do too,
+
+                        Linus

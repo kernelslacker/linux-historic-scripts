@@ -1,0 +1,15 @@
+Ok. I didn't make 2.4.0 in 2000. Tough. I tried, but we had some
+last-minute stuff that needed fixing (ie the dirty page lists etc), and the
+best I can do is make a prerelease.
+                    
+There's a 2.4.0-prerelease out there, and this is basically it. I want
+people to test it for a while, and I want to give other architectures the
+chance to catch up with some of the changes, but read my lips: no more
+recounts. There is no "prerelease1", to become "prerelease2" and so on.
+                    
+One thing other architectures will want to catch up with is the changes to
+handle 2GHz+ machines, which due to overflow issues caused "loops_per_sec"
+to become "loops_per_jiffy". And some architectures have not had much
+chance to synchronize with me due to other fires to put out.
+                    
+Give it your worst. After you recover from being hung-over, of course.

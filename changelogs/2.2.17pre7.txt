@@ -1,0 +1,18 @@
+Linux 2.2.17pre7
+
+o	Fix the rate adaption, default to 48KHz 	(Alan Cox)
+	Correctly setup VRA bits. Variable speed
+	now works on capable codecs (AD1881 etc)
+o	Crystal Soundfusion 46xx driver			(Alan Cox)
+	| Most of the work actually from the ALSA driver by Jaroslav
+o	PC300 driver update				(Ivan Passos)
+o	Further PPC merges				(Olaf Hering)
+o	Further 3c59x/3c90x fixes			(Andrew Morton)
+o	Fix i810 potential oops				(Vladimir V. Klenov)
+o	Atari partition probe must be last (no magic)	(Michael Schmitz)
+o	Merge aty128fb driver for PPC			(Brad Douglas)
+o	Fix the multiple ide directories in proc bug	(Shigeo 'Geo' Tanai)
+o	Fix zImage build for chrp PPC			(Olaf Hering)
+o	Toshiba SMM driver for configuration utils	(Jonathan Buzzard)
+o	Rename cp932 back				(Yoshihiro Kajiki)
+o	Fix endian bug in cp932 handling		(Yoshihiro Kajiki)
