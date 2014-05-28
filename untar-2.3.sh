@@ -1,6 +1,7 @@
 #!/bin/bash
 # Unpack 2.3
 BRANCH=2.3
+FROM=$(pwd)/binaries
 
 if [ ! -d unpack ]; then
   echo run from wrong dir.
@@ -12,7 +13,7 @@ fi
 untar()
 {
 	echo Unpacking $1
-	tar zxf ../$BRANCH/linux-$1.tar.gz
+	tar zxf $FROM/$BRANCH/linux-$1.tar.gz
 	mv linux linux-$1
 }
 
@@ -23,7 +24,7 @@ prepatch()
 		echo Patching to 2.3.$1pre$i
 		cp -rl linux-2.3.$(($1-1)) linux-2.3.$1pre$i
 		cd linux-2.3.$1pre$i
-		zcat ../../2.3/pre-patch-2.3.$1-$i.gz | patch -p1 -s
+		zcat $FROM/2.3/pre-patch-2.3.$1-$i.gz | patch -p1 -s
 		cd ..
 	done
 }
@@ -46,29 +47,29 @@ untar 2.3.6
 echo Patching to 2.3.7pre1
 cp -rl linux-2.3.6 linux-2.3.7pre1
 cd linux-2.3.7pre1
-zcat ../../2.3/pre-patch-2.3.7-1-dangerous.gz | patch -p1 -s
+zcat $FROM/2.3/pre-patch-2.3.7-1-dangerous.gz | patch -p1 -s
 cd ..
 echo Patching to 2.3.7pre2
 cp -rl linux-2.3.6 linux-2.3.7pre2
 cd linux-2.3.7pre2
-zcat ../../2.3/pre-patch-2.3.7-2-dangerous.gz | patch -p1 -s
+zcat $FROM/2.3/pre-patch-2.3.7-2-dangerous.gz | patch -p1 -s
 cd ..
 echo Patching to 2.3.7pre3
 cp -rl linux-2.3.6 linux-2.3.7pre3
 cd linux-2.3.7pre3
-zcat ../../2.3/pre-patch-2.3.7-3-REALLY-DANGEROUS.gz | patch -p1 -s
+zcat $FROM/2.3/pre-patch-2.3.7-3-REALLY-DANGEROUS.gz | patch -p1 -s
 cd ..
 echo Patching to 2.3.7pre4
 cp -rl linux-2.3.6 linux-2.3.7pre4
 cd linux-2.3.7pre4
-zcat ../../2.3/pre-patch-2.3.7-4-dagerous.gz | patch -p1 -s
+zcat $FROM/2.3/pre-patch-2.3.7-4-dagerous.gz | patch -p1 -s
 cd ..
 for i in $(seq 5 9)
 do
 	echo Patching to 2.3.7pre$i
 	cp -rl linux-2.3.6 linux-2.3.7pre$i
 	cd linux-2.3.7pre$i
-	zcat ../../2.3/pre-patch-2.3.7-$i.gz | patch -p1 -s
+	zcat $FROM/2.3/pre-patch-2.3.7-$i.gz | patch -p1 -s
 	cd ..
 done
 untar 2.3.7
@@ -78,12 +79,12 @@ prepatch 9 5
 echo Patching to 2.3.9pre7
 cp -rl linux-2.3.8 linux-2.3.9pre7
 cd linux-2.3.9pre7
-zcat ../../2.3/pre-patch-2.3.9-7.gz | patch -p1 -s
+zcat $FROM/2.3/pre-patch-2.3.9-7.gz | patch -p1 -s
 cd ..
 echo Patching to 2.3.9pre8
 cp -rl linux-2.3.8 linux-2.3.9pre8
 cd linux-2.3.9pre8
-zcat ../../2.3/pre-patch-2.3.9-8.gz | patch -p1 -s
+zcat $FROM/2.3/pre-patch-2.3.9-8.gz | patch -p1 -s
 cd ..
 untar 2.3.9
 prepatch 10 5
@@ -94,7 +95,7 @@ do
 	echo Patching to 2.3.11pre$i
 	cp -rl linux-2.3.10 linux-2.3.11pre$i
 	cd linux-2.3.11pre$i
-	zcat ../../2.3/pre-patch-2.3.11-$i.gz | patch -p1 -s
+	zcat $FROM/2.3/pre-patch-2.3.11-$i.gz | patch -p1 -s
 	cd ..
 done
 untar 2.3.11
@@ -116,7 +117,7 @@ prepatch 19 1
 echo Patching to 2.3.19pre2
 cp -rl linux-2.3.18 linux-2.3.19pre2
 cd linux-2.3.19pre2
-zcat ../../2.3/pre-patch-2.3.19-2-for-alan-only.gz | patch -p1 -s
+zcat $FROM/2.3/pre-patch-2.3.19-2-for-alan-only.gz | patch -p1 -s
 cd ..
 untar 2.3.19
 prepatch 20 2
@@ -124,7 +125,7 @@ untar 2.3.20
 echo Patching to 2.3.21pre1
 cp -rl linux-2.3.20 linux-2.3.21pre1
 cd linux-2.3.21pre1
-zcat ../../2.3/pre-patch-2.3.21-1-for-alan-only.gz | patch -p1 -s
+zcat $FROM/2.3/pre-patch-2.3.21-1-for-alan-only.gz | patch -p1 -s
 cd ..
 untar 2.3.21
 prepatch 22 3
@@ -155,19 +156,19 @@ prepatch 35 4
 echo Patching to 2.3.35pre6
 cp -rl linux-2.3.34 linux-2.3.35pre6
 cd linux-2.3.35pre6
-zcat ../../2.3/pre-patch-2.3.35-6.gz | patch -p1 -s
+zcat $FROM/2.3/pre-patch-2.3.35-6.gz | patch -p1 -s
 cd ..
 untar 2.3.35
 prepatch 36 3
 echo Patching to 2.3.36pre5
 cp -rl linux-2.3.35 linux-2.3.36pre5
 cd linux-2.3.36pre5
-zcat ../../2.3/pre-patch-2.3.36-5.gz | patch -p1 -s
+zcat $FROM/2.3/pre-patch-2.3.36-5.gz | patch -p1 -s
 cd ..
 echo Patching to 2.3.36pre6
 cp -rl linux-2.3.35 linux-2.3.36pre6
 cd linux-2.3.36pre6
-zcat ../../2.3/pre-patch-2.3.36-6.gz | patch -p1 -s
+zcat $FROM/2.3/pre-patch-2.3.36-6.gz | patch -p1 -s
 cd ..
 untar 2.3.36
 untar 2.3.37
@@ -179,12 +180,12 @@ prepatch 40 4
 echo Patching to 2.3.40pre5
 cp -rl linux-2.3.39 linux-2.3.40pre5
 cd linux-2.3.40pre5
-zcat ../../2.3/pre-patch-2.3.40-5-for-al.gz | patch -p1 -s
+zcat $FROM/2.3/pre-patch-2.3.40-5-for-al.gz | patch -p1 -s
 cd ..
 echo Patching to 2.3.40pre6
 cp -rl linux-2.3.39 linux-2.3.40pre6
 cd linux-2.3.40pre6
-zcat ../../2.3/pre-patch-2.3.40-6.gz | patch -p1 -s
+zcat $FROM/2.3/pre-patch-2.3.40-6.gz | patch -p1 -s
 cd ..
 untar 2.3.40
 prepatch 41 4
@@ -218,7 +219,7 @@ do
 	echo Patching to linux-2.3.99pre2-$i
 	cp -rl linux-2.3.99-pre1 linux-2.3.99-pre2-$i
 	cd linux-2.3.99-pre2-$i
-	zcat ../../2.3/pre2-$i.gz | patch -p1 -s
+	zcat $FROM/2.3/pre2-$i.gz | patch -p1 -s
 	cd ..
 done
 untar 2.3.99-pre2
@@ -227,7 +228,7 @@ do
 	echo Patching to linux-2.3.99pre3-$i
 	cp -rl linux-2.3.99-pre2 linux-2.3.99-pre3-$i
 	cd linux-2.3.99-pre3-$i
-	zcat ../../2.3/pre3-$i.gz | patch -p1 -s
+	zcat $FROM/2.3/pre3-$i.gz | patch -p1 -s
 	cd ..
 done
 untar 2.3.99-pre3
@@ -236,7 +237,7 @@ do
 	echo Patching to linux-2.3.99pre4-$i
 	cp -rl linux-2.3.99-pre3 linux-2.3.99-pre4-$i
 	cd linux-2.3.99-pre4-$i
-	zcat ../../2.3/pre4-$i.gz | patch -p1 -s
+	zcat $FROM/2.3/pre4-$i.gz | patch -p1 -s
 	cd ..
 done
 untar 2.3.99-pre4
@@ -246,7 +247,7 @@ do
 	echo Patching to linux-2.3.99pre6-$i
 	cp -rl linux-2.3.99-pre5 linux-2.3.99-pre6-$i
 	cd linux-2.3.99-pre6-$i
-	zcat ../../2.3/pre6-$i.gz | patch -p1 -s
+	zcat $FROM/2.3/pre6-$i.gz | patch -p1 -s
 	cd ..
 done
 untar 2.3.99-pre6
@@ -255,7 +256,7 @@ do
 	echo Patching to linux-2.3.99pre7-$i
 	cp -rl linux-2.3.99-pre6 linux-2.3.99-pre7-$i
 	cd linux-2.3.99-pre7-$i
-	zcat ../../2.3/pre7-$i.gz | patch -p1 -s
+	zcat $FROM/2.3/pre7-$i.gz | patch -p1 -s
 	cd ..
 done
 untar 2.3.99-pre7
@@ -265,7 +266,7 @@ do
 	echo Patching to linux-2.3.99-pre9-$i
 	cp -rl linux-2.3.99-pre8 linux-2.3.99-pre9-$i
 	cd linux-2.3.99-pre9-$i
-	zcat ../../2.3/pre9-$i.gz | patch -p1 -s
+	zcat $FROM/2.3/pre9-$i.gz | patch -p1 -s
 	cd ..
 done
 untar 2.3.99-pre9
@@ -274,7 +275,7 @@ do
 	echo Patching to linux-2.3.99pre10-$i
 	cp -rl linux-2.3.99-pre9 linux-2.3.99-pre10-$i
 	cd linux-2.3.99-pre10-$i
-	zcat ../../2.3/pre10-$i.gz | patch -p1 -s
+	zcat $FROM/2.3/pre10-$i.gz | patch -p1 -s
 	cd ..
 done
 
@@ -285,7 +286,7 @@ prepatch()
 		echo Patching to 2.4.0test$1pre$i
 		cp -rl linux-2.4.0-test$(($1-1)) linux-2.4.0-test$1pre$i
 		cd linux-2.4.0-test$1pre$i
-		zcat ../../2.3/test$1-pre$i.gz | patch -p1 -s
+		zcat $FROM/2.3/test$1-pre$i.gz | patch -p1 -s
 		cd ..
 	done
 }
@@ -307,14 +308,14 @@ prepatch 8 2
 echo Patching to 2.4.0test8pre3
 cp -rl linux-2.4.0-test7 linux-2.4.0-test8pre3
 cd linux-2.4.0-test8pre3
-zcat ../../2.3/test8-pre3.for-al-only.gz | patch -p1 -s
+zcat $FROM/2.3/test8-pre3.for-al-only.gz | patch -p1 -s
 cd ..
 for i in 4 5 6
 do
 	echo Patching to 2.4.0test8pre$i
 	cp -rl linux-2.4.0-test7 linux-2.4.0-test8pre$i
 	cd linux-2.4.0-test8pre$i
-	zcat ../../2.3/test8-pre$i.gz | patch -p1 -s
+	zcat $FROM/2.3/test8-pre$i.gz | patch -p1 -s
 	cd ..
 done
 untar 2.4.0-test8
