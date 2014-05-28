@@ -422,8 +422,8 @@ for ver in $(seq 1 26)
 do
 	import 2.2.18pre$ver
 done
-# git27 was git26 with some binary files removed.
-# git27 == final
+# pre27 was pre26 with some binary files removed.
+# pre27 == final
 git tag 2.2.18pre27
 git tag 2.2.18
 
