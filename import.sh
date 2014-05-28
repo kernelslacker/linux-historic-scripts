@@ -945,3 +945,6 @@ import 2.4.0-test13pre7
 import 2.4.0-prerelease
 
 find .. -maxdepth 1 -type f -empty -name "*.diff" -exec rm {} \;
+
+git gc --prune=now --aggressive
+mv linux-git ../linux-historic.git
