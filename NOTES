@@ -1,13 +1,11 @@
-[ original circa Oct. 2007 README: ]
-
-For a while I've been pulling together some scripts to create
-a git repo with every single ancient Linux version up to 2.4
-before we had an SCM tracking commits.
+Back in 2007, I wrote some scripts to create a git repo with every single
+ancient Linux version up to 2.4 before we had an SCM tracking commits.
 (Yes, complete history, from 0.01, up to 2.4.0, including
  every -pre,-test and -rc along the way as a separate commit).
 
 And now for the really crazy part:
-    With actual changelogs for as many commits as possible.
+
+    ... with actual changelogs for as many commits as possible.
 
 This seemed like a fun idea at first, then about a third the way through
 I began to think this was nuts.  At halfway, I'd decided I'd gone too far
@@ -16,6 +14,7 @@ to not finish it, and this is the result.
 About halfway through, in September of 2007, someone called
 'Gonsolo' did something similar to all this.  [http://lwn.net/Articles/250699/]
 Though his version lacked the changelogs, and missed a ton of prepatches.
+
 It was also around this time, I found that I'm not the only person loony
 enough to attempt this, and stumbled across
  git://git.kernel.org/pub/scm/linux/kernel/git/nico/archive.git
@@ -24,18 +23,18 @@ in his that I had got, so where possible, I stole some of his changelogs.
 I think my variant is as complete as we're going to get.
 (modulo new arrivals of missing changelogs: read below)
 
-The whole process takes about 90 minutes to unpack/create 36G of
-kernel trees, create interdiffs between them all, and then import
-them into a git tree on a pretty speedy core2 duo, with two raid0
-disks (and boy, is this operation IO bound).
+The whole process unpacks 27G of compressed kernel trees, creates interdiffs
+between them all, and then imports them into a git tree.
+It's recommended to run this process on an SSD, as this whole thing
+is very IO bound.
 
 Some other stats:
  - commits: 1040
  - commits with changelogs: 420
- - repo size  1.9G.  (git-repack shrinks this to a mere 78M)
+ - final repo size: 68M
 
 The repository can be found at
- http://www.kernel.org/pub/scm/linux/kernel/git/davej/history.git 
+ https://archive.org/details/git-history-of-linux
 
 Each time a new development tree was forked, I created
 a branch for the stable series to continue on.
@@ -88,7 +87,7 @@ of a challenge.
   However, this file has been there since 1.3.57
   I converted this hunk to a vmscan.c, dropped it into the
   tree and diffed from test3pre2 to find the real differences.
-  Seems to have done the right thing.  
+  Seems to have done the right thing.
 
 * Changelog entries.
 - Early entries came from:

@@ -1,4 +1,6 @@
-The various tarballs/patches live in dirs relevant to their versions..
+The various tarballs/patches live in dirs relevant to their versions
+in the 'binaries' topdir. You will need to download them all from
+kernel.org, and put them in a directory structure that looks like..
 
  0.x/
  1.0/
@@ -11,15 +13,15 @@ The various tarballs/patches live in dirs relevant to their versions..
  2.2/
  2.3/
  2.4/
- 2.5/
- 2.6/
 
-Changelogs where available, are pulled from the clogs/ dir.
+Changelogs where available, are pulled from the changelogs/ dir.
 
 To generate the git tree, run these commands in order..
+
 untar.sh
 make-diffs.sh
 import.sh
 
 These will call the ancillary scripts for each branch.
 
+You will need approximately 28G of disk space for the whole process.
