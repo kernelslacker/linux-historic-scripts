@@ -25,7 +25,7 @@ fi
 cp -rl linux-0.01 linux-git
 cd linux-git
 git init .
-find . -name .git -prune  -o -print | xargs git add
+git add --all
 git commit -a -F $FROM/changelogs/0.01.txt
 
 import()
@@ -36,11 +36,12 @@ import()
 		echo something bad happened.
 		exit
 	fi
-	find . -name .git -prune  -o -print | xargs git add
+	git add --all
 	for i in $(git status | grep deleted: |sed s/#// | sed s/deleted://)
 	do
-		git rm --quiet $i
+		git rm --ignore-unmatch --quiet $i
 	done
+	find . -type f -empty -exec git rm -f "{}" \;
 
 	git update-index --add
 	git update-index --remove
