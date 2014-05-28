@@ -186,6 +186,7 @@ done
 echo patching to 1.1.77
 cp -rl linux-1.1.76 linux-1.1.77
 cd linux-1.1.77
+chmod +w drivers/char/cyclades.c
 cat $FROM/1.1/patch77 | patch -p1 -s
 cd ..
 
