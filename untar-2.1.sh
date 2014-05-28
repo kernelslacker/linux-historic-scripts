@@ -2,6 +2,8 @@
 # 2.1.x
 BRANCH=2.1
 
+FROM=$(pwd)/binaries
+
 if [ ! -d unpack ]; then
   echo run from wrong dir.
   exit
@@ -15,7 +17,7 @@ untar()
 		echo $1 already exists, skipping.
 	else
 		echo Unpacking $1
-		tar zxf ../$BRANCH/linux-$1.tar.gz
+		tar zxf $FROM/$BRANCH/linux-$1.tar.gz
 		mv linux linux-$1
 	fi
 }
@@ -35,7 +37,7 @@ prepatch()
 		echo Patching to 2.1.$1pre$i
 		cp -rl linux-2.1.$(($1-1)) linux-2.1.$1pre$i
 		cd linux-2.1.$1pre$i
-		zcat ../../2.1/pre-patch-2.1.$1-$i.gz | patch -p1 -s
+		zcat $FROM/2.1/pre-patch-2.1.$1-$i.gz | patch -p1 -s
 		cd ..
 	done
 }
@@ -65,7 +67,7 @@ do
 0x030803
 EOF
 	sync
-	zcat ../../2.1/pre-patch-2.1.42-$i.gz | patch -p1 -s
+	zcat $FROM/2.1/pre-patch-2.1.42-$i.gz | patch -p1 -s
 	cd ..
 done
 untar 2.1.42
@@ -75,12 +77,12 @@ untar 2.1.43
 echo Patching to 2.1.44pre2
 cp -rl linux-2.1.43 linux-2.1.44pre2
 cd linux-2.1.44pre2
-zcat ../../2.1/pre-patch-2.1.44-2.gz | patch -p1 -s
+zcat $FROM/2.1/pre-patch-2.1.44-2.gz | patch -p1 -s
 cd ..
 echo Patching to 2.1.44pre3
 cp -rl linux-2.1.43 linux-2.1.44pre3
 cd linux-2.1.44pre3
-zcat ../../2.1/pre-patch-2.1.44-3.gz | patch -p1 -s
+zcat $FROM/2.1/pre-patch-2.1.44-3.gz | patch -p1 -s
 cd ..
 
 untar 2.1.44
@@ -102,7 +104,7 @@ untar 2.1.51
 #echo Patching to 2.1.52pre2
 #cp -rl linux-2.1.51 linux-2.1.52pre2
 #cd linux-2.1.52pre2
-#zcat ../../2.1/pre-patch-2.1.52-2.gz | patch -p1 -s
+#zcat $FROM/2.1/pre-patch-2.1.52-2.gz | patch -p1 -s
 #cd ..
 
 series 52 54
@@ -190,7 +192,7 @@ do
 	echo Patching to 2.1.127pre$i
 	cp -rl linux-2.1.126 linux-2.1.127pre$i
 	cd linux-2.1.127pre$i
-	zcat ../../2.1/pre-patch-2.1.127-$i.gz | patch -p1 -s
+	zcat $FROM/2.1/pre-patch-2.1.127-$i.gz | patch -p1 -s
 	cd ..
 done
 untar 2.1.127
@@ -204,24 +206,24 @@ untar 2.1.129
 echo Patching to 2.1.130pre2
 cp -rl linux-2.1.129 linux-2.1.130pre2
 cd linux-2.1.130pre2
-zcat ../../2.1/pre-patch-2.1.130-2.gz | patch -p1 -s
+zcat $FROM/2.1/pre-patch-2.1.130-2.gz | patch -p1 -s
 cd ..
 echo Patching to 2.1.130pre3
 cp -rl linux-2.1.129 linux-2.1.130pre3
 cd linux-2.1.130pre3
-zcat ../../2.1/pre-patch-2.1.130-3.gz | patch -p1 -s
+zcat $FROM/2.1/pre-patch-2.1.130-3.gz | patch -p1 -s
 cd ..
 untar 2.1.130
 
 echo Patching to 2.1.131pre2
 cp -rl linux-2.1.130 linux-2.1.131pre2
 cd linux-2.1.131pre2
-zcat ../../2.1/pre-patch-2.1.131-2.gz | patch -p1 -s
+zcat $FROM/2.1/pre-patch-2.1.131-2.gz | patch -p1 -s
 cd ..
 echo Patching to 2.1.131pre3
 cp -rl linux-2.1.130 linux-2.1.131pre3
 cd linux-2.1.131pre3
-zcat ../../2.1/pre-patch-2.1.131-3.gz | patch -p1 -s
+zcat $FROM/2.1/pre-patch-2.1.131-3.gz | patch -p1 -s
 cd ..
 untar 2.1.131
 
@@ -233,7 +235,7 @@ do
 	echo Patching to 2.1.133pre$i
 	cp -rl linux-2.1.132 linux-2.1.133pre$i
 	cd linux-2.1.133pre$i
-	zcat ../../2.1/pre-patch-2.1.133-$i.gz | patch -p1 -s
+	zcat $FROM/2.1/pre-patch-2.1.133-$i.gz | patch -p1 -s
 	cd ..
 done
 
