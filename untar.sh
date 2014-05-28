@@ -1,5 +1,7 @@
 #!/bin/bash
 
+pushd binaries
+
 # First normalise the tarball filenames to make parsing easier.
 if [ -f pre-0.96.tar.bz2 ]; then
 	mv pre-0.96.tar.bz2 linux-0.96pre.tar.bz2
@@ -17,6 +19,8 @@ do
 		bzip2 -9 linux-$i.tar
 	fi
 done
+
+popd
 
 #
 mkdir -p unpack
