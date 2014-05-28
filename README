@@ -1,3 +1,6 @@
+This is the set of scripts that I originally wrote to create the
+historic linux kernel tree at https://archive.org/details/git-history-of-linux
+
 The various tarballs/patches live in dirs relevant to their versions
 in the 'binaries' topdir. You will need to download them all from
 kernel.org, and put them in a directory structure that looks like..
