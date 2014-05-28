@@ -1,5 +1,7 @@
 #!/bin/bash
 
+FROM=$(pwd)
+
 if [ ! -d unpack ]; then
   echo run from wrong dir.
   exit
@@ -12,17 +14,19 @@ GIT_AUTHOR_NAME="Linus Torvalds"
 GIT_COMMITTER_EMAIL="torvalds@linuxfoundation.org"
 GIT_COMMITTER_NAME="Linus Torvalds"
 
-rm -f ../changelogs/missing_changelogs.txt
+rm -f $FROM/changelogs/missing_changelogs.txt
+
 if [ -d applied ]; then
 	mv applied/* .
 else
 	mkdir -p applied
 fi
+
 cp -rl linux-0.01 linux-git
 cd linux-git
-git-init-db
-find . -name .git -prune  -o -print | xargs git-add
-git commit -a -F ../../changelogs/0.01.txt
+git init .
+find . -name .git -prune  -o -print | xargs git add
+git commit -a -F $FROM/changelogs/0.01.txt
 
 import()
 {
@@ -32,20 +36,20 @@ import()
 		echo something bad happened.
 		exit
 	fi
-	find . -name .git -prune  -o -print | xargs git-add
+	find . -name .git -prune  -o -print | xargs git add
 	for i in $(git status | grep deleted: |sed s/#// | sed s/deleted://)
 	do
-		git-rm --quiet $i
+		git rm --quiet $i
 	done
 
-	git-update-index --add
-	git-update-index --remove
+	git update-index --add
+	git update-index --remove
 
-	if [ -f ../../changelogs/$*.txt ]; then
-		git commit -F ../../changelogs/$*.txt
-		cp ../../changelogs/$*.txt ../applied/
+	if [ -f $FROM/changelogs/$*.txt ]; then
+		git commit -F $FROM/changelogs/$*.txt
+		cp $FROM/changelogs/$*.txt ../applied/
 	else
-		echo $* >> ../../changelogs/missing_changelogs.txt
+		echo $* >> $FROM/changelogs/missing_changelogs.txt
 		git commit -m "Import $*"
 	fi
 	git tag $*
