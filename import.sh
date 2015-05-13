@@ -58,33 +58,110 @@ import()
 	echo
 }
 
-importseries()
-{
-	for ver in $@
-	do
-		import $ver
-	done
-}
-
-
-for ver in  0.10 0.11 0.12 \
-	0.95 0.95a 0.95c+ \
-	0.96a 0.96a-patch1 0.96a-patch2 0.96a-patch3 0.96a-patch4 0.96b 0.96b-patch1 0.96b-patch2 0.96c 0.96c-patch1 0.96c-patch2 0.96pre \
-	0.97 0.97.1 0.97.2 0.97.3 0.97.4 0.97.5 0.97.6 \
-	0.98 0.98.1 0.98.2 0.98.3 0.98.4 0.98.5 0.98.6 \
-	0.99 0.99.1 0.99.2 0.99.3 0.99.4 0.99.5 0.99.6 0.99.7 0.99.7A 0.99.8 0.99.9 0.99.10 0.99.11 0.99.11-patch1 0.99.12 0.99.12-patch1 0.99.13 0.99.13k 0.99.14 \
-	0.99.14a 0.99.14b 0.99.14c 0.99.14d 0.99.14e 0.99.14f 0.99.14g 0.99.14h 0.99.14i 0.99.14j 0.99.14k 0.99.14l 0.99.14m \
-	0.99.14n 0.99.14o 0.99.14p 0.99.14q 0.99.14r 0.99.14s 0.99.14t 0.99.14u 0.99.14v 0.99.14w 0.99.14x 0.99.14y 0.99.14z \
-	0.99.15 0.99.15a 0.99.15b 0.99.15c 0.99.15d 0.99.15e 0.99.15f 0.99.15g 0.99.15h 0.99.15i 0.99.15j 1.0pre1 1.0alpha \
-	1.0 1.0.1 1.0.2 1.0.3 1.0.4 1.0.5 1.0.6
-do
-	import $ver
-done
+import 0.10 
+import 0.11 
+import 0.12 
+import 0.95 
+import 0.95a 
+import 0.95c+ 
+import 0.96a 
+import 0.96a-patch1 
+import 0.96a-patch2 
+import 0.96a-patch3 
+import 0.96a-patch4 
+import 0.96b 
+import 0.96b-patch1 
+import 0.96b-patch2 
+import 0.96c 
+import 0.96c-patch1 
+import 0.96c-patch2 
+import 0.96pre 
+import 0.97 
+import 0.97.1 
+import 0.97.2 
+import 0.97.3 
+import 0.97.4 
+import 0.97.5 
+import 0.97.6 
+import 0.98 
+import 0.98.1 
+import 0.98.2 
+import 0.98.3 
+import 0.98.4 
+import 0.98.5 
+import 0.98.6 
+import 0.99 
+import 0.99.1 
+import 0.99.2 
+import 0.99.3 
+import 0.99.4 
+import 0.99.5 
+import 0.99.6 
+import 0.99.7 
+import 0.99.7A 
+import 0.99.8 
+import 0.99.9 
+import 0.99.10 
+import 0.99.11 
+import 0.99.11-patch1 
+import 0.99.12 
+import 0.99.12-patch1 
+import 0.99.13 
+import 0.99.13k 
+import 0.99.14 
+import 0.99.14a 
+import 0.99.14b 
+import 0.99.14c 
+import 0.99.14d 
+import 0.99.14e 
+import 0.99.14f 
+import 0.99.14g 
+import 0.99.14h 
+import 0.99.14i 
+import 0.99.14j 
+import 0.99.14k 
+import 0.99.14l 
+import 0.99.14m 
+import 0.99.14n 
+import 0.99.14o 
+import 0.99.14p 
+import 0.99.14q 
+import 0.99.14r 
+import 0.99.14s 
+import 0.99.14t 
+import 0.99.14u 
+import 0.99.14v 
+import 0.99.14w 
+import 0.99.14x 
+import 0.99.14y 
+import 0.99.14z 
+import 0.99.15 
+import 0.99.15a 
+import 0.99.15b 
+import 0.99.15c 
+import 0.99.15d 
+import 0.99.15e 
+import 0.99.15f 
+import 0.99.15g 
+import 0.99.15h 
+import 0.99.15i 
+import 0.99.15j 
+import 1.0pre1 
+import 1.0alpha 
+import 1.0 
+import 1.0.1 
+import 1.0.2 
+import 1.0.3 
+import 1.0.4 
+import 1.0.5 
+import 1.0.6 
 
 # 1.0 branched to 1.1 at 1.0.6
 git branch 1.0
 git checkout 1.0
-importseries 1.0.7 1.0.8 1.0.9
+import 1.0.7
+import 1.0.8
+import 1.0.9
 
 # Now do 1.1
 git checkout master
@@ -101,7 +178,9 @@ done
 # 1.2 branched to 1.3 at 1.2.10
 git branch 1.2
 git checkout 1.2
-importseries 1.2.11 1.2.12 1.2.13
+import 1.2.11
+import 1.2.12
+import 1.2.13
 
 # Now do 1.3
 git checkout master
@@ -142,9 +221,16 @@ done
 import 2.0.31
 
 # MISSING: 2.0.32pre3 2.0.32pre4
-importseries 2.0.32pre1 2.0.32pre2 2.0.32pre5 2.0.32pre6 2.0.32
+import 2.0.32pre1 
+import 2.0.32pre2 
+import 2.0.32pre5 
+import 2.0.32pre6 
+import 2.0.32
 
-importseries 2.0.33pre1 2.0.33pre2 2.0.33pre3 2.0.33
+import 2.0.33pre1 
+import 2.0.33pre2 
+import 2.0.33pre3 
+import 2.0.33
 
 # BROKEN: pre13 and 14 don't apply
 for ver in $(seq 2 10) 11b $(seq 15 16)
@@ -191,11 +277,17 @@ do
 done
 import 2.0.39
 
-importseries 2.0.40pre1 2.0.40pre2 2.0.40pre3
-for ver in $(seq 1 8)
-do
-	import 2.0.40-rc$ver
-done
+import 2.0.40pre1
+import 2.0.40pre2
+import 2.0.40pre3
+import 2.0.40-rc1
+import 2.0.40-rc2
+import 2.0.40-rc3
+import 2.0.40-rc4
+import 2.0.40-rc5
+import 2.0.40-rc6
+import 2.0.40-rc7
+import 2.0.40-rc8
 import 2.0.40
 
 
@@ -216,7 +308,8 @@ import 2.1.24
 import 2.1.25
 import 2.1.26
 import 2.1.27
-importseries 2.1.28pre1 2.1.28
+import 2.1.28pre1
+import 2.1.28
 import 2.1.29
 import 2.1.30
 import 2.1.31
@@ -224,29 +317,63 @@ import 2.1.32
 import 2.1.33
 import 2.1.34
 import 2.1.35
-importseries 2.1.36pre1 2.1.36
-importseries 2.1.37pre1 2.1.37pre2 2.1.37pre3 2.1.37pre4 2.1.37pre5 2.1.37pre6 2.1.37pre7 2.1.37
-importseries 2.1.38pre1 2.1.38
+import 2.1.36pre1 
+import 2.1.36
+import 2.1.37pre1 
+import 2.1.37pre2 
+import 2.1.37pre3 
+import 2.1.37pre4 
+import 2.1.37pre5 
+import 2.1.37pre6 
+import 2.1.37pre7 
+import 2.1.37
+import 2.1.38pre1 
+import 2.1.38
 import 2.1.39
 import 2.1.40
 import 2.1.41
-importseries 2.1.42pre1 2.1.42pre2 2.1.42
-importseries 2.1.43pre1 2.1.43
-importseries 2.1.44pre2 2.1.44pre3 2.1.44
-importseries 2.1.45pre1 2.1.45pre2 2.1.45pre3 2.1.45pre4 2.1.45pre5 2.1.45pre6 2.1.45pre7 2.1.45pre8 2.1.45pre9 2.1.45pre10 2.1.45
-importseries 2.1.46pre1 2.1.46
+import 2.1.42pre1 
+import 2.1.42pre2 
+import 2.1.42
+import 2.1.43pre1 
+import 2.1.43
+import 2.1.44pre2 
+import 2.1.44pre3 
+import 2.1.44
+import 2.1.45pre1 
+import 2.1.45pre2 
+import 2.1.45pre3 
+import 2.1.45pre4 
+import 2.1.45pre5 
+import 2.1.45pre6 
+import 2.1.45pre7 
+import 2.1.45pre8 
+import 2.1.45pre9 
+import 2.1.45pre10 
+import 2.1.45
+import 2.1.46pre1 
+import 2.1.46
 import 2.1.47
-importseries 2.1.48pre1 2.1.48pre2 2.1.48pre3 2.1.48pre4 2.1.48
-importseries 2.1.49pre1 2.1.49
+import 2.1.48pre1 
+import 2.1.48pre2 
+import 2.1.48pre3 
+import 2.1.48pre4 
+import 2.1.48
+import 2.1.49pre1 
+import 2.1.49
 import 2.1.50
 import 2.1.51pre1
 import 2.1.51
-#importseries 2.1.52pre1 2.1.52pre2
+#WTF?
+#import 2.1.52pre1 
+#import 2.1.52pre2
 import 2.1.52
 import 2.1.53
 import 2.1.54
-importseries 2.1.55pre1 2.1.55
-importseries 2.1.56pre1 2.1.56
+import 2.1.55pre1
+import 2.1.55
+import 2.1.56pre1 
+import 2.1.56
 import 2.1.57
 import 2.1.58
 import 2.1.59
@@ -258,7 +385,8 @@ import 2.1.64
 import 2.1.65
 import 2.1.66
 import 2.1.67
-importseries 2.1.68pre1 2.1.68
+import 2.1.68pre1 
+import 2.1.68
 import 2.1.69
 import 2.1.70
 import 2.1.71
@@ -268,63 +396,163 @@ import 2.1.74
 import 2.1.75
 import 2.1.76
 import 2.1.77
-importseries 2.1.78pre1 2.1.78pre2 2.1.78pre3 2.1.78
-importseries 2.1.79pre1 2.1.79
-importseries 2.1.80pre1 2.1.80pre2 2.1.80pre3 2.1.80pre4 2.1.80
-importseries 2.1.81pre1 2.1.81
+import 2.1.78pre1 
+import 2.1.78pre2 
+import 2.1.78pre3 
+import 2.1.78
+import 2.1.79pre1 
+import 2.1.79
+import 2.1.80pre1 
+import 2.1.80pre2 
+import 2.1.80pre3 
+import 2.1.80pre4 
+import 2.1.80
+import 2.1.81pre1 
+import 2.1.81
 import 2.1.82
 import 2.1.83
 import 2.1.84
 import 2.1.85
 import 2.1.86
-importseries 2.1.87pre1 2.1.87
+import 2.1.87pre1 
+import 2.1.87
 import 2.1.88
-importseries 2.1.89pre1 2.1.89pre2 2.1.89pre3 2.1.89pre4 2.1.89pre5 2.1.89
-importseries 2.1.90pre1 2.1.90pre2 2.1.90pre3 2.1.90
-importseries 2.1.91pre1 2.1.91pre2 2.1.91
-importseries 2.1.92pre1 2.1.92pre2 2.1.92
+import 2.1.89pre1 
+import 2.1.89pre2 
+import 2.1.89pre3 
+import 2.1.89pre4 
+import 2.1.89pre5 
+import 2.1.89
+import 2.1.90pre1 
+import 2.1.90pre2 
+import 2.1.90pre3 
+import 2.1.90
+import 2.1.91pre1 
+import 2.1.91pre2 
+import 2.1.91
+import 2.1.92pre1 
+import 2.1.92pre2 
+import 2.1.92
 import 2.1.93
 import 2.1.94
-importseries 2.1.95pre1 2.1.95
-importseries 2.1.96pre1 2.1.96
+import 2.1.95pre1 
+import 2.1.95
+import 2.1.96pre1 
+import 2.1.96
 import 2.1.97
 import 2.1.98
-importseries 2.1.99pre1 2.1.99pre2 2.1.99pre3 2.1.99
-importseries 2.1.100pre1 2.1.100pre2 2.1.100pre3 2.1.100
+import 2.1.99pre1
+import 2.1.99pre2 
+import 2.1.99pre3 
+import 2.1.99
+import 2.1.100pre1 
+import 2.1.100pre2 
+import 2.1.100pre3 
+import 2.1.100
 import 2.1.101
-importseries 2.1.102pre1 2.1.102pre2 2.1.102
+import 2.1.102pre1 
+import 2.1.102pre2 
+import 2.1.102
 import 2.1.103
-importseries 2.1.104pre1 2.1.104
+import 2.1.104pre1 
+import 2.1.104
 import 2.1.105
-importseries 2.1.106pre1 2.1.106
-importseries 2.1.107pre1 2.1.107pre2 2.1.107
-importseries 2.1.108pre1 2.1.108
-importseries 2.1.109pre1 2.1.109pre2 2.1.109
-importseries 2.1.110pre1 2.1.110pre2 2.1.110pre3 2.1.110
-importseries 2.1.111pre1 2.1.111
-importseries 2.1.112pre1 2.1.112pre2 2.1.112
+import 2.1.106pre1 
+import 2.1.106
+import 2.1.107pre1 
+import 2.1.107pre2 
+import 2.1.107
+import 2.1.108pre1 
+import 2.1.108
+import 2.1.109pre1 
+import 2.1.109pre2 
+import 2.1.109
+import 2.1.110pre1 
+import 2.1.110pre2 
+import 2.1.110pre3 
+import 2.1.110
+import 2.1.111pre1 
+import 2.1.111
+import 2.1.112pre1 
+import 2.1.112pre2 
+import 2.1.112
 import 2.1.113
 import 2.1.114
-importseries 2.1.115pre1 2.1.115pre2 2.1.115pre3 2.1.115pre4 2.1.115
-importseries 2.1.116pre1 2.1.116pre2 2.1.116
-importseries 2.1.117pre1 2.1.117
+import 2.1.115pre1 
+import 2.1.115pre2 
+import 2.1.115pre3 
+import 2.1.115pre4 
+import 2.1.115
+import 2.1.116pre1 
+import 2.1.116pre2 
+import 2.1.116
+import 2.1.117pre1 
+import 2.1.117
 import 2.1.118
-importseries 2.1.119pre1 2.1.119
-importseries 2.1.120pre1 2.1.120pre2 2.1.120pre3 2.1.120
-importseries 2.1.121pre1 2.1.121
-importseries 2.1.122pre1 2.1.122pre2 2.1.122pre3 2.1.122
-importseries 2.1.123pre1 2.1.123pre2 2.1.123pre3 2.1.123
-importseries 2.1.124pre1 2.1.124pre2 2.1.124
-importseries 2.1.125pre1 2.1.125pre2 2.1.125
-importseries 2.1.126pre1 2.1.126pre2 2.1.126
-importseries 2.1.127pre1 2.1.127pre2 2.1.127pre3 2.1.127pre6 2.1.127pre7 2.1.127
-importseries 2.1.128pre1 2.1.128
-importseries 2.1.129pre1 2.1.129pre2 2.1.129pre3 2.1.129pre4 2.1.129pre5 2.1.129pre6 2.1.129
-importseries 2.1.130pre2 2.1.130pre3 2.1.130
-importseries 2.1.131pre2 2.1.131pre3 2.1.131
-importseries 2.1.132pre1 2.1.132pre2 2.1.132pre3 2.1.132pre4 2.1.132
-importseries 2.1.133pre1 2.1.133pre3 2.1.133pre4 2.1.133pre5
-importseries 2.2.0pre1 2.2.0pre2 2.2.0pre3 2.2.0pre4 2.2.0pre5 2.2.0pre6 2.2.0pre7 2.2.0pre8 2.2.0pre9
+import 2.1.119pre1 
+import 2.1.119
+import 2.1.120pre1 
+import 2.1.120pre2 
+import 2.1.120pre3 
+import 2.1.120
+import 2.1.121pre1 
+import 2.1.121
+import 2.1.122pre1 
+import 2.1.122pre2 
+import 2.1.122pre3 
+import 2.1.122
+import 2.1.123pre1 
+import 2.1.123pre2 
+import 2.1.123pre3 
+import 2.1.123
+import 2.1.124pre1 
+import 2.1.124pre2 
+import 2.1.124
+import 2.1.125pre1 
+import 2.1.125pre2 
+import 2.1.125
+import 2.1.126pre1 
+import 2.1.126pre2 
+import 2.1.126
+import 2.1.127pre1 
+import 2.1.127pre2 
+import 2.1.127pre3 
+import 2.1.127pre6 
+import 2.1.127pre7 
+import 2.1.127
+import 2.1.128pre1 
+import 2.1.128
+import 2.1.129pre1 
+import 2.1.129pre2 
+import 2.1.129pre3 
+import 2.1.129pre4 
+import 2.1.129pre5 
+import 2.1.129pre6 
+import 2.1.129
+import 2.1.130pre2 
+import 2.1.130pre3 
+import 2.1.130
+import 2.1.131pre2 
+import 2.1.131pre3 
+import 2.1.131
+import 2.1.132pre1 
+import 2.1.132pre2 
+import 2.1.132pre3 
+import 2.1.132pre4 
+import 2.1.132
+import 2.1.133pre1 
+import 2.1.133pre3 
+import 2.1.133pre4 
+import 2.1.133pre5 
+import 2.2.0pre1 
+import 2.2.0pre2 
+import 2.2.0pre3 
+import 2.2.0pre4 
+import 2.2.0pre5 
+import 2.2.0pre6 
+import 2.2.0pre7 
+import 2.2.0pre8 
+import 2.2.0pre9
 
 # Now do 2.2
 
@@ -332,23 +560,34 @@ import 2.2.0
 import 2.2.1
 
 # 2.2.2
-for ver in 2.2.2pre1 2.2.2pre2 2.2.2pre4 2.2.2pre5 2.2.2
-do
-	import $ver
-done
+import 2.2.2pre1 
+import 2.2.2pre2 
+import 2.2.2pre4 
+import 2.2.2pre5 
+import 2.2.2
 
 # 2.2.3
-importseries 2.2.3pre1 2.2.3pre2 2.2.3pre3 2.2.3
+import 2.2.3pre1 
+import 2.2.3pre2 
+import 2.2.3pre3 
+import 2.2.3
 
 # 2.2.4
 # MISSING: 2.2.4pre1 through pre3, and pre5
-importseries 2.2.4pre4 2.2.4pre6 2.2.4
+import 2.2.4pre4 
+import 2.2.4pre6 
+import 2.2.4
 
 # 2.2.5
-importseries 2.2.5pre1 2.2.5pre2 2.2.5
+import 2.2.5pre1 
+import 2.2.5pre2 
+import 2.2.5
 
 # 2.2.6
-importseries 2.2.6pre1 2.2.6pre2 2.2.6pre3 2.2.6
+import 2.2.6pre1 
+import 2.2.6pre2 
+import 2.2.6pre3 
+import 2.2.6
 
 # 2.2.7
 for ver in $(seq 1 4)
@@ -371,7 +610,12 @@ git checkout 2.2
 import 2.2.9
 
 
-importseries 2.2.10pre1 2.2.10pre2 2.2.10pre3 2.2.10pre4 2.2.10pre5 2.2.10
+import 2.2.10pre1 
+import 2.2.10pre2 
+import 2.2.10pre3 
+import 2.2.10pre4 
+import 2.2.10pre5 
+import 2.2.10
 
 # Alan took over at 2.2.11pre
 GIT_AUTHOR_EMAIL="alan@lxorguk.ukuu.org.uk"
@@ -460,7 +704,9 @@ do
 done
 import 2.2.22
 
-importseries 2.2.23-rc1 2.2.23-rc2 2.2.23
+import 2.2.23-rc1
+import 2.2.23-rc2 
+import 2.2.23
 
 for ver in $(seq 1 5)
 do
@@ -469,7 +715,10 @@ done
 import 2.2.24
 import 2.2.25
 import 2.2.26
-importseries 2.2.27pre1 2.2.27pre2 2.2.27-rc1 2.2.27-rc2
+import 2.2.27pre1 
+import 2.2.27pre2 
+import 2.2.27-rc1 
+import 2.2.27-rc2
 
 # Now do 2.3
 GIT_AUTHOR_EMAIL="torvalds@linuxfoundation.org"
