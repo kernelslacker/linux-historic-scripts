@@ -25,7 +25,7 @@ git commit -a -F $FROM/changelogs/0.01.txt
 import()
 {
 	echo importing $*
-	git apply --whitespace=nowarn ../linux-$*.diff
+	git apply --whitespace=nowarn $FROM/diffs/linux-$*.diff
 	if [ $? -ne "0" ]; then
 		echo something bad happened.
 		exit
