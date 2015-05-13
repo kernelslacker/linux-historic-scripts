@@ -16,12 +16,6 @@ GIT_COMMITTER_NAME="Linus Torvalds"
 
 rm -f $FROM/changelogs/missing_changelogs.txt
 
-if [ -d applied ]; then
-	mv applied/* .
-else
-	mkdir -p applied
-fi
-
 cp -rl linux-0.01 linux-git
 cd linux-git
 git init .
@@ -48,13 +42,11 @@ import()
 
 	if [ -f $FROM/changelogs/$*.txt ]; then
 		git commit -F $FROM/changelogs/$*.txt
-		cp $FROM/changelogs/$*.txt ../applied/
 	else
 		echo $* >> $FROM/changelogs/missing_changelogs.txt
 		git commit -m "Import $*"
 	fi
 	git tag $*
-	mv ../linux-$*.diff ../applied/
 	echo
 }
 
@@ -240,7 +232,6 @@ done
 # 2.0.34pre16 == 2.0.34
 #import 2.0.34
 git tag 2.0.34
-mv linux-2.0.34.diff applied/
 
 for ver in $(seq 1 9)
 do
@@ -254,7 +245,6 @@ do
 done
 # 2.0.36pre22 was released as 2.0.36 without change.
 git tag 2.0.36
-mv linux-2.0.36.diff applied/
 
 for ver in $(seq 1 12)
 do
@@ -265,7 +255,6 @@ import 2.0.37
 import 2.0.38pre1
 # 2.0.38pre1 == 2.0.38 final
 git tag 2.0.38
-mv linux-2.0.38.diff applied/
 
 GIT_AUTHOR_EMAIL="tao@acc.umu.se"
 GIT_AUTHOR_NAME="David Weinehall"
