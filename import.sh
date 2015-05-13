@@ -14,8 +14,6 @@ GIT_AUTHOR_NAME="Linus Torvalds"
 GIT_COMMITTER_EMAIL="torvalds@linuxfoundation.org"
 GIT_COMMITTER_NAME="Linus Torvalds"
 
-rm -f $FROM/changelogs/missing_changelogs.txt
-
 cp -rl linux-0.01 linux-git
 cd linux-git
 git init .
@@ -43,7 +41,6 @@ import()
 	if [ -f $FROM/changelogs/$*.txt ]; then
 		git commit -F $FROM/changelogs/$*.txt
 	else
-		echo $* >> $FROM/changelogs/missing_changelogs.txt
 		git commit -m "Import $*"
 	fi
 	git tag $*
