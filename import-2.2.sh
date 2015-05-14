@@ -36,17 +36,20 @@ import_2_2()
   import 2.2.6
 
   # 2.2.7
-  for ver in $(seq 1 4)
-  do
-    import 2.2.7pre$ver
-  done
+  import 2.2.7pre1
+  import 2.2.7pre2
+  import 2.2.7pre3
+  import 2.2.7pre4
   import 2.2.7
 
   # 2.2.8
-  for ver in $(seq 1 7)
-  do
-    import 2.2.8pre$ver
-  done
+  import 2.2.8pre1
+  import 2.2.8pre2
+  import 2.2.8pre3
+  import 2.2.8pre4
+  import 2.2.8pre5
+  import 2.2.8pre6
+  import 2.2.8pre7
   import 2.2.8
 
   # 2.2 branched to 2.3 at 2.2.8
@@ -68,96 +71,210 @@ import_2_2()
   GIT_COMMITTER_EMAIL="alan@lxorguk.ukuu.org.uk"
   GIT_COMMITTER_NAME="Alan Cox"
 
-  for ver in $(seq 1 7)
-  do
-    import 2.2.11pre$ver
-  done
+  import 2.2.11pre1
+  import 2.2.11pre2
+  import 2.2.11pre3
+  import 2.2.11pre4
+  import 2.2.11pre5
+  import 2.2.11pre6
+  import 2.2.11pre7
   import 2.2.11
 
+  import 2.2.12pre1
   # MISSING: 2.2.12pre2
-  for ver in 1 $(seq 3 8)
-  do
-    import 2.2.12pre$ver
-  done
+  import 2.2.12pre3
+  import 2.2.12pre4
+  import 2.2.12pre5
+  import 2.2.12pre6
+  import 2.2.12pre7
+  import 2.2.12pre8
   import 2.2.12
 
-  for ver in $(seq 1 18)
-  do
-    import 2.2.13pre$ver
-  done
+  import 2.2.13pre1
+  import 2.2.13pre2
+  import 2.2.13pre3
+  import 2.2.13pre4
+  import 2.2.13pre5
+  import 2.2.13pre6
+  import 2.2.13pre7
+  import 2.2.13pre8
+  import 2.2.13pre9
+  import 2.2.13pre10
+  import 2.2.13pre11
+  import 2.2.13pre12
+  import 2.2.13pre13
+  import 2.2.13pre14
+  import 2.2.13pre15
+  import 2.2.13pre16
+  import 2.2.13pre17
+  import 2.2.13pre18
   import 2.2.13
 
-  for ver in $(seq 1 18)
-  do
-    import 2.2.14pre$ver
-  done
+  import 2.2.14pre1
+  import 2.2.14pre2
+  import 2.2.14pre3
+  import 2.2.14pre4
+  import 2.2.14pre5
+  import 2.2.14pre6
+  import 2.2.14pre7
+  import 2.2.14pre8
+  import 2.2.14pre9
+  import 2.2.14pre10
+  import 2.2.14pre11
+  import 2.2.14pre12
+  import 2.2.14pre13
+  import 2.2.14pre14
+  import 2.2.14pre15
+  import 2.2.14pre16
+  import 2.2.14pre17
+  import 2.2.14pre18
   import 2.2.14
 
-  for ver in $(seq 1 20)
-  do
-    import 2.2.15pre$ver
-  done
+  import 2.2.15pre1
+  import 2.2.15pre2
+  import 2.2.15pre3
+  import 2.2.15pre4
+  import 2.2.15pre5
+  import 2.2.15pre6
+  import 2.2.15pre7
+  import 2.2.15pre8
+  import 2.2.15pre9
+  import 2.2.15pre10
+  import 2.2.15pre11
+  import 2.2.15pre12
+  import 2.2.15pre13
+  import 2.2.15pre14
+  import 2.2.15pre15
+  import 2.2.15pre16
+  import 2.2.15pre17
+  import 2.2.15pre18
+  import 2.2.15pre19
+  import 2.2.15pre20
   import 2.2.15
 
   # MISSING: linux-2.2.16pre1
-  for ver in $(seq 2 8)
-  do
-    import 2.2.16pre$ver
-  done
+  import 2.2.16pre2
+  import 2.2.16pre3
+  import 2.2.16pre4
+  import 2.2.16pre5
+  import 2.2.16pre6
+  import 2.2.16pre7
+  import 2.2.16pre8
   import 2.2.16
 
-  for ver in $(seq 1 20)
-  do
-    import 2.2.17pre$ver
-  done
+  import 2.2.17pre1
+  import 2.2.17pre2
+  import 2.2.17pre3
+  import 2.2.17pre4
+  import 2.2.17pre5
+  import 2.2.17pre6
+  import 2.2.17pre7
+  import 2.2.17pre8
+  import 2.2.17pre9
+  import 2.2.17pre10
+  import 2.2.17pre11
+  import 2.2.17pre12
+  import 2.2.17pre13
+  import 2.2.17pre14
+  import 2.2.17pre15
+  import 2.2.17pre16
+  import 2.2.17pre17
+  import 2.2.17pre18
+  import 2.2.17pre19
+  import 2.2.17pre20
   import 2.2.17
 
-  for ver in $(seq 1 26)
-  do
-    import 2.2.18pre$ver
-  done
+  import 2.2.18pre1
+  import 2.2.18pre2
+  import 2.2.18pre3
+  import 2.2.18pre4
+  import 2.2.18pre5
+  import 2.2.18pre6
+  import 2.2.18pre7
+  import 2.2.18pre8
+  import 2.2.18pre9
+  import 2.2.18pre10
+  import 2.2.18pre11
+  import 2.2.18pre12
+  import 2.2.18pre13
+  import 2.2.18pre14
+  import 2.2.18pre15
+  import 2.2.18pre16
+  import 2.2.18pre17
+  import 2.2.18pre18
+  import 2.2.18pre19
+  import 2.2.18pre20
+  import 2.2.18pre21
+  import 2.2.18pre22
+  import 2.2.18pre23
+  import 2.2.18pre24
+  import 2.2.18pre25
+  import 2.2.18pre26
   # pre27 was pre26 with some binary files removed.
   # pre27 == final
   git tag 2.2.18pre27
   git tag 2.2.18
 
-  for ver in $(seq 1 18)
-  do
-    import 2.2.19pre$ver
-  done
+  import 2.2.19pre1
+  import 2.2.19pre2
+  import 2.2.19pre3
+  import 2.2.19pre4
+  import 2.2.19pre5
+  import 2.2.19pre6
+  import 2.2.19pre7
+  import 2.2.19pre8
+  import 2.2.19pre9
+  import 2.2.19pre10
+  import 2.2.19pre11
+  import 2.2.19pre12
+  import 2.2.19pre13
+  import 2.2.19pre14
+  import 2.2.19pre15
+  import 2.2.19pre16
+  import 2.2.19pre17
+  import 2.2.19pre18
   import 2.2.19
 
-  for ver in $(seq 1 12)
-  do
-    import 2.2.20pre$ver
-  done
+  import 2.2.20pre1
+  import 2.2.20pre2
+  import 2.2.20pre3
+  import 2.2.20pre4
+  import 2.2.20pre5
+  import 2.2.20pre6
+  import 2.2.20pre7
+  import 2.2.20pre8
+  import 2.2.20pre9
+  import 2.2.20pre10
+  import 2.2.20pre11
+  import 2.2.20pre12
   import 2.2.20
 
-  for ver in $(seq 1 4)
-  do
-    import 2.2.21pre$ver
-  done
-  for ver in $(seq 1 4)
-  do
-    import 2.2.21-rc$ver
-  done
+  import 2.2.21pre1
+  import 2.2.21pre2
+  import 2.2.21pre3
+  import 2.2.21pre4
+  import 2.2.21-rc1
+  import 2.2.21-rc2
+  import 2.2.21-rc3
+  import 2.2.21-rc4
   import 2.2.21
 
-  for ver in $(seq 1 3)
-  do
-    import 2.2.22-rc$ver
-  done
+  import 2.2.22-rc1
+  import 2.2.22-rc2
+  import 2.2.22-rc3
   import 2.2.22
 
   import 2.2.23-rc1
   import 2.2.23-rc2 
   import 2.2.23
 
-  for ver in $(seq 1 5)
-  do
-    import 2.2.24-rc$ver
-  done
+  import 2.2.24-rc1
+  import 2.2.24-rc2
+  import 2.2.24-rc3
+  import 2.2.24-rc4
+  import 2.2.24-rc5
   import 2.2.24
+
   import 2.2.25
   import 2.2.26
   import 2.2.27pre1 
