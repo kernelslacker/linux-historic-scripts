@@ -13,8 +13,9 @@ linus()
 
 import()
 {
-	echo importing $*
-	git apply --whitespace=nowarn $FROM/diffs/linux-$*.diff
+	VERSION=$1
+	echo importing $VERSION
+	git apply --whitespace=nowarn $FROM/diffs/linux-$VERSION.diff
 	if [ $? -ne "0" ]; then
 		echo something bad happened.
 		exit
@@ -29,12 +30,12 @@ import()
 	git update-index --add
 	git update-index --remove
 
-	if [ -f $FROM/changelogs/$*.txt ]; then
-		git commit -F $FROM/changelogs/$*.txt
+	if [ -f $FROM/changelogs/$VERSION.txt ]; then
+		git commit -F $FROM/changelogs/$VERSION.txt
 	else
-		git commit -m "Import $*"
+		git commit -m "Import $VERSION"
 	fi
-	git tag $*
+	git tag $VERSION
 	echo
 }
 
