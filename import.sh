@@ -18,7 +18,7 @@ import()
 	  DATE=$2
 	else
 	  # This is just placeholder stuff until every import is annotated.
-	  DATE=$(date -R --date='@700000000')
+	  DATE=$(date -R)
 	fi
 	echo importing $VERSION
 	git apply --whitespace=nowarn $FROM/diffs/linux-$VERSION.diff
