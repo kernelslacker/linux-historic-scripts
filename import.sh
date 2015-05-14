@@ -57,6 +57,7 @@ fi
 rm -rf linux-git
 cp -rl linux-0.01 linux-git
 cd linux-git
+linus
 git init .
 git add --all
 git commit -a -F $FROM/changelogs/0.01.txt --date="Tue Sep 17 17:29:55 1991 +0000"
