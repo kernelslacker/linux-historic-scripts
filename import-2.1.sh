@@ -5,10 +5,29 @@ import_2_1()
   git checkout master
   linus
 
-  for ver in $(seq 0 22)
-  do
-    import 2.1.$ver
-  done
+  import 2.1.0
+  import 2.1.1
+  import 2.1.2
+  import 2.1.3
+  import 2.1.4
+  import 2.1.5
+  import 2.1.6
+  import 2.1.7
+  import 2.1.8
+  import 2.1.9
+  import 2.1.10
+  import 2.1.11
+  import 2.1.12
+  import 2.1.13
+  import 2.1.14
+  import 2.1.15
+  import 2.1.16
+  import 2.1.17
+  import 2.1.18
+  import 2.1.19
+  import 2.1.20
+  import 2.1.21
+  import 2.1.22
   import 2.1.23pre1
   import 2.1.23
   import 2.1.24
