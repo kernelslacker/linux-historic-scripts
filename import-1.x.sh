@@ -3,19 +3,19 @@
 import_1_x()
 {
   import 1.0 "Sat Mar 12 12:00:00 1994 -0600"
-  import 1.0.1 "Sat Mar 12 12:00:00 1994 -0600"
-  import 1.0.2 "Sat Mar 12 12:00:00 1994 -0600"
-  import 1.0.3 "Sat Mar 12 12:00:00 1994 -0600"
-  import 1.0.4 "Sat Mar 12 12:00:00 1994 -0600"
-  import 1.0.5 "Sat Mar 12 12:00:00 1994 -0600"
-  import 1.0.6 "Sat Mar 12 12:00:00 1994 -0600"
+  import 1.0.1 "Wed Mar 16 12:00:00 1994 -0600"
+  import 1.0.2 "Fri Mar 18 12:00:00 1994 -0600"
+  import 1.0.3 "Mon Mar 21 12:00:00 1994 -0600"
+  import 1.0.4 "Tue Mar 22 12:00:00 1994 -0600"
+  import 1.0.5 "Mon Mar 28 12:00:00 1994 -0600"
+  import 1.0.6 "Sun Apr  3 12:00:00 1994 -0600"
 
   # 1.0 branched to 1.1 at 1.0.6
   git branch 1.0
   git checkout 1.0
-  import 1.0.7
-  import 1.0.8
-  import 1.0.9
+  import 1.0.7 "Wed Apr  6 12:00:00 1994 -0600"
+  import 1.0.8 "Thu Apr  7 12:00:00 1994 -0600"
+  import 1.0.9 "Sat Apr 16 12:00:00 1994 -0600"
 
   # Now do 1.1
   git checkout master
