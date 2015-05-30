@@ -84,7 +84,7 @@ import_2_0()
   import 2.0.34pre16  "Thu May 21 01:03:34 1998 +0000"
   # 2.0.34pre16 == 2.0.34
   #import 2.0.34
-  git tag 2.0.34      "Wed Jun  3 18:31:00 1998 +0000"
+  git tag 2.0.34    #  "Wed Jun  3 18:31:00 1998 +0000"
 
   import 2.0.35pre1 "Sun Jun 21 19:54:01 1998 +0000"
   import 2.0.35pre2 "Mon Jun 29 17:46:22 1998 +0000"
@@ -121,7 +121,7 @@ import_2_0()
   import 2.0.36pre21 "Wed Nov 11 15:10:48 1998 +0000"
   import 2.0.36pre22 "Sat Nov 14 02:15:46 1998 +0000"
   # 2.0.36pre22 was released as 2.0.36 without change.
-  git tag 2.0.36     "Sun Nov 15 13:48:00 1998 +0000"
+  git tag 2.0.36     # "Sun Nov 15 13:48:00 1998 +0000"
 
   # the dates in the patches are screwed. got them from the announce emails.
   import 2.0.37pre1  "Tue Dec  8 03:06:00 1998 +0000"
@@ -140,7 +140,7 @@ import_2_0()
 
   import 2.0.38pre1
   # 2.0.38pre1 == 2.0.38 final
-  git tag 2.0.38 "Wed Aug 25 18:08:00 1999 +0000"
+  git tag 2.0.38 # "Wed Aug 25 18:08:00 1999 +0000"
 
   GIT_AUTHOR_EMAIL="tao@acc.umu.se"
   GIT_AUTHOR_NAME="David Weinehall"
