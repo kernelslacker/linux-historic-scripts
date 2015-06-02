@@ -139,7 +139,7 @@ import_2_0()
   import 2.0.37pre12 "Thu May 13 14:21:00 1999 +0000"
   import 2.0.37      "Sun Jun 13 14:01:00 1999 +0000"
 
-  import 2.0.38pre1
+  import 2.0.38pre1  "Fri Aug 13 16:37:00 1999 +0000"
   # 2.0.38pre1 == 2.0.38 final
   git tag 2.0.38 # "Wed Aug 25 18:08:00 1999 +0000"
 
