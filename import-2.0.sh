@@ -124,18 +124,19 @@ import_2_0()
   git tag 2.0.36     # "Sun Nov 15 13:48:00 1998 +0000"
 
   # the dates in the patches are screwed. got them from the announce emails.
+  # and where absent, the timestamps in alans homedir on kernel.org/zeniv
   import 2.0.37pre1  "Tue Dec  8 03:06:00 1998 +0000"
   import 2.0.37pre2  "Fri Dec 11 23:11:00 1998 +0000"
-  import 2.0.37pre3  ""
-  import 2.0.37pre4  ""
-  import 2.0.37pre5  ""
-  import 2.0.37pre6  ""
-  import 2.0.37pre7  ""
-  import 2.0.37pre8  ""
-  import 2.0.37pre9  ""
-  import 2.0.37pre10 ""
-  import 2.0.37pre11 ""
-  import 2.0.37pre12 ""
+  import 2.0.37pre3  "Tue Dec 15 00:00:00 1998 +0000"
+  import 2.0.37pre4  "Mon Dec 28 06:43:00 1998 +0000"
+  import 2.0.37pre5  "Sun Jan 31 20:50:00 1999 +0000"
+  import 2.0.37pre6  "Thu Feb 11 14:13:00 1999 +0000"
+  import 2.0.37pre7  "Tue Mar  2 04:06:29 1999 +0000"
+  import 2.0.37pre8  "Thu Mar  4 03:51:00 1999 +0000"
+  import 2.0.37pre9  "Fri Mar 26 19:10:59 1999 +0000"
+  import 2.0.37pre10 "Wed Apr 14 23:25:10 1999 +0000"
+  import 2.0.37pre11 "Tue Apr 27 14:58:41 1999 +0000"
+  import 2.0.37pre12 "Thu May 13 14:21:00 1999 +0000"
   import 2.0.37      "Sun Jun 13 14:01:00 1999 +0000"
 
   import 2.0.38pre1
