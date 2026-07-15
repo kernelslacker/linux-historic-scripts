@@ -11,6 +11,7 @@ import os
 import shutil
 import subprocess
 import sys
+from collections.abc import Callable
 from pathlib import Path
 
 ROOT: Path = Path(__file__).resolve().parent
@@ -125,6 +126,31 @@ def extract_to(archive: Path, dest: Path) -> None:
 def hardlink_tree(src: Path, dest: Path) -> None:
     """Copy a tree via hardlinks, like `cp -rl src dest`."""
     shutil.copytree(src, dest, copy_function=os.link)
+
+
+def build_patched_tree(
+    base: Path, dest: Path, apply_fn: Callable[[Path], None]
+) -> None:
+    """Hardlink-copy `base` under a temp name, run `apply_fn(tmp)`, then
+    rename into `dest` only once it succeeds.
+
+    A run interrupted between the hardlink copy and the patch completing
+    (Ctrl-C, a missing `patch` binary) leaves the temp dir behind, not
+    `dest` -- so a later run's `dest.exists()` skip check won't mistake a
+    half-patched tree for a finished one.
+    """
+    tmp: Path = dest.with_name(dest.name + ".tmp")
+    if tmp.exists():
+        shutil.rmtree(tmp)
+    hardlink_tree(base, tmp)
+    try:
+        apply_fn(tmp)
+    except BaseException:
+        shutil.rmtree(tmp, ignore_errors=True)
+        raise
+    if dest.exists():
+        shutil.rmtree(dest)
+    tmp.rename(dest)
 
 
 def patch_tree(dest: Path, patch_bytes: bytes, name: str, strict: bool) -> None:

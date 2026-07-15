@@ -3,14 +3,13 @@
 
 import argparse
 import os
-import shutil
 import subprocess
 from pathlib import Path
 
 from linux_hist_common import (
     UNPACK,
+    build_patched_tree,
     extract_to,
-    hardlink_tree,
     log,
     patch_tree,
     tree_dir,
@@ -42,14 +41,13 @@ def apply_patch(v: Version, force: bool, strict: bool) -> None:
     if not patchfile.exists():
         raise FileNotFoundError(patchfile)
     log(f"patching to {v.name}")
-    if dest.exists():
-        shutil.rmtree(dest)
-    hardlink_tree(base, dest)
     cat_cmd: str = "bzcat" if v.compression == "bz2" else "zcat"
     patch_bytes: bytes = subprocess.run(
         [cat_cmd, str(patchfile)], capture_output=True, check=True
     ).stdout
-    patch_tree(dest, patch_bytes, v.name, strict)
+    build_patched_tree(
+        base, dest, lambda tmp: patch_tree(tmp, patch_bytes, v.name, strict)
+    )
 
 
 def fix_permissions(v: Version) -> None:

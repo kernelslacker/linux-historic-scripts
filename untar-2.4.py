@@ -7,14 +7,13 @@
 """
 
 import argparse
-import shutil
 import subprocess
 from pathlib import Path
 
 from linux_hist_common import (
     UNPACK,
+    build_patched_tree,
     extract_to,
-    hardlink_tree,
     log,
     patch_tree,
     tree_dir,
@@ -49,13 +48,12 @@ def apply_patch(v: Version, force: bool, strict: bool) -> None:
     if not patchfile.exists():
         raise FileNotFoundError(patchfile)
     log(f"patching to {v.name}")
-    if dest.exists():
-        shutil.rmtree(dest)
-    hardlink_tree(base, dest)
     patch_bytes: bytes = subprocess.run(
         ["zcat", str(patchfile)], capture_output=True, check=True
     ).stdout
-    patch_tree(dest, patch_bytes, v.name, strict)
+    build_patched_tree(
+        base, dest, lambda tmp: patch_tree(tmp, patch_bytes, v.name, strict)
+    )
 
 
 def main() -> None:

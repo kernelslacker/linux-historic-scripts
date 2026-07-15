@@ -2,14 +2,13 @@
 """Unpack the 2.1.x tarballs and apply prepatches."""
 
 import argparse
-import shutil
 import subprocess
 from pathlib import Path
 
 from linux_hist_common import (
     UNPACK,
+    build_patched_tree,
     extract_to,
-    hardlink_tree,
     log,
     patch_tree,
     tree_dir,
@@ -41,16 +40,17 @@ def apply_patch(v: Version, force: bool, strict: bool) -> None:
     if not patchfile.exists():
         raise FileNotFoundError(patchfile)
     log(f"patching to {v.name}")
-    if dest.exists():
-        shutil.rmtree(dest)
-    hardlink_tree(base, dest)
-    if v.fixup:
-        for rel, content in v.fixup.items():
-            (dest / rel).write_text(content)
     patch_bytes: bytes = subprocess.run(
         ["zcat", str(patchfile)], capture_output=True, check=True
     ).stdout
-    patch_tree(dest, patch_bytes, v.name, strict)
+
+    def prepare(tmp: Path) -> None:
+        if v.fixup:
+            for rel, content in v.fixup.items():
+                (tmp / rel).write_text(content)
+        patch_tree(tmp, patch_bytes, v.name, strict)
+
+    build_patched_tree(base, dest, prepare)
 
 
 def main() -> None:
