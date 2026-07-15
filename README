@@ -22,10 +22,11 @@ kernel.org, and put them in a directory structure that looks like..
 Changelogs where available, are pulled from the changelogs/ dir (or, for
 2.5/2.6, from ChangeLog-* files alongside their binaries).
 
-There's no single top-level driver script. Each branch has its own
-untar-X.py / make-diffs-X.py / import-X.py trio, run in that order, and
-branches must be done in order too since each one builds on the previous
-branch's unpacked trees and git history:
+build.py is the top-level driver: `./build.py` runs the whole thing in
+dependency order (use --dry-run first to see the plan). Under the hood each
+branch still has its own untar-X.py / make-diffs-X.py / import-X.py trio, run
+in that order, and branches must be done in order too since each one builds on
+the previous branch's unpacked trees and git history:
 
 untar-0.x.py     make-diffs-0.x.py     import-0.x.py
 untar-1.x.py     make-diffs-1.x.py     import-1.x.py
@@ -38,7 +39,32 @@ untar-2.5.py     make-diffs-2.5.py     import-2.5.py
 untar-2.6.py     make-diffs-2.6.py     import-2.6.py
 
 i.e. run all three untar-0.x.py/make-diffs-0.x.py/import-0.x.py before
-moving on to the 1.x trio, and so on through 2.6. 2.6 stops at 2.6.11.12,
-since the official upstream git tree picks up from Linux 2.6.12-rc2.
+moving on to the 1.x trio, and so on through 2.6 (build.py does exactly this
+sequencing for you). 2.6 stops at 2.6.11.12, since the official upstream git
+tree picks up from Linux 2.6.12-rc2.
 
 You will need approximately 37G of disk space for the whole process.
+
+Helper scripts
+--------------
+
+build.py           Top-level driver for the untar/make-diffs/import pipeline.
+                   Runs everything in dependency order; supports
+                   --from-branch/--to-branch, --stage, --force/--strict and
+                   --dry-run. Every stage skips work already on disk, so a run
+                   is resumable.
+
+check_binaries.py  Verify the downloaded binaries/ against the pinned
+                   binaries.sha256 manifest before building (--update
+                   regenerates the manifest). Catches a wrong or truncated
+                   download up front instead of mid-build.
+
+check_tables.py    Fast structural checks of the per-branch version tables
+                   (references resolve, tag names unique, dates parse). Needs
+                   no binaries; good as a pre-flight.
+
+verify.py          After a build, extract each tag from the git repo and
+                   compare it against the unpacked tarball tree it was built
+                   from. Empty files (dropped by `git rm`) and binary files
+                   (which textual diffs can't carry) are expected differences;
+                   anything else is a real fidelity failure.
