@@ -20,6 +20,19 @@ UNPACK: Path = ROOT / "unpack"
 DIFFS: Path = ROOT / "diffs"
 CHANGELOGS: Path = ROOT / "changelogs"
 
+# The import stage builds the history in BUILD_REPO (inside the throwaway
+# unpack/ dir, alongside the unpacked tarballs). build.py's finalize step lifts
+# the finished tree up to FINAL_REPO once the full chain has run. resolve_repo()
+# hands consumers (verify.py) whichever one is actually on disk.
+BUILD_REPO: Path = UNPACK / "linux-git"
+FINAL_REPO: Path = ROOT / "linux-git"
+
+
+def resolve_repo() -> Path:
+    """Return the finished repo's location, preferring the moved FINAL_REPO."""
+    return FINAL_REPO if (FINAL_REPO / ".git").exists() else BUILD_REPO
+
+
 Author = tuple[str, str]  # (name, email)
 LINUS: Author = ("Linus Torvalds", "torvalds@linuxfoundation.org")
 
@@ -213,7 +226,7 @@ def open_repo(prev_script: str, author: Author) -> GitRepo:
     Common preamble shared by every non-seed import-*.py -- only the
     "run X first" hint (naming the previous script in the chain) varies.
     """
-    path: Path = UNPACK / "linux-git"
+    path: Path = BUILD_REPO
     if not (path / ".git").exists():
         raise FileNotFoundError(f"{path} doesn't exist -- run {prev_script} first")
     repo = GitRepo(path, author_env(author))

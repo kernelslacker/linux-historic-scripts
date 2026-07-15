@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Verify the reconstructed git history against the unpacked source trees.
 
-For every tagged version, extract that tag's tree out of unpack/linux-git and
-compare it file-by-file against the independently-unpacked tarball tree the
+For every tagged version, extract that tag's tree out of the finished repo
+(linux-git, or unpack/linux-git before build.py's finalize step has moved it)
+and compare it file-by-file against the independently-unpacked tarball tree the
 diff was generated from (unpack/linux-<name>). This is the automated form of
 the manual spot-check the import-2.6.py docstring describes -- the thing that
 once caught `git apply` silently dropping hunks.
@@ -30,9 +31,9 @@ import tempfile
 from pathlib import Path
 from types import ModuleType
 
-from linux_hist_common import UNPACK, log, tag_exists, tree_dir
+from linux_hist_common import log, resolve_repo, tag_exists, tree_dir
 
-REPO: Path = UNPACK / "linux-git"
+REPO: Path = resolve_repo()
 
 # branch id -> module holding its VERSIONS table, in dependency order
 BRANCH_MODULES: dict[str, str] = {
