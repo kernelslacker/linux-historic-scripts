@@ -9,23 +9,11 @@ from linux_hist_common import (
     UNPACK,
     apply_prepatch,
     build_patched_tree,
-    extract_to,
+    extract_tarball,
     log,
     tree_dir,
 )
 from linux_hist_1x import BINARIES, VERSIONS, Version, series_dir
-
-
-def extract_tarball(v: Version, force: bool) -> None:
-    dest: Path = tree_dir(v.name)
-    if dest.exists() and not force:
-        log(f"skip {v.name} (already unpacked)")
-        return
-    archive: Path = BINARIES / series_dir(v.name) / f"linux-{v.name}.tar.gz"
-    if not archive.exists():
-        raise FileNotFoundError(archive)
-    log(f"unpacking {v.name}")
-    extract_to(archive, dest)
 
 
 def apply_patch(v: Version, force: bool, strict: bool) -> None:
@@ -71,7 +59,10 @@ def main() -> None:
     UNPACK.mkdir(exist_ok=True)
     for v in VERSIONS:
         if v.patch is None:
-            extract_tarball(v, args.force)
+            archive: Path = (
+                BINARIES / series_dir(v.name) / f"linux-{v.name}.tar.gz"
+            )
+            extract_tarball(v.name, tree_dir(v.name), archive, args.force)
         else:
             apply_patch(v, args.force, args.strict)
 

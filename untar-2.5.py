@@ -9,20 +9,8 @@ must already exist (run untar-2.4.py first).
 import argparse
 from pathlib import Path
 
-from linux_hist_common import UNPACK, extract_to, log, tree_dir
-from linux_hist_2_5 import BINARIES, VERSIONS, Version
-
-
-def extract_tarball(v: Version, force: bool) -> None:
-    dest: Path = tree_dir(v.name)
-    if dest.exists() and not force:
-        log(f"skip {v.name} (already unpacked)")
-        return
-    archive: Path = BINARIES / f"linux-{v.name}.tar.gz"
-    if not archive.exists():
-        raise FileNotFoundError(archive)
-    log(f"unpacking {v.name}")
-    extract_to(archive, dest)
+from linux_hist_common import UNPACK, extract_tarball, tree_dir
+from linux_hist_2_5 import BINARIES, VERSIONS
 
 
 def main() -> None:
@@ -34,7 +22,8 @@ def main() -> None:
 
     UNPACK.mkdir(exist_ok=True)
     for v in VERSIONS:
-        extract_tarball(v, args.force)
+        archive: Path = BINARIES / f"linux-{v.name}.tar.gz"
+        extract_tarball(v.name, tree_dir(v.name), archive, args.force)
 
 
 if __name__ == "__main__":

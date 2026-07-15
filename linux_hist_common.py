@@ -153,6 +153,22 @@ def extract_to(archive: Path, dest: Path) -> None:
         raise RuntimeError(f"{archive} did not extract to 'linux/' or '{dest.name}/'")
 
 
+def extract_tarball(name: str, dest: Path, archive: Path, force: bool) -> None:
+    """Unpack `archive` to `dest`, skipping if it already exists.
+
+    Common orchestration shared by every untar-*.py's own extract_tarball --
+    only the archive path construction (and, for untar-2.3.py, `dest` itself
+    via its dir_name-aware tree_dir override) varies script to script.
+    """
+    if dest.exists() and not force:
+        log(f"skip {name} (already unpacked)")
+        return
+    if not archive.exists():
+        raise FileNotFoundError(archive)
+    log(f"unpacking {name}")
+    extract_to(archive, dest)
+
+
 def hardlink_tree(src: Path, dest: Path) -> None:
     """Copy a tree via hardlinks, like `cp -rl src dest`."""
     shutil.copytree(src, dest, copy_function=os.link)
