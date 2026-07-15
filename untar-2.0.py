@@ -17,8 +17,7 @@ from pathlib import Path
 
 from linux_hist_common import (
     UNPACK,
-    apply_prepatch,
-    build_patched_tree,
+    apply_patch,
     extract_tarball,
     log,
     tree_dir,
@@ -38,25 +37,6 @@ def make_alias(v: Version, force: bool) -> None:
             shutil.rmtree(dest)
     log(f"aliasing {v.name} -> {v.alias_of}")
     dest.symlink_to(f"linux-{v.alias_of}")
-
-
-def apply_patch(v: Version, force: bool, strict: bool) -> None:
-    dest: Path = tree_dir(v.name)
-    if dest.exists() and not force:
-        log(f"skip {v.name} (already patched)")
-        return
-    base: Path = tree_dir(v.patch_base or v.base)
-    if not base.exists():
-        raise FileNotFoundError(f"base tree missing for {v.name}: {base}")
-    patchfile: Path = BINARIES / v.patch
-    if not patchfile.exists():
-        raise FileNotFoundError(patchfile)
-    log(f"patching to {v.name}")
-    build_patched_tree(
-        base,
-        dest,
-        lambda tmp: apply_prepatch(tmp, patchfile, "zcat", v.name, strict),
-    )
 
 
 def main() -> None:
@@ -79,7 +59,15 @@ def main() -> None:
             archive: Path = BINARIES / f"linux-{v.name}.tar.gz"
             extract_tarball(v.name, tree_dir(v.name), archive, args.force)
         else:
-            apply_patch(v, args.force, args.strict)
+            apply_patch(
+                v.name,
+                tree_dir(v.name),
+                tree_dir(v.patch_base or v.base),
+                BINARIES / v.patch,
+                "zcat",
+                args.force,
+                args.strict,
+            )
 
 
 if __name__ == "__main__":

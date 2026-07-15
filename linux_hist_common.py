@@ -245,6 +245,43 @@ def apply_prepatch(
         log(f"WARNING: {msg} (tree may be broken, continuing)")
 
 
+def apply_patch(
+    name: str,
+    dest: Path,
+    base: Path,
+    patchfile: Path,
+    cat_cmd: str | None,
+    force: bool,
+    strict: bool,
+    prepare: Callable[[Path], None] | None = None,
+    missing_base_hint: str = "",
+) -> None:
+    """Build `dest` by hardlink-copying `base` and applying `patchfile`,
+    skipping if `dest` already exists.
+
+    Common orchestration shared by every untar-*.py's own apply_patch --
+    only the base/patchfile path construction, `cat_cmd` selection, and an
+    optional `prepare(tmp)` hook (untar-1.x.py's chmod_writable,
+    untar-2.1.py's fixup) vary script to script.
+    """
+    if dest.exists() and not force:
+        log(f"skip {name} (already patched)")
+        return
+    if not base.exists():
+        hint: str = f" {missing_base_hint}" if missing_base_hint else ""
+        raise FileNotFoundError(f"base tree missing for {name}: {base}{hint}")
+    if not patchfile.exists():
+        raise FileNotFoundError(patchfile)
+    log(f"patching to {name}")
+
+    def do_apply(tmp: Path) -> None:
+        if prepare:
+            prepare(tmp)
+        apply_prepatch(tmp, patchfile, cat_cmd, name, strict)
+
+    build_patched_tree(base, dest, do_apply)
+
+
 # --- diff helpers (used by make-diffs-*.py) ---
 
 

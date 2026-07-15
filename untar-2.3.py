@@ -10,36 +10,8 @@ still get real trees built here -- only import.py treats them specially.
 import argparse
 from pathlib import Path
 
-from linux_hist_common import (
-    UNPACK,
-    apply_prepatch,
-    build_patched_tree,
-    extract_tarball,
-    log,
-)
-from linux_hist_2_3 import BINARIES, VERSIONS, Version, tree_dir
-
-
-def apply_patch(v: Version, force: bool, strict: bool) -> None:
-    dest: Path = tree_dir(v.name)
-    if dest.exists() and not force:
-        log(f"skip {v.name} (already patched)")
-        return
-    base: Path = tree_dir(v.patch_base or v.base)
-    if not base.exists():
-        raise FileNotFoundError(
-            f"base tree missing for {v.name}: {base} "
-            "(run untar-2.2.py first if this is 2.2.8)"
-        )
-    patchfile: Path = BINARIES / v.patch
-    if not patchfile.exists():
-        raise FileNotFoundError(patchfile)
-    log(f"patching to {v.name}")
-    build_patched_tree(
-        base,
-        dest,
-        lambda tmp: apply_prepatch(tmp, patchfile, "zcat", v.name, strict),
-    )
+from linux_hist_common import UNPACK, apply_patch, extract_tarball
+from linux_hist_2_3 import BINARIES, VERSIONS, tree_dir
 
 
 def main() -> None:
@@ -60,7 +32,16 @@ def main() -> None:
             archive: Path = BINARIES / f"linux-{v.dir_name or v.name}.tar.gz"
             extract_tarball(v.name, tree_dir(v.name), archive, args.force)
         else:
-            apply_patch(v, args.force, args.strict)
+            apply_patch(
+                v.name,
+                tree_dir(v.name),
+                tree_dir(v.patch_base or v.base),
+                BINARIES / v.patch,
+                "zcat",
+                args.force,
+                args.strict,
+                missing_base_hint="(run untar-2.2.py first if this is 2.2.8)",
+            )
 
 
 if __name__ == "__main__":

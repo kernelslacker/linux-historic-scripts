@@ -3,39 +3,20 @@
 untar-2.1.sh."""
 
 import argparse
+from collections.abc import Callable
 from pathlib import Path
 
-from linux_hist_common import (
-    UNPACK,
-    apply_prepatch,
-    build_patched_tree,
-    extract_tarball,
-    log,
-    tree_dir,
-)
+from linux_hist_common import UNPACK, apply_patch, extract_tarball, tree_dir
 from linux_hist_2_1 import BINARIES, VERSIONS, Version
 
 
-def apply_patch(v: Version, force: bool, strict: bool) -> None:
-    dest: Path = tree_dir(v.name)
-    if dest.exists() and not force:
-        log(f"skip {v.name} (already patched)")
-        return
-    base: Path = tree_dir(v.patch_base or v.base)
-    if not base.exists():
-        raise FileNotFoundError(f"base tree missing for {v.name}: {base}")
-    patchfile: Path = BINARIES / v.patch
-    if not patchfile.exists():
-        raise FileNotFoundError(patchfile)
-    log(f"patching to {v.name}")
-
+def apply_fixup(v: Version) -> Callable[[Path], None]:
     def prepare(tmp: Path) -> None:
         if v.fixup:
             for rel, content in v.fixup.items():
                 (tmp / rel).write_text(content)
-        apply_prepatch(tmp, patchfile, "zcat", v.name, strict)
 
-    build_patched_tree(base, dest, prepare)
+    return prepare
 
 
 def main() -> None:
@@ -56,7 +37,16 @@ def main() -> None:
             archive: Path = BINARIES / f"linux-{v.name}.tar.gz"
             extract_tarball(v.name, tree_dir(v.name), archive, args.force)
         else:
-            apply_patch(v, args.force, args.strict)
+            apply_patch(
+                v.name,
+                tree_dir(v.name),
+                tree_dir(v.patch_base or v.base),
+                BINARIES / v.patch,
+                "zcat",
+                args.force,
+                args.strict,
+                prepare=apply_fixup(v),
+            )
 
 
 if __name__ == "__main__":

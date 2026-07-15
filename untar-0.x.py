@@ -5,35 +5,8 @@ import argparse
 import os
 from pathlib import Path
 
-from linux_hist_common import (
-    UNPACK,
-    apply_prepatch,
-    build_patched_tree,
-    extract_tarball,
-    log,
-    tree_dir,
-)
+from linux_hist_common import UNPACK, apply_patch, extract_tarball, tree_dir
 from linux_hist_0x import BINARIES, VERSIONS, Compression, Version
-
-
-def apply_patch(v: Version, force: bool, strict: bool) -> None:
-    dest: Path = tree_dir(v.name)
-    if dest.exists() and not force:
-        log(f"skip {v.name} (already patched)")
-        return
-    base: Path = tree_dir(v.base)
-    if not base.exists():
-        raise FileNotFoundError(f"base tree missing for {v.name}: {base}")
-    patchfile: Path = BINARIES / v.patch
-    if not patchfile.exists():
-        raise FileNotFoundError(patchfile)
-    log(f"patching to {v.name}")
-    cat_cmd: str = "bzcat" if v.compression == Compression.BZ2 else "zcat"
-    build_patched_tree(
-        base,
-        dest,
-        lambda tmp: apply_prepatch(tmp, patchfile, cat_cmd, v.name, strict),
-    )
 
 
 def fix_permissions(v: Version) -> None:
@@ -70,7 +43,18 @@ def main() -> None:
                 args.force,
             )
         else:
-            apply_patch(v, args.force, args.strict)
+            cat_cmd: str = (
+                "bzcat" if v.compression == Compression.BZ2 else "zcat"
+            )
+            apply_patch(
+                v.name,
+                tree_dir(v.name),
+                tree_dir(v.base),
+                BINARIES / v.patch,
+                cat_cmd,
+                args.force,
+                args.strict,
+            )
         if v.fix_perms:
             fix_permissions(v)
 

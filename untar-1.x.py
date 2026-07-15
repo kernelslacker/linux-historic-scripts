@@ -3,45 +3,20 @@
 port of untar-1.x.sh."""
 
 import argparse
+from collections.abc import Callable
 from pathlib import Path
 
-from linux_hist_common import (
-    UNPACK,
-    apply_prepatch,
-    build_patched_tree,
-    extract_tarball,
-    log,
-    tree_dir,
-)
+from linux_hist_common import UNPACK, apply_patch, extract_tarball, tree_dir
 from linux_hist_1x import BINARIES, VERSIONS, Version, series_dir
 
 
-def apply_patch(v: Version, force: bool, strict: bool) -> None:
-    dest: Path = tree_dir(v.name)
-    if dest.exists() and not force:
-        log(f"skip {v.name} (already patched)")
-        return
-    base: Path = tree_dir(v.base)
-    if not base.exists():
-        raise FileNotFoundError(f"base tree missing for {v.name}: {base}")
-    patchfile: Path = BINARIES / series_dir(v.name) / v.patch
-    if not patchfile.exists():
-        raise FileNotFoundError(patchfile)
-    log(f"patching to {v.name}")
-    if v.compression == "none":
-        cat_cmd: str | None = None
-    elif v.compression == "bz2":
-        cat_cmd = "bzcat"
-    else:
-        cat_cmd = "zcat"
-
+def chmod_writable(v: Version) -> Callable[[Path], None]:
     def prepare(tmp: Path) -> None:
         for rel in v.chmod_writable:
             p: Path = tmp / rel
             p.chmod(p.stat().st_mode | 0o200)
-        apply_prepatch(tmp, patchfile, cat_cmd, v.name, strict)
 
-    build_patched_tree(base, dest, prepare)
+    return prepare
 
 
 def main() -> None:
@@ -64,7 +39,22 @@ def main() -> None:
             )
             extract_tarball(v.name, tree_dir(v.name), archive, args.force)
         else:
-            apply_patch(v, args.force, args.strict)
+            if v.compression == "none":
+                cat_cmd: str | None = None
+            elif v.compression == "bz2":
+                cat_cmd = "bzcat"
+            else:
+                cat_cmd = "zcat"
+            apply_patch(
+                v.name,
+                tree_dir(v.name),
+                tree_dir(v.base),
+                BINARIES / series_dir(v.name) / v.patch,
+                cat_cmd,
+                args.force,
+                args.strict,
+                prepare=chmod_writable(v),
+            )
 
 
 if __name__ == "__main__":
