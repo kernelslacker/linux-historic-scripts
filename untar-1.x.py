@@ -6,7 +6,14 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from linux_hist_common import UNPACK, extract_to, log, patch_tree, run, tree_dir
+from linux_hist_common import (
+    UNPACK,
+    extract_to,
+    hardlink_tree,
+    log,
+    patch_tree,
+    tree_dir,
+)
 from linux_hist_1x import BINARIES, VERSIONS, Version, series_dir
 
 
@@ -36,7 +43,7 @@ def apply_patch(v: Version, force: bool, strict: bool) -> None:
     log(f"patching to {v.name}")
     if dest.exists():
         shutil.rmtree(dest)
-    run(["cp", "-rl", str(base), str(dest)])
+    hardlink_tree(base, dest)
     for rel in v.chmod_writable:
         p: Path = dest / rel
         p.chmod(p.stat().st_mode | 0o200)

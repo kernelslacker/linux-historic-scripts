@@ -2,7 +2,6 @@
 """Build the 0.x git history from the generated diffs."""
 
 import argparse
-import os
 import shutil
 from pathlib import Path
 
@@ -13,6 +12,7 @@ from linux_hist_common import (
     apply_diff,
     author_env,
     commit_version,
+    hardlink_tree,
     log,
     remove_empty_files,
     run,
@@ -33,7 +33,7 @@ def main() -> None:
     if repo.exists():
         shutil.rmtree(repo)
     log(f"seeding repo from {first.name}")
-    shutil.copytree(tree_dir(first.name), repo, copy_function=os.link)
+    hardlink_tree(tree_dir(first.name), repo)
     # Pin the initial branch name explicitly -- don't rely on the operator's
     # init.defaultBranch, since import-1.x.py hardcodes "master" for the
     # branch/checkout points inherited from the original shell scripts.

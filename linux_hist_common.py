@@ -122,6 +122,11 @@ def extract_to(archive: Path, dest: Path) -> None:
         raise RuntimeError(f"{archive} did not extract to 'linux/' or '{dest.name}/'")
 
 
+def hardlink_tree(src: Path, dest: Path) -> None:
+    """Copy a tree via hardlinks, like `cp -rl src dest`."""
+    shutil.copytree(src, dest, copy_function=os.link)
+
+
 def patch_tree(dest: Path, patch_bytes: bytes, name: str, strict: bool) -> None:
     """Apply a prepatch to an unpacked tree with `patch -p1` (untar side).
 

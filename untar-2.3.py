@@ -11,7 +11,7 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from linux_hist_common import UNPACK, extract_to, log, patch_tree, run
+from linux_hist_common import UNPACK, extract_to, hardlink_tree, log, patch_tree
 from linux_hist_2_3 import BINARIES, VERSIONS, Version, tree_dir
 
 
@@ -44,7 +44,7 @@ def apply_patch(v: Version, force: bool, strict: bool) -> None:
     log(f"patching to {v.name}")
     if dest.exists():
         shutil.rmtree(dest)
-    run(["cp", "-rl", str(base), str(dest)])
+    hardlink_tree(base, dest)
     patch_bytes: bytes = subprocess.run(
         ["zcat", str(patchfile)], capture_output=True, check=True
     ).stdout
