@@ -42,15 +42,15 @@ def main() -> None:
             author = v.author
             env = author_env(author)
 
-        if v.alias_of:
-            log(f"tagging {v.name} -> {v.alias_of}")
-            run(["git", "tag", v.name], cwd=repo, env=env)
-            continue
-
         if v.branch_create:
             run(["git", "branch", v.branch_create], cwd=repo, env=env)
         if v.branch_checkout:
             run(["git", "checkout", v.branch_checkout], cwd=repo, env=env)
+
+        if v.alias_of:
+            log(f"tagging {v.name} -> {v.alias_of}")
+            run(["git", "tag", v.name], cwd=repo, env=env)
+            continue
 
         log(f"importing {v.name}")
         diff_file: Path = DIFFS / f"linux-{v.name}.diff"
