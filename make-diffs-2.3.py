@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Generate diffs/linux-VERSION.diff for 2.3.x + 2.4.0-testN.
+"""Generate diffs/linux-VERSION.diff for 2.3.x + 2.4.0-testN. Python port
+of make-diffs-2.3.sh.
 
 2.3.0's base (2.2.8) comes from the 2.2 series, so unpack/linux-2.2.8 must
 already exist (run untar-2.2.py first). Alias versions (2.3.8, 2.4.0-test3)

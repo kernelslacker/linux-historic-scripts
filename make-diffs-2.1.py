@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Generate diffs/linux-VERSION.diff for 2.1.x + 2.2.0pre1-9."""
+"""Generate diffs/linux-VERSION.diff for 2.1.x + 2.2.0pre1-9. Python port
+of make-diffs-2.1.sh."""
 
 import argparse
 

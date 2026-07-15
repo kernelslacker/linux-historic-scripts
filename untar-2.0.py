@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Unpack the 2.0.x tarballs and apply prepatches.
+"""Unpack the 2.0.x tarballs and apply prepatches. Python port of
+untar-2.0.sh.
 
 pre2.0.14 comes from the 1.x series, so unpack/linux-pre2.0.14 must already
 exist (run untar-1.x.py first).

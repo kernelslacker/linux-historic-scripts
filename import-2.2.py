@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Continue the git history through 2.2.x.
+"""Continue the git history through 2.2.x. Python port of import-2.2.sh.
 
 Reuses the repo built by import-2.1.py (must already exist at
 unpack/linux-git, on branch "master" at the 2.2.0pre9 tag). At 2.2.8,

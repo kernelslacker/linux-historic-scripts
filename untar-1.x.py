@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Unpack the 1.0/1.1/1.2/1.3/pre2.0 tarballs and apply prepatches."""
+"""Unpack the 1.0/1.1/1.2/1.3/pre2.0 tarballs and apply prepatches. Python
+port of untar-1.x.sh."""
 
 import argparse
 from pathlib import Path

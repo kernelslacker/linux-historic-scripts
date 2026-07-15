@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Generate diffs/linux-VERSION.diff for 2.2.x.
+"""Generate diffs/linux-VERSION.diff for 2.2.x. Python port of
+make-diffs-2.2.sh.
 
 Alias versions (2.2.18pre27, 2.2.18) still get a real diff generated here,
 matching the original script exactly -- only import.py skips applying them.

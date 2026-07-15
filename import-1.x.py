@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Continue the git history through 1.0/1.1/1.2/1.3/pre2.0.
+"""Continue the git history through 1.0/1.1/1.2/1.3/pre2.0. Python port of
+import-1.x.sh.
 
 Reuses the repo built by import-0.x.py (must already exist at
 unpack/linux-git, checked out on master at the 1.0alpha tag) and continues

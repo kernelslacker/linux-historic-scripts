@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Build the 0.x git history from the generated diffs."""
+"""Build the 0.x git history from the generated diffs. Python port of
+import-0.x.sh."""
 
 import argparse
 import shutil

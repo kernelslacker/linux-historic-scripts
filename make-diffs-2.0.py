@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Generate diffs/linux-VERSION.diff for 2.0.x.
+"""Generate diffs/linux-VERSION.diff for 2.0.x. Python port of
+make-diffs-2.0.sh.
 
 "2.0"'s base (pre2.0.14) comes from the 1.x series, so unpack/linux-
 pre2.0.14 must already exist (run untar-1.x.py first). Alias versions
