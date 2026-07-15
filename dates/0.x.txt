@@ -1,0 +1,19 @@
+linux-0.10.diff:+++ linux-0.10/RCS/Makefile,v			1991-11-11 15:03:45.000000000 -0500
+
+linux-0.10.diff:+++ linux-0.10/include/RCS/ctype.h,v		1991-11-15 19:30:53.000000000 -0500
+
+linux-0.10.diff:+++ linux-0.10/tools/RCS/build.c,v		1991-11-20 00:07:55.000000000 -0500
+linux-0.10.diff:+++ linux-0.10/fs/RCS/buffer.c,v		1991-11-20 00:11:34.000000000 -0500
+
+linux-0.10.diff:+++ linux-0.10/kernel/chr_drv/RCS/keyboard.S,v	1991-11-21 14:50:45.000000000 -0500
+
+linux-0.10.diff:+++ linux-0.10/include/asm/RCS/segment.h,v	1991-11-25 10:43:04.000000000 -0500
+
+linux-0.10.diff:+++ linux-0.10/kernel/RCS/sched.c,v		1991-12-01 09:21:29.000000000 -0500
+linux-0.10.diff:+++ linux-0.10/kernel/RCS/sys.c,v		1991-12-01 09:21:33.000000000 -0500
+linux-0.10.diff:+++ linux-0.10/kernel/RCS/exit.c,v		1991-12-01 09:21:51.000000000 -0500
+linux-0.10.diff:+++ linux-0.10/fs/RCS/namei.c,v			1991-12-01 09:22:10.000000000 -0500
+linux-0.10.diff:+++ linux-0.10/fs/RCS/open.c,v			1991-12-01 09:22:12.000000000 -0500
+linux-0.10.diff:+++ linux-0.10/fs/RCS/exec.c,v			1991-12-01 09:23:36.000000000 -0500
+linux-0.10.diff:+++ linux-0.10/include/linux/RCS/kernel.h,v	1991-12-01 09:24:06.000000000 -0500
+

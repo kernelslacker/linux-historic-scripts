@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+"""Continue the git history through 2.3.x + 2.4.0-testN.
+
+Reuses the repo built by import-2.2.py (must already exist at
+unpack/linux-git, on branch "master" at the 2.2.8 tag -- 2.2's own stable
+maintenance continues separately on branch "2.2"). Stays on master
+throughout, always Linus Torvalds.
+
+2.3.8 and 2.4.0-test3 are tag-only aliases (of 2.3.8pre3 and
+2.4.0-test3pre9 respectively) -- their diffs exist on disk but are
+deliberately not applied here, matching the original script.
+"""
+
+import argparse
+from pathlib import Path
+
+from linux_hist_common import (
+    CHANGELOGS,
+    DIFFS,
+    UNPACK,
+    apply_diff,
+    author_env,
+    commit_version,
+    log,
+    remove_empty_files,
+    run,
+)
+from linux_hist_2_3 import LINUS, VERSIONS
+
+
+def main() -> None:
+    parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
+    parser.parse_args()
+
+    repo: Path = UNPACK / "linux-git"
+    if not (repo / ".git").exists():
+        raise FileNotFoundError(f"{repo} doesn't exist -- run import-2.2.py first")
+    env: dict[str, str] = author_env(LINUS)
+    run(["git", "checkout", "master"], cwd=repo, env=env)
+
+    for v in VERSIONS:
+        if v.alias_of:
+            log(f"tagging {v.name} -> {v.alias_of}")
+            run(["git", "tag", v.name], cwd=repo, env=env)
+            continue
+
+        log(f"importing {v.name}")
+        diff_file: Path = DIFFS / f"linux-{v.name}.diff"
+        if not diff_file.exists():
+            raise FileNotFoundError(diff_file)
+        apply_diff(repo, diff_file.read_bytes(), v.name)
+        run(["git", "add", "--all"], cwd=repo, env=env)
+        remove_empty_files(repo, env)
+        commit_version(repo, v.name, v.date, env, CHANGELOGS / f"{v.name}.txt")
+        run(["git", "tag", v.name], cwd=repo, env=env)
+
+
+if __name__ == "__main__":
+    main()
