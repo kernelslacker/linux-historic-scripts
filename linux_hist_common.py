@@ -118,15 +118,22 @@ def author_env(author: Author) -> dict[str, str]:
 def commit_version(
     repo: Path, name: str, date: str, env: dict[str, str], changelog: Path
 ) -> None:
+    # `--date` sets only the *author* date; without GIT_COMMITTER_DATE the
+    # committer timestamp defaults to wall-clock-at-run-time, so every rebuild
+    # produces different commit hashes. Pin it to the same value to keep the
+    # reconstructed history reproducible.
+    commit_env: dict[str, str] = {**env, "GIT_COMMITTER_DATE": date}
     if changelog.exists():
         run(
-            ["git", "commit", "-F", str(changelog), f"--date={date}"], cwd=repo, env=env
+            ["git", "commit", "-F", str(changelog), f"--date={date}"],
+            cwd=repo,
+            env=commit_env,
         )
     else:
         run(
             ["git", "commit", "-m", f"Import {name}", f"--date={date}"],
             cwd=repo,
-            env=env,
+            env=commit_env,
         )
 
 
