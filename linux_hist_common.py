@@ -157,13 +157,22 @@ def write_diff(base_label: str, name_label: str, out: Path) -> None:
     "linux-BASE/foo" / "linux-VERSION/foo" so `patch -p1` strips exactly one
     leading component. diff exits 1 when it finds differences (the expected
     case); only >= 2 is a real failure.
+
+    Writes under a temp name and renames into place only on success, so a
+    Ctrl-C or missing `diff` binary mid-run can't leave a truncated file at
+    `out` for a later run's skip-if-exists check to mistake for a cached diff.
     """
-    with out.open("wb") as f:
-        result: subprocess.CompletedProcess[bytes] = subprocess.run(
-            ["diff", "-urN", f"linux-{base_label}", f"linux-{name_label}"],
-            stdout=f,
-            cwd=UNPACK,
-        )
-    if result.returncode not in (0, 1):
-        out.unlink(missing_ok=True)
-        raise RuntimeError(f"diff failed ({result.returncode}) for {name_label}")
+    tmp: Path = out.with_name(out.name + ".tmp")
+    try:
+        with tmp.open("wb") as f:
+            result: subprocess.CompletedProcess[bytes] = subprocess.run(
+                ["diff", "-urN", f"linux-{base_label}", f"linux-{name_label}"],
+                stdout=f,
+                cwd=UNPACK,
+            )
+        if result.returncode not in (0, 1):
+            raise RuntimeError(f"diff failed ({result.returncode}) for {name_label}")
+    except BaseException:
+        tmp.unlink(missing_ok=True)
+        raise
+    tmp.rename(out)
