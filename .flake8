@@ -1,0 +1,20 @@
+[flake8]
+# Match black's line length (black is the formatter of record here); see
+# PYTHON.md. E203 is black-incompatible, so leave it off.
+max-line-length = 88
+extend-ignore = E203
+
+# The per-branch version-table modules are wall-to-wall long lines: one
+# Version(...) row per release plus the shared summary docstring, both of
+# which exceed 88 by nature. Per PYTHON.md, mark the whole file rather than
+# sprinkling per-line noqa.
+per-file-ignores =
+    linux_hist_0x.py:E501
+    linux_hist_1x.py:E501
+    linux_hist_2_0.py:E501
+    linux_hist_2_1.py:E501
+    linux_hist_2_2.py:E501
+    linux_hist_2_3.py:E501
+    linux_hist_2_4.py:E501
+    linux_hist_2_5.py:E501
+    linux_hist_2_6.py:E501
