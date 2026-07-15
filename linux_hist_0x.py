@@ -1,12 +1,18 @@
 """Shared version table and helpers for untar-0.x.py / make-diffs-0.x.py / import-0.x.py."""
 
 import dataclasses
+import enum
 
 from pathlib import Path
 
 from linux_hist_common import CHANGELOGS, LINUS, ROOT  # noqa: F401 (re-exported)
 
 BINARIES = ROOT / "binaries" / "0.x"
+
+
+class Compression(enum.StrEnum):
+    BZ2 = "bz2"     # bzcat
+    GZ = "gz"       # zcat
 
 
 @dataclasses.dataclass
@@ -16,7 +22,7 @@ class Version:
     base: str | None       # predecessor tree; None only for the very first version
     date: str              # git --date value for the import commit
     patch: str | None = None       # filename under BINARIES; None means "extract the tarball"
-    compression: str = "bz2"       # bz2 -> bzcat, gz -> zcat (only meaningful when patch is set)
+    compression: Compression = Compression.BZ2     # only meaningful when patch is set
     fix_perms: bool = False        # 0.97's tarball had broken directory permissions
     # fmt: on
 
@@ -46,11 +52,11 @@ VERSIONS: list[Version] = [
     Version("0.96c-patch2", "0.96c-patch1", "Sat Jul 18 20:54:48 1992 -0600", "linux-0.96c.patch2.bz2"),
     Version("0.96pre", "0.96c-patch2", "Tue Apr 21 11:00:00 1992 -0600"),
     Version("0.97", "0.96pre", "Sat Aug 1 11:00:00 1992 -0600", fix_perms=True),
-    Version("0.97.1", "0.97", "Thu Aug 6 11:00:00 1992 -0600", "linux-0.97.patch1.gz", "gz"),
-    Version("0.97.2", "0.97.1", "Sun Aug 23 11:00:00 1992 -0600", "linux-0.97.patch2.gz", "gz"),
-    Version("0.97.3", "0.97.2", "Sat Sep 5 11:00:00 1992 -0600", "linux-0.97.patch3.gz", "gz"),
-    Version("0.97.4", "0.97.3", "Mon Sep 7 11:00:00 1992 -0600", "linux-0.97.patch4.gz", "gz"),
-    Version("0.97.5", "0.97.4", "Sat Sep 12 11:00:00 1992 -0600", "linux-0.97.patch5.gz", "gz"),
+    Version("0.97.1", "0.97", "Thu Aug 6 11:00:00 1992 -0600", "linux-0.97.patch1.gz", Compression.GZ),
+    Version("0.97.2", "0.97.1", "Sun Aug 23 11:00:00 1992 -0600", "linux-0.97.patch2.gz", Compression.GZ),
+    Version("0.97.3", "0.97.2", "Sat Sep 5 11:00:00 1992 -0600", "linux-0.97.patch3.gz", Compression.GZ),
+    Version("0.97.4", "0.97.3", "Mon Sep 7 11:00:00 1992 -0600", "linux-0.97.patch4.gz", Compression.GZ),
+    Version("0.97.5", "0.97.4", "Sat Sep 12 11:00:00 1992 -0600", "linux-0.97.patch5.gz", Compression.GZ),
     # 0.97.6 has both a tarball and a patch6.gz upstream; NOTES says prefer the
     # tarball where one exists, so this intentionally isn't a Patch entry.
     Version("0.97.6", "0.97.5", "Sun Sep 20 11:00:00 1992 -0600"),

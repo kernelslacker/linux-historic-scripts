@@ -13,7 +13,7 @@ from linux_hist_common import (
     log,
     tree_dir,
 )
-from linux_hist_0x import BINARIES, VERSIONS, Version
+from linux_hist_0x import BINARIES, VERSIONS, Compression, Version
 
 
 def extract_tarball(v: Version, force: bool) -> None:
@@ -40,7 +40,7 @@ def apply_patch(v: Version, force: bool, strict: bool) -> None:
     if not patchfile.exists():
         raise FileNotFoundError(patchfile)
     log(f"patching to {v.name}")
-    cat_cmd: str = "bzcat" if v.compression == "bz2" else "zcat"
+    cat_cmd: str = "bzcat" if v.compression == Compression.BZ2 else "zcat"
     build_patched_tree(
         base,
         dest,
