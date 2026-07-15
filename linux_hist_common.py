@@ -132,23 +132,57 @@ def apply_diff(repo: Path, diff_file: Path, name: str) -> None:
         raise RuntimeError(f"patch failed for {name}")
 
 
-def open_repo(prev_script: str, author: Author) -> tuple[Path, dict[str, str]]:
-    """Open the shared unpack/linux-git repo left by an earlier import-*.py,
-    check out "master", and return (repo, env) for the caller's author.
+class GitRepo:
+    """A repo path + author env pair, wrapping the `cwd=repo, env=env` pattern
+    every import-*.py git call follows.
+
+    `env` is a plain attribute (not read-only) since several scripts swap it
+    mid-loop on an author change (e.g. `repo.env = author_env(v.author)`).
+    """
+
+    def __init__(self, path: Path, env: dict[str, str]) -> None:
+        self.path = path
+        self.env = env
+
+    def git(self, *args: str) -> subprocess.CompletedProcess[str]:
+        return run(["git", *args], cwd=self.path, env=self.env)
+
+    def checkout(self, ref: str) -> None:
+        self.git("checkout", ref)
+
+    def branch(self, name: str) -> None:
+        self.git("branch", name)
+
+    def tag(self, name: str) -> None:
+        self.git("tag", name)
+
+    def tag_exists(self, name: str) -> bool:
+        return tag_exists(self.path, name)
+
+    def branch_exists(self, name: str) -> bool:
+        return branch_exists(self.path, name)
+
+    def commit(self, name: str, date: str, changelog: Path) -> None:
+        commit_version(self.path, name, date, self.env, changelog)
+
+
+def open_repo(prev_script: str, author: Author) -> GitRepo:
+    """Open the shared unpack/linux-git repo left by an earlier import-*.py
+    and check out "master".
 
     Common preamble shared by every non-seed import-*.py -- only the
     "run X first" hint (naming the previous script in the chain) varies.
     """
-    repo: Path = UNPACK / "linux-git"
-    if not (repo / ".git").exists():
-        raise FileNotFoundError(f"{repo} doesn't exist -- run {prev_script} first")
-    env: dict[str, str] = author_env(author)
-    run(["git", "checkout", "master"], cwd=repo, env=env)
-    return repo, env
+    path: Path = UNPACK / "linux-git"
+    if not (path / ".git").exists():
+        raise FileNotFoundError(f"{path} doesn't exist -- run {prev_script} first")
+    repo = GitRepo(path, author_env(author))
+    repo.checkout("master")
+    return repo
 
 
 def import_version(
-    repo: Path, name: str, date: str, env: dict[str, str], changelog: Path
+    repo: GitRepo, name: str, date: str, changelog: Path
 ) -> None:
     """Apply `diffs/linux-NAME.diff`, commit, and tag it -- the seven-step
     block (log, diff-file check, apply_diff, git add, remove_empty_files,
@@ -158,11 +192,11 @@ def import_version(
     diff_file: Path = DIFFS / f"linux-{name}.diff"
     if not diff_file.exists():
         raise FileNotFoundError(diff_file)
-    apply_diff(repo, diff_file, name)
-    run(["git", "add", "--all"], cwd=repo, env=env)
-    remove_empty_files(repo, env)
-    commit_version(repo, name, date, env, changelog)
-    run(["git", "tag", name], cwd=repo, env=env)
+    apply_diff(repo.path, diff_file, name)
+    repo.git("add", "--all")
+    remove_empty_files(repo.path, repo.env)
+    repo.commit(name, date, changelog)
+    repo.tag(name)
 
 
 # --- tarball helpers (used by untar-*.py) ---

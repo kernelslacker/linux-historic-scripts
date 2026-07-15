@@ -10,15 +10,7 @@ to David Weinehall at 2.0.39pre1, still on branch "2.0".
 
 import argparse
 
-from linux_hist_common import (
-    author_env,
-    branch_exists,
-    import_version,
-    log,
-    open_repo,
-    run,
-    tag_exists,
-)
+from linux_hist_common import author_env, import_version, log, open_repo
 from linux_hist_2_0 import LINUS, VERSIONS, changelog_path
 
 
@@ -26,30 +18,30 @@ def main() -> None:
     parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
     parser.parse_args()
 
-    repo, env = open_repo("import-1.x.py", LINUS)
+    repo = open_repo("import-1.x.py", LINUS)
 
     for v in VERSIONS:
         if v.author:
-            env = author_env(v.author)
+            repo.env = author_env(v.author)
 
-        if v.branch_create and not branch_exists(repo, v.branch_create):
-            run(["git", "branch", v.branch_create], cwd=repo, env=env)
+        if v.branch_create and not repo.branch_exists(v.branch_create):
+            repo.branch(v.branch_create)
         if v.branch_checkout:
-            run(["git", "checkout", v.branch_checkout], cwd=repo, env=env)
+            repo.checkout(v.branch_checkout)
 
         if v.alias_of:
-            if tag_exists(repo, v.name):
+            if repo.tag_exists(v.name):
                 log(f"skip {v.name} (already tagged)")
                 continue
             log(f"tagging {v.name} -> {v.alias_of}")
-            run(["git", "tag", v.name], cwd=repo, env=env)
+            repo.tag(v.name)
             continue
 
-        if tag_exists(repo, v.name):
+        if repo.tag_exists(v.name):
             log(f"skip {v.name} (already imported)")
             continue
 
-        import_version(repo, v.name, v.date, env, changelog_path(v))
+        import_version(repo, v.name, v.date, changelog_path(v))
 
 
 if __name__ == "__main__":

@@ -14,7 +14,7 @@ deliberately not applied here, matching the original script.
 
 import argparse
 
-from linux_hist_common import import_version, log, open_repo, run, tag_exists
+from linux_hist_common import import_version, log, open_repo
 from linux_hist_2_3 import LINUS, VERSIONS, changelog_path
 
 
@@ -22,22 +22,22 @@ def main() -> None:
     parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
     parser.parse_args()
 
-    repo, env = open_repo("import-2.2.py", LINUS)
+    repo = open_repo("import-2.2.py", LINUS)
 
     for v in VERSIONS:
         if v.alias_of:
-            if tag_exists(repo, v.name):
+            if repo.tag_exists(v.name):
                 log(f"skip {v.name} (already tagged)")
                 continue
             log(f"tagging {v.name} -> {v.alias_of}")
-            run(["git", "tag", v.name], cwd=repo, env=env)
+            repo.tag(v.name)
             continue
 
-        if tag_exists(repo, v.name):
+        if repo.tag_exists(v.name):
             log(f"skip {v.name} (already imported)")
             continue
 
-        import_version(repo, v.name, v.date, env, changelog_path(v))
+        import_version(repo, v.name, v.date, changelog_path(v))
 
 
 if __name__ == "__main__":

@@ -10,14 +10,7 @@ and Linus' own tree moved on from there -- matches the 1.0/1.1, 2.0/2.1,
 
 import argparse
 
-from linux_hist_common import (
-    branch_exists,
-    import_version,
-    log,
-    open_repo,
-    run,
-    tag_exists,
-)
+from linux_hist_common import import_version, log, open_repo
 from linux_hist_2_4 import LINUS, VERSIONS, changelog_path
 
 
@@ -25,19 +18,19 @@ def main() -> None:
     parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
     parser.parse_args()
 
-    repo, env = open_repo("import-2.3.py", LINUS)
+    repo = open_repo("import-2.3.py", LINUS)
 
     for v in VERSIONS:
-        if v.branch_create and not branch_exists(repo, v.branch_create):
-            run(["git", "branch", v.branch_create], cwd=repo, env=env)
+        if v.branch_create and not repo.branch_exists(v.branch_create):
+            repo.branch(v.branch_create)
         if v.branch_checkout:
-            run(["git", "checkout", v.branch_checkout], cwd=repo, env=env)
+            repo.checkout(v.branch_checkout)
 
-        if tag_exists(repo, v.name):
+        if repo.tag_exists(v.name):
             log(f"skip {v.name} (already imported)")
             continue
 
-        import_version(repo, v.name, v.date, env, changelog_path(v))
+        import_version(repo, v.name, v.date, changelog_path(v))
 
 
 if __name__ == "__main__":
