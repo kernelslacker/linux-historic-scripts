@@ -132,6 +132,39 @@ def apply_diff(repo: Path, diff_file: Path, name: str) -> None:
         raise RuntimeError(f"patch failed for {name}")
 
 
+def open_repo(prev_script: str, author: Author) -> tuple[Path, dict[str, str]]:
+    """Open the shared unpack/linux-git repo left by an earlier import-*.py,
+    check out "master", and return (repo, env) for the caller's author.
+
+    Common preamble shared by every non-seed import-*.py -- only the
+    "run X first" hint (naming the previous script in the chain) varies.
+    """
+    repo: Path = UNPACK / "linux-git"
+    if not (repo / ".git").exists():
+        raise FileNotFoundError(f"{repo} doesn't exist -- run {prev_script} first")
+    env: dict[str, str] = author_env(author)
+    run(["git", "checkout", "master"], cwd=repo, env=env)
+    return repo, env
+
+
+def import_version(
+    repo: Path, name: str, date: str, env: dict[str, str], changelog: Path
+) -> None:
+    """Apply `diffs/linux-NAME.diff`, commit, and tag it -- the seven-step
+    block (log, diff-file check, apply_diff, git add, remove_empty_files,
+    commit_version, git tag) shared verbatim by every import-*.py loop.
+    """
+    log(f"importing {name}")
+    diff_file: Path = DIFFS / f"linux-{name}.diff"
+    if not diff_file.exists():
+        raise FileNotFoundError(diff_file)
+    apply_diff(repo, diff_file, name)
+    run(["git", "add", "--all"], cwd=repo, env=env)
+    remove_empty_files(repo, env)
+    commit_version(repo, name, date, env, changelog)
+    run(["git", "tag", name], cwd=repo, env=env)
+
+
 # --- tarball helpers (used by untar-*.py) ---
 
 

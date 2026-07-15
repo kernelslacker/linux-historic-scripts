@@ -7,14 +7,12 @@ import shutil
 from pathlib import Path
 
 from linux_hist_common import (
-    DIFFS,
     UNPACK,
-    apply_diff,
     author_env,
     commit_version,
     hardlink_tree,
+    import_version,
     log,
-    remove_empty_files,
     run,
     tree_dir,
 )
@@ -44,15 +42,7 @@ def main() -> None:
     # never tags 0.01 either.
 
     for v in rest:
-        log(f"importing {v.name}")
-        diff_file: Path = DIFFS / f"linux-{v.name}.diff"
-        if not diff_file.exists():
-            raise FileNotFoundError(diff_file)
-        apply_diff(repo, diff_file, v.name)
-        run(["git", "add", "--all"], cwd=repo, env=env)
-        remove_empty_files(repo, env)
-        commit_version(repo, v.name, v.date, env, changelog_path(v))
-        run(["git", "tag", v.name], cwd=repo, env=env)
+        import_version(repo, v.name, v.date, env, changelog_path(v))
 
 
 if __name__ == "__main__":

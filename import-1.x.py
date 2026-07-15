@@ -10,17 +10,12 @@ branch "1.2" at 1.2.10 while "master" continues into 1.3.
 """
 
 import argparse
-from pathlib import Path
 
 from linux_hist_common import (
-    DIFFS,
-    UNPACK,
-    apply_diff,
-    author_env,
     branch_exists,
-    commit_version,
+    import_version,
     log,
-    remove_empty_files,
+    open_repo,
     run,
     tag_exists,
 )
@@ -31,11 +26,7 @@ def main() -> None:
     parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
     parser.parse_args()
 
-    repo: Path = UNPACK / "linux-git"
-    if not (repo / ".git").exists():
-        raise FileNotFoundError(f"{repo} doesn't exist -- run import-0.x.py first")
-    env: dict[str, str] = author_env(LINUS)
-    run(["git", "checkout", "master"], cwd=repo, env=env)
+    repo, env = open_repo("import-0.x.py", LINUS)
 
     for v in VERSIONS:
         if v.branch_create and not branch_exists(repo, v.branch_create):
@@ -47,15 +38,7 @@ def main() -> None:
             log(f"skip {v.name} (already imported)")
             continue
 
-        log(f"importing {v.name}")
-        diff_file: Path = DIFFS / f"linux-{v.name}.diff"
-        if not diff_file.exists():
-            raise FileNotFoundError(diff_file)
-        apply_diff(repo, diff_file, v.name)
-        run(["git", "add", "--all"], cwd=repo, env=env)
-        remove_empty_files(repo, env)
-        commit_version(repo, v.name, v.date, env, changelog_path(v))
-        run(["git", "tag", v.name], cwd=repo, env=env)
+        import_version(repo, v.name, v.date, env, changelog_path(v))
 
 
 if __name__ == "__main__":
