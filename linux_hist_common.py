@@ -63,7 +63,7 @@ def run(
     cmd: list[str], cwd: Path | None = None, env: dict[str, str] | None = None
 ) -> subprocess.CompletedProcess[str]:
     result: subprocess.CompletedProcess[str] = subprocess.run(
-        cmd, cwd=cwd, env=env, capture_output=True, text=True
+        cmd, cwd=cwd, env=env, capture_output=True, text=True, check=False
     )
     if result.returncode != 0:
         raise RuntimeError(
@@ -84,6 +84,7 @@ def ref_exists(repo: Path, ref: str) -> bool:
             cwd=repo,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
+            check=False,
         ).returncode
         == 0
     )
@@ -156,7 +157,7 @@ def apply_diff(repo: Path, diff_file: Path, name: str) -> None:
     """
     with diff_file.open("rb") as f:
         result: subprocess.CompletedProcess[bytes] = subprocess.run(
-            ["patch", "-p1", "-s"], cwd=repo, stdin=f, capture_output=True
+            ["patch", "-p1", "-s"], cwd=repo, stdin=f, capture_output=True, check=False
         )
     if result.returncode != 0:
         sys.stderr.buffer.write(result.stdout)
@@ -328,6 +329,7 @@ def apply_prepatch(
             stdin=patch_stdin,
             stdout=sys.stderr,
             stderr=sys.stderr,
+            check=False,
         )
     finally:
         patch_stdin.close()
@@ -401,6 +403,7 @@ def write_diff(base_label: str, name_label: str, out: Path) -> None:
                 ["diff", "-urN", f"linux-{base_label}", f"linux-{name_label}"],
                 stdout=f,
                 cwd=UNPACK,
+                check=False,
             )
         if result.returncode not in (0, 1):
             raise RuntimeError(f"diff failed ({result.returncode}) for {name_label}")
