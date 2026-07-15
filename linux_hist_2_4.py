@@ -30,8 +30,9 @@ technique as 2.0/2.2/2.3).
 """
 
 import dataclasses
+from pathlib import Path
 
-from linux_hist_common import LINUS, ROOT  # noqa: F401 (re-exported for import-2.4.py)
+from linux_hist_common import CHANGELOGS, LINUS, ROOT  # noqa: F401 (re-exported)
 
 BINARIES = ROOT / "binaries" / "2.4"
 
@@ -226,3 +227,7 @@ VERSIONS: list[Version] = [
     Version("2.4.35.3", "2.4.35.2", "Sun Sep 23 22:02:58 2007 +0000"),
 ]
 # fmt: on
+
+
+def changelog_path(v: Version) -> Path:
+    return CHANGELOGS / f"{v.name}.txt"

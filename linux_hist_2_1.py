@@ -14,8 +14,9 @@ patch deletes it; see untar-2.1.sh's own comment on this).
 """
 
 import dataclasses
+from pathlib import Path
 
-from linux_hist_common import LINUS, ROOT  # noqa: F401 (re-exported for import-2.1.py)
+from linux_hist_common import CHANGELOGS, LINUS, ROOT  # noqa: F401 (re-exported)
 
 BINARIES = ROOT / "binaries" / "2.1"
 
@@ -307,3 +308,7 @@ VERSIONS: list[Version] = [
     Version("2.2.0pre9", "2.2.0pre8", "Thu Jan 21 01:27:22 1999 -0500"),
 ]
 # fmt: on
+
+
+def changelog_path(v: Version) -> Path:
+    return CHANGELOGS / f"{v.name}.txt"

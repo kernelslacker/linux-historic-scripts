@@ -2,7 +2,9 @@
 
 import dataclasses
 
-from linux_hist_common import LINUS, ROOT  # noqa: F401 (re-exported for import-0.x.py)
+from pathlib import Path
+
+from linux_hist_common import CHANGELOGS, LINUS, ROOT  # noqa: F401 (re-exported)
 
 BINARIES = ROOT / "binaries" / "0.x"
 
@@ -119,3 +121,7 @@ VERSIONS: list[Version] = [
     Version("1.0alpha", "1.0pre1", "Sun Mar 13 01:55:41 1994 +0200", "1.0alpha.diff.bz2"),
 ]
 # fmt: on
+
+
+def changelog_path(v: Version) -> Path:
+    return CHANGELOGS / f"{v.name}.txt"

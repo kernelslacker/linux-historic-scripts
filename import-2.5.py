@@ -21,7 +21,7 @@ from linux_hist_common import (
     remove_empty_files,
     run,
 )
-from linux_hist_2_5 import BINARIES, LINUS, VERSIONS
+from linux_hist_2_5 import LINUS, VERSIONS, changelog_path
 
 
 def main() -> None:
@@ -42,7 +42,7 @@ def main() -> None:
         apply_diff(repo, diff_file.read_bytes(), v.name)
         run(["git", "add", "--all"], cwd=repo, env=env)
         remove_empty_files(repo, env)
-        commit_version(repo, v.name, v.date, env, BINARIES / f"ChangeLog-{v.name}")
+        commit_version(repo, v.name, v.date, env, changelog_path(v))
         run(["git", "tag", v.name], cwd=repo, env=env)
 
 

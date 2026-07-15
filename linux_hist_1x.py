@@ -6,8 +6,9 @@ master), and 1.2 splits off from master at 1.2.10 (1.3 continues on master).
 """
 
 import dataclasses
+from pathlib import Path
 
-from linux_hist_common import LINUS, ROOT  # noqa: F401 (re-exported for import-1.x.py)
+from linux_hist_common import CHANGELOGS, LINUS, ROOT  # noqa: F401 (re-exported)
 
 BINARIES = ROOT / "binaries"
 
@@ -33,6 +34,10 @@ def series_dir(name: str) -> str:
         if name.startswith(series):
             return series
     raise ValueError(f"no known series for {name!r}")
+
+
+def changelog_path(v: Version) -> Path:
+    return CHANGELOGS / f"{v.name}.txt"
 
 
 # fmt: off

@@ -18,6 +18,7 @@ Dates recovered via tarball-internal-mtime digging (same technique as
 """
 
 import dataclasses
+from pathlib import Path
 
 from linux_hist_common import LINUS, ROOT  # noqa: F401 (re-exported for import-2.5.py)
 
@@ -110,3 +111,7 @@ VERSIONS: list[Version] = [
     Version("2.5.75", "2.5.74", "Thu Jul 10 20:15:51 2003 +0000"),
 ]
 # fmt: on
+
+
+def changelog_path(v: Version) -> Path:
+    return BINARIES / f"ChangeLog-{v.name}"

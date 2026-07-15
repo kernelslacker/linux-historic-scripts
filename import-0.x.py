@@ -6,7 +6,6 @@ import shutil
 from pathlib import Path
 
 from linux_hist_common import (
-    CHANGELOGS,
     DIFFS,
     UNPACK,
     apply_diff,
@@ -18,7 +17,7 @@ from linux_hist_common import (
     run,
     tree_dir,
 )
-from linux_hist_0x import LINUS, VERSIONS, Version
+from linux_hist_0x import LINUS, VERSIONS, Version, changelog_path
 
 
 def main() -> None:
@@ -39,7 +38,7 @@ def main() -> None:
     # branch/checkout points inherited from the original shell scripts.
     run(["git", "init", "-q", "-b", "master"], cwd=repo, env=env)
     run(["git", "add", "--all"], cwd=repo, env=env)
-    commit_version(repo, first.name, first.date, env, CHANGELOGS / f"{first.name}.txt")
+    commit_version(repo, first.name, first.date, env, changelog_path(first))
     # No tag for the seed commit -- matches the original import.sh, which
     # never tags 0.01 either.
 
@@ -51,7 +50,7 @@ def main() -> None:
         apply_diff(repo, diff_file.read_bytes(), v.name)
         run(["git", "add", "--all"], cwd=repo, env=env)
         remove_empty_files(repo, env)
-        commit_version(repo, v.name, v.date, env, CHANGELOGS / f"{v.name}.txt")
+        commit_version(repo, v.name, v.date, env, changelog_path(v))
         run(["git", "tag", v.name], cwd=repo, env=env)
 
 

@@ -27,6 +27,7 @@ expected Jul 2003 - Jun 2005 range.
 """
 
 import dataclasses
+from pathlib import Path
 
 from linux_hist_common import LINUS, ROOT  # noqa: F401 (re-exported for import-2.6.py)
 
@@ -80,3 +81,7 @@ VERSIONS: list[Version] = [
     Version("2.6.11.12", "2.6.11.11", "Sun Jun 12 02:45:37 2005 +0000"),
 ]
 # fmt: on
+
+
+def changelog_path(v: Version) -> Path:
+    return BINARIES / f"ChangeLog-{v.name}"

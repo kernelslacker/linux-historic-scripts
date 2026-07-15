@@ -27,8 +27,14 @@ time). See conversation history for the extraction commands.
 """
 
 import dataclasses
+from pathlib import Path
 
-from linux_hist_common import LINUS, ROOT, Author  # noqa: F401 (re-exported)
+from linux_hist_common import (  # noqa: F401 (re-exported)
+    CHANGELOGS,
+    LINUS,
+    ROOT,
+    Author,
+)
 
 BINARIES = ROOT / "binaries" / "2.0"
 
@@ -186,3 +192,7 @@ VERSIONS: list[Version] = [
     Version("2.0.40", "2.0.40-rc8", "Sun Feb 8 02:13:00 2004 +0000"),
 ]
 # fmt: on
+
+
+def changelog_path(v: Version) -> Path:
+    return CHANGELOGS / f"{v.changelog or v.name}.txt"

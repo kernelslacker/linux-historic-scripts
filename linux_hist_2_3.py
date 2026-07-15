@@ -35,7 +35,12 @@ import dataclasses
 
 from pathlib import Path
 
-from linux_hist_common import LINUS, ROOT, UNPACK  # noqa: F401 (re-exported)
+from linux_hist_common import (  # noqa: F401 (re-exported)
+    CHANGELOGS,
+    LINUS,
+    ROOT,
+    UNPACK,
+)
 
 BINARIES = ROOT / "binaries" / "2.3"
 
@@ -460,6 +465,10 @@ def dirname_of(name: str) -> str:
 
 def tree_dir(name: str) -> Path:
     return UNPACK / f"linux-{dirname_of(name)}"
+
+
+def changelog_path(v: Version) -> Path:
+    return CHANGELOGS / f"{v.name}.txt"
 
 
 _DIR_NAME_OVERRIDES: dict[str, str] = {
