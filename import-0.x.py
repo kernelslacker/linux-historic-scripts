@@ -2,7 +2,6 @@
 """Build the 0.x git history from the generated diffs. Python port of
 import-0.x.sh."""
 
-import argparse
 import shutil
 
 from linux_hist_common import (
@@ -12,14 +11,14 @@ from linux_hist_common import (
     hardlink_tree,
     import_version,
     log,
+    parse_no_flags,
     tree_dir,
 )
 from linux_hist_0x import LINUS, VERSIONS, Version, changelog_path
 
 
 def main() -> None:
-    parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args()
+    parse_no_flags(__doc__)
 
     repo: GitRepo = GitRepo(UNPACK / "linux-git", author_env(LINUS))
     first: Version = VERSIONS[0]

@@ -8,15 +8,12 @@ unpack/linux-git). Checks out "master" (which import-2.0.py left parked at
 author changes in this segment.
 """
 
-import argparse
-
-from linux_hist_common import import_version, log, open_repo
+from linux_hist_common import import_version, log, open_repo, parse_no_flags
 from linux_hist_2_1 import LINUS, VERSIONS, changelog_path
 
 
 def main() -> None:
-    parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args()
+    parse_no_flags(__doc__)
 
     repo = open_repo("import-2.0.py", LINUS)
 

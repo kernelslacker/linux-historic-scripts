@@ -9,15 +9,12 @@ branch "1.0" at 1.0.6 while "master" continues into 1.1; 1.2 splits off onto
 branch "1.2" at 1.2.10 while "master" continues into 1.3.
 """
 
-import argparse
-
-from linux_hist_common import import_version, log, open_repo
+from linux_hist_common import import_version, log, open_repo, parse_no_flags
 from linux_hist_1x import LINUS, VERSIONS, changelog_path
 
 
 def main() -> None:
-    parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args()
+    parse_no_flags(__doc__)
 
     repo = open_repo("import-0.x.py", LINUS)
 

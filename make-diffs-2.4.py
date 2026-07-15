@@ -5,18 +5,12 @@
 2.4.0-prerelease must already exist (run untar-2.3.py first).
 """
 
-import argparse
-
-from linux_hist_common import DIFFS, make_diff
+from linux_hist_common import DIFFS, make_diff, parse_force
 from linux_hist_2_4 import VERSIONS
 
 
 def main() -> None:
-    parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--force", action="store_true", help="regenerate diffs that already exist"
-    )
-    args: argparse.Namespace = parser.parse_args()
+    args = parse_force(__doc__)
 
     DIFFS.mkdir(exist_ok=True)
     for v in VERSIONS:

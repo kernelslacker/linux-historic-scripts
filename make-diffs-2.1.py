@@ -2,18 +2,12 @@
 """Generate diffs/linux-VERSION.diff for 2.1.x + 2.2.0pre1-9. Python port
 of make-diffs-2.1.sh."""
 
-import argparse
-
-from linux_hist_common import DIFFS, make_diff
+from linux_hist_common import DIFFS, make_diff, parse_force
 from linux_hist_2_1 import VERSIONS
 
 
 def main() -> None:
-    parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--force", action="store_true", help="regenerate diffs that already exist"
-    )
-    args: argparse.Namespace = parser.parse_args()
+    args = parse_force(__doc__)
 
     DIFFS.mkdir(exist_ok=True)
     for v in VERSIONS:

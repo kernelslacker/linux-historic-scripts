@@ -18,15 +18,12 @@ source, not by any error message. `patch` applied the exact same diffs
 correctly. See linux_hist_common.apply_diff.
 """
 
-import argparse
-
-from linux_hist_common import import_version, log, open_repo
+from linux_hist_common import import_version, log, open_repo, parse_no_flags
 from linux_hist_2_6 import LINUS, VERSIONS, changelog_path
 
 
 def main() -> None:
-    parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args()
+    parse_no_flags(__doc__)
 
     repo = open_repo("import-2.5.py", LINUS)
 

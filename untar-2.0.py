@@ -11,7 +11,6 @@ that later cp -rl / diff steps that reference the alias name resolve
 transparently while diff headers still read the alias's own name.
 """
 
-import argparse
 import shutil
 from pathlib import Path
 
@@ -20,6 +19,7 @@ from linux_hist_common import (
     apply_patch,
     extract_tarball,
     log,
+    parse_force_strict,
     tree_dir,
 )
 from linux_hist_2_0 import BINARIES, VERSIONS, Version
@@ -40,16 +40,7 @@ def make_alias(v: Version, force: bool) -> None:
 
 
 def main() -> None:
-    parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--force", action="store_true", help="rebuild trees that already exist"
-    )
-    parser.add_argument(
-        "--strict",
-        action="store_true",
-        help="abort on the first patch that doesn't apply cleanly",
-    )
-    args: argparse.Namespace = parser.parse_args()
+    args = parse_force_strict(__doc__)
 
     UNPACK.mkdir(exist_ok=True)
     for v in VERSIONS:

@@ -6,19 +6,14 @@ tarball chain, no prepatches archived.
 2.5.75 must already exist (run untar-2.5.py first).
 """
 
-import argparse
 from pathlib import Path
 
-from linux_hist_common import UNPACK, extract_tarball, tree_dir
+from linux_hist_common import UNPACK, extract_tarball, parse_force, tree_dir
 from linux_hist_2_6 import BINARIES, VERSIONS
 
 
 def main() -> None:
-    parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--force", action="store_true", help="rebuild trees that already exist"
-    )
-    args: argparse.Namespace = parser.parse_args()
+    args = parse_force(__doc__, "rebuild trees that already exist")
 
     UNPACK.mkdir(exist_ok=True)
     for v in VERSIONS:

@@ -7,6 +7,7 @@ table. The trio scripts import their mechanical helpers from here so the
 per-branch loop bodies stay small and identical branch-to-branch.
 """
 
+import argparse
 import os
 import shutil
 import subprocess
@@ -25,6 +26,37 @@ LINUS: Author = ("Linus Torvalds", "torvalds@linuxfoundation.org")
 
 def log(msg: str) -> None:
     print(f"-- {msg}", file=sys.stderr)
+
+
+# --- CLI parsing (shared by the trio scripts' near-identical main()s) ---
+
+
+def parse_no_flags(description: str) -> None:
+    """Wire up `--help` only -- the import-*.py take no options."""
+    argparse.ArgumentParser(description=description).parse_args()
+
+
+def parse_force(
+    description: str, force_help: str = "regenerate diffs that already exist"
+) -> argparse.Namespace:
+    """A lone `--force` flag: make-diffs-*.py and the patch-free untar-*.py."""
+    parser = argparse.ArgumentParser(description=description)
+    parser.add_argument("--force", action="store_true", help=force_help)
+    return parser.parse_args()
+
+
+def parse_force_strict(description: str) -> argparse.Namespace:
+    """`--force` + `--strict`, shared by the untar-*.py that apply patches."""
+    parser = argparse.ArgumentParser(description=description)
+    parser.add_argument(
+        "--force", action="store_true", help="rebuild trees that already exist"
+    )
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="abort on the first patch that doesn't apply cleanly",
+    )
+    return parser.parse_args()
 
 
 def run(

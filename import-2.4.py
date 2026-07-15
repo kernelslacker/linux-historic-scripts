@@ -8,15 +8,12 @@ and Linus' own tree moved on from there -- matches the 1.0/1.1, 2.0/2.1,
 2.2/2.3 pattern). Always Linus Torvalds; no aliases in this segment.
 """
 
-import argparse
-
-from linux_hist_common import import_version, log, open_repo
+from linux_hist_common import import_version, log, open_repo, parse_no_flags
 from linux_hist_2_4 import LINUS, VERSIONS, changelog_path
 
 
 def main() -> None:
-    parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args()
+    parse_no_flags(__doc__)
 
     repo = open_repo("import-2.3.py", LINUS)
 

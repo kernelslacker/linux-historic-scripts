@@ -7,24 +7,19 @@ already exist (run untar-2.2.py first). Alias versions (2.3.8, 2.4.0-test3)
 still get real trees built here -- only import.py treats them specially.
 """
 
-import argparse
 from pathlib import Path
 
-from linux_hist_common import UNPACK, apply_patch, extract_tarball
+from linux_hist_common import (
+    UNPACK,
+    apply_patch,
+    extract_tarball,
+    parse_force_strict,
+)
 from linux_hist_2_3 import BINARIES, VERSIONS, tree_dir
 
 
 def main() -> None:
-    parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--force", action="store_true", help="rebuild trees that already exist"
-    )
-    parser.add_argument(
-        "--strict",
-        action="store_true",
-        help="abort on the first patch that doesn't apply cleanly",
-    )
-    args: argparse.Namespace = parser.parse_args()
+    args = parse_force_strict(__doc__)
 
     UNPACK.mkdir(exist_ok=True)
     for v in VERSIONS:

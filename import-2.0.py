@@ -8,15 +8,18 @@ master -- 2.1's import continues master from 2.0.21. Author changes again
 to David Weinehall at 2.0.39pre1, still on branch "2.0".
 """
 
-import argparse
-
-from linux_hist_common import author_env, import_version, log, open_repo
+from linux_hist_common import (
+    author_env,
+    import_version,
+    log,
+    open_repo,
+    parse_no_flags,
+)
 from linux_hist_2_0 import LINUS, VERSIONS, changelog_path
 
 
 def main() -> None:
-    parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args()
+    parse_no_flags(__doc__)
 
     repo = open_repo("import-1.x.py", LINUS)
 
