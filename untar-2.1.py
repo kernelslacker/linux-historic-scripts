@@ -2,15 +2,14 @@
 """Unpack the 2.1.x tarballs and apply prepatches."""
 
 import argparse
-import subprocess
 from pathlib import Path
 
 from linux_hist_common import (
     UNPACK,
+    apply_prepatch,
     build_patched_tree,
     extract_to,
     log,
-    patch_tree,
     tree_dir,
 )
 from linux_hist_2_1 import BINARIES, VERSIONS, Version
@@ -40,15 +39,12 @@ def apply_patch(v: Version, force: bool, strict: bool) -> None:
     if not patchfile.exists():
         raise FileNotFoundError(patchfile)
     log(f"patching to {v.name}")
-    patch_bytes: bytes = subprocess.run(
-        ["zcat", str(patchfile)], capture_output=True, check=True
-    ).stdout
 
     def prepare(tmp: Path) -> None:
         if v.fixup:
             for rel, content in v.fixup.items():
                 (tmp / rel).write_text(content)
-        patch_tree(tmp, patch_bytes, v.name, strict)
+        apply_prepatch(tmp, patchfile, "zcat", v.name, strict)
 
     build_patched_tree(base, dest, prepare)
 

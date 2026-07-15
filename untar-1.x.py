@@ -2,15 +2,14 @@
 """Unpack the 1.0/1.1/1.2/1.3/pre2.0 tarballs and apply prepatches."""
 
 import argparse
-import subprocess
 from pathlib import Path
 
 from linux_hist_common import (
     UNPACK,
+    apply_prepatch,
     build_patched_tree,
     extract_to,
     log,
-    patch_tree,
     tree_dir,
 )
 from linux_hist_1x import BINARIES, VERSIONS, Version, series_dir
@@ -41,18 +40,17 @@ def apply_patch(v: Version, force: bool, strict: bool) -> None:
         raise FileNotFoundError(patchfile)
     log(f"patching to {v.name}")
     if v.compression == "none":
-        patch_bytes: bytes = patchfile.read_bytes()
+        cat_cmd: str | None = None
+    elif v.compression == "bz2":
+        cat_cmd = "bzcat"
     else:
-        cat_cmd: str = "bzcat" if v.compression == "bz2" else "zcat"
-        patch_bytes = subprocess.run(
-            [cat_cmd, str(patchfile)], capture_output=True, check=True
-        ).stdout
+        cat_cmd = "zcat"
 
     def prepare(tmp: Path) -> None:
         for rel in v.chmod_writable:
             p: Path = tmp / rel
             p.chmod(p.stat().st_mode | 0o200)
-        patch_tree(tmp, patch_bytes, v.name, strict)
+        apply_prepatch(tmp, patchfile, cat_cmd, v.name, strict)
 
     build_patched_tree(base, dest, prepare)
 

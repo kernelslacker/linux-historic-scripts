@@ -49,7 +49,7 @@ def main() -> None:
         diff_file: Path = DIFFS / f"linux-{v.name}.diff"
         if not diff_file.exists():
             raise FileNotFoundError(diff_file)
-        apply_diff(repo, diff_file.read_bytes(), v.name)
+        apply_diff(repo, diff_file, v.name)
         run(["git", "add", "--all"], cwd=repo, env=env)
         remove_empty_files(repo, env)
         commit_version(repo, v.name, v.date, env, changelog_path(v))

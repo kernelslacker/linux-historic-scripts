@@ -12,15 +12,14 @@ transparently while diff headers still read the alias's own name.
 
 import argparse
 import shutil
-import subprocess
 from pathlib import Path
 
 from linux_hist_common import (
     UNPACK,
+    apply_prepatch,
     build_patched_tree,
     extract_to,
     log,
-    patch_tree,
     tree_dir,
 )
 from linux_hist_2_0 import BINARIES, VERSIONS, Version
@@ -64,11 +63,10 @@ def apply_patch(v: Version, force: bool, strict: bool) -> None:
     if not patchfile.exists():
         raise FileNotFoundError(patchfile)
     log(f"patching to {v.name}")
-    patch_bytes: bytes = subprocess.run(
-        ["zcat", str(patchfile)], capture_output=True, check=True
-    ).stdout
     build_patched_tree(
-        base, dest, lambda tmp: patch_tree(tmp, patch_bytes, v.name, strict)
+        base,
+        dest,
+        lambda tmp: apply_prepatch(tmp, patchfile, "zcat", v.name, strict),
     )
 
 

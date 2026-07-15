@@ -3,15 +3,14 @@
 
 import argparse
 import os
-import subprocess
 from pathlib import Path
 
 from linux_hist_common import (
     UNPACK,
+    apply_prepatch,
     build_patched_tree,
     extract_to,
     log,
-    patch_tree,
     tree_dir,
 )
 from linux_hist_0x import BINARIES, VERSIONS, Version
@@ -42,11 +41,10 @@ def apply_patch(v: Version, force: bool, strict: bool) -> None:
         raise FileNotFoundError(patchfile)
     log(f"patching to {v.name}")
     cat_cmd: str = "bzcat" if v.compression == "bz2" else "zcat"
-    patch_bytes: bytes = subprocess.run(
-        [cat_cmd, str(patchfile)], capture_output=True, check=True
-    ).stdout
     build_patched_tree(
-        base, dest, lambda tmp: patch_tree(tmp, patch_bytes, v.name, strict)
+        base,
+        dest,
+        lambda tmp: apply_prepatch(tmp, patchfile, cat_cmd, v.name, strict),
     )
 
 

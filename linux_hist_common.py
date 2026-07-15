@@ -81,24 +81,31 @@ def remove_empty_files(repo: Path, env: dict[str, str]) -> None:
     # `git rm` doesn't consult author/committer identity, so `env` is unused
     # here in practice -- kept for the uniform (cwd=repo, env=env) call style
     # every other `run()` site in the import scripts follows.
-    empties: list[str] = [
-        str(f.relative_to(repo))
-        for f in repo.rglob("*")
-        if ".git" not in f.parts and f.is_file() and f.stat().st_size == 0
-    ]
+    empties: list[str] = []
+    for dirpath, dirnames, filenames in os.walk(repo):
+        if ".git" in dirnames:
+            dirnames.remove(".git")
+        for filename in filenames:
+            f: Path = Path(dirpath, filename)
+            if f.stat().st_size == 0:
+                empties.append(str(f.relative_to(repo)))
     if empties:
         run(["git", "rm", "-f", "--quiet", *empties], cwd=repo, env=env)
 
 
-def apply_diff(repo: Path, diff_bytes: bytes, name: str) -> None:
+def apply_diff(repo: Path, diff_file: Path, name: str) -> None:
     """Apply a unified diff to `repo` with `patch -p1` (import side).
 
     Uses `patch` rather than `git apply`: on the larger 2.6 diffs `git apply`
     was seen to exit 0 while silently dropping hunks (see import-2.6.py).
+
+    Streams the diff in from disk (up to ~30MB for the largest ones) instead
+    of reading it into memory first.
     """
-    result: subprocess.CompletedProcess[bytes] = subprocess.run(
-        ["patch", "-p1", "-s"], cwd=repo, input=diff_bytes, capture_output=True
-    )
+    with diff_file.open("rb") as f:
+        result: subprocess.CompletedProcess[bytes] = subprocess.run(
+            ["patch", "-p1", "-s"], cwd=repo, stdin=f, capture_output=True
+        )
     if result.returncode != 0:
         sys.stderr.buffer.write(result.stdout)
         sys.stderr.buffer.write(result.stderr)
@@ -156,19 +163,45 @@ def build_patched_tree(
     tmp.rename(dest)
 
 
-def patch_tree(dest: Path, patch_bytes: bytes, name: str, strict: bool) -> None:
-    """Apply a prepatch to an unpacked tree with `patch -p1` (untar side).
+def apply_prepatch(
+    dest: Path,
+    patchfile: Path,
+    cat_cmd: str | None,
+    name: str,
+    strict: bool,
+) -> None:
+    """Decompress `patchfile` (if `cat_cmd` is given) and apply it to `dest`
+    with `patch -p1` (untar side).
+
+    Streams `cat_cmd | patch` as a real pipe (rather than buffering the
+    whole decompressed patch in memory first) and lets `patch`'s own
+    output go straight to our stderr instead of capturing it just to dump
+    it there afterwards.
 
     Non-strict mode logs a warning and continues on failure (matching the
     original scripts, which tolerated a few historically-broken prepatches).
     """
-    result: subprocess.CompletedProcess[bytes] = subprocess.run(
-        ["patch", "-p1"], cwd=dest, input=patch_bytes, capture_output=True
-    )
-    if result.stdout:
-        sys.stderr.buffer.write(result.stdout)
-    if result.stderr:
-        sys.stderr.buffer.write(result.stderr)
+    cat_proc: subprocess.Popen[bytes] | None = None
+    if cat_cmd is None:
+        patch_stdin = patchfile.open("rb")
+    else:
+        cat_proc = subprocess.Popen([cat_cmd, str(patchfile)], stdout=subprocess.PIPE)
+        assert cat_proc.stdout is not None
+        patch_stdin = cat_proc.stdout
+    try:
+        result: subprocess.CompletedProcess[bytes] = subprocess.run(
+            ["patch", "-p1"],
+            cwd=dest,
+            stdin=patch_stdin,
+            stdout=sys.stderr,
+            stderr=sys.stderr,
+        )
+    finally:
+        patch_stdin.close()
+        if cat_proc is not None:
+            cat_proc.wait()
+    if cat_proc is not None and cat_proc.returncode != 0:
+        raise RuntimeError(f"{cat_cmd} exited {cat_proc.returncode} for {name}")
     if result.returncode != 0:
         msg: str = f"patch exited {result.returncode} for {name}"
         if strict:
