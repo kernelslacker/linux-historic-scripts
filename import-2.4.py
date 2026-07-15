@@ -16,10 +16,12 @@ from linux_hist_common import (
     UNPACK,
     apply_diff,
     author_env,
+    branch_exists,
     commit_version,
     log,
     remove_empty_files,
     run,
+    tag_exists,
 )
 from linux_hist_2_4 import LINUS, VERSIONS, changelog_path
 
@@ -35,10 +37,14 @@ def main() -> None:
     run(["git", "checkout", "master"], cwd=repo, env=env)
 
     for v in VERSIONS:
-        if v.branch_create:
+        if v.branch_create and not branch_exists(repo, v.branch_create):
             run(["git", "branch", v.branch_create], cwd=repo, env=env)
         if v.branch_checkout:
             run(["git", "checkout", v.branch_checkout], cwd=repo, env=env)
+
+        if tag_exists(repo, v.name):
+            log(f"skip {v.name} (already imported)")
+            continue
 
         log(f"importing {v.name}")
         diff_file: Path = DIFFS / f"linux-{v.name}.diff"

@@ -23,6 +23,7 @@ from linux_hist_common import (
     log,
     remove_empty_files,
     run,
+    tag_exists,
 )
 from linux_hist_2_3 import LINUS, VERSIONS, changelog_path
 
@@ -39,8 +40,15 @@ def main() -> None:
 
     for v in VERSIONS:
         if v.alias_of:
+            if tag_exists(repo, v.name):
+                log(f"skip {v.name} (already tagged)")
+                continue
             log(f"tagging {v.name} -> {v.alias_of}")
             run(["git", "tag", v.name], cwd=repo, env=env)
+            continue
+
+        if tag_exists(repo, v.name):
+            log(f"skip {v.name} (already imported)")
             continue
 
         log(f"importing {v.name}")

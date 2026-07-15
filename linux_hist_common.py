@@ -45,6 +45,26 @@ def tree_dir(name: str) -> Path:
     return UNPACK / f"linux-{name}"
 
 
+def ref_exists(repo: Path, ref: str) -> bool:
+    return (
+        subprocess.run(
+            ["git", "rev-parse", "-q", "--verify", ref],
+            cwd=repo,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        ).returncode
+        == 0
+    )
+
+
+def tag_exists(repo: Path, name: str) -> bool:
+    return ref_exists(repo, f"refs/tags/{name}")
+
+
+def branch_exists(repo: Path, name: str) -> bool:
+    return ref_exists(repo, f"refs/heads/{name}")
+
+
 # --- git import helpers (used by import-*.py) ---
 
 

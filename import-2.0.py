@@ -16,10 +16,12 @@ from linux_hist_common import (
     UNPACK,
     apply_diff,
     author_env,
+    branch_exists,
     commit_version,
     log,
     remove_empty_files,
     run,
+    tag_exists,
 )
 from linux_hist_2_0 import LINUS, VERSIONS, changelog_path
 
@@ -38,14 +40,21 @@ def main() -> None:
         if v.author:
             env = author_env(v.author)
 
-        if v.branch_create:
+        if v.branch_create and not branch_exists(repo, v.branch_create):
             run(["git", "branch", v.branch_create], cwd=repo, env=env)
         if v.branch_checkout:
             run(["git", "checkout", v.branch_checkout], cwd=repo, env=env)
 
         if v.alias_of:
+            if tag_exists(repo, v.name):
+                log(f"skip {v.name} (already tagged)")
+                continue
             log(f"tagging {v.name} -> {v.alias_of}")
             run(["git", "tag", v.name], cwd=repo, env=env)
+            continue
+
+        if tag_exists(repo, v.name):
+            log(f"skip {v.name} (already imported)")
             continue
 
         log(f"importing {v.name}")

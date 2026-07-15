@@ -30,6 +30,7 @@ from linux_hist_common import (
     log,
     remove_empty_files,
     run,
+    tag_exists,
 )
 from linux_hist_2_6 import LINUS, VERSIONS, changelog_path
 
@@ -45,6 +46,10 @@ def main() -> None:
     run(["git", "checkout", "master"], cwd=repo, env=env)
 
     for v in VERSIONS:
+        if tag_exists(repo, v.name):
+            log(f"skip {v.name} (already imported)")
+            continue
+
         log(f"importing {v.name}")
         diff_file: Path = DIFFS / f"linux-{v.name}.diff"
         if not diff_file.exists():
