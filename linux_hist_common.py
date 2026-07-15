@@ -78,6 +78,9 @@ def commit_version(
 
 
 def remove_empty_files(repo: Path, env: dict[str, str]) -> None:
+    # `git rm` doesn't consult author/committer identity, so `env` is unused
+    # here in practice -- kept for the uniform (cwd=repo, env=env) call style
+    # every other `run()` site in the import scripts follows.
     empties: list[str] = [
         str(f.relative_to(repo))
         for f in repo.rglob("*")

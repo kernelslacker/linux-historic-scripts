@@ -15,7 +15,6 @@ from linux_hist_common import (
     CHANGELOGS,
     DIFFS,
     UNPACK,
-    Author,
     apply_diff,
     author_env,
     commit_version,
@@ -33,14 +32,12 @@ def main() -> None:
     repo: Path = UNPACK / "linux-git"
     if not (repo / ".git").exists():
         raise FileNotFoundError(f"{repo} doesn't exist -- run import-1.x.py first")
-    author: Author = LINUS
-    env: dict[str, str] = author_env(author)
+    env: dict[str, str] = author_env(LINUS)
     run(["git", "checkout", "master"], cwd=repo, env=env)
 
     for v in VERSIONS:
         if v.author:
-            author = v.author
-            env = author_env(author)
+            env = author_env(v.author)
 
         if v.branch_create:
             run(["git", "branch", v.branch_create], cwd=repo, env=env)
