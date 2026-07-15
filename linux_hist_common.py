@@ -181,9 +181,7 @@ def open_repo(prev_script: str, author: Author) -> GitRepo:
     return repo
 
 
-def import_version(
-    repo: GitRepo, name: str, date: str, changelog: Path
-) -> None:
+def import_version(repo: GitRepo, name: str, date: str, changelog: Path) -> None:
     """Apply `diffs/linux-NAME.diff`, commit, and tag it -- the seven-step
     block (log, diff-file check, apply_diff, git add, remove_empty_files,
     commit_version, git tag) shared verbatim by every import-*.py loop.

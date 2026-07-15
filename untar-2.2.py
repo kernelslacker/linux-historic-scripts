@@ -41,9 +41,7 @@ def main() -> None:
                 "zcat",
                 args.force,
                 args.strict,
-                missing_base_hint=(
-                    "(run untar-2.1.py first if this is 2.2.0pre9)"
-                ),
+                missing_base_hint=("(run untar-2.1.py first if this is 2.2.0pre9)"),
             )
 
 

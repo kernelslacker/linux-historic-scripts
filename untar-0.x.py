@@ -43,9 +43,7 @@ def main() -> None:
                 args.force,
             )
         else:
-            cat_cmd: str = (
-                "bzcat" if v.compression == Compression.BZ2 else "zcat"
-            )
+            cat_cmd: str = "bzcat" if v.compression == Compression.BZ2 else "zcat"
             apply_patch(
                 v.name,
                 tree_dir(v.name),

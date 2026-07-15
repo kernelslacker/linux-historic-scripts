@@ -11,8 +11,8 @@ BINARIES = ROOT / "binaries" / "0.x"
 
 
 class Compression(enum.StrEnum):
-    BZ2 = "bz2"     # bzcat
-    GZ = "gz"       # zcat
+    BZ2 = "bz2"  # bzcat
+    GZ = "gz"  # zcat
 
 
 @dataclasses.dataclass

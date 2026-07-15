@@ -34,9 +34,7 @@ def main() -> None:
     UNPACK.mkdir(exist_ok=True)
     for v in VERSIONS:
         if v.patch is None:
-            archive: Path = (
-                BINARIES / series_dir(v.name) / f"linux-{v.name}.tar.gz"
-            )
+            archive: Path = BINARIES / series_dir(v.name) / f"linux-{v.name}.tar.gz"
             extract_tarball(v.name, tree_dir(v.name), archive, args.force)
         else:
             if v.compression == "none":
