@@ -468,7 +468,7 @@ def tree_dir(name: str) -> Path:
 
 
 def changelog_path(v: Version) -> Path:
-    return CHANGELOGS / f"{v.name}.txt"
+    return CHANGELOGS / "2.3" / f"{v.name}.txt"
 
 
 _DIR_NAME_OVERRIDES: dict[str, str] = {

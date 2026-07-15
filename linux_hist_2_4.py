@@ -230,4 +230,4 @@ VERSIONS: list[Version] = [
 
 
 def changelog_path(v: Version) -> Path:
-    return CHANGELOGS / f"{v.name}.txt"
+    return CHANGELOGS / "2.4" / f"{v.name}.txt"

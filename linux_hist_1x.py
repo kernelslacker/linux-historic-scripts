@@ -37,7 +37,7 @@ def series_dir(name: str) -> str:
 
 
 def changelog_path(v: Version) -> Path:
-    return CHANGELOGS / f"{v.name}.txt"
+    return CHANGELOGS / series_dir(v.name) / f"{v.name}.txt"
 
 
 # fmt: off
