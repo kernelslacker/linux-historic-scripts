@@ -2,19 +2,9 @@
 """Generate diffs/linux-VERSION.diff for the 0.x series."""
 
 import argparse
-from pathlib import Path
 
-from linux_hist_common import DIFFS, log, write_diff
-from linux_hist_0x import VERSIONS, Version
-
-
-def make_diff(v: Version, force: bool) -> None:
-    out: Path = DIFFS / f"linux-{v.name}.diff"
-    if out.exists() and not force:
-        log(f"skip diff for {v.name} (already exists)")
-        return
-    log(f"diffing {v.name}")
-    write_diff(v.base, v.name, out)
+from linux_hist_common import DIFFS, make_diff
+from linux_hist_0x import VERSIONS
 
 
 def main() -> None:
@@ -28,7 +18,7 @@ def main() -> None:
     for v in VERSIONS:
         if v.base is None:
             continue
-        make_diff(v, args.force)
+        make_diff(v.name, v.base, args.force, "(run untar-0.x.py first)")
 
 
 if __name__ == "__main__":

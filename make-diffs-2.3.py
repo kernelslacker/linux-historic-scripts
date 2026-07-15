@@ -10,32 +10,9 @@ the output file is always named after the canonical version name.
 """
 
 import argparse
-from pathlib import Path
 
-from linux_hist_common import DIFFS, log, write_diff
-from linux_hist_2_3 import VERSIONS, Version, tree_dir
-
-BY_NAME: dict[str, Version] = {v.name: v for v in VERSIONS}
-
-
-def dirname_of(name: str) -> str:
-    v: Version | None = BY_NAME.get(name)
-    return v.dir_name if v and v.dir_name else name
-
-
-def make_diff(v: Version, force: bool) -> None:
-    out: Path = DIFFS / f"linux-{v.name}.diff"
-    if out.exists() and not force:
-        log(f"skip diff for {v.name} (already exists)")
-        return
-    base_dir: Path = tree_dir(v.base)
-    if not base_dir.exists():
-        raise FileNotFoundError(
-            f"base tree missing for {v.name}: {base_dir} "
-            "(run untar-2.2.py first if this is 2.2.8)"
-        )
-    log(f"diffing {v.name}")
-    write_diff(dirname_of(v.base), dirname_of(v.name), out)
+from linux_hist_common import DIFFS, make_diff
+from linux_hist_2_3 import VERSIONS, dirname_of
 
 
 def main() -> None:
@@ -47,7 +24,13 @@ def main() -> None:
 
     DIFFS.mkdir(exist_ok=True)
     for v in VERSIONS:
-        make_diff(v, args.force)
+        make_diff(
+            v.name,
+            v.base,
+            args.force,
+            "(run untar-2.2.py first if this is 2.2.8)",
+            dirname_of,
+        )
 
 
 if __name__ == "__main__":

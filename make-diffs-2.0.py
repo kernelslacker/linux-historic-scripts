@@ -7,25 +7,9 @@ pre2.0.14 must already exist (run untar-1.x.py first). Alias versions
 """
 
 import argparse
-from pathlib import Path
 
-from linux_hist_common import DIFFS, log, tree_dir, write_diff
-from linux_hist_2_0 import VERSIONS, Version
-
-
-def make_diff(v: Version, force: bool) -> None:
-    out: Path = DIFFS / f"linux-{v.name}.diff"
-    if out.exists() and not force:
-        log(f"skip diff for {v.name} (already exists)")
-        return
-    base_dir: Path = tree_dir(v.base)
-    if not base_dir.exists():
-        raise FileNotFoundError(
-            f"base tree missing for {v.name}: {base_dir} "
-            "(run untar-1.x.py first if this is pre2.0.14)"
-        )
-    log(f"diffing {v.name}")
-    write_diff(v.base, v.name, out)
+from linux_hist_common import DIFFS, make_diff
+from linux_hist_2_0 import VERSIONS
 
 
 def main() -> None:
@@ -39,7 +23,12 @@ def main() -> None:
     for v in VERSIONS:
         if v.alias_of:
             continue
-        make_diff(v, args.force)
+        make_diff(
+            v.name,
+            v.base,
+            args.force,
+            "(run untar-1.x.py first if this is pre2.0.14)",
+        )
 
 
 if __name__ == "__main__":

@@ -202,3 +202,29 @@ def write_diff(base_label: str, name_label: str, out: Path) -> None:
         tmp.unlink(missing_ok=True)
         raise
     tmp.rename(out)
+
+
+def make_diff(
+    name: str,
+    base: str,
+    force: bool,
+    missing_base_hint: str = "",
+    dirname_of: Callable[[str], str] = lambda n: n,
+) -> None:
+    """Generate diffs/linux-NAME.diff via `write_diff`, skipping if it
+    already exists and raising early if the base tree isn't unpacked yet.
+
+    `dirname_of` maps a version name to its on-disk directory name where
+    they differ (only the 2.3 family's 2.3.99pre* range needs this); the
+    output file is always named after the canonical version name.
+    """
+    out: Path = DIFFS / f"linux-{name}.diff"
+    if out.exists() and not force:
+        log(f"skip diff for {name} (already exists)")
+        return
+    base_dir: Path = tree_dir(dirname_of(base))
+    if not base_dir.exists():
+        hint: str = f" {missing_base_hint}" if missing_base_hint else ""
+        raise FileNotFoundError(f"base tree missing for {name}: {base_dir}{hint}")
+    log(f"diffing {name}")
+    write_diff(dirname_of(base), dirname_of(name), out)

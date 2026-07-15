@@ -454,9 +454,12 @@ VERSIONS: list[Version] = [
 # fmt: on
 
 
+def dirname_of(name: str) -> str:
+    return _DIR_NAME_OVERRIDES.get(name, name)
+
+
 def tree_dir(name: str) -> Path:
-    dir_name: str = _DIR_NAME_OVERRIDES.get(name, name)
-    return UNPACK / f"linux-{dir_name}"
+    return UNPACK / f"linux-{dirname_of(name)}"
 
 
 _DIR_NAME_OVERRIDES: dict[str, str] = {
