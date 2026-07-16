@@ -40,6 +40,7 @@ from linux_hist_common import (  # noqa: F401 (re-exported)
     LINUS,
     ROOT,
     UNPACK,
+    version_subdir,
 )
 
 BINARIES = ROOT / "binaries" / "2.3"
@@ -468,7 +469,7 @@ def tree_dir(name: str) -> Path:
 
 
 def changelog_path(v: Version) -> Path:
-    return CHANGELOGS / "2.3" / f"{v.name}.txt"
+    return CHANGELOGS / version_subdir(v.name) / f"{v.name}.txt"
 
 
 _DIR_NAME_OVERRIDES: dict[str, str] = {

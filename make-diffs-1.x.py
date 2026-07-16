@@ -6,14 +6,13 @@ port of make-diffs-1.x.sh.
 must already exist (run untar-0.x.py first).
 """
 
-from linux_hist_common import DIFFS, make_diff, parse_force
+from linux_hist_common import make_diff, parse_force
 from linux_hist_1x import VERSIONS
 
 
 def main() -> None:
     args = parse_force(__doc__)
 
-    DIFFS.mkdir(exist_ok=True)
     for v in VERSIONS:
         make_diff(
             v.name,

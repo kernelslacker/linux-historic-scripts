@@ -7,14 +7,13 @@ pre2.0.14 must already exist (run untar-1.x.py first). Alias versions
 (2.0.34, 2.0.36, 2.0.38) have no diff of their own -- skipped.
 """
 
-from linux_hist_common import DIFFS, make_diff, parse_force
+from linux_hist_common import make_diff, parse_force
 from linux_hist_2_0 import VERSIONS
 
 
 def main() -> None:
     args = parse_force(__doc__)
 
-    DIFFS.mkdir(exist_ok=True)
     for v in VERSIONS:
         if v.alias_of:
             continue

@@ -10,14 +10,13 @@ still get a real diff generated here, matching the original script exactly
 the output file is always named after the canonical version name.
 """
 
-from linux_hist_common import DIFFS, make_diff, parse_force
+from linux_hist_common import make_diff, parse_force
 from linux_hist_2_3 import VERSIONS, dirname_of
 
 
 def main() -> None:
     args = parse_force(__doc__)
 
-    DIFFS.mkdir(exist_ok=True)
     for v in VERSIONS:
         make_diff(
             v.name,

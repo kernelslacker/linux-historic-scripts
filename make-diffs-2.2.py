@@ -6,14 +6,13 @@ Alias versions (2.2.18pre27, 2.2.18) still get a real diff generated here,
 matching the original script exactly -- only import.py skips applying them.
 """
 
-from linux_hist_common import DIFFS, make_diff, parse_force
+from linux_hist_common import make_diff, parse_force
 from linux_hist_2_2 import VERSIONS
 
 
 def main() -> None:
     args = parse_force(__doc__)
 
-    DIFFS.mkdir(exist_ok=True)
     for v in VERSIONS:
         make_diff(
             v.name,

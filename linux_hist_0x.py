@@ -5,7 +5,12 @@ import enum
 
 from pathlib import Path
 
-from linux_hist_common import CHANGELOGS, LINUS, ROOT  # noqa: F401 (re-exported)
+from linux_hist_common import (  # noqa: F401 (re-exported)
+    CHANGELOGS,
+    LINUS,
+    ROOT,
+    version_subdir,
+)
 
 BINARIES = ROOT / "binaries" / "0.x"
 
@@ -130,4 +135,4 @@ VERSIONS: list[Version] = [
 
 
 def changelog_path(v: Version) -> Path:
-    return CHANGELOGS / "0.x" / f"{v.name}.txt"
+    return CHANGELOGS / version_subdir(v.name) / f"{v.name}.txt"

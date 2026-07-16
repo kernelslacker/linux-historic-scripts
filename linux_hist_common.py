@@ -9,6 +9,7 @@ per-branch loop bodies stay small and identical branch-to-branch.
 
 import argparse
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -19,6 +20,33 @@ ROOT: Path = Path(__file__).resolve().parent
 UNPACK: Path = ROOT / "unpack"
 DIFFS: Path = ROOT / "diffs"
 CHANGELOGS: Path = ROOT / "changelogs"
+
+# changelogs/ and diffs/ are both split into these per-series subdirs.
+_VERSION_SUBDIRS: frozenset[str] = frozenset(
+    {"0.x", "1.0", "1.1", "1.2", "1.3", "2.0", "2.1", "2.2", "2.3", "2.4", "2.5", "2.6"}
+)
+
+
+def version_subdir(name: str) -> str:
+    """Map a version name to its changelogs/ and diffs/ subdirectory.
+
+    A few branch modules' VERSIONS tables spill over into a neighbouring
+    series (e.g. linux_hist_2_1.py's 2.2.0pre1-9, linux_hist_2_3.py's
+    2.4.0-testN range) -- those files live under the *target* series'
+    subdir, not the module's own, so this is name-driven rather than a
+    per-module constant.
+    """
+    if name.startswith("pre2.0"):
+        subdir = "1.3"
+    elif name.startswith("0."):
+        subdir = "0.x"
+    else:
+        m = re.match(r"(\d+\.\d+)", name)
+        subdir = m.group(1) if m else None
+    if subdir not in _VERSION_SUBDIRS:
+        raise ValueError(f"no known changelogs/diffs subdir for {name!r}")
+    return subdir
+
 
 # The import stage builds the history in BUILD_REPO (inside the throwaway
 # unpack/ dir, alongside the unpacked tarballs). build.py's finalize step lifts
@@ -235,12 +263,13 @@ def open_repo(prev_script: str, author: Author) -> GitRepo:
 
 
 def import_version(repo: GitRepo, name: str, date: str, changelog: Path) -> None:
-    """Apply `diffs/linux-NAME.diff`, commit, and tag it -- the seven-step
-    block (log, diff-file check, apply_diff, git add, remove_empty_files,
-    commit_version, git tag) shared verbatim by every import-*.py loop.
+    """Apply `diffs/SUBDIR/linux-NAME.diff`, commit, and tag it -- the
+    seven-step block (log, diff-file check, apply_diff, git add,
+    remove_empty_files, commit_version, git tag) shared verbatim by every
+    import-*.py loop.
     """
     log(f"importing {name}")
-    diff_file: Path = DIFFS / f"linux-{name}.diff"
+    diff_file: Path = DIFFS / version_subdir(name) / f"linux-{name}.diff"
     if not diff_file.exists():
         raise FileNotFoundError(diff_file)
     apply_diff(repo.path, diff_file, name)
@@ -440,14 +469,14 @@ def make_diff(
     missing_base_hint: str = "",
     dirname_of: Callable[[str], str] = lambda n: n,
 ) -> None:
-    """Generate diffs/linux-NAME.diff via `write_diff`, skipping if it
+    """Generate diffs/SUBDIR/linux-NAME.diff via `write_diff`, skipping if it
     already exists and raising early if the base tree isn't unpacked yet.
 
     `dirname_of` maps a version name to its on-disk directory name where
     they differ (only the 2.3 family's 2.3.99pre* range needs this); the
     output file is always named after the canonical version name.
     """
-    out: Path = DIFFS / f"linux-{name}.diff"
+    out: Path = DIFFS / version_subdir(name) / f"linux-{name}.diff"
     if out.exists() and not force:
         log(f"skip diff for {name} (already exists)")
         return
@@ -456,4 +485,5 @@ def make_diff(
         hint: str = f" {missing_base_hint}" if missing_base_hint else ""
         raise FileNotFoundError(f"base tree missing for {name}: {base_dir}{hint}")
     log(f"diffing {name}")
+    out.parent.mkdir(parents=True, exist_ok=True)
     write_diff(dirname_of(base), dirname_of(name), out)

@@ -35,6 +35,7 @@ from linux_hist_common import (  # noqa: F401 (re-exported)
     LINUS,
     ROOT,
     Author,
+    version_subdir,
 )
 
 BINARIES = ROOT / "binaries" / "2.2"
@@ -297,4 +298,4 @@ VERSIONS: list[Version] = [
 
 
 def changelog_path(v: Version) -> Path:
-    return CHANGELOGS / "2.2" / f"{v.name}.txt"
+    return CHANGELOGS / version_subdir(v.name) / f"{v.name}.txt"
