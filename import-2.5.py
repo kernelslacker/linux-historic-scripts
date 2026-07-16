@@ -2,7 +2,7 @@
 """Continue the git history through 2.5.x. New script (no shell reference existed).
 
 Reuses the repo built by import-2.4.py (must already exist at
-unpack/linux-git). Checks out "master" (which import-2.4.py left parked at
+linux-git). Checks out "master" (which import-2.4.py left parked at
 2.4.15 -- 2.4.16 onward moved onto branch "2.4") and continues from there,
 always Linus Torvalds. Real per-release changelogs come from
 binaries/2.5/ChangeLog-N (not the usual changelogs/ dir).

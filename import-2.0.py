@@ -2,7 +2,7 @@
 """Continue the git history through 2.0.x. Python port of import-2.0.sh.
 
 Reuses the repo built by import-1.x.py (must already exist at
-unpack/linux-git, on branch "master" at the pre2.0.14 tag). At 2.0.22,
+linux-git, on branch "master" at the pre2.0.14 tag). At 2.0.22,
 branches off onto "2.0" (Alan Cox takes over) and never checks back out to
 master -- 2.1's import continues master from 2.0.21. Author changes again
 to David Weinehall at 2.0.39pre1, still on branch "2.0".

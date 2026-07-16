@@ -5,7 +5,7 @@ import-0.x.sh."""
 import shutil
 
 from linux_hist_common import (
-    BUILD_REPO,
+    REPO,
     GitRepo,
     author_env,
     hardlink_tree,
@@ -20,7 +20,7 @@ from linux_hist_0x import LINUS, VERSIONS, Version, changelog_path
 def main() -> None:
     parse_no_flags(__doc__)
 
-    repo: GitRepo = GitRepo(BUILD_REPO, author_env(LINUS))
+    repo: GitRepo = GitRepo(REPO, author_env(LINUS))
     first: Version = VERSIONS[0]
     rest: list[Version] = VERSIONS[1:]
 

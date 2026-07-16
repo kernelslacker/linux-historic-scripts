@@ -3,7 +3,7 @@
 import-2.3.sh.
 
 Reuses the repo built by import-2.2.py (must already exist at
-unpack/linux-git, on branch "master" at the 2.2.8 tag -- 2.2's own stable
+linux-git, on branch "master" at the 2.2.8 tag -- 2.2's own stable
 maintenance continues separately on branch "2.2"). Stays on master
 throughout, always Linus Torvalds.
 

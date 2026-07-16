@@ -16,11 +16,10 @@ Examples:
 """
 
 import argparse
-import shutil
 import subprocess
 import sys
 
-from linux_hist_common import BUILD_REPO, FINAL_REPO, ROOT, log
+from linux_hist_common import ROOT, log
 
 BRANCHES: list[str] = [
     "0.x",
@@ -53,26 +52,6 @@ def run_stage(
         log(f"   (dry-run) {' '.join(cmd)}")
         return
     subprocess.run(cmd, check=True)
-
-
-def finalize(dry_run: bool) -> None:
-    """Lift the finished history out of the throwaway unpack/ dir.
-
-    The import stage builds into BUILD_REPO (unpack/linux-git), buried
-    alongside the unpacked tarballs. Once the full chain has run, move it up to
-    FINAL_REPO (./linux-git) so the deliverable isn't stranded in the gitignored
-    scratch dir. Idempotent: replaces an existing FINAL_REPO from a prior run.
-    """
-    if not (BUILD_REPO / ".git").exists():
-        log(f"finalize: {BUILD_REPO} not found, nothing to move")
-        return
-    log(f"=== finalize: move {BUILD_REPO} -> {FINAL_REPO} ===")
-    if dry_run:
-        log(f"   (dry-run) mv {BUILD_REPO} {FINAL_REPO}")
-        return
-    if FINAL_REPO.exists():
-        shutil.rmtree(FINAL_REPO)
-    shutil.move(str(BUILD_REPO), str(FINAL_REPO))
 
 
 def main() -> None:
@@ -122,12 +101,6 @@ def main() -> None:
             except subprocess.CalledProcessError as exc:
                 log(f"FAILED: {stage} {branch} (exit {exc.returncode})")
                 raise SystemExit(exc.returncode) from exc
-
-    # Only relocate once the import stage has actually run through the final
-    # branch -- a partial range leaves an incomplete tree that shouldn't be
-    # presented as the finished linux-git.
-    if "import" in stages and args.to_branch == BRANCHES[-1]:
-        finalize(args.dry_run)
 
 
 if __name__ == "__main__":

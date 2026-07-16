@@ -3,7 +3,7 @@
 import-2.1.sh.
 
 Reuses the repo built by import-2.0.py (must already exist at
-unpack/linux-git). Checks out "master" (which import-2.0.py left parked at
+linux-git). Checks out "master" (which import-2.0.py left parked at
 2.0.21) and continues from there, all as Linus Torvalds -- no branching or
 author changes in this segment.
 """

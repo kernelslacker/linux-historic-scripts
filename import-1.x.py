@@ -3,7 +3,7 @@
 import-1.x.sh.
 
 Reuses the repo built by import-0.x.py (must already exist at
-unpack/linux-git, checked out on master at the 1.0alpha tag) and continues
+linux-git, checked out on master at the 1.0alpha tag) and continues
 committing into it -- it does not create a fresh repo. 1.0 splits off onto
 branch "1.0" at 1.0.6 while "master" continues into 1.1; 1.2 splits off onto
 branch "1.2" at 1.2.10 while "master" continues into 1.3.

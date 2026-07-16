@@ -48,17 +48,11 @@ def version_subdir(name: str) -> str:
     return subdir
 
 
-# The import stage builds the history in BUILD_REPO (inside the throwaway
-# unpack/ dir, alongside the unpacked tarballs). build.py's finalize step lifts
-# the finished tree up to FINAL_REPO once the full chain has run. resolve_repo()
-# hands consumers (verify.py) whichever one is actually on disk.
-BUILD_REPO: Path = UNPACK / "linux-git"
-FINAL_REPO: Path = ROOT / "linux-git"
-
-
-def resolve_repo() -> Path:
-    """Return the finished repo's location, preferring the moved FINAL_REPO."""
-    return FINAL_REPO if (FINAL_REPO / ".git").exists() else BUILD_REPO
+# The import stage builds the history directly here -- hardlink_tree() (used
+# to seed it in import-0.x.py) works across UNPACK just as well from ROOT
+# since both live on the same filesystem, so there's no need to build inside
+# the throwaway unpack/ dir and move the result out afterwards.
+REPO: Path = ROOT / "linux-git"
 
 
 Author = tuple[str, str]  # (name, email)
@@ -248,13 +242,13 @@ class GitRepo:
 
 
 def open_repo(prev_script: str, author: Author) -> GitRepo:
-    """Open the shared unpack/linux-git repo left by an earlier import-*.py
-    and check out "master".
+    """Open the shared linux-git repo left by an earlier import-*.py and
+    check out "master".
 
     Common preamble shared by every non-seed import-*.py -- only the
     "run X first" hint (naming the previous script in the chain) varies.
     """
-    path: Path = BUILD_REPO
+    path: Path = REPO
     if not (path / ".git").exists():
         raise FileNotFoundError(f"{path} doesn't exist -- run {prev_script} first")
     repo = GitRepo(path, author_env(author))

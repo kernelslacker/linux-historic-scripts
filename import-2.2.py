@@ -2,7 +2,7 @@
 """Continue the git history through 2.2.x. Python port of import-2.2.sh.
 
 Reuses the repo built by import-2.1.py (must already exist at
-unpack/linux-git, on branch "master" at the 2.2.0pre9 tag). At 2.2.8,
+linux-git, on branch "master" at the 2.2.0pre9 tag). At 2.2.8,
 branches off onto "2.2" (mirroring 2.0/2.1's split) and never checks back
 out to master -- 2.3's import continues master from 2.2.8. Author changes
 to Alan Cox at 2.2.11pre1, still on branch "2.2".

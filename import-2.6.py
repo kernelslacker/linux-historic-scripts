@@ -2,7 +2,7 @@
 """Continue the git history through 2.6.x. New script (no shell reference existed).
 
 Reuses the repo built by import-2.5.py (must already exist at
-unpack/linux-git). Checks out "master" and continues from 2.5.75, always
+linux-git). Checks out "master" and continues from 2.5.75, always
 Linus Torvalds. Real per-release changelogs come from
 binaries/2.6/ChangeLog-N (not the usual changelogs/ dir).
 

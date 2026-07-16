@@ -2,7 +2,7 @@
 """Continue the git history through 2.4.x. New script (no shell reference existed).
 
 Reuses the repo built by import-2.3.py (must already exist at
-unpack/linux-git, on branch "master" at the 2.4.0-prerelease tag). At
+linux-git, on branch "master" at the 2.4.0-prerelease tag). At
 2.4.16, branches off onto "2.4" (2.5.1 forked from 2.4.15 in real history,
 and Linus' own tree moved on from there -- matches the 1.0/1.1, 2.0/2.1,
 2.2/2.3 pattern). Always Linus Torvalds; no aliases in this segment.
