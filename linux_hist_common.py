@@ -115,7 +115,7 @@ def run(
 
 
 def tree_dir(name: str) -> Path:
-    return UNPACK / f"linux-{name}"
+    return UNPACK / version_subdir(name) / f"linux-{name}"
 
 
 def ref_exists(repo: Path, ref: str) -> bool:
@@ -286,16 +286,25 @@ def extract_to(archive: Path, dest: Path) -> None:
     """Extract a kernel tarball and normalise its top dir to `dest`.
 
     Some tarballs unpack to 'linux/', others straight to 'linux-VERSION/' --
-    mirrors the "if [ -d linux ]" guard in the original shell scripts.
+    mirrors the "if [ -d linux ]" guard in the original shell scripts. Either
+    way `tar` runs with cwd=UNPACK, so it always lands flat at UNPACK's top
+    level -- `dest` itself now lives one level deeper, under its per-series
+    subdir, so both cases are moved (not just the 'linux/' staging one).
     """
     staging: Path = UNPACK / "linux"
+    flat: Path = UNPACK / dest.name
     if staging.exists():
         shutil.rmtree(staging)
+    if flat != dest and flat.exists():
+        shutil.rmtree(flat)
     if dest.exists():
         shutil.rmtree(dest)
     run(["tar", "xf", str(archive)], cwd=UNPACK)
+    dest.parent.mkdir(parents=True, exist_ok=True)
     if staging.exists():
         staging.rename(dest)
+    elif flat.exists():
+        flat.rename(dest)
     elif not dest.exists():
         raise RuntimeError(f"{archive} did not extract to 'linux/' or '{dest.name}/'")
 
@@ -433,33 +442,53 @@ def apply_patch(
 # --- diff helpers (used by make-diffs-*.py) ---
 
 
-def write_diff(base_label: str, name_label: str, out: Path) -> None:
-    """Write `diff -urN linux-BASE linux-NAME` to `out` (run inside UNPACK).
+def write_diff(
+    base_label: str, name_label: str, base_dir: Path, name_dir: Path, out: Path
+) -> None:
+    """Write `diff -urN linux-BASE linux-NAME` to `out`.
 
-    Relative "linux-VERSION" names keep the diff headers at
-    "linux-BASE/foo" / "linux-VERSION/foo" so `patch -p1` strips exactly one
-    leading component. diff exits 1 when it finds differences (the expected
-    case); only >= 2 is a real failure.
+    `base_dir`/`name_dir` are the real (per-series-subdir) tree locations,
+    but the diff still has to run as if they were UNPACK's flat
+    "linux-BASE"/"linux-NAME" siblings: `patch -p1` on the import side strips
+    exactly one leading path component, so the header must stay
+    "linux-BASE/foo" / "linux-VERSION/foo" regardless of where the trees
+    actually live on disk. Symlinking those exact names into UNPACK for the
+    duration of the diff gets identical header text without diff itself
+    knowing the trees moved. diff exits 1 when it finds differences (the
+    expected case); only >= 2 is a real failure.
 
     Writes under a temp name and renames into place only on success, so a
     Ctrl-C or missing `diff` binary mid-run can't leave a truncated file at
     `out` for a later run's skip-if-exists check to mistake for a cached diff.
     """
-    tmp: Path = out.with_name(out.name + ".tmp")
+    base_link: Path = UNPACK / f"linux-{base_label}"
+    name_link: Path = UNPACK / f"linux-{name_label}"
+    for link in (base_link, name_link):
+        if link.is_symlink() or link.exists():
+            link.unlink()
+    base_link.symlink_to(base_dir)
+    name_link.symlink_to(name_dir)
     try:
-        with tmp.open("wb") as f:
-            result: subprocess.CompletedProcess[bytes] = subprocess.run(
-                ["diff", "-urN", f"linux-{base_label}", f"linux-{name_label}"],
-                stdout=f,
-                cwd=UNPACK,
-                check=False,
-            )
-        if result.returncode not in (0, 1):
-            raise RuntimeError(f"diff failed ({result.returncode}) for {name_label}")
-    except BaseException:
-        tmp.unlink(missing_ok=True)
-        raise
-    tmp.rename(out)
+        tmp: Path = out.with_name(out.name + ".tmp")
+        try:
+            with tmp.open("wb") as f:
+                result: subprocess.CompletedProcess[bytes] = subprocess.run(
+                    ["diff", "-urN", f"linux-{base_label}", f"linux-{name_label}"],
+                    stdout=f,
+                    cwd=UNPACK,
+                    check=False,
+                )
+            if result.returncode not in (0, 1):
+                raise RuntimeError(
+                    f"diff failed ({result.returncode}) for {name_label}"
+                )
+        except BaseException:
+            tmp.unlink(missing_ok=True)
+            raise
+        tmp.rename(out)
+    finally:
+        base_link.unlink(missing_ok=True)
+        name_link.unlink(missing_ok=True)
 
 
 def make_diff(
@@ -486,4 +515,5 @@ def make_diff(
         raise FileNotFoundError(f"base tree missing for {name}: {base_dir}{hint}")
     log(f"diffing {name}")
     out.parent.mkdir(parents=True, exist_ok=True)
-    write_diff(dirname_of(base), dirname_of(name), out)
+    name_dir: Path = tree_dir(dirname_of(name))
+    write_diff(dirname_of(base), dirname_of(name), base_dir, name_dir, out)

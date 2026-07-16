@@ -2,8 +2,9 @@
 """Unpack the 2.2.x tarballs and apply prepatches. Python port of
 untar-2.2.sh.
 
-2.2.0's base (2.2.0pre9) comes from the 2.1 series, so unpack/linux-
-2.2.0pre9 must already exist (run untar-2.1.py first). Alias versions
+2.2.0's base (2.2.0pre9) comes from the 2.1 series, so
+unpack/2.2/linux-2.2.0pre9 must already exist (run untar-2.1.py first).
+Alias versions
 (2.2.18pre27, 2.2.18) still get real trees built here -- only import.py
 treats them specially.
 """

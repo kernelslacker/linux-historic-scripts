@@ -5,7 +5,7 @@ the whole project: 75 plain tarball releases (2.5.1-2.5.75), no prepatches
 archived, no branching, always Linus Torvalds. 2.5.1 forked from 2.4.15 in
 real history (confirmed: Linus' own tree moved on there while 2.4.x stable
 maintenance continued on its own branch -- see linux_hist_2_4.py), so
-unpack/linux-2.4.15 must already exist (run untar-2.4.py first).
+unpack/2.4/linux-2.4.15 must already exist (run untar-2.4.py first).
 
 Real per-release changelogs exist as ChangeLog-2.5.N files under
 binaries/2.5/ (not the usual changelogs/ dir) -- these are cumulative

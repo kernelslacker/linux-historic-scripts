@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Generate diffs/linux-VERSION.diff for 2.6.x. New script (no shell reference existed).
 
-2.6.0-test1's base (2.5.75) comes from the 2.5 series, so unpack/linux-
-2.5.75 must already exist (run untar-2.5.py first).
+2.6.0-test1's base (2.5.75) comes from the 2.5 series, so
+unpack/2.5/linux-2.5.75 must already exist (run untar-2.5.py first).
 """
 
 from linux_hist_common import make_diff, parse_force

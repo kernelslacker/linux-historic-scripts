@@ -2,8 +2,8 @@
 """Unpack the 2.0.x tarballs and apply prepatches. Python port of
 untar-2.0.sh.
 
-pre2.0.14 comes from the 1.x series, so unpack/linux-pre2.0.14 must already
-exist (run untar-1.x.py first).
+pre2.0.14 comes from the 1.x series, so unpack/1.3/linux-pre2.0.14 must
+already exist (run untar-1.x.py first).
 
 Alias versions (2.0.34, 2.0.36, 2.0.38) don't get their own tree -- a
 relative symlink is created instead, pointing at the real target's tree, so

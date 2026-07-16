@@ -2,7 +2,7 @@
 """Unpack the 2.5.x tarballs. New script (no shell reference existed) -- pure
 tarball chain, no prepatches archived.
 
-2.5.1's base (2.4.15) comes from the 2.4 series, so unpack/linux-2.4.15
+2.5.1's base (2.4.15) comes from the 2.4 series, so unpack/2.4/linux-2.4.15
 must already exist (run untar-2.4.py first).
 """
 

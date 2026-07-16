@@ -465,7 +465,7 @@ def dirname_of(name: str) -> str:
 
 
 def tree_dir(name: str) -> Path:
-    return UNPACK / f"linux-{dirname_of(name)}"
+    return UNPACK / version_subdir(name) / f"linux-{dirname_of(name)}"
 
 
 def changelog_path(v: Version) -> Path:

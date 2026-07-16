@@ -2,8 +2,9 @@
 """Unpack the 2.4.x tarballs and apply prepatches. Python port/extension of untar-2.4.sh
 (the original only went to 2.4.15; this covers the full range -- see linux_hist_2_4.py).
 
-2.4.0's base (2.4.0-prerelease) comes from the 2.3 series, so unpack/linux-
-2.4.0-prerelease must already exist (run untar-2.3.py first).
+2.4.0's base (2.4.0-prerelease) comes from the 2.3 series, so
+unpack/2.4/linux-2.4.0-prerelease must already exist (run untar-2.3.py
+first).
 """
 
 from pathlib import Path

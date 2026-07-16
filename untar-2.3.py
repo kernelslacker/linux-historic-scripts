@@ -2,8 +2,8 @@
 """Unpack the 2.3.x / 2.4.0-testN tarballs and apply prepatches. Python
 port of untar-2.3.sh.
 
-2.3.0's base (2.2.8) comes from the 2.2 series, so unpack/linux-2.2.8 must
-already exist (run untar-2.2.py first). Alias versions (2.3.8, 2.4.0-test3)
+2.3.0's base (2.2.8) comes from the 2.2 series, so unpack/2.2/linux-2.2.8
+must already exist (run untar-2.2.py first). Alias versions (2.3.8, 2.4.0-test3)
 still get real trees built here -- only import.py treats them specially.
 """
 

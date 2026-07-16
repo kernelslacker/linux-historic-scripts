@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate diffs/linux-VERSION.diff for 2.5.x. New script (no shell reference existed).
 
-2.5.1's base (2.4.15) comes from the 2.4 series, so unpack/linux-2.4.15
+2.5.1's base (2.4.15) comes from the 2.4 series, so unpack/2.4/linux-2.4.15
 must already exist (run untar-2.4.py first).
 """
 

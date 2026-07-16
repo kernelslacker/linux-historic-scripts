@@ -5,7 +5,7 @@ tarball chain -- 2.6.0-test1 through test11, then 2.6.0 itself, then
 2.6.1-2.6.11.12 -- no prepatches archived, no branching, always Linus
 Torvalds. 2.6.0-test1 forked from 2.5.75 (confirmed directly by its own
 ChangeLog: "Summary of changes from v2.5.75 to v2.6.0-test1"), so
-unpack/linux-2.5.75 must already exist (run untar-2.5.py first).
+unpack/2.5/linux-2.5.75 must already exist (run untar-2.5.py first).
 
 linux-2.6.0.tar.gz was missing from the original binaries collection
 (kernel.org mirrors don't keep every historic release forever) and was

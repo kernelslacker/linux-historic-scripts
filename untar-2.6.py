@@ -2,8 +2,8 @@
 """Unpack the 2.6.x tarballs. New script (no shell reference existed) -- pure
 tarball chain, no prepatches archived.
 
-2.6.0-test1's base (2.5.75) comes from the 2.5 series, so unpack/linux-
-2.5.75 must already exist (run untar-2.5.py first).
+2.6.0-test1's base (2.5.75) comes from the 2.5 series, so
+unpack/2.5/linux-2.5.75 must already exist (run untar-2.5.py first).
 """
 
 from pathlib import Path
